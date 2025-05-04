@@ -35,7 +35,7 @@ namespace cherrydev
         private GUIStyle _activeToolbarButtonStyle;
 
         private const float NodeWidth = 190f;
-        private const float NodeHeight = 135f;
+        private const float NodeHeight = 155f;  //JV 135f;      //restart editor after changing this value
 
         private const float ToolbarHeight = 30f;
 

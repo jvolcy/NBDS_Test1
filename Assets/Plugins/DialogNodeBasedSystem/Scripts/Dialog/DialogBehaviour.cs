@@ -48,7 +48,8 @@ namespace cherrydev
         public event Action SentenceStarted;
         public event Action SentenceEnded;
         public event Action SentenceNodeActivated;
-        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
+        public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
+//        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action AnswerNodeActivated;
         public event Action<int, AnswerNode> AnswerButtonSetUp;
         public event Action<int> MaxAmountOfAnswerButtonsCalculated;
@@ -199,7 +200,7 @@ namespace cherrydev
             string localizedText = sentenceNode.GetText();
             
             SentenceNodeActivatedWithParameter?.Invoke(localizedCharName, localizedText,
-                sentenceNode.GetCharacterSprite());
+                sentenceNode.GetCharacterSprite(), sentenceNode.GetButtonText());
 
             if (sentenceNode.IsExternalFunc())
                 ExternalFunctionsHandler.CallExternalFunction(sentenceNode.GetExternalFunctionName());

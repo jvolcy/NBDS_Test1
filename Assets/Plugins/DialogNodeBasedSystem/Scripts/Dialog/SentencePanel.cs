@@ -9,6 +9,7 @@ namespace cherrydev
         [SerializeField] private TextMeshProUGUI _dialogNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;
         [SerializeField] private Image _dialogCharacterImage;
+        [SerializeField] private TextMeshProUGUI _dialogButtonText;
 
         private string _currentFullText;
         
@@ -40,11 +41,12 @@ namespace cherrydev
         /// <summary>
         /// Assigning dialog name text, character image sprite and dialog text
         /// </summary>
-        public void Setup(string characterName, string text, Sprite sprite)
+        public void Setup(string characterName, string text, Sprite sprite, string buttonText)
         {
             _dialogNameText.text = characterName;
             _dialogText.text = text;
             _currentFullText = text;
+            _dialogButtonText.text = buttonText;
 
             if (sprite == null)
             {

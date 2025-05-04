@@ -48,6 +48,15 @@ namespace cherrydev
             return !string.IsNullOrEmpty(localizedText) ? localizedText : _sentence.Text;
         }
 
+        /// <summary>
+        /// Returns sentence text, using localization if available
+        /// </summary>
+        /// <returns>Sentence text (localized if possible)</returns>
+        public string GetButtonText()
+        {
+            return _sentence.ButtonText;
+        }
+
 
         /// <summary>
         /// Try to get localized string for a given key, returns empty if failed
@@ -138,7 +147,7 @@ namespace cherrydev
                 DrawCharacterNameFieldHorizontal();
                 DrawSentenceTextFieldHorizontal();
                 DrawCharacterSpriteHorizontal();
-
+                DrawButtonTextFieldHorizontal();
                 DrawExternalFunctionTextField();
 
                 if (GUILayout.Button(_externalButtonLabel))
@@ -180,6 +189,17 @@ namespace cherrydev
             EditorGUILayout.LabelField($"Sprite ", GUILayout.Width(LabelFieldSpace));
             _sentence.CharacterSprite = (Sprite)EditorGUILayout.ObjectField(_sentence.CharacterSprite,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+        }
+
+        /// <summary>
+        /// Draw label and button text fields for sentence text
+        /// </summary>
+        private void DrawButtonTextFieldHorizontal()
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField($"ButtonTxt ", GUILayout.Width(LabelFieldSpace));
+            _sentence.ButtonText = EditorGUILayout.TextField(_sentence.ButtonText, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }
 
