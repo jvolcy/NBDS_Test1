@@ -61,6 +61,22 @@ namespace cherrydev
 #endif
         }
 
+        //JV
+        /*
+        private void Start()
+        {
+            Debug.Log("XXXX");
+
+            _dialogSentencePanel.GetComponent<Animator>().enabled = false;
+            _dialogSentencePanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+            _dialogSentencePanel.GetComponent<Animator>().enabled = true;
+
+            _dialogAnswerPanel.GetComponent<Animator>().enabled = false;
+            _dialogAnswerPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+            //_dialogAnswerPanel.GetComponent<Animator>().enabled = true;
+        }
+        */
+
         /// <summary>
         /// Disable dialog answer and sentence panel
         /// </summary>
@@ -75,14 +91,19 @@ namespace cherrydev
         /// </summary>
         public void EnableDialogAnswerPanel()
         {
-            ActiveGameObject(_dialogAnswerPanel.gameObject, true);
+            _dialogAnswerPanel.GetComponent<Animator>().SetBool("Show", true);
+            //ActiveGameObject(_dialogAnswerPanel.gameObject, true);
             _dialogAnswerPanel.DisableAllButtons();
         }
 
         /// <summary>
         /// Disable dialog answer panel
         /// </summary>
-        public void DisableDialogAnswerPanel() => ActiveGameObject(_dialogAnswerPanel.gameObject, false);
+        public void DisableDialogAnswerPanel()
+        {
+            _dialogAnswerPanel.GetComponent<Animator>().SetBool("Show", false);
+            //ActiveGameObject(_dialogAnswerPanel.gameObject, false);
+        }
 
         /// <summary>
         /// Enable dialog sentence panel
@@ -90,13 +111,18 @@ namespace cherrydev
         public void EnableDialogSentencePanel()
         {
             _dialogSentencePanel.ResetDialogText();
-            ActiveGameObject(_dialogSentencePanel.gameObject, true);
+            //ActiveGameObject(_dialogSentencePanel.gameObject, true);
+            _dialogSentencePanel.GetComponent<Animator>().SetBool("Show", true);
         }
 
         /// <summary>
         /// Disable dialog sentence panel
         /// </summary>
-        public void DisableDialogSentencePanel() => ActiveGameObject(_dialogSentencePanel.gameObject, false);
+        public void DisableDialogSentencePanel()
+        {
+            _dialogSentencePanel.GetComponent<Animator>().SetBool("Show", false);
+            //ActiveGameObject(_dialogSentencePanel.gameObject, false);
+        }
 
         /// <summary>
         /// Enable or disable game object depends on isActive bool flag

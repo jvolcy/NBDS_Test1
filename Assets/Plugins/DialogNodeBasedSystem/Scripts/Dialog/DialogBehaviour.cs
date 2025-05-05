@@ -19,6 +19,8 @@ namespace cherrydev
         [SerializeField] private bool _reloadTextOnLanguageChange = true;
 #endif
 
+        [SerializeField] DialogNodeGraph dialogNodeGraph;
+
         [Space(10)]
         [SerializeField] private UnityEvent _onDialogStarted;
         [SerializeField] private UnityEvent _onDialogFinished;
@@ -123,6 +125,12 @@ namespace cherrydev
         /// </summary>
         /// <param name="keyCodes"></param>
         public void SetNextSentenceKeyCodes(List<KeyCode> keyCodes) => _nextSentenceKeyCodes = keyCodes;
+
+
+        public void Start()
+        {
+            StartDialog(dialogNodeGraph);
+        }
 
         /// <summary>
         /// Start a dialog

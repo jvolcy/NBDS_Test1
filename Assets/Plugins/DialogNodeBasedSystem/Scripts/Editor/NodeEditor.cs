@@ -65,7 +65,7 @@ namespace cherrydev
         {
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
 
-            InitializeToolbarStyles();
+            //JV  InitializeToolbarStyles();
 
             _nodeStyle = new GUIStyle();
             _nodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.Node) as Texture2D;
