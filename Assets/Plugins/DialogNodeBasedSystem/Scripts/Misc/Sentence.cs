@@ -9,14 +9,14 @@ namespace cherrydev
         public string CharacterName;
         public string Text;
         public Sprite CharacterSprite;
-        public string ButtonText;
+        public string ButtonText;       //JV
 
         public Sentence(string characterName, string text, string buttonText="")
         {
             CharacterSprite = null;
             CharacterName = characterName;
             Text = text;
-            ButtonText = buttonText;
+            ButtonText = buttonText;        //JV
         }
     }
 }

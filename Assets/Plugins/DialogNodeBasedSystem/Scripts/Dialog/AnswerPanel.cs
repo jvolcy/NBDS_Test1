@@ -9,7 +9,7 @@ namespace cherrydev
     public class AnswerPanel : MonoBehaviour
     {
         [SerializeField] private Button _answerButtonPrefab;
-        [SerializeField] private Transform _parentTransform;
+        [SerializeField] private GridLayoutGroup _parentGridLayoutGroup;
 
         private readonly List<Button> _buttons = new();
         private readonly List<TextMeshProUGUI> _buttonTexts = new();
@@ -30,7 +30,7 @@ namespace cherrydev
             
             for (int i = 0; i < maxAmountOfAnswerButtons; i++)
             {
-                Button answerButton = Instantiate(_answerButtonPrefab, _parentTransform);
+                Button answerButton = Instantiate(_answerButtonPrefab, _parentGridLayoutGroup.transform);
 
                 _buttons.Add(answerButton);
                 _buttonTexts.Add(answerButton.GetComponentInChildren<TextMeshProUGUI>());
@@ -73,6 +73,9 @@ namespace cherrydev
 
             for (int i = 0; i < amount; i++)
                 _buttons[i].gameObject.SetActive(true);
+
+            //JV: Scale the grid layout group
+            _parentGridLayoutGroup.cellSize = new Vector2(0.8f, 1f / (amount + 1));
         }
 
         /// <summary>

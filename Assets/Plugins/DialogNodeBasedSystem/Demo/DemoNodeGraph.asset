@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 309.59973
-    y: -2.5000458
+    x: 861.59973
+    y: -12.500046
     width: 190
     height: 155
   IsDragging: 1
@@ -49,8 +49,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -185.4007
-    y: 208.30017
+    x: 366.5993
+    y: 198.30017
     width: 190
     height: 155
   IsDragging: 1
@@ -82,16 +82,17 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -454.4004
-    y: 95.10011
+    x: 97.59961
+    y: 85.10011
     width: 190
-    height: 155
+    height: 175
   IsDragging: 1
   IsSelected: 0
   Answers:
   - Go to first sentence
   - Go to second sentence
   - Go to third sentence
+  - x
   AnswerKeys:
   - Answer_73419b8d-b28a-4be9-9f73-2e4967cd3077
   - Answer_4c5f4b30-a1d1-4e26-a6ac-5c099d6e344e
@@ -117,8 +118,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -699.19946
-    y: 219.90009
+    x: -147.19946
+    y: 209.90009
     width: 190
     height: 155
   IsDragging: 1
@@ -175,8 +176,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 59.199585
-    y: 139.90001
+    x: 611.1996
+    y: 129.90001
     width: 190
     height: 115
   IsDragging: 1
@@ -204,8 +205,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -174
-    y: 400
+    x: 378
+    y: 390
     width: 190
     height: 155
   IsDragging: 1
@@ -237,8 +238,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -193.60077
-    y: 36.499924
+    x: 358.39923
+    y: 26.499924
     width: 190
     height: 155
   IsDragging: 1

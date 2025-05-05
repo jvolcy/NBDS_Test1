@@ -147,7 +147,7 @@ namespace cherrydev
                 DrawCharacterNameFieldHorizontal();
                 DrawSentenceTextFieldHorizontal();
                 DrawCharacterSpriteHorizontal();
-                DrawButtonTextFieldHorizontal();
+                DrawButtonTextFieldHorizontal();        //JV
                 DrawExternalFunctionTextField();
 
                 if (GUILayout.Button(_externalButtonLabel))
@@ -193,12 +193,12 @@ namespace cherrydev
         }
 
         /// <summary>
-        /// Draw label and button text fields for sentence text
+        /// JV: Draw label and button text fields for sentence text
         /// </summary>
-        private void DrawButtonTextFieldHorizontal()
+        private void DrawButtonTextFieldHorizontal()        //JV
         {
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"ButtonTxt ", GUILayout.Width(LabelFieldSpace));
+            EditorGUILayout.LabelField($"BtnTxt ", GUILayout.Width(LabelFieldSpace));
             _sentence.ButtonText = EditorGUILayout.TextField(_sentence.ButtonText, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }
