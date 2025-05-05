@@ -655,7 +655,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2026558748786877527, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Name
-      value: VR Dialog Prefab
+      value: VR Dialog
       objectReference: {fileID: 0}
     - target: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_LocalPosition.x

@@ -23,6 +23,9 @@ namespace cherrydev
         [SerializeField] private UnityEvent _onDialogStarted;
         [SerializeField] private UnityEvent _onDialogFinished;
 
+        //boolean used to force us to the next node.  This value is set to true by the UI sentence button.
+        bool _GoToNextNode = false;   //JV
+
         private DialogNodeGraph _currentNodeGraph;
         private Node _currentNode;
         
@@ -128,6 +131,7 @@ namespace cherrydev
         public void StartDialog(DialogNodeGraph dialogNodeGraph)
         {
             _isDialogStarted = true;
+            //_GoToNextNode = false;
 
             if (dialogNodeGraph.NodesList == null)
             {
@@ -141,6 +145,11 @@ namespace cherrydev
             DefineFirstNode(dialogNodeGraph);
             CalculateMaxAmountOfAnswerButtons();
             HandleDialogGraphCurrentNode(_currentNode);
+        }
+
+        public void GoToNextNode()
+        {
+            _GoToNextNode = true;
         }
 
         /// <summary>
@@ -373,6 +382,12 @@ namespace cherrydev
         /// <returns></returns>
         private bool CheckNextSentenceKeyCodes()
         {
+            if (_GoToNextNode)
+            {
+                _GoToNextNode = false;
+                return true;
+            }
+
             for (int i = 0; i < _nextSentenceKeyCodes.Count; i++)
             { 
                 if (Input.GetKeyDown(_nextSentenceKeyCodes[i]))
