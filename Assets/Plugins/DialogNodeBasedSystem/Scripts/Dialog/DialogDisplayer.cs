@@ -61,22 +61,6 @@ namespace cherrydev
 #endif
         }
 
-        //JV
-        /*
-        private void Start()
-        {
-            Debug.Log("XXXX");
-
-            _dialogSentencePanel.GetComponent<Animator>().enabled = false;
-            _dialogSentencePanel.GetComponent<RectTransform>().localScale = Vector3.zero;
-            _dialogSentencePanel.GetComponent<Animator>().enabled = true;
-
-            _dialogAnswerPanel.GetComponent<Animator>().enabled = false;
-            _dialogAnswerPanel.GetComponent<RectTransform>().localScale = Vector3.zero;
-            //_dialogAnswerPanel.GetComponent<Animator>().enabled = true;
-        }
-        */
-
         /// <summary>
         /// Disable dialog answer and sentence panel
         /// </summary>

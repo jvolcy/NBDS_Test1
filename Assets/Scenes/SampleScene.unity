@@ -603,27 +603,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1896025583}
-  - component: {fileID: 1896025582}
+  - component: {fileID: 1896025584}
   m_Layer: 0
-  m_Name: Test Dialog Starter
+  m_Name: TestVrDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &1896025582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896025581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a50af2ea4f667a4d8b79e83c3ce0d65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialogBehaviour: {fileID: 6258486368699249023}
 --- !u!4 &1896025583
 Transform:
   m_ObjectHideFlags: 0
@@ -639,11 +626,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1109941684416643872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4305629653041099630, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-  m_PrefabInstance: {fileID: 5268395121943428219}
+--- !u!114 &1896025584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896025581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a50af2ea4f667a4d8b79e83c3ce0d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vrDialog: {fileID: 6258486368699249025}
 --- !u!4 &1679298401098560745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
@@ -657,49 +652,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 935683294}
     m_Modifications:
+    - target: {fileID: 123204142857911793, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: dialogNodeGraph
+      value: 
+      objectReference: {fileID: 11400000, guid: 154461d681138584988d046f04fffca5, type: 2}
     - target: {fileID: 2026558748786877527, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Name
-      value: VR Dialog
-      objectReference: {fileID: 0}
-    - target: {fileID: 2612111769824882281, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3602525618206776309, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3602525618206776309, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3602525618206776309, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3602525618206776309, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790069998227596587, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790069998227596587, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790069998227596587, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3790069998227596587, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305629653041099630, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: VrDialog
       objectReference: {fileID: 0}
     - target: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -741,83 +700,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5393776676985301165, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6119543549558943481, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      propertyPath: dialogNodeGraph
-      value: 
-      objectReference: {fileID: 11400000, guid: 154461d681138584988d046f04fffca5, type: 2}
+      propertyPath: _dialogCharDelay
+      value: 0.025
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2612111769824882281, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7460719742754724187}
-    - targetCorrespondingSourceObject: {fileID: 4305629653041099630, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7164240987238924159}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
---- !u!114 &6258486368699249023 stripped
+--- !u!114 &6258486368699249025 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6119543549558943481, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 123204142857911793, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
   m_PrefabInstance: {fileID: 5268395121943428219}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54577d38420c01d44a9b28330b6a8517, type: 3}
+  m_Script: {fileID: 11500000, guid: 096f47783d91143f7b13a62a2c3f3226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7106333479133839253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2612111769824882281, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
-  m_PrefabInstance: {fileID: 5268395121943428219}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7164240987238924159
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109941684416643872}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a14df2e2b24741e8becbdf69694de2b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!95 &7460719742754724187
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7106333479133839253}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a14df2e2b24741e8becbdf69694de2b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

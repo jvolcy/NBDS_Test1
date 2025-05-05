@@ -26,7 +26,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3790069998227596587}
   - {fileID: 3602525618206776309}
@@ -254,10 +254,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4616664165616117380}
+  - component: {fileID: 123204142857911793}
   - component: {fileID: 6119543549558943481}
   - component: {fileID: 5755165296987557345}
   m_Layer: 0
-  m_Name: VR Dialog
+  m_Name: VrDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,6 +281,18 @@ Transform:
   - {fileID: 5473550636566639494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123204142857911793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026558748786877527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 096f47783d91143f7b13a62a2c3f3226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6119543549558943481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +308,7 @@ MonoBehaviour:
   _dialogCharDelay: 0.09
   _nextSentenceKeyCodes: 20000000
   _isCanSkippingText: 0
+  dialogNodeGraph: {fileID: 11400000, guid: 154461d681138584988d046f04fffca5, type: 2}
   _onDialogStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -403,13 +417,14 @@ GameObject:
   - component: {fileID: 752905607083169960}
   - component: {fileID: 7437385751182706399}
   - component: {fileID: 1188716639156876035}
+  - component: {fileID: 3794390143872161611}
   m_Layer: 5
   m_Name: Sentence Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3790069998227596587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -488,6 +503,27 @@ MonoBehaviour:
   _dialogText: {fileID: 4795355495581421234}
   _dialogCharacterImage: {fileID: 873981939713325101}
   _dialogButtonText: {fileID: 5999396408676017617}
+--- !u!95 &3794390143872161611
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2612111769824882281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a14df2e2b24741e8becbdf69694de2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3669327925570778207
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,13 +596,14 @@ GameObject:
   - component: {fileID: 5319169193451932196}
   - component: {fileID: 5130258184082282371}
   - component: {fileID: 6823235859215468356}
+  - component: {fileID: 2566872701785335304}
   m_Layer: 5
   m_Name: Answer Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3602525618206776309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -639,6 +676,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _answerButtonPrefab: {fileID: 4726933923105255632, guid: 225c90b86e1bd4ea3b38f3d2052c7c64, type: 3}
   _parentGridLayoutGroup: {fileID: 2686829062940521462}
+--- !u!95 &2566872701785335304
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305629653041099630}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a14df2e2b24741e8becbdf69694de2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5468859332753486189
 GameObject:
   m_ObjectHideFlags: 0
