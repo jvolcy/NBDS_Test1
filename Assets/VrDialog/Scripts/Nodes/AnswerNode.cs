@@ -199,14 +199,14 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToParentConnectedNode(Node nodeToAdd)
         {
-            if (nodeToAdd.GetType() == typeof(SentenceNode))
-            {
+            //if (nodeToAdd.GetType() == typeof(SentenceNode))
+            //{
                 //JV ParentSentenceNode = (SentenceNode)nodeToAdd;
                 ParentNode = nodeToAdd;
                 return true;
-            }
+            //}
 
-            return false;
+            //return false;
         }
 
         /// <summary>
@@ -220,13 +220,13 @@ namespace cherrydev
 
             /* verify we have a sentence node: cast the Node to a
              * SentenceNode. */
-            if (nodeToAdd.GetType() != typeof(AnswerNode))
-            {
+            //if (nodeToAdd.GetType() != typeof(AnswerNode))
+            //{
                 //JV sentenceNodeToAdd = (SentenceNode)nodeToAdd;
                 sentenceNodeToAdd = nodeToAdd;
-            }
-            else
-                return false;
+            //}
+            //else
+            //    return false;
 
             /* add as a child node and make the current node its parent. */
             if (IsCanAddToChildConnectedNode(sentenceNodeToAdd))
