@@ -11,8 +11,8 @@ namespace cherrydev
     {
         [SerializeField] private Sentence _sentence;
 
-        [Space(10)] public Node ParentNode;
-        public Node ChildNode;
+        //JV [Space(10)] public Node ParentNode;
+        //JV public Node ChildNode;
 
         [Space(7)] [SerializeField] private bool _isExternalFunc;
         [SerializeField] private string _externalFunctionName;

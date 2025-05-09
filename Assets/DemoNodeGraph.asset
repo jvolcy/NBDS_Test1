@@ -16,19 +16,19 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 721.59973
-    y: -102.500046
+    x: 1034.7998
+    y: -77.25003
     width: 190
     height: 155
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: 3744781970286011628}
+  ChildNode: {fileID: 0}
   _sentence:
     CharacterName: cherrydev
     Text: End <3
     CharacterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     ButtonText: button last
-  ParentNode: {fileID: 3744781970286011628}
-  ChildNode: {fileID: 0}
   _isExternalFunc: 0
   _externalFunctionName: 
   CharacterNameKey: SentenceName_a7438c5b-3859-41ed-8496-020bbf206e16
@@ -49,19 +49,19 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 201.5993
-    y: 90.30017
+    x: 514.79944
+    y: 115.5502
     width: 190
     height: 155
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: -7983766367039425753}
+  ChildNode: {fileID: 3744781970286011628}
   _sentence:
     CharacterName: cherrydev
     Text: Welcome to the second sentence
     CharacterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     ButtonText: button 2
-  ParentNode: {fileID: -7983766367039425753}
-  ChildNode: {fileID: 3744781970286011628}
   _isExternalFunc: 0
   _externalFunctionName: 
   CharacterNameKey: SentenceName_a7438c5b-3859-41ed-8496-020bbf206e16
@@ -82,12 +82,14 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -42.40039
-    y: -4.899887
+    x: 270.79974
+    y: 20.350159
     width: 190
     height: 175
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: 0}
+  ChildNode: {fileID: 0}
   Answers:
   - Go to first sentence
   - Go to second sentence
@@ -97,11 +99,42 @@ MonoBehaviour:
   - Answer_73419b8d-b28a-4be9-9f73-2e4967cd3077
   - Answer_4c5f4b30-a1d1-4e26-a6ac-5c099d6e344e
   - 
+  - 
   ParentSentenceNode: {fileID: -5774457913687574346}
   ChildSentenceNodes:
   - {fileID: 8807642734761001252}
   - {fileID: -8813047481145087756}
   - {fileID: 7159988723416410299}
+--- !u!114 &-7743295562145324132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1717f3c6dba9fa40844ddacac301510, type: 3}
+  m_Name: Answer Node
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 220.20013
+    y: 421.25
+    width: 190
+    height: 115
+  IsDragging: 1
+  IsSelected: 0
+  ParentNode: {fileID: 0}
+  ChildNode: {fileID: 0}
+  Answers:
+  - 111
+  AnswerKeys:
+  - 
+  ParentSentenceNode: {fileID: 0}
+  ChildSentenceNodes: []
 --- !u!114 &-5774457913687574346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,19 +151,19 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -287.19946
-    y: 119.900085
+    x: 26.000671
+    y: 145.15012
     width: 190
     height: 155
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: 8966764857376133174}
+  ChildNode: {fileID: -7983766367039425753}
   _sentence:
     CharacterName: cherrydev
     Text: Hello, this is demo node graph!
     CharacterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     ButtonText: button 0
-  ParentNode: {fileID: 0}
-  ChildNode: {fileID: -7983766367039425753}
   _isExternalFunc: 1
   _externalFunctionName: Test
   CharacterNameKey: SentenceName_a7438c5b-3859-41ed-8496-020bbf206e16
@@ -155,11 +188,44 @@ MonoBehaviour:
   - {fileID: 3744781970286011628}
   - {fileID: -9074106610206620859}
   - {fileID: 7159988723416410299}
+  - {fileID: 8966764857376133174}
+  - {fileID: 3166960910388558631}
+  - {fileID: -7743295562145324132}
   _localizationTableName: DemoNodeGraph
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 1
+--- !u!114 &3166960910388558631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1717f3c6dba9fa40844ddacac301510, type: 3}
+  m_Name: Answer Node
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: -69.799866
+    y: 417.25
+    width: 190
+    height: 115
+  IsDragging: 0
+  IsSelected: 0
+  ParentNode: {fileID: 0}
+  ChildNode: {fileID: 0}
+  Answers:
+  - 11
+  AnswerKeys:
+  - 
+  ParentSentenceNode: {fileID: 0}
+  ChildSentenceNodes: []
 --- !u!114 &3744781970286011628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,12 +242,14 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 471.1996
-    y: 39.90001
+    x: 784.39966
+    y: 65.150024
     width: 190
     height: 115
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: 0}
+  ChildNode: {fileID: 0}
   Answers:
   - End dialog
   AnswerKeys:
@@ -205,19 +273,19 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 238
-    y: 300
+    x: 551.20013
+    y: 325.25
     width: 190
     height: 155
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: -7983766367039425753}
+  ChildNode: {fileID: 3744781970286011628}
   _sentence:
     CharacterName: JV
     Text: This is #3
     CharacterSprite: {fileID: 0}
     ButtonText: button 3
-  ParentNode: {fileID: -7983766367039425753}
-  ChildNode: {fileID: 3744781970286011628}
   _isExternalFunc: 0
   _externalFunctionName: 
   CharacterNameKey: 
@@ -238,20 +306,53 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 218.39923
-    y: -63.500076
+    x: 531.59937
+    y: -38.25003
     width: 190
     height: 155
   IsDragging: 1
   IsSelected: 0
+  ParentNode: {fileID: -7983766367039425753}
+  ChildNode: {fileID: 3744781970286011628}
   _sentence:
     CharacterName: cherrydev
     Text: Welcome to first the sentence
     CharacterSprite: {fileID: 21300000, guid: c03d0e70107745d48b9cc5f2abe74fe5, type: 3}
     ButtonText: button 1
-  ParentNode: {fileID: -7983766367039425753}
-  ChildNode: {fileID: 3744781970286011628}
   _isExternalFunc: 0
   _externalFunctionName: 
   CharacterNameKey: SentenceName_a7438c5b-3859-41ed-8496-020bbf206e16
   SentenceTextKey: SentenceText_f37ff077-24b6-4c9d-a879-e263578bcd14
+--- !u!114 &8966764857376133174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
+  m_Name: Sentence Node
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: -259.79987
+    y: 145.25003
+    width: 190
+    height: 155
+  IsDragging: 1
+  IsSelected: 0
+  ParentNode: {fileID: 0}
+  ChildNode: {fileID: -5774457913687574346}
+  _sentence:
+    CharacterName: 
+    Text: Node 1
+    CharacterSprite: {fileID: 0}
+    ButtonText: 
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  CharacterNameKey: 
+  SentenceTextKey: 

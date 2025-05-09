@@ -15,8 +15,8 @@ namespace cherrydev
         public List<string> Answers = new();
         public List<string> AnswerKeys = new();
 
-        public SentenceNode ParentSentenceNode;
-        public List<SentenceNode> ChildSentenceNodes = new();
+        //public Node ParentSentenceNode;
+        public List<Node> ChildSentenceNodes = new();
 
         private const float LabelFieldSpace = 18f;
         private const float TextFieldWidth = 120f;
@@ -72,7 +72,8 @@ namespace cherrydev
             base.Initialize(rect, nodeName, nodeGraph);
 
             CalculateAmountOfAnswers();
-            ChildSentenceNodes = new List<SentenceNode>(_amountOfAnswers);
+            //JV ChildSentenceNodes = new List<SentenceNode>(_amountOfAnswers);
+            ChildSentenceNodes = new List<Node>(_amountOfAnswers);
         }
 
         /// <summary>
@@ -200,7 +201,8 @@ namespace cherrydev
         {
             if (nodeToAdd.GetType() == typeof(SentenceNode))
             {
-                ParentSentenceNode = (SentenceNode)nodeToAdd;
+                //JV ParentSentenceNode = (SentenceNode)nodeToAdd;
+                ParentNode = nodeToAdd;
                 return true;
             }
 
@@ -214,13 +216,19 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToChildConnectedNode(Node nodeToAdd)
         {
-            SentenceNode sentenceNodeToAdd;
+            Node sentenceNodeToAdd;
 
+            /* verify we have a sentence node: cast the Node to a
+             * SentenceNode. */
             if (nodeToAdd.GetType() != typeof(AnswerNode))
-                sentenceNodeToAdd = (SentenceNode)nodeToAdd;
+            {
+                //JV sentenceNodeToAdd = (SentenceNode)nodeToAdd;
+                sentenceNodeToAdd = nodeToAdd;
+            }
             else
                 return false;
 
+            /* add as a child node and make the current node its parent. */
             if (IsCanAddToChildConnectedNode(sentenceNodeToAdd))
             {
                 ChildSentenceNodes.Add(sentenceNodeToAdd);
@@ -248,8 +256,12 @@ namespace cherrydev
         /// </summary>
         /// <param name="sentenceNodeToAdd"></param>
         /// <returns></returns>
-        private bool IsCanAddToChildConnectedNode(SentenceNode sentenceNodeToAdd)
+        private bool IsCanAddToChildConnectedNode(Node sentenceNodeToAdd)
         {
+            //check that 1) the candidate node has no current parent;
+            //2) we have space in our answers list for this node;
+            //3) the candidate node is not our parent.
+
             return sentenceNodeToAdd.ParentNode == null
                    && ChildSentenceNodes.Count < _amountOfAnswers
                    && sentenceNodeToAdd.ChildNode != this;

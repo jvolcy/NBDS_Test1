@@ -1078,7 +1078,7 @@ namespace cherrydev
                 if (node.GetType() == typeof(AnswerNode))
                 {
                     AnswerNode answerNode = (AnswerNode)node;
-                    answerNode.ParentSentenceNode = null;
+                    answerNode.ParentNode = null;
                     answerNode.ChildSentenceNodes.Clear();
                 }
                 else if (node.GetType() == typeof(SentenceNode))

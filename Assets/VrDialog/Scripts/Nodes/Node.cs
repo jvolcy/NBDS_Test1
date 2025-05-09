@@ -15,6 +15,9 @@ namespace cherrydev
 
         protected float StandardHeight;
 
+        public Node ParentNode;
+        public Node ChildNode;
+
         /// <summary>
         /// Gets the table name from the node graph asset name
         /// </summary>
