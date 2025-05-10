@@ -8,7 +8,7 @@ using UnityEngine.Localization.Settings;
 namespace cherrydev
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Answer Node", fileName = "New Answer Node")]
-    public class AnswerNode : Node
+    public class XAnswerNode : Node
     {
         private int _amountOfAnswers = 1;
 

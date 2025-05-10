@@ -10,6 +10,8 @@ namespace cherrydev
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Dialog Node", fileName = "New Dialog Node")]
     public class DialogNode : Node
     {
+        [SerializeField] private NodeData _nodeData;
+
         private int _numberOfChoices = 1;
 
         public List<string> Choices = new();

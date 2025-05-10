@@ -7,7 +7,7 @@ using UnityEngine.Localization.Settings;
 namespace cherrydev
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Sentence Node", fileName = "New Sentence Node")]
-    public class SentenceNode : Node
+    public class XSentenceNode : Node
     {
         [SerializeField] private Sentence _sentence;
 

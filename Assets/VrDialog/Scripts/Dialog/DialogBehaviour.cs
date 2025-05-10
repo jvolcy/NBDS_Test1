@@ -32,7 +32,7 @@ namespace cherrydev
         private Node _currentNode;
         
         public DialogNode CurrentAnswerNode { get; private set; }
-        public SentenceNode CurrentSentenceNode { get; private set; }
+        //public SentenceNode CurrentSentenceNode { get; private set; }
         
 #if UNITY_LOCALIZATION
         public event Action LanguageChanged;
@@ -195,16 +195,17 @@ namespace cherrydev
         {
             StopAllCoroutines();
 
-            if (currentNode.GetType() == typeof(SentenceNode))
-                HandleSentenceNode(currentNode);
-            else if (currentNode.GetType() == typeof(DialogNode))
-                HandleAnswerNode(currentNode);
+            //if (currentNode.GetType() == typeof(SentenceNode))
+            //    HandleSentenceNode(currentNode);
+            //else if (currentNode.GetType() == typeof(DialogNode))
+                HandleDialogNode(currentNode);
         }
 
         /// <summary>
         /// Processing sentence node
         /// </summary>
         /// <param name="currentNode"></param>
+        /*
         private void HandleSentenceNode(Node currentNode)
         {
             SentenceNode sentenceNode = (SentenceNode)currentNode;
@@ -225,12 +226,12 @@ namespace cherrydev
     
             WriteDialogText(localizedText);
         }
-
+        */
         /// <summary>
         /// Processing answer node
         /// </summary>
         /// <param name="currentNode"></param>
-        private void HandleAnswerNode(Node currentNode)
+        private void HandleDialogNode(Node currentNode)
         {
             DialogNode answerNode = (DialogNode)currentNode;
             CurrentAnswerNode = answerNode;
@@ -279,16 +280,16 @@ namespace cherrydev
             {
                 _currentNode = node;
 
-                if (node.GetType() == typeof(SentenceNode))
-                {
-                    SentenceNode sentenceNode = (SentenceNode)node;
+                //if (node.GetType() == typeof(SentenceNode))
+                //{
+                    //SentenceNode sentenceNode = (SentenceNode)node;
 
-                    if (sentenceNode.ParentNode == null && sentenceNode.ChildNode != null)
+                    if (node.ParentNode == null && node.ChildNode != null)
                     {
-                        _currentNode = sentenceNode;
+                        _currentNode = node;
                         return;
                     }
-                }
+                //}
             }
 
             _currentNode = dialogNodeGraph.NodesList[0];
@@ -337,13 +338,13 @@ namespace cherrydev
         /// </summary>
         private void CheckForDialogNextNode()
         {
-            if (_currentNode.GetType() == typeof(SentenceNode))
-            {
-                SentenceNode sentenceNode = (SentenceNode)_currentNode;
+            //if (_currentNode.GetType() == typeof(SentenceNode))
+            //{
+                //SentenceNode sentenceNode = (SentenceNode)_currentNode;
 
-                if (sentenceNode.ChildNode != null)
+                if (_currentNode.ChildNode != null)
                 {
-                    _currentNode = sentenceNode.ChildNode;
+                    _currentNode = _currentNode.ChildNode;
                     HandleDialogGraphCurrentNode(_currentNode);
                 }
                 else
@@ -351,7 +352,7 @@ namespace cherrydev
                     _isDialogStarted = false;
                     _onDialogFinished?.Invoke();
                 }
-            }
+            //}
         }
 
         /// <summary>
