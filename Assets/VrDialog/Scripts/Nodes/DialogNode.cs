@@ -107,36 +107,6 @@ namespace cherrydev
             GUILayout.BeginArea(Rect, nodeStyle);
             EditorGUILayout.LabelField("Dialog Node", labelStyle);
 
-
-            //------------------------------------------------
-            /*
-            if (DialogNodeGraph.ShowLocalizationKeys)
-            {
-                EditorGUILayout.Space(5);
-                EditorGUILayout.LabelField("Localization Keys", EditorStyles.boldLabel);
-
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("Name Key", GUILayout.Width(LabelFieldSpace));
-                CharacterNameKey = EditorGUILayout.TextField(CharacterNameKey, GUILayout.Width(TextFieldWidth));
-                EditorGUILayout.EndHorizontal();
-
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField("Text Key", GUILayout.Width(LabelFieldSpace));
-                SentenceTextKey = EditorGUILayout.TextField(SentenceTextKey, GUILayout.Width(TextFieldWidth));
-                EditorGUILayout.EndHorizontal();
-            }
-            else
-            {
-                DrawCharacterNameFieldHorizontal();
-                DrawSentenceTextFieldHorizontal();
-                DrawCharacterSpriteHorizontal();
-                DrawButtonTextFieldHorizontal();        //JV
-                DrawExternalFunctionTextField();
-
-
-            }
-            */
-
             DrawNodeData();
             DrawExternalFunctionTextField();
 
@@ -144,26 +114,9 @@ namespace cherrydev
                 _isExternalFunc = !_isExternalFunc;
 
 
-            //------------------------------------------------
-
-
             for (int i = 0; i < _numberOfChoices; i++)
             {
                 DrawChoiceLine(i + 1, StringConstants.GreenDot);
-
-                /*
-                if (DialogNodeGraph.ShowLocalizationKeys)
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField("Key: ", GUILayout.Width(25));
-                    
-                    while (ChoiceKeys.Count <= i)
-                        ChoiceKeys.Add(string.Empty);
-                
-                    ChoiceKeys[i] = EditorGUILayout.TextField(ChoiceKeys[i], GUILayout.Width(TextFieldWidth + 13));
-                    EditorGUILayout.EndHorizontal();
-                }
-                */
             }
 
             DrawDialogNodeButtons();
@@ -177,7 +130,7 @@ namespace cherrydev
         /*
         public string DialogText;
         public Sprite BackgroundImage;
-        bool ShowDismissButton;
+        bool AutoDismissButton;
         float TextAreaWidthPct;
         float TextAreaHeightPct;
         float TextAreaYPos;
@@ -188,64 +141,76 @@ namespace cherrydev
         */
         void DrawNodeData()
         {
+            string tooltip;
+
             //draw DialogText
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Text ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"Text ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.DialogText = EditorGUILayout.TextField(_nodeData.DialogText, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();           
 
             //draw backgroud sprite
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"BackImg ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"BackImg ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.BackgroundImage = (Sprite)EditorGUILayout.ObjectField(_nodeData.BackgroundImage,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw dismiss btn checkbox
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"ShowXBtn ", GUILayout.Width(LabelFieldSpace));
-            _nodeData.ShowDismissButton = EditorGUILayout.Toggle(_nodeData.ShowDismissButton, GUILayout.Width(TextFieldWidth));
+            tooltip = "The dismiss button is automatically added when there are no buttons in the dialog area.  Uncheck this box to disable this behavior.";
+            EditorGUILayout.LabelField(new GUIContent($"AutoXBtn ", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.AutoDismissButton = EditorGUILayout.Toggle(_nodeData.AutoDismissButton, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw TextAreaWidthPct
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"TxtWidth% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"TxtWidth% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.TextAreaWidthPct = EditorGUILayout.FloatField(_nodeData.TextAreaWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw TextAreaHeightPct
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"TxtHeight% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"TxtHeight% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.TextAreaHeightPct = EditorGUILayout.FloatField(_nodeData.TextAreaHeightPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw TextAreaYPosPct
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"TxtYPos% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"TxtYPos% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.TextAreaYPos = EditorGUILayout.FloatField(_nodeData.TextAreaYPos, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw ButtonsAreaWidth %
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"BtnWidth% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"BtnWidth% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonsAreaWidthPct = EditorGUILayout.FloatField(_nodeData.ButtonsAreaWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw ButtonsAreaHeight %
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"BtnHeight% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"BtnHeight% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonAreaHeightPct = EditorGUILayout.FloatField(_nodeData.ButtonAreaHeightPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw ButtonsAreaWidth YPos %
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"BtnYPos% ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"BtnYPos% ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonAreaYPos = EditorGUILayout.FloatField(_nodeData.ButtonAreaYPos, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw button sprite
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"BtnImg ", GUILayout.Width(LabelFieldSpace));
+            tooltip = "XXX";
+            EditorGUILayout.LabelField(new GUIContent($"BtnImg ", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonImage = (Sprite)EditorGUILayout.ObjectField(_nodeData.ButtonImage,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();

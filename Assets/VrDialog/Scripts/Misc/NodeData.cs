@@ -7,7 +7,7 @@ namespace cherrydev
     {
         public string DialogText;
         public Sprite BackgroundImage;
-        public bool ShowDismissButton;
+        public bool AutoDismissButton;
         public float TextAreaWidthPct;
         public float TextAreaHeightPct;
         public float TextAreaYPos;
@@ -20,7 +20,7 @@ namespace cherrydev
         {
             DialogText = dialogText;
             BackgroundImage = null;
-            ShowDismissButton = true;
+            AutoDismissButton = true;
             TextAreaWidthPct = 0.8f;
             TextAreaHeightPct = 0.7f;
             TextAreaYPos = -0.1f;
@@ -32,7 +32,7 @@ namespace cherrydev
 
         public NodeData(string dialogText,
                             Sprite backgroundImage,
-                            bool showDismissButton,
+                            bool autoDismissButton,
                             float textAreaWidthPct,
                             float textAreaHeightPct,
                             float textAreaYPos,
@@ -44,7 +44,7 @@ namespace cherrydev
         {
             DialogText = dialogText;
             BackgroundImage = backgroundImage;
-            ShowDismissButton = showDismissButton;
+            AutoDismissButton = autoDismissButton;
             TextAreaWidthPct = textAreaWidthPct;
             TextAreaHeightPct = textAreaHeightPct;
             TextAreaYPos = textAreaYPos;

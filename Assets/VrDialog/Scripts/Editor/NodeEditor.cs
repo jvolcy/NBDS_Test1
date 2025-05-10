@@ -961,7 +961,6 @@ namespace cherrydev
         {
             GenericMenu contextMenu = new GenericMenu();
 
-            //contextMenu.AddItem(new GUIContent("Create Sentence Node"), false, CreateSentenceNode, mousePosition);
             contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
@@ -970,17 +969,6 @@ namespace cherrydev
             contextMenu.ShowAsContext();
         }
 
-        /// <summary>
-        /// Create Sentence Node at mouse position and add it to Node Graph asset
-        /// </summary>
-        /// <param name="mousePositionObject"></param>
-        /*
-        private void CreateSentenceNode(object mousePositionObject)
-        {
-            SentenceNode sentenceNode = CreateInstance<SentenceNode>();
-            InitializeNode(mousePositionObject, sentenceNode, "Sentence Node");
-        }
-        */
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
@@ -1086,7 +1074,7 @@ namespace cherrydev
                 //if (node.GetType() == typeof(DialogNode))
                 //{
                     DialogNode dialogNode = (DialogNode)node;
-                    dialogNode.ParentNode = null;
+                    node.ParentNode = null;
                     dialogNode.ChildNodes.Clear();
                 /*}
                 else if (node.GetType() == typeof(SentenceNode))
