@@ -252,12 +252,14 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToChildConnectedNode(Node nodeToAdd)
         {
+            /*
             if (nodeToAdd.GetType() == typeof(SentenceNode))
             {
                 nodeToAdd = (SentenceNode)nodeToAdd;
-
+            */
                 if (nodeToAdd == this)
                     return false;
+            /*
             }
 
             if (nodeToAdd.GetType() == typeof(SentenceNode))
@@ -267,6 +269,7 @@ namespace cherrydev
                 if (sentenceNodeToAdd != null && sentenceNodeToAdd.ChildNode == this)
                     return false;
             }
+            */
 
             ChildNode = nodeToAdd;
             return true;
@@ -279,33 +282,35 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToParentConnectedNode(Node nodeToAdd)
         {
+            /*
             if (nodeToAdd.GetType() == typeof(AnswerNode))
             {
                 return false;
             }
+            */
 
-            if (nodeToAdd.GetType() == typeof(SentenceNode))
-            {
-                nodeToAdd = (SentenceNode)nodeToAdd;
+            //if (nodeToAdd.GetType() == typeof(SentenceNode))
+            //{
+                //nodeToAdd = (SentenceNode)nodeToAdd;
 
                 if (nodeToAdd == this)
                 {
                     return false;
                 }
-            }
+            //}
 
             ParentNode = nodeToAdd;
-
-            if (nodeToAdd.GetType() == typeof(SentenceNode))
-            {
+            /*
+            //if (nodeToAdd.GetType() == typeof(SentenceNode))
+            //{
                 SentenceNode sentenceNodeToAdd = (SentenceNode)nodeToAdd;
 
                 if (sentenceNodeToAdd.ChildNode == this)
                     return true;
 
                 ParentNode = null;
-            }
-
+            //}
+            */
             return true;
         }
 
