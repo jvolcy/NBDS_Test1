@@ -477,7 +477,8 @@ namespace cherrydev
                 }
                 else if (node.GetType() == typeof(SentenceNode))
                 {
-                    SentenceNode sentenceNode = (SentenceNode)node;
+                    //SentenceNode sentenceNode = (SentenceNode)node;
+                    Node sentenceNode = node;
 
                     if (sentenceNode.ChildNode != null)
                     {
@@ -526,7 +527,8 @@ namespace cherrydev
             Vector2 midPosition = bezierPoints[bezierPoints.Length / 2];
             Vector2 direction = (endPosition - startPosition).normalized;
 
-            if (parentNode is AnswerNode answerNode && childNode is SentenceNode sentenceNode)
+            //if (parentNode is AnswerNode answerNode && childNode is SentenceNode sentenceNode)
+            if (parentNode is AnswerNode answerNode && childNode is Node sentenceNode)
             {
                 int index = answerNode.ChildSentenceNodes.IndexOf(sentenceNode);
 
