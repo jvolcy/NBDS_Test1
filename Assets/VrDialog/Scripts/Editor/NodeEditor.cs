@@ -167,11 +167,11 @@ namespace cherrydev
         {
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                if (node.GetType() == typeof(AnswerNode))
+                if (node.GetType() == typeof(DialogNode))
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
-                    answerNode.CalculateAmountOfAnswers();
-                    answerNode.CalculateAnswerNodeHeight();
+                    DialogNode answerNode = (DialogNode)node;
+                    answerNode.CalculateNumberOfChoices();
+                    answerNode.CalculateDialogNodeHeight();
                 }
 
                 if (node.GetType() == typeof(SentenceNode))
@@ -336,16 +336,16 @@ namespace cherrydev
                         return;
                     }
                 }
-                else if (node.GetType() == typeof(AnswerNode))
+                else if (node.GetType() == typeof(DialogNode))
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
+                    DialogNode answerNode = (DialogNode)node;
                     bool found = false;
 
-                    if (answerNode.Answers != null)
+                    if (answerNode.Choices != null)
                     {
-                        foreach (string answer in answerNode.Answers)
+                        foreach (string choice in answerNode.Choices)
                         {
-                            if (!string.IsNullOrEmpty(answer) && answer.ToLower().Contains(searchText))
+                            if (!string.IsNullOrEmpty(choice) && choice.ToLower().Contains(searchText))
                             {
                                 found = true;
                                 break;
@@ -389,12 +389,12 @@ namespace cherrydev
                 }
                 else
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
+                    DialogNode answerNode = (DialogNode)node;
                     prefix = "A";
 
-                    if (answerNode.Answers != null && answerNode.Answers.Count > 0 &&
-                        !string.IsNullOrEmpty(answerNode.Answers[0]))
-                        nodeText = answerNode.Answers[0];
+                    if (answerNode.Choices != null && answerNode.Choices.Count > 0 &&
+                        !string.IsNullOrEmpty(answerNode.Choices[0]))
+                        nodeText = answerNode.Choices[0];
                     else
                         nodeText = "Empty";
 
@@ -460,9 +460,9 @@ namespace cherrydev
                 Node parentNode;
                 Node childNode;
 
-                if (node.GetType() == typeof(AnswerNode))
+                if (node.GetType() == typeof(DialogNode))
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
+                    DialogNode answerNode = (DialogNode)node;
 
                     for (int i = 0; i < answerNode.ChildSentenceNodes.Count; i++)
                     {
@@ -528,7 +528,7 @@ namespace cherrydev
             Vector2 direction = (endPosition - startPosition).normalized;
 
             //if (parentNode is AnswerNode answerNode && childNode is SentenceNode sentenceNode)
-            if (parentNode is AnswerNode answerNode && childNode is Node sentenceNode)
+            if (parentNode is DialogNode answerNode && childNode is Node sentenceNode)
             {
                 int index = answerNode.ChildSentenceNodes.IndexOf(sentenceNode);
 
@@ -958,7 +958,7 @@ namespace cherrydev
             GenericMenu contextMenu = new GenericMenu();
 
             contextMenu.AddItem(new GUIContent("Create Sentence Node"), false, CreateSentenceNode, mousePosition);
-            contextMenu.AddItem(new GUIContent("Create Answer Node"), false, CreateAnswerNode, mousePosition);
+            contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateAnswerNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Remove Selected Nodes"), false, RemoveSelectedNodes, mousePosition);
@@ -982,8 +982,8 @@ namespace cherrydev
         /// <param name="mousePositionObject"></param>
         private void CreateAnswerNode(object mousePositionObject)
         {
-            AnswerNode answerNode = CreateInstance<AnswerNode>();
-            InitializeNode(mousePositionObject, answerNode, "Answer Node");
+            DialogNode answerNode = CreateInstance<DialogNode>();
+            InitializeNode(mousePositionObject, answerNode, "Dialog Node");
         }
 
         /// <summary>
@@ -1077,9 +1077,9 @@ namespace cherrydev
                 if (!node.IsSelected)
                     continue;
 
-                if (node.GetType() == typeof(AnswerNode))
+                if (node.GetType() == typeof(DialogNode))
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
+                    DialogNode answerNode = (DialogNode)node;
                     answerNode.ParentNode = null;
                     answerNode.ChildSentenceNodes.Clear();
                 }

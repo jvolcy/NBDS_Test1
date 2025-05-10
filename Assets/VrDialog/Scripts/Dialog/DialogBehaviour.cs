@@ -31,7 +31,7 @@ namespace cherrydev
         private DialogNodeGraph _currentNodeGraph;
         private Node _currentNode;
         
-        public AnswerNode CurrentAnswerNode { get; private set; }
+        public DialogNode CurrentAnswerNode { get; private set; }
         public SentenceNode CurrentSentenceNode { get; private set; }
         
 #if UNITY_LOCALIZATION
@@ -56,7 +56,7 @@ namespace cherrydev
         public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action AnswerNodeActivated;
-        public event Action<int, AnswerNode> AnswerButtonSetUp;
+        public event Action<int, DialogNode> AnswerButtonSetUp;
         public event Action<int> MaxAmountOfAnswerButtonsCalculated;
         public event Action<int> AnswerNodeActivatedWithParameter;
         public event Action<int, string> AnswerNodeSetUp;
@@ -197,7 +197,7 @@ namespace cherrydev
 
             if (currentNode.GetType() == typeof(SentenceNode))
                 HandleSentenceNode(currentNode);
-            else if (currentNode.GetType() == typeof(AnswerNode))
+            else if (currentNode.GetType() == typeof(DialogNode))
                 HandleAnswerNode(currentNode);
         }
 
@@ -232,7 +232,7 @@ namespace cherrydev
         /// <param name="currentNode"></param>
         private void HandleAnswerNode(Node currentNode)
         {
-            AnswerNode answerNode = (AnswerNode)currentNode;
+            DialogNode answerNode = (DialogNode)currentNode;
             CurrentAnswerNode = answerNode;
         
             int amountOfActiveButtons = 0;
@@ -243,7 +243,7 @@ namespace cherrydev
             {
                 if (answerNode.ChildSentenceNodes[i])
                 {
-                    AnswerNodeSetUp?.Invoke(i, answerNode.Answers[i]);
+                    AnswerNodeSetUp?.Invoke(i, answerNode.Choices[i]);
                     AnswerButtonSetUp?.Invoke(i, answerNode);
 
                     amountOfActiveButtons++;
@@ -361,12 +361,12 @@ namespace cherrydev
         {
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                if (node.GetType() == typeof(AnswerNode))
+                if (node.GetType() == typeof(DialogNode))
                 {
-                    AnswerNode answerNode = (AnswerNode)node;
+                    DialogNode answerNode = (DialogNode)node;
 
-                    if (answerNode.Answers.Count > _maxAmountOfAnswerButtons)
-                        _maxAmountOfAnswerButtons = answerNode.Answers.Count;
+                    if (answerNode.Choices.Count > _maxAmountOfAnswerButtons)
+                        _maxAmountOfAnswerButtons = answerNode.Choices.Count;
                 }
             }
 

@@ -621,7 +621,7 @@ PrefabInstance:
     - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: dialogNodeGraph
       value: 
-      objectReference: {fileID: 11400000, guid: d1fbbc7fa0612425a95cc005605f6995, type: 2}
+      objectReference: {fileID: 11400000, guid: 94ed71da1e7654678bd8018640d02fd5, type: 2}
     - target: {fileID: 2026558748786877527, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Name
       value: VrDialog

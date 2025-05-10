@@ -129,7 +129,7 @@ namespace cherrydev
         /// </summary>
         /// <param name="index"></param>
         /// <param name="answerNode"></param>
-        public void SetUpAnswerButtonsClickEvent(int index, AnswerNode answerNode)
+        public void SetUpAnswerButtonsClickEvent(int index, DialogNode answerNode)
         {
             _dialogAnswerPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
             _dialogAnswerPanel.AddButtonOnClickListener(index, 
@@ -143,10 +143,10 @@ namespace cherrydev
         /// <param name="answerText"></param>
         public void SetUpAnswerDialogPanel(int index, string answerText)
         {
-            AnswerNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
+            DialogNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
             
             if (currentAnswerNode != null)
-                _dialogAnswerPanel.GetButtonTextByIndex(index).text = currentAnswerNode.GetAnswerText(index);
+                _dialogAnswerPanel.GetButtonTextByIndex(index).text = currentAnswerNode.GetChoiceText(index);
             else
                 _dialogAnswerPanel.GetButtonTextByIndex(index).text = answerText;
         }
@@ -162,15 +162,15 @@ namespace cherrydev
         /// </summary>
         private void RefreshAnswerButtons()
         {
-            AnswerNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
+            DialogNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
             
             if (currentAnswerNode != null)
             {
-                for (int i = 0; i < currentAnswerNode.Answers.Count; i++)
+                for (int i = 0; i < currentAnswerNode.Choices.Count; i++)
                 {
                     if (i < _dialogAnswerPanel.GetButtonCount() &&
                         _dialogAnswerPanel.GetButtonByIndex(i).gameObject.activeSelf)
-                        _dialogAnswerPanel.GetButtonTextByIndex(i).text = currentAnswerNode.GetAnswerText(i);
+                        _dialogAnswerPanel.GetButtonTextByIndex(i).text = currentAnswerNode.GetChoiceText(i);
                 }
             }
         }
