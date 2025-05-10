@@ -45,33 +45,11 @@ namespace cherrydev
         {
             if (index < 0 || index >= Choices.Count)
                 return string.Empty;
-            /*
-#if UNITY_LOCALIZATION
-            if (index < AnswerKeys.Count && !string.IsNullOrEmpty(AnswerKeys[index]))
-            {
-                try
-                {
-                    string tableName = GetTableNameFromNodeGraph();
-                    if (string.IsNullOrEmpty(tableName))
-                        return Answers[index];
-                
-                    string localizedValue = LocalizationSettings.StringDatabase.GetLocalizedString(
-                        tableName, AnswerKeys[index]);
 
-                    if (!string.IsNullOrEmpty(localizedValue))
-                        return localizedValue;
-                    else
-                        Debug.LogWarning($"Localized answer was empty for key: {AnswerKeys[index]}");
-                }
-                catch (System.Exception ex)
-                {
-                    Debug.LogWarning($"Failed to get localized answer: {ex.Message}");
-                }
-            }
-#endif
-            */
             return Choices[index];
         }
+
+        public const string StartNodeSentinel = "!START!";
 
 #if UNITY_EDITOR
 
@@ -85,10 +63,18 @@ namespace cherrydev
         {
             base.Initialize(rect, nodeName, nodeGraph);
 
+            //initialize the node data
+            _nodeData = new NodeData(nodeName);
+
             CalculateNumberOfChoices();
-            //JV ChildSentenceNodes = new List<SentenceNode>(_amountOfAnswers);
             ChildNodes = new List<Node>(_numberOfChoices);
         }
+
+        public void CreateStartNode()
+        {
+            _nodeData.DialogText = StartNodeSentinel;
+        }
+
 
         /// <summary>
         /// Draw Dialog Node method
@@ -101,25 +87,44 @@ namespace cherrydev
 
             ChildNodes.RemoveAll(item => item == null);
 
-            float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? _numberOfChoices * 20f : 0;
-            Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
-
-            GUILayout.BeginArea(Rect, nodeStyle);
-            EditorGUILayout.LabelField("Dialog Node", labelStyle);
-
-            DrawNodeData();
-            DrawExternalFunctionTextField();
-
-            if (GUILayout.Button(_externalButtonLabel))
-                _isExternalFunc = !_isExternalFunc;
 
 
-            for (int i = 0; i < _numberOfChoices; i++)
+            if (_nodeData.DialogText == StartNodeSentinel)
             {
-                DrawChoiceLine(i + 1, StringConstants.GreenDot);
-            }
+                //modify the labelStyle to have yellow and centered text
+                GUIStyle startLabelStyle = new GUIStyle(labelStyle);
+                startLabelStyle.alignment = TextAnchor.MiddleCenter;
+                startLabelStyle.normal.textColor = Color.yellow;
+                startLabelStyle.normal.background = null;
 
-            DrawDialogNodeButtons();
+                Rect.size = new Vector2(/*DialogNodeWidth*/ 120f, 60f);
+                GUILayout.BeginArea(Rect, nodeStyle);
+                EditorGUILayout.LabelField("START", startLabelStyle);
+
+            }
+            else
+            {
+                float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? _numberOfChoices * 20f : 0;
+                Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
+
+                GUILayout.BeginArea(Rect, nodeStyle);
+                EditorGUILayout.LabelField(_nodeData.DialogText, labelStyle);
+
+                DrawNodeData();
+                DrawExternalFunctionTextField();
+
+                if (GUILayout.Button(_externalButtonLabel))
+                    _isExternalFunc = !_isExternalFunc;
+
+
+                for (int i = 0; i < _numberOfChoices; i++)
+                {
+                    DrawChoiceLine(i + 1, StringConstants.GreenDot);
+                }
+
+                DrawDialogNodeButtons();
+            }
+            
 
             GUILayout.EndArea();
         }
@@ -309,7 +314,7 @@ namespace cherrydev
 
             if (ChildNodes.Count == _numberOfChoices)
             {
-                ChildNodes[_numberOfChoices - 1].ParentNode = null;
+                //ChildNodes[_numberOfChoices - 1].ParentNode = null;
                 ChildNodes.RemoveAt(_numberOfChoices - 1);
             }
 
@@ -327,7 +332,7 @@ namespace cherrydev
             //if (nodeToAdd.GetType() == typeof(SentenceNode))
             //{
                 //JV ParentSentenceNode = (SentenceNode)nodeToAdd;
-                ParentNode = nodeToAdd;
+                //ParentNode = nodeToAdd;
                 return true;
             //}
 
@@ -357,7 +362,7 @@ namespace cherrydev
             if (IsCanAddToChildConnectedNode(nodeToAdd))
             {
                 ChildNodes.Add(nodeToAdd);
-                nodeToAdd.ParentNode = this;
+                //nodeToAdd.ParentNode = this;
 
                 return true;
             }
@@ -387,8 +392,8 @@ namespace cherrydev
             //2) we have space in our choices list for this node;
             //3) the candidate node is not our parent.
 
-            return nodeToAdd.ParentNode == null
-                   && ChildNodes.Count < _numberOfChoices
+            return /*nodeToAdd.ParentNode == null
+                   && */ChildNodes.Count < _numberOfChoices
                    && nodeToAdd.ChildNode != this;
         }
 #endif

@@ -12,6 +12,7 @@ namespace cherrydev
 {
     public class DialogBehaviour : MonoBehaviour
     {
+        [SerializeField] private Node StartNode;
         [SerializeField] private float _dialogCharDelay;
         [SerializeField] private List<KeyCode> _nextSentenceKeyCodes;
         [SerializeField] private bool _isCanSkippingText = true;
@@ -276,6 +277,9 @@ namespace cherrydev
                 return;
             }
 
+            _currentNode = StartNode;
+            /*
+
             foreach (Node node in dialogNodeGraph.NodesList)
             {
                 _currentNode = node;
@@ -293,6 +297,7 @@ namespace cherrydev
             }
 
             _currentNode = dialogNodeGraph.NodesList[0];
+            */
         }
 
         /// <summary>

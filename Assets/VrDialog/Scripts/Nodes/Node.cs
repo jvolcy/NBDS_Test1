@@ -15,7 +15,8 @@ namespace cherrydev
 
         protected float StandardHeight;
 
-        public Node ParentNode;
+        //public Node ParentNode;
+        public int ParentCount = 0;  //# of parents
         public Node ChildNode;
 
         /// <summary>

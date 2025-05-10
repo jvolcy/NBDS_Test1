@@ -58,6 +58,26 @@ namespace cherrydev
         // Search functionality
         private string _searchText = "";
 
+
+        /// <summary>
+        /// Function to create a constant color texture
+        /// </summary>
+        /// <param name="col"></param>
+        /// <returns></returns>
+        private Texture2D MakeTex(Color col)
+        {
+            Color[] pix = new Color[1];
+
+            pix[0] = col;
+
+            Texture2D result = new Texture2D(1, 1);
+            result.SetPixels(pix);
+            result.Apply();
+
+            return result;
+        }
+
+
         /// <summary>
         /// Define nodes and label style parameters on enable
         /// </summary>
@@ -73,7 +93,8 @@ namespace cherrydev
             _nodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
             _selectedNodeStyle = new GUIStyle();
-            _selectedNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
+//            _selectedNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
+            _selectedNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
             _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
@@ -81,6 +102,9 @@ namespace cherrydev
             _labelStyle.alignment = TextAnchor.MiddleLeft;
             _labelStyle.fontSize = LabelFontSize;
             _labelStyle.normal.textColor = Color.white;
+            _labelStyle.clipping = TextClipping.Clip;
+            _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
+
         }
 
         /// <summary>
@@ -298,7 +322,7 @@ namespace cherrydev
                 DialogNodeGraph.ShowLocalizationKeys = _showLocalizationKeys;
                 GUI.changed = true;
             }
-
+            /*
             if (GUILayout.Button("Localization", _toolbarButtonStyle, GUILayout.Width(100)))
             {
                 GenericMenu localizationMenu = new GenericMenu();
@@ -308,7 +332,7 @@ namespace cherrydev
                     () => NodeGraphLocalizer.Instance.SetupLocalization(_currentNodeGraph, false));
                 localizationMenu.DropDown(new Rect(position.width - 100, ToolbarHeight, 150, 0));
             }
-
+            */
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
@@ -380,30 +404,18 @@ namespace cherrydev
             {
                 string prefix;
                 string nodeText;
-                /*
-                if (node.GetType() == typeof(SentenceNode))
-                {
-                    SentenceNode sentenceNode = (SentenceNode)node;
-                    prefix = "S";
-                    nodeText = !string.IsNullOrEmpty(sentenceNode.Sentence.Text) ? sentenceNode.Sentence.Text : "Empty";
 
-                    if (nodeText.Length > 20)
-                        nodeText = nodeText.Substring(0, 20) + "...";
-                }
+                DialogNode dialogNode = (DialogNode)node;
+                prefix = "A";
+
+                if (dialogNode.Choices != null && dialogNode.Choices.Count > 0 &&
+                    !string.IsNullOrEmpty(dialogNode.Choices[0]))
+                    nodeText = dialogNode.Choices[0];
                 else
-                {*/
-                    DialogNode dialogNode = (DialogNode)node;
-                    prefix = "A";
+                    nodeText = "Empty";
 
-                    if (dialogNode.Choices != null && dialogNode.Choices.Count > 0 &&
-                        !string.IsNullOrEmpty(dialogNode.Choices[0]))
-                        nodeText = dialogNode.Choices[0];
-                    else
-                        nodeText = "Empty";
-
-                    if (nodeText.Length > 20)
-                        nodeText = nodeText.Substring(0, 20) + "...";
-                //}
+                if (nodeText.Length > 20)
+                    nodeText = nodeText.Substring(0, 20) + "...";
 
                 string menuItemName = $"{prefix}: {nodeText}";
                 nodesMenu.AddItem(new GUIContent(menuItemName), false, () => CenterAndSelectNode(node));
@@ -460,38 +472,17 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                DialogNode parentNode;
+                DialogNode parentNode = (DialogNode)node;
                 DialogNode childNode;
 
-                //if (node.GetType() == typeof(DialogNode))
-                //{
-                    DialogNode dialogNode = (DialogNode)node;
-
-                    for (int i = 0; i < dialogNode.ChildNodes.Count; i++)
-                    {
-                        if (dialogNode.ChildNodes[i] != null)
-                        {
-                            parentNode = (DialogNode)dialogNode;
-                            childNode = (DialogNode)dialogNode.ChildNodes[i];
-
-                            DrawConnectionLine(parentNode, childNode);
-                        }
-                    }
-                //}
-                /*
-                else if (node.GetType() == typeof(SentenceNode))
+                for (int i = 0; i < parentNode.ChildNodes.Count; i++)
                 {
-                    //SentenceNode sentenceNode = (SentenceNode)node;
-                    Node sentenceNode = node;
-
-                    if (sentenceNode.ChildNode != null)
+                    if (parentNode.ChildNodes[i] != null)
                     {
-                        parentNode = node;
-                        childNode = sentenceNode.ChildNode;
-
-                        DrawConnectionLine(parentNode, childNode);
+                        childNode = (DialogNode)parentNode.ChildNodes[i];
+                        DrawConnectionLine(parentNode, childNode, i);
                     }
-                }*/
+                }
             }
         }
 
@@ -500,7 +491,7 @@ namespace cherrydev
         /// </summary>
         /// <param name="parentNode"></param>
         /// <param name="childNode"></param>
-        private void DrawConnectionLine(DialogNode parentNode, DialogNode childNode)
+        private void DrawConnectionLine(DialogNode parentNode, DialogNode childNode, int index)
         {
             Vector2 startPosition = parentNode.Rect.center;
             Vector2 endPosition = childNode.Rect.center;
@@ -531,36 +522,28 @@ namespace cherrydev
             Vector2 midPosition = bezierPoints[bezierPoints.Length / 2];
             Vector2 direction = (endPosition - startPosition).normalized;
 
-            //if (parentNode is AnswerNode answerNode && childNode is SentenceNode sentenceNode)
-            //if (parentNode is DialogNode answerNode && childNode is Node sentenceNode)
-            //{
-                int index = parentNode.ChildNodes.IndexOf(childNode);
+            if (index >= 0)
+            {
+                string indexText = (index + 1).ToString();
 
-                if (index >= 0)
-                {
-                    string indexText = (index + 1).ToString();
+                Handles.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
+                Handles.DrawSolidDisc(midPosition, Vector3.forward, 12f);
 
-                    Handles.color = new Color(0.2f, 0.2f, 0.2f, 0.8f);
-                    Handles.DrawSolidDisc(midPosition, Vector3.forward, 12f);
+                Handles.color = Color.white;
 
-                    Handles.color = Color.white;
+                GUIStyle style = new GUIStyle();
+                style.normal.textColor = Color.white;
+                style.alignment = TextAnchor.MiddleCenter;
+                style.fontSize = 12;
+                style.fontStyle = FontStyle.Bold;
 
-                    GUIStyle style = new GUIStyle();
-                    style.normal.textColor = Color.white;
-                    style.alignment = TextAnchor.MiddleCenter;
-                    style.fontSize = 12;
-                    style.fontStyle = FontStyle.Bold;
+                Handles.BeginGUI();
+                GUI.Label(new Rect(midPosition.x - 10, midPosition.y - 10, 20, 20), indexText, style);
+                Handles.EndGUI();
+            }
+            else
+                DrawArrowAtMidpoint(midPosition, direction);
 
-                    Handles.BeginGUI();
-                    GUI.Label(new Rect(midPosition.x - 10, midPosition.y - 10, 20, 20), indexText, style);
-                    Handles.EndGUI();
-                }
-                else
-                    DrawArrowAtMidpoint(midPosition, direction);
-            //}
-            //else
-            //    DrawArrowAtMidpoint(midPosition, direction);
-            
             GUI.changed = true;
         }
         
@@ -962,13 +945,13 @@ namespace cherrydev
             GenericMenu contextMenu = new GenericMenu();
 
             contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
+            contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
-            contextMenu.AddItem(new GUIContent("Remove Selected Nodes"), false, RemoveSelectedNodes, mousePosition);
-            contextMenu.AddItem(new GUIContent("Remove Connections"), false, RemoveAllConnections, mousePosition);
+            contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
+            contextMenu.AddItem(new GUIContent("Remove Selected Node's Child Connectors"), false, RemoveAllConnections, mousePosition);
             contextMenu.ShowAsContext();
         }
-
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
@@ -978,6 +961,25 @@ namespace cherrydev
         {
             DialogNode dialogNode = CreateInstance<DialogNode>();
             InitializeNode(mousePositionObject, dialogNode, "Dialog Node");
+        }
+
+        /// <summary>
+        /// Create Dialog Node at mouse position and add it to Node Graph asset
+        /// </summary>
+        /// <param name="mousePositionObject"></param>
+        private void CreateStartNode(object mousePositionObject)
+        {
+            //if there is already a start node, do nothing!
+            foreach (Node node in _currentNodeGraph.NodesList)
+                if (((DialogNode)node).nodeData.DialogText == DialogNode.StartNodeSentinel)
+                {
+                    Debug.Log("Start node already exists.");
+                    return;
+                }
+
+            DialogNode dialogNode = CreateInstance<DialogNode>();
+            InitializeNode(mousePositionObject, dialogNode, DialogNode.StartNodeSentinel);
+            dialogNode.CreateStartNode();
         }
 
         /// <summary>
@@ -1074,7 +1076,7 @@ namespace cherrydev
                 //if (node.GetType() == typeof(DialogNode))
                 //{
                     DialogNode dialogNode = (DialogNode)node;
-                    node.ParentNode = null;
+                    //node.ParentNode = null;
                     dialogNode.ChildNodes.Clear();
                 /*}
                 else if (node.GetType() == typeof(SentenceNode))
