@@ -239,9 +239,9 @@ namespace cherrydev
 
             AnswerNodeActivated?.Invoke();
 
-            for (int i = 0; i < answerNode.ChildSentenceNodes.Count; i++)
+            for (int i = 0; i < answerNode.ChildNodes.Count; i++)
             {
-                if (answerNode.ChildSentenceNodes[i])
+                if (answerNode.ChildNodes[i])
                 {
                     AnswerNodeSetUp?.Invoke(i, answerNode.Choices[i]);
                     AnswerButtonSetUp?.Invoke(i, answerNode);

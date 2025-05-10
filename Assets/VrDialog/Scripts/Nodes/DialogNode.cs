@@ -16,7 +16,7 @@ namespace cherrydev
         public List<string> ChoiceKeys = new();
 
         //public Node ParentSentenceNode;
-        public List<Node> ChildSentenceNodes = new();
+        public List<Node> ChildNodes = new();
 
         private const float LabelFieldSpace = 18f;
         private const float TextFieldWidth = 120f;
@@ -73,7 +73,7 @@ namespace cherrydev
 
             CalculateNumberOfChoices();
             //JV ChildSentenceNodes = new List<SentenceNode>(_amountOfAnswers);
-            ChildSentenceNodes = new List<Node>(_numberOfChoices);
+            ChildNodes = new List<Node>(_numberOfChoices);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace cherrydev
         {
             base.Draw(nodeStyle, labelStyle);
 
-            ChildSentenceNodes.RemoveAll(item => item == null);
+            ChildNodes.RemoveAll(item => item == null);
 
             float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? _numberOfChoices * 20f : 0;
             Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
@@ -182,10 +182,10 @@ namespace cherrydev
 
             Choices.RemoveAt(_numberOfChoices - 1);
 
-            if (ChildSentenceNodes.Count == _numberOfChoices)
+            if (ChildNodes.Count == _numberOfChoices)
             {
-                ChildSentenceNodes[_numberOfChoices - 1].ParentNode = null;
-                ChildSentenceNodes.RemoveAt(_numberOfChoices - 1);
+                ChildNodes[_numberOfChoices - 1].ParentNode = null;
+                ChildNodes.RemoveAt(_numberOfChoices - 1);
             }
 
             _numberOfChoices--;
@@ -216,23 +216,23 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToChildConnectedNode(Node nodeToAdd)
         {
-            Node sentenceNodeToAdd;
+            //Node sentenceNodeToAdd;
 
             /* verify we have a sentence node: cast the Node to a
              * SentenceNode. */
             //if (nodeToAdd.GetType() != typeof(AnswerNode))
             //{
                 //JV sentenceNodeToAdd = (SentenceNode)nodeToAdd;
-                sentenceNodeToAdd = nodeToAdd;
+                //sentenceNodeToAdd = nodeToAdd;
             //}
             //else
             //    return false;
 
             /* add as a child node and make the current node its parent. */
-            if (IsCanAddToChildConnectedNode(sentenceNodeToAdd))
+            if (IsCanAddToChildConnectedNode(nodeToAdd))
             {
-                ChildSentenceNodes.Add(sentenceNodeToAdd);
-                sentenceNodeToAdd.ParentNode = this;
+                ChildNodes.Add(nodeToAdd);
+                nodeToAdd.ParentNode = this;
 
                 return true;
             }
@@ -256,15 +256,15 @@ namespace cherrydev
         /// </summary>
         /// <param name="sentenceNodeToAdd"></param>
         /// <returns></returns>
-        private bool IsCanAddToChildConnectedNode(Node sentenceNodeToAdd)
+        private bool IsCanAddToChildConnectedNode(Node nodeToAdd)
         {
             //check that 1) the candidate node has no current parent;
             //2) we have space in our choices list for this node;
             //3) the candidate node is not our parent.
 
-            return sentenceNodeToAdd.ParentNode == null
-                   && ChildSentenceNodes.Count < _numberOfChoices
-                   && sentenceNodeToAdd.ChildNode != this;
+            return nodeToAdd.ParentNode == null
+                   && ChildNodes.Count < _numberOfChoices
+                   && nodeToAdd.ChildNode != this;
         }
 #endif
     }

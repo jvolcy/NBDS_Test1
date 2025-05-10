@@ -169,16 +169,17 @@ namespace cherrydev
             {
                 if (node.GetType() == typeof(DialogNode))
                 {
-                    DialogNode answerNode = (DialogNode)node;
-                    answerNode.CalculateNumberOfChoices();
-                    answerNode.CalculateDialogNodeHeight();
+                    DialogNode dialogNode = (DialogNode)node;
+                    dialogNode.CalculateNumberOfChoices();
+                    dialogNode.CalculateDialogNodeHeight();
                 }
-
+                /*
                 if (node.GetType() == typeof(SentenceNode))
                 {
                     SentenceNode sentenceNode = (SentenceNode)node;
                     sentenceNode.CheckNodeSize(NodeWidth, NodeHeight);
                 }
+                */
             }
         }
 
@@ -325,6 +326,7 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
+                /*
                 if (node.GetType() == typeof(SentenceNode))
                 {
                     SentenceNode sentenceNode = (SentenceNode)node;
@@ -336,14 +338,15 @@ namespace cherrydev
                         return;
                     }
                 }
-                else if (node.GetType() == typeof(DialogNode))
-                {
-                    DialogNode answerNode = (DialogNode)node;
+                else if
+                (node.GetType() == typeof(DialogNode))
+                {*/
+                    DialogNode dialogNode = (DialogNode)node;
                     bool found = false;
 
-                    if (answerNode.Choices != null)
+                    if (dialogNode.Choices != null)
                     {
-                        foreach (string choice in answerNode.Choices)
+                        foreach (string choice in dialogNode.Choices)
                         {
                             if (!string.IsNullOrEmpty(choice) && choice.ToLower().Contains(searchText))
                             {
@@ -358,7 +361,7 @@ namespace cherrydev
                         CenterAndSelectNode(node);
                         return;
                     }
-                }
+                //}
             }
 
             // If we got here, no node was found
@@ -377,7 +380,7 @@ namespace cherrydev
             {
                 string prefix;
                 string nodeText;
-
+                /*
                 if (node.GetType() == typeof(SentenceNode))
                 {
                     SentenceNode sentenceNode = (SentenceNode)node;
@@ -388,19 +391,19 @@ namespace cherrydev
                         nodeText = nodeText.Substring(0, 20) + "...";
                 }
                 else
-                {
-                    DialogNode answerNode = (DialogNode)node;
+                {*/
+                    DialogNode dialogNode = (DialogNode)node;
                     prefix = "A";
 
-                    if (answerNode.Choices != null && answerNode.Choices.Count > 0 &&
-                        !string.IsNullOrEmpty(answerNode.Choices[0]))
-                        nodeText = answerNode.Choices[0];
+                    if (dialogNode.Choices != null && dialogNode.Choices.Count > 0 &&
+                        !string.IsNullOrEmpty(dialogNode.Choices[0]))
+                        nodeText = dialogNode.Choices[0];
                     else
                         nodeText = "Empty";
 
                     if (nodeText.Length > 20)
                         nodeText = nodeText.Substring(0, 20) + "...";
-                }
+                //}
 
                 string menuItemName = $"{prefix}: {nodeText}";
                 nodesMenu.AddItem(new GUIContent(menuItemName), false, () => CenterAndSelectNode(node));
@@ -457,24 +460,25 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                Node parentNode;
-                Node childNode;
+                DialogNode parentNode;
+                DialogNode childNode;
 
-                if (node.GetType() == typeof(DialogNode))
-                {
-                    DialogNode answerNode = (DialogNode)node;
+                //if (node.GetType() == typeof(DialogNode))
+                //{
+                    DialogNode dialogNode = (DialogNode)node;
 
-                    for (int i = 0; i < answerNode.ChildSentenceNodes.Count; i++)
+                    for (int i = 0; i < dialogNode.ChildNodes.Count; i++)
                     {
-                        if (answerNode.ChildSentenceNodes[i] != null)
+                        if (dialogNode.ChildNodes[i] != null)
                         {
-                            parentNode = node;
-                            childNode = answerNode.ChildSentenceNodes[i];
+                            parentNode = (DialogNode)dialogNode;
+                            childNode = (DialogNode)dialogNode.ChildNodes[i];
 
                             DrawConnectionLine(parentNode, childNode);
                         }
                     }
-                }
+                //}
+                /*
                 else if (node.GetType() == typeof(SentenceNode))
                 {
                     //SentenceNode sentenceNode = (SentenceNode)node;
@@ -487,7 +491,7 @@ namespace cherrydev
 
                         DrawConnectionLine(parentNode, childNode);
                     }
-                }
+                }*/
             }
         }
 
@@ -496,7 +500,7 @@ namespace cherrydev
         /// </summary>
         /// <param name="parentNode"></param>
         /// <param name="childNode"></param>
-        private void DrawConnectionLine(Node parentNode, Node childNode)
+        private void DrawConnectionLine(DialogNode parentNode, DialogNode childNode)
         {
             Vector2 startPosition = parentNode.Rect.center;
             Vector2 endPosition = childNode.Rect.center;
@@ -528,9 +532,9 @@ namespace cherrydev
             Vector2 direction = (endPosition - startPosition).normalized;
 
             //if (parentNode is AnswerNode answerNode && childNode is SentenceNode sentenceNode)
-            if (parentNode is DialogNode answerNode && childNode is Node sentenceNode)
-            {
-                int index = answerNode.ChildSentenceNodes.IndexOf(sentenceNode);
+            //if (parentNode is DialogNode answerNode && childNode is Node sentenceNode)
+            //{
+                int index = parentNode.ChildNodes.IndexOf(childNode);
 
                 if (index >= 0)
                 {
@@ -553,9 +557,9 @@ namespace cherrydev
                 }
                 else
                     DrawArrowAtMidpoint(midPosition, direction);
-            }
-            else
-                DrawArrowAtMidpoint(midPosition, direction);
+            //}
+            //else
+            //    DrawArrowAtMidpoint(midPosition, direction);
             
             GUI.changed = true;
         }
@@ -957,8 +961,8 @@ namespace cherrydev
         {
             GenericMenu contextMenu = new GenericMenu();
 
-            contextMenu.AddItem(new GUIContent("Create Sentence Node"), false, CreateSentenceNode, mousePosition);
-            contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateAnswerNode, mousePosition);
+            //contextMenu.AddItem(new GUIContent("Create Sentence Node"), false, CreateSentenceNode, mousePosition);
+            contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Remove Selected Nodes"), false, RemoveSelectedNodes, mousePosition);
@@ -970,20 +974,22 @@ namespace cherrydev
         /// Create Sentence Node at mouse position and add it to Node Graph asset
         /// </summary>
         /// <param name="mousePositionObject"></param>
+        /*
         private void CreateSentenceNode(object mousePositionObject)
         {
             SentenceNode sentenceNode = CreateInstance<SentenceNode>();
             InitializeNode(mousePositionObject, sentenceNode, "Sentence Node");
         }
+        */
 
         /// <summary>
-        /// Create Answer Node at mouse position and add it to Node Graph asset
+        /// Create Dialog Node at mouse position and add it to Node Graph asset
         /// </summary>
         /// <param name="mousePositionObject"></param>
-        private void CreateAnswerNode(object mousePositionObject)
+        private void CreateDialogNode(object mousePositionObject)
         {
-            DialogNode answerNode = CreateInstance<DialogNode>();
-            InitializeNode(mousePositionObject, answerNode, "Dialog Node");
+            DialogNode dialogNode = CreateInstance<DialogNode>();
+            InitializeNode(mousePositionObject, dialogNode, "Dialog Node");
         }
 
         /// <summary>
@@ -1077,18 +1083,18 @@ namespace cherrydev
                 if (!node.IsSelected)
                     continue;
 
-                if (node.GetType() == typeof(DialogNode))
-                {
-                    DialogNode answerNode = (DialogNode)node;
-                    answerNode.ParentNode = null;
-                    answerNode.ChildSentenceNodes.Clear();
-                }
+                //if (node.GetType() == typeof(DialogNode))
+                //{
+                    DialogNode dialogNode = (DialogNode)node;
+                    dialogNode.ParentNode = null;
+                    dialogNode.ChildNodes.Clear();
+                /*}
                 else if (node.GetType() == typeof(SentenceNode))
                 {
                     SentenceNode sentenceNode = (SentenceNode)node;
                     sentenceNode.ParentNode = null;
                     sentenceNode.ChildNode = null;
-                }
+                }*/
             }
         }
 
