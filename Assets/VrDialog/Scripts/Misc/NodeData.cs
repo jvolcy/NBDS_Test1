@@ -7,13 +7,13 @@ namespace cherrydev
     {
         public string DialogText;
         public Sprite BackgroundImage;
-        bool ShowDismissButton;
-        float TextAreaWidthPct;
-        float TextAreaHeightPct;
-        float TextAreaYPos;
-        float ButtonsAreaWidthPct;
-        float ButtonAreaHeightPct;
-        float ButtonAreaYPos;
+        public bool ShowDismissButton;
+        public float TextAreaWidthPct;
+        public float TextAreaHeightPct;
+        public float TextAreaYPos;
+        public float ButtonsAreaWidthPct;
+        public float ButtonAreaHeightPct;
+        public float ButtonAreaYPos;
         public Sprite ButtonImage;
 
         public NodeData(string dialogText)

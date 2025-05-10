@@ -16,19 +16,31 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -207
-    y: -81.5
-    width: 190
-    height: 155
+    x: 64.5
+    y: 21
+    width: 210
+    height: 230
   IsDragging: 1
   IsSelected: 0
   ParentNode: {fileID: 0}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 1
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - a
   - a2
   - a3
-  ChoiceKeys: []
   ChildNodes:
   - {fileID: 1643663104615740913}
   - {fileID: 1698203836184863545}
@@ -49,17 +61,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 549
-    y: -18.5
-    width: 190
-    height: 115
+    x: 820.5
+    y: 84
+    width: 210
+    height: 155
   IsDragging: 1
   IsSelected: 0
   ParentNode: {fileID: 1698203836184863545}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - End
-  ChoiceKeys: []
   ChildNodes: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -101,17 +125,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 128
-    y: 273.5
-    width: 190
-    height: 115
+    x: 408.5
+    y: 633
+    width: 210
+    height: 155
   IsDragging: 1
   IsSelected: 0
   ParentNode: {fileID: 1053703163308408542}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - d
-  ChoiceKeys: []
   ChildNodes:
   - {fileID: -804126774910061806}
 --- !u!114 &1643663104615740913
@@ -130,17 +166,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 136
-    y: -97.5
-    width: 190
-    height: 115
+    x: 379.5
+    y: -23
+    width: 210
+    height: 230
   IsDragging: 1
   IsSelected: 0
   ParentNode: {fileID: -6919584458895500411}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 1
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - b
-  ChoiceKeys: []
   ChildNodes:
   - {fileID: -804126774910061806}
 --- !u!114 &1698203836184863545
@@ -159,21 +207,31 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 126
-    y: 53.5
-    width: 190
-    height: 135
+    x: 499.5
+    y: 240
+    width: 210
+    height: 230
   IsDragging: 1
   IsSelected: 0
   ParentNode: {fileID: 0}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 1
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - c
-  - c2
-  ChoiceKeys: []
   ChildNodes:
   - {fileID: -804126774910061806}
-  - {fileID: 8796556567725729594}
 --- !u!114 &8796556567725729594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,15 +248,27 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 496
-    y: 300.5
-    width: 190
-    height: 115
+    x: 767.5
+    y: 403
+    width: 210
+    height: 155
   IsDragging: 1
-  IsSelected: 1
-  ParentNode: {fileID: 1698203836184863545}
+  IsSelected: 0
+  ParentNode: {fileID: 0}
   ChildNode: {fileID: 0}
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: 
+    BackgroundImage: {fileID: 0}
+    ShowDismissButton: 0
+    TextAreaWidthPct: 0
+    TextAreaHeightPct: 0
+    TextAreaYPos: 0
+    ButtonsAreaWidthPct: 0
+    ButtonAreaHeightPct: 0
+    ButtonAreaYPos: 0
+    ButtonImage: {fileID: 0}
   Choices:
   - xx
-  ChoiceKeys: []
   ChildNodes: []
