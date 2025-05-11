@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7400967824390046608
+--- !u!114 &-8847623840457176390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16,14 +16,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 274.5
-    y: 127
+    x: 511
+    y: 639
     width: 210
     height: 155
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   ParentCount: 0
-  ChildNode: {fileID: 0}
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
@@ -39,55 +38,11 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
   Choices:
   - 
-  - 
-  - 
-  ChildNodes: []
---- !u!114 &-6919584458895500411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: Dialog Node
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -900
-    y: 247
-    width: 210
-    height: 290
-  IsDragging: 1
-  IsSelected: 0
-  ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 1
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: the quick brown fox jumps over the lazy dog.
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 0
-    TextAreaWidthPct: 0
-    TextAreaHeightPct: 0
-    TextAreaYPos: 0
-    ButtonsAreaWidthPct: 0
-    ButtonAreaHeightPct: 0
-    ButtonAreaYPos: 0
-    ButtonImage: {fileID: 0}
-  Choices:
-  - a
-  - a2
-  - a3
   ChildNodes:
-  - {fileID: 1643663104615740913}
-  - {fileID: 1698203836184863545}
-  - {fileID: 1053703163308408542}
---- !u!114 &-6642670964242384174
+  - {fileID: 8164614525239868467}
+  ChildConnectionPoint:
+  - {x: 721, y: 909}
+--- !u!114 &-7585189008842087869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,55 +58,14 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 625
-    y: 160
-    width: 190
-    height: 155
-  IsDragging: 0
-  IsSelected: 0
-  ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 0
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: Dialog Node
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  Choices:
-  - 
-  ChildNodes: []
---- !u!114 &-4439327955443664431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: Dialog Node
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -125.5
-    y: 114.5
+    x: 372
+    y: -72
     width: 210
-    height: 290
+    height: 155
   IsDragging: 1
   IsSelected: 0
   ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 1
+  _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
     DialogText: Dialog Node
@@ -167,9 +81,13 @@ MonoBehaviour:
   Choices:
   - 
   - 
-  - 
-  ChildNodes: []
---- !u!114 &-1679093806252522007
+  ChildNodes:
+  - {fileID: 4598981819465534766}
+  - {fileID: 8164614525239868467}
+  ChildConnectionPoint:
+  - {x: 582, y: 198}
+  - {x: 582, y: 218}
+--- !u!114 &-4048045034608651112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,54 +103,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 438.5
-    y: 847.5
+    x: 157
+    y: 681
     width: 210
-    height: 0
+    height: 155
   IsDragging: 1
   IsSelected: 0
   ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 0
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: cvbc
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 0
-    TextAreaWidthPct: 0
-    TextAreaHeightPct: 0
-    TextAreaYPos: 0
-    ButtonsAreaWidthPct: 0
-    ButtonAreaHeightPct: 0
-    ButtonAreaYPos: 0
-    ButtonImage: {fileID: 0}
-  Choices:
-  - 
-  ChildNodes: []
---- !u!114 &-1262655088593265786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: Dialog Node
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 188.5
-    y: 638.5
-    width: 210
-    height: 155
-  IsDragging: 0
-  IsSelected: 0
-  ParentCount: 0
-  ChildNode: {fileID: 0}
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
@@ -247,8 +124,11 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   Choices:
-  - 
-  ChildNodes: []
+  - xdd
+  ChildNodes:
+  - {fileID: -8847623840457176390}
+  ChildConnectionPoint:
+  - {x: 367, y: 951}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,22 +142,18 @@ MonoBehaviour:
   m_Name: NG1
   m_EditorClassIdentifier: 
   NodesList:
-  - {fileID: -6919584458895500411}
-  - {fileID: 1643663104615740913}
-  - {fileID: 1698203836184863545}
-  - {fileID: 1053703163308408542}
-  - {fileID: -1679093806252522007}
-  - {fileID: -4439327955443664431}
-  - {fileID: -7400967824390046608}
-  - {fileID: -1262655088593265786}
-  - {fileID: 9158522274769337428}
-  - {fileID: -6642670964242384174}
+  - {fileID: 2607209786361172135}
+  - {fileID: 4598981819465534766}
+  - {fileID: 8164614525239868467}
+  - {fileID: -7585189008842087869}
+  - {fileID: -8847623840457176390}
+  - {fileID: -4048045034608651112}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 0
---- !u!114 &1053703163308408542
+--- !u!114 &2607209786361172135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,72 +169,42 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -372
-    y: 1106
+    x: 33
+    y: 125.5
     width: 210
-    height: 0
+    height: 155
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   ParentCount: 0
-  ChildNode: {fileID: 0}
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: 
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 0
-    TextAreaWidthPct: 0
-    TextAreaHeightPct: 0
-    TextAreaYPos: 0
-    ButtonsAreaWidthPct: 0
-    ButtonAreaHeightPct: 0
-    ButtonAreaYPos: 0
-    ButtonImage: {fileID: 0}
-  Choices:
-  - d
-  ChildNodes: []
---- !u!114 &1643663104615740913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: Dialog Node
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -429
-    y: 192
-    width: 210
-    height: 290
-  IsDragging: 1
-  IsSelected: 0
-  ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 1
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: 
+    DialogText: Dialog Node
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
-    TextAreaWidthPct: 0
-    TextAreaHeightPct: 0
-    TextAreaYPos: 0
-    ButtonsAreaWidthPct: 0
-    ButtonAreaHeightPct: 0
-    ButtonAreaYPos: 0
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   Choices:
   - 
+  - 
+  - 
+  - 
   ChildNodes:
-  - {fileID: -4439327955443664431}
---- !u!114 &1698203836184863545
+  - {fileID: 4598981819465534766}
+  - {fileID: 8164614525239868467}
+  - {fileID: -7585189008842087869}
+  - {fileID: -8847623840457176390}
+  ChildConnectionPoint:
+  - {x: 243, y: 395.5}
+  - {x: 243, y: 415.5}
+  - {x: 243, y: 435.5}
+  - {x: 243, y: 455.5}
+--- !u!114 &4598981819465534766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,58 +220,17 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -396
-    y: 633
+    x: 1060
+    y: 46.5
     width: 210
-    height: 290
+    height: 155
   IsDragging: 1
   IsSelected: 0
   ParentCount: 0
-  ChildNode: {fileID: 0}
-  _isExternalFunc: 1
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: 
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 0
-    TextAreaWidthPct: 0
-    TextAreaHeightPct: 0
-    TextAreaYPos: 0
-    ButtonsAreaWidthPct: 0
-    ButtonAreaHeightPct: 0
-    ButtonAreaYPos: 0
-    ButtonImage: {fileID: 0}
-  Choices:
-  - c
-  ChildNodes: []
---- !u!114 &9158522274769337428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '!START!'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -7
-    y: 553
-    width: 120
-    height: 60
-  IsDragging: 1
-  IsSelected: 0
-  ParentCount: 0
-  ChildNode: {fileID: 0}
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: '!START!'
+    DialogText: Dialog Node
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -438,3 +243,52 @@ MonoBehaviour:
   Choices:
   - 
   ChildNodes: []
+  ChildConnectionPoint: []
+--- !u!114 &8164614525239868467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: Dialog Node
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 922
+    y: 618
+    width: 210
+    height: 155
+  IsDragging: 1
+  IsSelected: 0
+  ParentCount: 0
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: Dialog Node
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  Choices:
+  - 
+  - 
+  - 
+  ChildNodes:
+  - {fileID: -8847623840457176390}
+  - {fileID: -8847623840457176390}
+  - {fileID: 4598981819465534766}
+  ChildConnectionPoint:
+  - {x: 1132, y: 888}
+  - {x: 1132, y: 908}
+  - {x: 1132, y: 928}

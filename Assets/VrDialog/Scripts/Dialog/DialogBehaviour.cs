@@ -39,7 +39,7 @@ namespace cherrydev
         public event Action LanguageChanged;
 #endif
         
-        private int _maxAmountOfAnswerButtons;
+        private int _maxNumberOfChoiceButtons;
 
         private bool _isDialogStarted;
         private bool _isCurrentSentenceSkipped;
@@ -58,7 +58,7 @@ namespace cherrydev
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action AnswerNodeActivated;
         public event Action<int, DialogNode> AnswerButtonSetUp;
-        public event Action<int> MaxAmountOfAnswerButtonsCalculated;
+        public event Action<int> MaxNumberOfChoiceButtonsCalculated;
         public event Action<int> AnswerNodeActivatedWithParameter;
         public event Action<int, string> AnswerNodeSetUp;
         public event Action DialogTextCharWrote;
@@ -153,7 +153,7 @@ namespace cherrydev
             _currentNodeGraph = dialogNodeGraph;
 
             DefineFirstNode(dialogNodeGraph);
-            CalculateMaxAmountOfAnswerButtons();
+            CalculateMaxNumberOfChoiceButtons();
             HandleDialogGraphCurrentNode(_currentNode);
         }
 
@@ -237,7 +237,7 @@ namespace cherrydev
             DialogNode answerNode = (DialogNode)currentNode;
             CurrentAnswerNode = answerNode;
         
-            int amountOfActiveButtons = 0;
+            int numberOfActiveButtons = 0;
 
             AnswerNodeActivated?.Invoke();
 
@@ -248,13 +248,13 @@ namespace cherrydev
                     AnswerNodeSetUp?.Invoke(i, answerNode.Choices[i]);
                     AnswerButtonSetUp?.Invoke(i, answerNode);
 
-                    amountOfActiveButtons++;
+                    numberOfActiveButtons++;
                 }
                 else
                     break;
             }
 
-            if (amountOfActiveButtons == 0)
+            if (numberOfActiveButtons == 0)
             {
                 _isDialogStarted = false;
 
@@ -262,7 +262,7 @@ namespace cherrydev
                 return;
             }
 
-            AnswerNodeActivatedWithParameter?.Invoke(amountOfActiveButtons);
+            AnswerNodeActivatedWithParameter?.Invoke(numberOfActiveButtons);
         }
 
         /// <summary>
@@ -335,12 +335,13 @@ namespace cherrydev
             
             yield return new WaitUntil(CheckNextSentenceKeyCodes);
 
-            CheckForDialogNextNode();
+            //JV CheckForDialogNextNode();
         }
 
         /// <summary>
         /// Checking is next dialog node has a child node
         /// </summary>
+        /*
         private void CheckForDialogNextNode()
         {
             //if (_currentNode.GetType() == typeof(SentenceNode))
@@ -358,12 +359,12 @@ namespace cherrydev
                     _onDialogFinished?.Invoke();
                 }
             //}
-        }
+        }*/
 
         /// <summary>
-        /// Calculate max amount of answer buttons
+        /// Calculate max number of choice buttons
         /// </summary>
-        private void CalculateMaxAmountOfAnswerButtons()
+        private void CalculateMaxNumberOfChoiceButtons()
         {
             foreach (Node node in _currentNodeGraph.NodesList)
             {
@@ -371,12 +372,12 @@ namespace cherrydev
                 {
                     DialogNode answerNode = (DialogNode)node;
 
-                    if (answerNode.Choices.Count > _maxAmountOfAnswerButtons)
-                        _maxAmountOfAnswerButtons = answerNode.Choices.Count;
+                    if (answerNode.Choices.Count > _maxNumberOfChoiceButtons)
+                        _maxNumberOfChoiceButtons = answerNode.Choices.Count;
                 }
             }
 
-            MaxAmountOfAnswerButtonsCalculated?.Invoke(_maxAmountOfAnswerButtons);
+            MaxNumberOfChoiceButtonsCalculated?.Invoke(_maxNumberOfChoiceButtons);
         }
 
         /// <summary>

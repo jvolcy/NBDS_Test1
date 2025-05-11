@@ -29,7 +29,7 @@ namespace cherrydev
             _dialogBehaviour.AnswerNodeActivated += DisableDialogSentencePanel;
 
             _dialogBehaviour.AnswerNodeActivatedWithParameter += _dialogAnswerPanel.EnableCertainAmountOfButtons;
-            _dialogBehaviour.MaxAmountOfAnswerButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
+            _dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
 
             _dialogBehaviour.AnswerNodeSetUp += SetUpAnswerDialogPanel;
 #if UNITY_LOCALIZATION
@@ -53,7 +53,7 @@ namespace cherrydev
             _dialogBehaviour.AnswerNodeActivated -= DisableDialogSentencePanel;
 
             _dialogBehaviour.AnswerNodeActivatedWithParameter -= _dialogAnswerPanel.EnableCertainAmountOfButtons;
-            _dialogBehaviour.MaxAmountOfAnswerButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
+            _dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
 
             _dialogBehaviour.AnswerNodeSetUp -= SetUpAnswerDialogPanel;
 #if UNITY_LOCALIZATION

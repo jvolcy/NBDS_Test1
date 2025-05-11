@@ -17,7 +17,7 @@ namespace cherrydev
 
         //public Node ParentNode;
         public int ParentCount = 0;  //# of parents
-        public Node ChildNode;
+        //public Node ChildNode;
 
         /// <summary>
         /// Gets the table name from the node graph asset name

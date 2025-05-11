@@ -26,6 +26,7 @@ namespace cherrydev
 
         //public Node ParentSentenceNode;
         public List<Node> ChildNodes = new();
+        public List<Vector2> ChildConnectionPoint = new();
 
         private const float LabelFieldSpace = 70f;
         private const float TextFieldWidth = 100f;
@@ -68,6 +69,10 @@ namespace cherrydev
 
             CalculateNumberOfChoices();
             ChildNodes = new List<Node>(_numberOfChoices);
+            ChildConnectionPoint = new List<Vector2>(_numberOfChoices);
+
+            Debug.Log("Initialize() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+
         }
 
         public void CreateStartNode()
@@ -85,9 +90,19 @@ namespace cherrydev
         {
             base.Draw(nodeStyle, labelStyle);
 
-            ChildNodes.RemoveAll(item => item == null);
+            //ChildNodes.RemoveAll(item => item == null);
 
+            for (int i = 0; i<ChildNodes.Count; i++)
+            {
+                if (ChildNodes[i] == null)
+                {
+                    Debug.Log("Draw(1) -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+                    ChildNodes.RemoveAt(i);
+                    ChildConnectionPoint.RemoveAt(i);
+                    Debug.Log("Draw(2) -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+                }
 
+            }
 
             if (_nodeData.DialogText == StartNodeSentinel)
             {
@@ -101,6 +116,9 @@ namespace cherrydev
                 GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField("START", startLabelStyle);
 
+                //Rect rect = EditorGUILayout.BeginHorizontal();
+                //ChildConnectionPoint.Add(new Vector2(rect.center.x + rect.xMax, rect.center.y));
+                //EditorGUILayout.EndHorizontal();
             }
             else
             {
@@ -117,9 +135,10 @@ namespace cherrydev
                     _isExternalFunc = !_isExternalFunc;
 
 
+                //now draw the choice buttons
                 for (int i = 0; i < _numberOfChoices; i++)
                 {
-                    DrawChoiceLine(i + 1, StringConstants.GreenDot);
+                    DrawChoiceLine(i, StringConstants.GreenDot);
                 }
 
                 DrawDialogNodeButtons();
@@ -268,18 +287,31 @@ namespace cherrydev
         {
             GUIContent iconContent = EditorGUIUtility.IconContent(iconPathOrName);
             Texture2D fallbackTexture = Resources.Load<Texture2D>("Dot");
-            
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"{choiceNumber}. ", GUILayout.Width(ChoiceLabelFieldSpace));
 
-            Choices[choiceNumber - 1] = EditorGUILayout.TextField(Choices[choiceNumber - 1],
+            //Debug.Log("DrawChoiceLine -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+
+            Rect rect = EditorGUILayout.BeginHorizontal();
+            //Debug.Log("->" + this.Rect.center.x +"  "+ rect.center.x + "  "+ this.Rect.center.y + "  " + rect.center.y);
+            if (rect.center != Vector2.zero && ChildConnectionPoint.Count > choiceNumber)
+                ChildConnectionPoint[choiceNumber] = new Vector2(this.Rect.center.x + rect.center.x, this.Rect.y + rect.center.y);
+            //ChildConnectionPoint.Add(new Vector2(this.Rect.center.x + rect.center.x, this.Rect.center.y + rect.center.y));
+            //ChildConnectionPoint.Add(rect.center);
+
+            EditorGUILayout.LabelField($"{choiceNumber+1}. ", GUILayout.Width(ChoiceLabelFieldSpace));
+
+            Choices[choiceNumber] = EditorGUILayout.TextField(Choices[choiceNumber],
                 GUILayout.Width(ChoiceTextFieldWidth));
 
             if (fallbackTexture == null)
+            {
+                //Debug.Log("fallbackTexture == null");
                 EditorGUILayout.LabelField(iconContent, GUILayout.Width(ChoiceLabelFieldSpace));
+            }
             else
+            {
                 GUILayout.Label(fallbackTexture, GUILayout.Width(ChoiceLabelFieldSpace), GUILayout.Height(ChoiceLabelFieldSpace));
-            
+            }
+
             EditorGUILayout.EndHorizontal();
         }
 
@@ -300,6 +332,9 @@ namespace cherrydev
             _numberOfChoices++;
             Choices.Add(string.Empty);
             _currentDialogNodeHeight += AdditionalDialogNodeHeight;
+
+            Debug.Log("IncreaseNumberOfChoices() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+
         }
 
         /// <summary>
@@ -314,9 +349,11 @@ namespace cherrydev
 
             if (ChildNodes.Count == _numberOfChoices)
             {
-                //ChildNodes[_numberOfChoices - 1].ParentNode = null;
                 ChildNodes.RemoveAt(_numberOfChoices - 1);
+                ChildConnectionPoint.RemoveAt(_numberOfChoices - 1);
             }
+
+            Debug.Log("DecreaseNumberOfChoices() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
 
             _numberOfChoices--;
             _currentDialogNodeHeight -= AdditionalDialogNodeHeight;
@@ -346,24 +383,13 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToChildConnectedNode(Node nodeToAdd)
         {
-            //Node sentenceNodeToAdd;
-
-            /* verify we have a sentence node: cast the Node to a
-             * SentenceNode. */
-            //if (nodeToAdd.GetType() != typeof(AnswerNode))
-            //{
-                //JV sentenceNodeToAdd = (SentenceNode)nodeToAdd;
-                //sentenceNodeToAdd = nodeToAdd;
-            //}
-            //else
-            //    return false;
-
             /* add as a child node and make the current node its parent. */
             if (IsCanAddToChildConnectedNode(nodeToAdd))
             {
                 ChildNodes.Add(nodeToAdd);
-                //nodeToAdd.ParentNode = this;
+                ChildConnectionPoint.Add(Vector2.zero);
 
+                Debug.Log("AddToChildConnectedNode() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
                 return true;
             }
 
@@ -390,11 +416,11 @@ namespace cherrydev
         {
             //check that 1) the candidate node has no current parent;
             //2) we have space in our choices list for this node;
-            //3) the candidate node is not our parent.
+            //3) the candidate node is not ourself.
 
             return /*nodeToAdd.ParentNode == null
                    && */ChildNodes.Count < _numberOfChoices
-                   && nodeToAdd.ChildNode != this;
+                   && nodeToAdd != this;
         }
 #endif
     }

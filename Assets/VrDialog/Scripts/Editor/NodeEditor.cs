@@ -167,7 +167,8 @@ namespace cherrydev
             DrawToolbar();
             GUI.BeginGroup(new Rect(0, ToolbarHeight, position.width, position.height - ToolbarHeight));
 
-            if (_currentNodeGraph != null)
+            //if (_currentNodeGraph != null)
+            if (_currentNodeGraph.NodesList.Count > 0)
             {
                 Undo.RecordObject(_currentNodeGraph, "Changed Value");
                 DrawDraggedLine();
@@ -197,13 +198,6 @@ namespace cherrydev
                     dialogNode.CalculateNumberOfChoices();
                     dialogNode.CalculateDialogNodeHeight();
                 }
-                /*
-                if (node.GetType() == typeof(SentenceNode))
-                {
-                    SentenceNode sentenceNode = (SentenceNode)node;
-                    sentenceNode.CheckNodeSize(NodeWidth, NodeHeight);
-                }
-                */
             }
         }
 
@@ -322,17 +316,7 @@ namespace cherrydev
                 DialogNodeGraph.ShowLocalizationKeys = _showLocalizationKeys;
                 GUI.changed = true;
             }
-            /*
-            if (GUILayout.Button("Localization", _toolbarButtonStyle, GUILayout.Width(100)))
-            {
-                GenericMenu localizationMenu = new GenericMenu();
-                localizationMenu.AddItem(new GUIContent("Set Up Localization Table"), false,
-                    () => NodeGraphLocalizer.Instance.SetupLocalization(_currentNodeGraph));
-                localizationMenu.AddItem(new GUIContent("Update Keys"), false,
-                    () => NodeGraphLocalizer.Instance.SetupLocalization(_currentNodeGraph, false));
-                localizationMenu.DropDown(new Rect(position.width - 100, ToolbarHeight, 150, 0));
-            }
-            */
+
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
@@ -350,21 +334,7 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                /*
-                if (node.GetType() == typeof(SentenceNode))
-                {
-                    SentenceNode sentenceNode = (SentenceNode)node;
-                    string nodeText = sentenceNode.Sentence.Text?.ToLower() ?? "";
 
-                    if (nodeText.Contains(searchText))
-                    {
-                        CenterAndSelectNode(node);
-                        return;
-                    }
-                }
-                else if
-                (node.GetType() == typeof(DialogNode))
-                {*/
                     DialogNode dialogNode = (DialogNode)node;
                     bool found = false;
 
@@ -385,7 +355,6 @@ namespace cherrydev
                         CenterAndSelectNode(node);
                         return;
                     }
-                //}
             }
 
             // If we got here, no node was found
@@ -480,20 +449,34 @@ namespace cherrydev
                     if (parentNode.ChildNodes[i] != null)
                     {
                         childNode = (DialogNode)parentNode.ChildNodes[i];
-                        DrawConnectionLine(parentNode, childNode, i);
+                        DrawBezierConnector(parentNode, childNode, i);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Draw connection line from parent to child node
+        /// Draw connection Bezier from parent to child node
         /// </summary>
         /// <param name="parentNode"></param>
         /// <param name="childNode"></param>
-        private void DrawConnectionLine(DialogNode parentNode, DialogNode childNode, int index)
+        private void DrawBezierConnector(DialogNode parentNode, DialogNode childNode, int index)
         {
-            Vector2 startPosition = parentNode.Rect.center;
+
+            Vector2 startPosition;
+            if (parentNode.ChildConnectionPoint.Count == 0)
+                startPosition = parentNode.Rect.center;
+            else
+                startPosition = parentNode.ChildConnectionPoint[index];
+
+            //Debug.Log("DrawBezierConnector() -> ChildNode.Count, ChildConnectionPoint.Count = " + parentNode.ChildNodes.Count + ", " + parentNode.ChildConnectionPoint.Count);
+
+            //Debug.Log("index = " + index);
+            //Debug.Log("------" + parentNode.nodeData.DialogText + "------");
+            //Debug.Log(parentNode.ChildConnectionPoint.Count + " index = " + index);
+            //Debug.Log("startPosition = " + startPosition);
+            
+
             Vector2 endPosition = childNode.Rect.center;
 
             float distance = Vector2.Distance(startPosition, endPosition);
@@ -522,7 +505,7 @@ namespace cherrydev
             Vector2 midPosition = bezierPoints[bezierPoints.Length / 2];
             Vector2 direction = (endPosition - startPosition).normalized;
 
-            if (index >= 0)
+            if (index >= 0)     //place a number at the center of the Bezier curve
             {
                 string indexText = (index + 1).ToString();
 
@@ -541,7 +524,7 @@ namespace cherrydev
                 GUI.Label(new Rect(midPosition.x - 10, midPosition.y - 10, 20, 20), indexText, style);
                 Handles.EndGUI();
             }
-            else
+            else    //draw an error at the center of the Bezier curve
                 DrawArrowAtMidpoint(midPosition, direction);
 
             GUI.changed = true;
@@ -607,7 +590,7 @@ namespace cherrydev
         /// </summary>
         private void DrawNodes(Event currentEvent)
         {
-            if (_currentNodeGraph.NodesList == null)
+            if (_currentNodeGraph.NodesList.Count == 0)
                 return;
 
             foreach (Node node in _currentNodeGraph.NodesList)
@@ -1073,18 +1056,9 @@ namespace cherrydev
                 if (!node.IsSelected)
                     continue;
 
-                //if (node.GetType() == typeof(DialogNode))
-                //{
-                    DialogNode dialogNode = (DialogNode)node;
-                    //node.ParentNode = null;
-                    dialogNode.ChildNodes.Clear();
-                /*}
-                else if (node.GetType() == typeof(SentenceNode))
-                {
-                    SentenceNode sentenceNode = (SentenceNode)node;
-                    sentenceNode.ParentNode = null;
-                    sentenceNode.ChildNode = null;
-                }*/
+                DialogNode dialogNode = (DialogNode)node;
+                dialogNode.ChildNodes.Clear();
+                dialogNode.ChildConnectionPoint.Clear();
             }
         }
 
