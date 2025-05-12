@@ -53,13 +53,17 @@ namespace cherrydev
         private const float ChoiceTextFieldWidth = 130f;
 
         private const float DialogNodeWidth = 210f;
-        private const float DialogNodeHeight = 325f;
+        private const float DialogBaseNodeHeight = 330f;
+        //private const float DialogNodeHeight = 325f;
 
-        private const float ExternalNodeHeight = DialogNodeWidth + 80f;
+        //private const float ExternalNodeHeight = DialogNodeWidth + 80f;
+        private const float ExternalNodeHeight = 20f;
 
-        private float _currentDialogNodeHeight = DialogNodeHeight;
-        private const float AdditionalDialogNodeHeight = 20f;
+        //private float _currentDialogNodeHeight = DialogNodeHeight;
+        private const float ChoiceNodeHeight = 20f;
 
+        private const float StartNodeWidth = 120f;
+        private const float StartNodeHeight = 60f;
 
         public string GetChoiceText(int index)
         {
@@ -74,27 +78,25 @@ namespace cherrydev
 #if UNITY_EDITOR
 
         /// <summary>
-        /// Dialog node initialisation method
+        /// Dialog node initialisation method.  Called when we create a new dialog node
         /// </summary>
         /// <param name="rect"></param>
         /// <param name="nodeName"></param>
         /// <param name="nodeGraph"></param>
         public override void Initialize(Rect rect, string nodeName, DialogNodeGraph nodeGraph)
         {
+            Debug.Log("DialogNode:Initialize()...");
             base.Initialize(rect, nodeName, nodeGraph);
 
+            //create the list of child nodes
             ChildNodes = new();
 
             //initialize the node data
             _nodeData = new NodeData(nodeName);
 
-            //CalculateNumberOfChoices();
-            //OldChildNodes = new List<Node>(ChildNodes.Count);
-            //ChildConnectionPoint = new List<Vector2>(ChildNodes.Count);
-
-            //Debug.Log("Initialize() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
-
+            SetDialogNodeSize();
         }
+
         /*
         public void CreateStartNode()
         {
@@ -111,23 +113,8 @@ namespace cherrydev
         {
             base.Draw(nodeStyle, labelStyle);
 
-            //ChildNodes.RemoveAll(item => item == null);
 
-            /*
-            for (int i = 0; i<ChildNodes.Count; i++)
-            {
-                if (OldChildNodes[i] == null)
-                {
-                    Debug.Log("Draw(1) -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
-                    OldChildNodes.RemoveAt(i);
-                    ChildConnectionPoint.RemoveAt(i);
-                    Debug.Log("Draw(2) -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
-                }
-
-            }
-            */
-
-            if (_nodeData.DialogText == StartNodeSentinel)
+            if (IsStartNode())
             {
                 //modify the labelStyle to have yellow and centered text
                 GUIStyle startLabelStyle = new GUIStyle(labelStyle);
@@ -135,7 +122,7 @@ namespace cherrydev
                 startLabelStyle.normal.textColor = Color.yellow;
                 startLabelStyle.normal.background = null;
 
-                Rect.size = new Vector2(/*DialogNodeWidth*/ 120f, 60f);
+                //Rect.size = new Vector2(/*DialogNodeWidth*/ 120f, 60f);
                 GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField("START", startLabelStyle);
 
@@ -146,7 +133,7 @@ namespace cherrydev
             else
             {
                 float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? ChildNodes.Count * 20f : 0;
-                Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
+                //Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
 
                 GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField(_nodeData.DialogText, labelStyle);
@@ -155,8 +142,10 @@ namespace cherrydev
                 DrawExternalFunctionTextField();
 
                 if (GUILayout.Button(_externalButtonLabel))
+                {
                     _isExternalFunc = !_isExternalFunc;
-
+                    SetDialogNodeSize();
+                }
 
                 //now draw the choice buttons
                 for (int i = 0; i < ChildNodes.Count; i++)
@@ -274,7 +263,7 @@ namespace cherrydev
                 _externalButtonLabel = "Remove external func";
 
                 EditorGUILayout.BeginHorizontal();
-                Rect.height = ExternalNodeHeight;
+                //Rect.height = ExternalNodeHeight;
                 EditorGUILayout.LabelField($"Func Name ", GUILayout.Width(LabelFieldSpace));
                 _externalFunctionName = EditorGUILayout.TextField(_externalFunctionName,
                     GUILayout.Width(TextFieldWidth));
@@ -283,7 +272,7 @@ namespace cherrydev
             else
             {
                 _externalButtonLabel = "Add external func";
-                Rect.height = StandardHeight;
+                //Rect.height = StandardHeight;
             }
         }
 
@@ -355,17 +344,67 @@ namespace cherrydev
 
 
         /// <summary>
-        /// Increase number of choices and node height
+        /// Increase number of choices and node height.
+        /// Creates an unconnected ChildNode reference.
         /// </summary>
         private void AddChoice(string ChoiceText = "Choice")
         {
             ChildNodes.Add(new ChildNodeStruct(ChoiceText));
-
-            //ChildNodes.Count++;
-            //Choices.Add(string.Empty);
-            _currentDialogNodeHeight += AdditionalDialogNodeHeight;
-
+            Rect.height += ChoiceNodeHeight;
         }
+
+        /// <summary>
+        /// Increase number of choices and node height.
+        /// Attaches the provided node to the ChildNodes list at the
+        /// first available space.  If no space is available, it
+        /// creates a new spot.
+        /// </summary>
+        private void AddChoice(DialogNode node)
+        {
+            int availableNodeIndex = -1;
+
+            //[1] Look for the first emply child node
+            for (int i = 0; i < ChildNodes.Count; i++)
+            {
+                if (ChildNodes[i].ChildNode == null)
+                {
+                    availableNodeIndex = i;
+                    break;
+                }
+            }
+            //[2] Add a node if one is not there
+            if (availableNodeIndex == -1)    //did not find a node--> add one
+            {
+                AddChoice("X");
+                availableNodeIndex = ChildNodes.Count - 1;
+            }
+
+            //[3] connect the node
+            ChildNodeStruct cns = ChildNodes[availableNodeIndex];
+            cns.ChildNode = node;
+            cns.ChoiceText = node.nodeData.DialogText;
+            ChildNodes[availableNodeIndex] = cns;
+        }
+
+
+        /// <summary>
+        /// Attaches the provided node to the ChildNodes list
+        /// <param name="nodeToAdd"></param>
+        /// <returns></returns>
+        public override bool AddToChildConnectedNode(Node nodeToAdd)
+        {
+            AddChoice((DialogNode)nodeToAdd);
+            return true;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="ChoiceText"></param>
+        public void AddChildNode(Node node, string ChoiceText = "Choice")
+        { }
 
         /// <summary>
         /// Decrease number of choices and node height 
@@ -377,75 +416,40 @@ namespace cherrydev
 
             ChildNodes.RemoveAt(ChildNodes.Count - 1);
 
-            _currentDialogNodeHeight -= AdditionalDialogNodeHeight;
+            Rect.height -= ChoiceNodeHeight;
         }
 
-        /// <summary>
-        /// Adding nodeToAdd Node to the parentSentenceNode field
-        /// </summary>
-        /// <param name="nodeToAdd"></param>
-        /// <returns></returns>
-        public override bool AddToParentConnectedNode(Node nodeToAdd)
-        {
-            //if (nodeToAdd.GetType() == typeof(SentenceNode))
-            //{
-                //JV ParentSentenceNode = (SentenceNode)nodeToAdd;
-                //ParentNode = nodeToAdd;
-                return true;
-            //}
-
-            //return false;
-        }
 
         /// <summary>
-        /// Adding nodeToAdd Node to the childSentenceNodes array
+        /// Sets dialog node height based on number of choices and the
+        /// presence/absence or an external function
         /// </summary>
-        /// <param name="nodeToAdd"></param>
-        /// <returns></returns>
-        /*
-        public override bool AddToChildConnectedNode(Node nodeToAdd)
+        public void SetDialogNodeSize()
         {
-            /x* add as a child node and make the current node its parent. *x/
-            if (IsCanAddToChildConnectedNode(nodeToAdd))
+            if (IsStartNode())
             {
-                OldChildNodes.Add(nodeToAdd);
-                ChildConnectionPoint.Add(Vector2.zero);
-
-                Debug.Log("AddToChildConnectedNode() -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
-                return true;
+                Rect.size = new Vector2(StartNodeWidth, StartNodeHeight);
             }
+            else
+            {
+                Rect.width = DialogNodeWidth;
+                Rect.height = DialogBaseNodeHeight;
 
-            return false;
-        }
-*/
-        /// <summary>
-        /// Calculate dialog node height based on number of choices
-        /// </summary>
-        public void CalculateDialogNodeHeight()
-        {
-            _currentDialogNodeHeight = DialogNodeHeight;
+                for (int i = 0; i < ChildNodes.Count - 1; i++)
+                    Rect.height += ChoiceNodeHeight;
 
-            for (int i = 0; i < ChildNodes.Count - 1; i++)
-                _currentDialogNodeHeight += AdditionalDialogNodeHeight;
-
-            if (_isExternalFunc)
-                _currentDialogNodeHeight += 40;
+                if (_isExternalFunc)
+                    Rect.height += ExternalNodeHeight;
+            }
         }
 
         /// <summary>
-        /// Checks if sentence node can be added as child of dialog node
+        /// Returns true if the current DialogNode is the start node
         /// </summary>
-        /// <param name="sentenceNodeToAdd"></param>
         /// <returns></returns>
-        private bool IsCanAddToChildConnectedNode(Node nodeToAdd)
+        private bool IsStartNode()
         {
-            //check that 1) the candidate node has no current parent;
-            //2) we have space in our choices list for this node;
-            //3) the candidate node is not ourself.
-
-            return /*nodeToAdd.ParentNode == null
-                   && ChildNodes.Count < ChildNodes.Count
-                   && */ nodeToAdd != this;
+            return (_nodeData.DialogText == StartNodeSentinel);
         }
 #endif
     }

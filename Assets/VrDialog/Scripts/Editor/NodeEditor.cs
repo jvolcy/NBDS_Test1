@@ -34,9 +34,6 @@ namespace cherrydev
 
         private GUIStyle _activeToolbarButtonStyle;
 
-        private const float NodeWidth = 190f;
-        private const float NodeHeight = 155f;  //JV 135f;      //restart editor after changing this value
-
         private const float ToolbarHeight = 30f;
 
         private const float ConnectingLineWidth = 2f;
@@ -53,7 +50,6 @@ namespace cherrydev
         private bool _isLeftMouseDragFromEmpty;
         private bool _showLocalizationKeys;
         private bool _isMiddleMouseClickedOnNode;
-        private bool _showNodesDropdown;
 
         // Search functionality
         private string _searchText = "";
@@ -83,6 +79,8 @@ namespace cherrydev
         /// </summary>
         private void OnEnable()
         {
+            Debug.Log("NodeEditor:OnEnable()...");
+
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
 
             InitializeToolbarStyles();
@@ -112,6 +110,8 @@ namespace cherrydev
         /// </summary>
         private void OnDisable()
         {
+            Debug.Log("NodeEditor:OnDisable()...");
+
             CleanUpUnusedAssets();
             Selection.selectionChanged -= ChangeEditorWindowOnSelection;
             AssetDatabase.SaveAssets();
@@ -127,20 +127,19 @@ namespace cherrydev
         [OnOpenAsset(0)]
         public static bool OnDoubleClickAsset(int instanceID, int line)
         {
-            DialogNodeGraph nodeGraph = EditorUtility.InstanceIDToObject(instanceID) as DialogNodeGraph;
+            Debug.Log("NodeEditor:OnDoubleClickAsset()...Loading " + EditorUtility.InstanceIDToObject(instanceID).name);
+
+            //load the DialogNodeGraph scriptable object
+            _currentNodeGraph = EditorUtility.InstanceIDToObject(instanceID) as DialogNodeGraph;
 
             if (_currentNodeGraph != null)
-                SetUpNodes();
-
-            if (nodeGraph != null)
             {
                 OpenWindow();
-                _currentNodeGraph = nodeGraph;
                 SetUpNodes();
-
                 return true;
             }
 
+            Debug.Log("Could not load " + EditorUtility.InstanceIDToObject(instanceID).name);
             return false;
         }
 
@@ -167,8 +166,7 @@ namespace cherrydev
             DrawToolbar();
             GUI.BeginGroup(new Rect(0, ToolbarHeight, position.width, position.height - ToolbarHeight));
 
-            //if (_currentNodeGraph != null)
-            if (_currentNodeGraph.NodesList.Count > 0)
+            if (_currentNodeGraph != null)
             {
                 Undo.RecordObject(_currentNodeGraph, "Changed Value");
                 DrawDraggedLine();
@@ -192,12 +190,8 @@ namespace cherrydev
         {
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                if (node.GetType() == typeof(DialogNode))
-                {
-                    DialogNode dialogNode = (DialogNode)node;
-                    //dialogNode.CalculateNumberOfChoices();
-                    dialogNode.CalculateDialogNodeHeight();
-                }
+                DialogNode dialogNode = (DialogNode)node;
+                dialogNode.SetDialogNodeSize();
             }
         }
 
@@ -271,6 +265,8 @@ namespace cherrydev
         /// </summary>
         private void DrawToolbar()
         {
+            //Debug.Log("NodeEditor:DrawToolbar()...");
+
             EditorGUI.DrawRect(new Rect(0, 0, position.width, ToolbarHeight), _headerColor);
             GUILayout.BeginArea(new Rect(0, 0, position.width, ToolbarHeight));
             GUILayout.BeginHorizontal();
@@ -625,6 +621,7 @@ namespace cherrydev
         /// <param name="currentEvent"></param>
         private void ProcessMouseUpEvent(Event currentEvent)
         {
+            Debug.Log("NodeEditor: ProcessMouseUpEvent("+ currentEvent.button + ")...");
             if (currentEvent.button == 0)
             {
                 _currentNode = null;
@@ -643,9 +640,14 @@ namespace cherrydev
 
         private void ProcessMiddleMouseUpEvent(Event currentEvent)
         {
+            Debug.Log("NodeEditor: ProcessMiddleMouseUpEvent()...");
+
+            Debug.Log("NodeEditor:PMMUE [0]");
             if (_currentNodeGraph.NodeToDrawLineFrom != null)
             {
+                Debug.Log("NodeEditor:PMMUE [1]");
                 CheckLineConnection(currentEvent);
+                Debug.Log("NodeEditor:PMMUE [2]");
                 ClearDraggedLine();
             }
         }
@@ -659,9 +661,11 @@ namespace cherrydev
             switch (currentEvent.type)
             {
                 case EventType.MouseDown:
+                    Debug.Log("NodeEditor: ProcessNodeEditorEvents(MouseDown)...");
                     ProcessMouseDownEvent(currentEvent);
                     break;
                 case EventType.MouseDrag:
+                    //Debug.Log("NodeEditor: ProcessNodeEditorEvents(MouseDrag)...");
                     ProcessMouseDragEvent(currentEvent);
                     break;
             }
@@ -831,14 +835,20 @@ namespace cherrydev
         /// <param name="currentEvent"></param>
         private void CheckLineConnection(Event currentEvent)
         {
+            Debug.Log("NodeEditor:CheckLineConnection()...");
+
+            Debug.Log("NodeEditor:CLC[0]...");
             if (_currentNodeGraph.NodeToDrawLineFrom != null)
             {
+                Debug.Log("NodeEditor:CLC[1]...");
                 Node node = GetHighlightedNode(currentEvent.mousePosition);
 
+                Debug.Log("NodeEditor:CLC[2]...");
                 if (node != null)
                 {
+                    Debug.Log("NodeEditor:CLC[3]...");
                     _currentNodeGraph.NodeToDrawLineFrom.AddToChildConnectedNode(node);
-                    node.AddToParentConnectedNode(_currentNodeGraph.NodeToDrawLineFrom);
+                    //node.AddToParentConnectedNode(_currentNodeGraph.NodeToDrawLineFrom);
                 }
             }
         }
@@ -1025,7 +1035,7 @@ namespace cherrydev
 
             _currentNodeGraph.NodesList.Add(dialogNode);
 
-            dialogNode.Initialize(new Rect(mousePosition, new Vector2(NodeWidth, NodeHeight)), nodeName, _currentNodeGraph);
+            dialogNode.Initialize(new Rect(mousePosition, Vector2.zero), nodeName, _currentNodeGraph);
 
             AssetDatabase.AddObjectToAsset(dialogNode, _currentNodeGraph);
             AssetDatabase.SaveAssets();

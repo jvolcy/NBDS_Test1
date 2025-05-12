@@ -13,10 +13,10 @@ namespace cherrydev
         [HideInInspector] public bool IsDragging;
         [HideInInspector] public bool IsSelected;
 
-        protected float StandardHeight;
+        //protected float StandardHeight;
 
         //public Node ParentNode;
-        public int ParentCount = 0;  //# of parents
+        //public int ParentCount = 0;  //# of parents
         //public Node ChildNode;
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace cherrydev
         public virtual void Initialize(Rect rect, string nodeName, DialogNodeGraph nodeGraph)
         {
             name = nodeName;
-            StandardHeight = rect.height;
+            //StandardHeight = rect.height;
             Rect = rect; 
             NodeGraph = nodeGraph;
         }
@@ -48,7 +48,7 @@ namespace cherrydev
         /// <param name="labelStyle"></param>
         public virtual void Draw(GUIStyle nodeStyle, GUIStyle labelStyle) { }
 
-        public virtual bool AddToParentConnectedNode(Node nodeToAdd) => true;
+        //public virtual bool AddToParentConnectedNode(Node nodeToAdd) => true;
 
         public virtual bool AddToChildConnectedNode(Node nodeToAdd) => true;
 
