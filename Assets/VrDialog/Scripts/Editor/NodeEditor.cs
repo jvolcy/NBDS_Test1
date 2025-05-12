@@ -195,7 +195,7 @@ namespace cherrydev
                 if (node.GetType() == typeof(DialogNode))
                 {
                     DialogNode dialogNode = (DialogNode)node;
-                    dialogNode.CalculateNumberOfChoices();
+                    //dialogNode.CalculateNumberOfChoices();
                     dialogNode.CalculateDialogNodeHeight();
                 }
             }
@@ -338,15 +338,13 @@ namespace cherrydev
                     DialogNode dialogNode = (DialogNode)node;
                     bool found = false;
 
-                    if (dialogNode.Choices != null)
+
+                    foreach (DialogNode.ChildNodeStruct cns in dialogNode.ChildNodes)
                     {
-                        foreach (string choice in dialogNode.Choices)
+                        if (!string.IsNullOrEmpty(cns.ChoiceText) && cns.ChoiceText.ToLower().Contains(searchText))
                         {
-                            if (!string.IsNullOrEmpty(choice) && choice.ToLower().Contains(searchText))
-                            {
-                                found = true;
-                                break;
-                            }
+                            found = true;
+                            break;
                         }
                     }
 
@@ -375,16 +373,20 @@ namespace cherrydev
                 string nodeText;
 
                 DialogNode dialogNode = (DialogNode)node;
-                prefix = "A";
 
-                if (dialogNode.Choices != null && dialogNode.Choices.Count > 0 &&
-                    !string.IsNullOrEmpty(dialogNode.Choices[0]))
-                    nodeText = dialogNode.Choices[0];
+                prefix = "A";
+                /*
+                if (dialogNode.name != null && dialogNode.ChildNodes.Count > 0 &&
+                    !string.IsNullOrEmpty(dialogNode.ChildNodes[0].ChoiceText))
+                    nodeText = dialogNode.ChildNodes[0].ChoiceText;
                 else
                     nodeText = "Empty";
+                */
 
-                if (nodeText.Length > 20)
-                    nodeText = nodeText.Substring(0, 20) + "...";
+                if (dialogNode.name.Length > 20)
+                    nodeText = dialogNode.name.Substring(0, 20) + "...";
+                else
+                    nodeText = dialogNode.name;
 
                 string menuItemName = $"{prefix}: {nodeText}";
                 nodesMenu.AddItem(new GUIContent(menuItemName), false, () => CenterAndSelectNode(node));
@@ -446,11 +448,9 @@ namespace cherrydev
 
                 for (int i = 0; i < parentNode.ChildNodes.Count; i++)
                 {
-                    if (parentNode.ChildNodes[i] != null)
-                    {
-                        childNode = (DialogNode)parentNode.ChildNodes[i];
+                    childNode = (DialogNode)parentNode.ChildNodes[i].ChildNode;
+                    if (childNode)
                         DrawBezierConnector(parentNode, childNode, i);
-                    }
                 }
             }
         }
@@ -464,10 +464,10 @@ namespace cherrydev
         {
 
             Vector2 startPosition;
-            if (parentNode.ChildConnectionPoint.Count == 0)
+            if (parentNode.ChildNodes.Count == 0)
                 startPosition = parentNode.Rect.center;
             else
-                startPosition = parentNode.ChildConnectionPoint[index];
+                startPosition = parentNode.ChildNodes[index].ChildConnectionPoint;
 
             //Debug.Log("DrawBezierConnector() -> ChildNode.Count, ChildConnectionPoint.Count = " + parentNode.ChildNodes.Count + ", " + parentNode.ChildConnectionPoint.Count);
 
@@ -962,7 +962,7 @@ namespace cherrydev
 
             DialogNode dialogNode = CreateInstance<DialogNode>();
             InitializeNode(mousePositionObject, dialogNode, DialogNode.StartNodeSentinel);
-            dialogNode.CreateStartNode();
+            //dialogNode.CreateStartNode();
         }
 
         /// <summary>
@@ -1017,17 +1017,17 @@ namespace cherrydev
         /// Create Node at mouse position and add it to Node Graph asset
         /// </summary>
         /// <param name="mousePositionObject"></param>
-        /// <param name="node"></param>
+        /// <param name="dialogNode"></param>
         /// <param name="nodeName"></param>
-        private void InitializeNode(object mousePositionObject, Node node, string nodeName)
+        private void InitializeNode(object mousePositionObject, DialogNode dialogNode, string nodeName)
         {
             Vector2 mousePosition = (Vector2)mousePositionObject;
 
-            _currentNodeGraph.NodesList.Add(node);
+            _currentNodeGraph.NodesList.Add(dialogNode);
 
-            node.Initialize(new Rect(mousePosition, new Vector2(NodeWidth, NodeHeight)), nodeName, _currentNodeGraph);
+            dialogNode.Initialize(new Rect(mousePosition, new Vector2(NodeWidth, NodeHeight)), nodeName, _currentNodeGraph);
 
-            AssetDatabase.AddObjectToAsset(node, _currentNodeGraph);
+            AssetDatabase.AddObjectToAsset(dialogNode, _currentNodeGraph);
             AssetDatabase.SaveAssets();
         }
 
@@ -1058,7 +1058,6 @@ namespace cherrydev
 
                 DialogNode dialogNode = (DialogNode)node;
                 dialogNode.ChildNodes.Clear();
-                dialogNode.ChildConnectionPoint.Clear();
             }
         }
 

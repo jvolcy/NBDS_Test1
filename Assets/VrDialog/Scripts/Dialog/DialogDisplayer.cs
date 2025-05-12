@@ -133,7 +133,7 @@ namespace cherrydev
         {
             _dialogAnswerPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
             _dialogAnswerPanel.AddButtonOnClickListener(index, 
-                () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(answerNode.ChildNodes[index]));
+                () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(answerNode.ChildNodes[index].ChildNode));
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace cherrydev
             
             if (currentAnswerNode != null)
             {
-                for (int i = 0; i < currentAnswerNode.Choices.Count; i++)
+                for (int i = 0; i < currentAnswerNode.ChildNodes.Count; i++)
                 {
                     if (i < _dialogAnswerPanel.GetButtonCount() &&
                         _dialogAnswerPanel.GetButtonByIndex(i).gameObject.activeSelf)

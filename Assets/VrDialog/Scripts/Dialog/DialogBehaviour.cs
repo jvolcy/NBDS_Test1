@@ -39,7 +39,7 @@ namespace cherrydev
         public event Action LanguageChanged;
 #endif
         
-        private int _maxNumberOfChoiceButtons;
+        //private int _maxNumberOfChoiceButtons;
 
         private bool _isDialogStarted;
         private bool _isCurrentSentenceSkipped;
@@ -153,7 +153,7 @@ namespace cherrydev
             _currentNodeGraph = dialogNodeGraph;
 
             DefineFirstNode(dialogNodeGraph);
-            CalculateMaxNumberOfChoiceButtons();
+            //CalculateMaxNumberOfChoiceButtons();
             HandleDialogGraphCurrentNode(_currentNode);
         }
 
@@ -243,9 +243,9 @@ namespace cherrydev
 
             for (int i = 0; i < answerNode.ChildNodes.Count; i++)
             {
-                if (answerNode.ChildNodes[i])
+                if (answerNode.ChildNodes[i].ChildNode)
                 {
-                    AnswerNodeSetUp?.Invoke(i, answerNode.Choices[i]);
+                    AnswerNodeSetUp?.Invoke(i, answerNode.ChildNodes[i].ChoiceText);
                     AnswerButtonSetUp?.Invoke(i, answerNode);
 
                     numberOfActiveButtons++;
@@ -364,6 +364,7 @@ namespace cherrydev
         /// <summary>
         /// Calculate max number of choice buttons
         /// </summary>
+        /*
         private void CalculateMaxNumberOfChoiceButtons()
         {
             foreach (Node node in _currentNodeGraph.NodesList)
@@ -372,14 +373,14 @@ namespace cherrydev
                 {
                     DialogNode answerNode = (DialogNode)node;
 
-                    if (answerNode.Choices.Count > _maxNumberOfChoiceButtons)
+                    if (answerNode.ChildNodes.Count > _maxNumberOfChoiceButtons)
                         _maxNumberOfChoiceButtons = answerNode.Choices.Count;
                 }
             }
 
             MaxNumberOfChoiceButtonsCalculated?.Invoke(_maxNumberOfChoiceButtons);
         }
-
+        */
         /// <summary>
         /// Handles text skipping mechanics
         /// </summary>
