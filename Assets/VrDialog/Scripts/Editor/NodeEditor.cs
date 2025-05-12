@@ -9,6 +9,7 @@ namespace cherrydev
     public class NodeEditor : EditorWindow
     {
         private static DialogNodeGraph _currentNodeGraph;
+        private static NodeEditor _nodeEditor;
         private Node _currentNode;
         private Node _nodeToDragLineFrom;
 
@@ -37,7 +38,7 @@ namespace cherrydev
         private const float ToolbarHeight = 30f;
 
         private const float ConnectingLineWidth = 2f;
-        private const float ConnectingLineArrowSize = 4f;
+        private const float ConnectingLineArrowSize = 8f;
 
         private const int LabelFontSize = 12;
 
@@ -81,6 +82,8 @@ namespace cherrydev
         {
             Debug.Log("NodeEditor:OnEnable()...");
 
+            _nodeEditor = this;
+
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
 
             InitializeToolbarStyles();
@@ -104,7 +107,7 @@ namespace cherrydev
             _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
 
         }
-
+       
         /// <summary>
         /// Saving all changes and unsubscribing from events
         /// </summary>
@@ -132,10 +135,14 @@ namespace cherrydev
             //load the DialogNodeGraph scriptable object
             _currentNodeGraph = EditorUtility.InstanceIDToObject(instanceID) as DialogNodeGraph;
 
+
             if (_currentNodeGraph != null)
             {
                 OpenWindow();
                 SetUpNodes();
+
+                //Add a Start Node, if one does not already exist
+                _nodeEditor.CreateStartNode(Vector2.zero);
                 return true;
             }
 
@@ -473,7 +480,7 @@ namespace cherrydev
             //Debug.Log("startPosition = " + startPosition);
             
 
-            Vector2 endPosition = childNode.Rect.center;
+            Vector2 endPosition = new Vector2(childNode.Rect.xMin, childNode.Rect.center.y);
 
             float distance = Vector2.Distance(startPosition, endPosition);
 
@@ -500,6 +507,10 @@ namespace cherrydev
 
             Vector2 midPosition = bezierPoints[bezierPoints.Length / 2];
             Vector2 direction = (endPosition - startPosition).normalized;
+
+            Handles.color = Color.white;
+            Handles.DrawSolidDisc(bezierPoints[bezierPoints.Length-1], Vector3.forward, 6f);
+
 
             if (index >= 0)     //place a number at the center of the Bezier curve
             {
@@ -621,7 +632,7 @@ namespace cherrydev
         /// <param name="currentEvent"></param>
         private void ProcessMouseUpEvent(Event currentEvent)
         {
-            Debug.Log("NodeEditor: ProcessMouseUpEvent("+ currentEvent.button + ")...");
+            //Debug.Log("NodeEditor: ProcessMouseUpEvent("+ currentEvent.button + ")...");
             if (currentEvent.button == 0)
             {
                 _currentNode = null;
@@ -640,14 +651,14 @@ namespace cherrydev
 
         private void ProcessMiddleMouseUpEvent(Event currentEvent)
         {
-            Debug.Log("NodeEditor: ProcessMiddleMouseUpEvent()...");
+            //Debug.Log("NodeEditor: ProcessMiddleMouseUpEvent()...");
 
-            Debug.Log("NodeEditor:PMMUE [0]");
+            //Debug.Log("NodeEditor:PMMUE [0]");
             if (_currentNodeGraph.NodeToDrawLineFrom != null)
             {
-                Debug.Log("NodeEditor:PMMUE [1]");
+                //Debug.Log("NodeEditor:PMMUE [1]");
                 CheckLineConnection(currentEvent);
-                Debug.Log("NodeEditor:PMMUE [2]");
+                //Debug.Log("NodeEditor:PMMUE [2]");
                 ClearDraggedLine();
             }
         }
@@ -661,7 +672,7 @@ namespace cherrydev
             switch (currentEvent.type)
             {
                 case EventType.MouseDown:
-                    Debug.Log("NodeEditor: ProcessNodeEditorEvents(MouseDown)...");
+                    //Debug.Log("NodeEditor: ProcessNodeEditorEvents(MouseDown)...");
                     ProcessMouseDownEvent(currentEvent);
                     break;
                 case EventType.MouseDrag:
@@ -835,20 +846,19 @@ namespace cherrydev
         /// <param name="currentEvent"></param>
         private void CheckLineConnection(Event currentEvent)
         {
-            Debug.Log("NodeEditor:CheckLineConnection()...");
+            //Debug.Log("NodeEditor:CheckLineConnection()...");
 
-            Debug.Log("NodeEditor:CLC[0]...");
+            //Debug.Log("NodeEditor:CLC[0]...");
             if (_currentNodeGraph.NodeToDrawLineFrom != null)
             {
-                Debug.Log("NodeEditor:CLC[1]...");
+                //Debug.Log("NodeEditor:CLC[1]...");
                 Node node = GetHighlightedNode(currentEvent.mousePosition);
 
-                Debug.Log("NodeEditor:CLC[2]...");
+                //Debug.Log("NodeEditor:CLC[2]...");
                 if (node != null)
                 {
-                    Debug.Log("NodeEditor:CLC[3]...");
+                    //Debug.Log("NodeEditor:CLC[3]...");
                     _currentNodeGraph.NodeToDrawLineFrom.AddToChildConnectedNode(node);
-                    //node.AddToParentConnectedNode(_currentNodeGraph.NodeToDrawLineFrom);
                 }
             }
         }
@@ -938,7 +948,7 @@ namespace cherrydev
             GenericMenu contextMenu = new GenericMenu();
 
             contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
-            contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
+            //contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
@@ -953,14 +963,19 @@ namespace cherrydev
         private void CreateDialogNode(object mousePositionObject)
         {
             DialogNode dialogNode = CreateInstance<DialogNode>();
-            InitializeNode(mousePositionObject, dialogNode, "Dialog Node");
+            InitializeNode((Vector2)mousePositionObject, dialogNode, "Dialog Node");
+        }
+
+        private void CreateStartNode(object mousePositionObject)
+        {
+            CreateStartNode((Vector2)mousePositionObject);
         }
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
         /// </summary>
         /// <param name="mousePositionObject"></param>
-        private void CreateStartNode(object mousePositionObject)
+        private void CreateStartNode(Vector2 Position)
         {
             //if there is already a start node, do nothing!
             foreach (Node node in _currentNodeGraph.NodesList)
@@ -971,8 +986,7 @@ namespace cherrydev
                 }
 
             DialogNode dialogNode = CreateInstance<DialogNode>();
-            InitializeNode(mousePositionObject, dialogNode, DialogNode.StartNodeSentinel);
-            //dialogNode.CreateStartNode();
+            InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel);
         }
 
         /// <summary>
@@ -1029,13 +1043,11 @@ namespace cherrydev
         /// <param name="mousePositionObject"></param>
         /// <param name="dialogNode"></param>
         /// <param name="nodeName"></param>
-        private void InitializeNode(object mousePositionObject, DialogNode dialogNode, string nodeName)
+        private void InitializeNode(Vector2 Position, DialogNode dialogNode, string nodeName)
         {
-            Vector2 mousePosition = (Vector2)mousePositionObject;
-
             _currentNodeGraph.NodesList.Add(dialogNode);
 
-            dialogNode.Initialize(new Rect(mousePosition, Vector2.zero), nodeName, _currentNodeGraph);
+            dialogNode.Initialize(new Rect(Position, Vector2.zero), nodeName, _currentNodeGraph);
 
             AssetDatabase.AddObjectToAsset(dialogNode, _currentNodeGraph);
             AssetDatabase.SaveAssets();

@@ -16,18 +16,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 165
-    y: 71
+    x: 18
+    y: 80
     width: 210
-    height: 330
+    height: 340
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
     DialogText: Dialog Node
     BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
+    AutoDismissButton: 0
     TextAreaWidthPct: 0.8
     TextAreaHeightPct: 0.7
     TextAreaYPos: -0.1
@@ -36,9 +36,9 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: Choice
-    ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 375, y: 341}
+  - ChoiceText: Dialog Node
+    ChildNode: {fileID: 5973082010698348117}
+    ChildConnectionPoint: {x: 228, y: 350}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,11 +54,48 @@ MonoBehaviour:
   NodesList:
   - {fileID: -9167276494387698026}
   - {fileID: 5973082010698348117}
+  - {fileID: 4425694782975785042}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 0
+--- !u!114 &4425694782975785042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '!START!'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 120
+    height: 60
+  IsDragging: 0
+  IsSelected: 0
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: '!START!'
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []
 --- !u!114 &5973082010698348117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,12 +112,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 504
-    y: 67
+    x: 421
+    y: 61
     width: 210
-    height: 350
+    height: 360
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _isExternalFunc: 1
   _externalFunctionName: 
   _nodeData:

@@ -18,10 +18,6 @@ namespace cherrydev
 
         [SerializeField] private NodeData _nodeData;
         public NodeData nodeData => _nodeData;
-
-        //private int ChildNodes.Count = 1;
-
-        //to do:  Change "Choice" to "Text"
         
         [System.Serializable] public struct ChildNodeStruct {
             public string ChoiceText;
@@ -38,14 +34,6 @@ namespace cherrydev
         
         [SerializeField] public List<ChildNodeStruct> ChildNodes;
         
-
-        //public List<string> Choices = new();
-        //public List<string> ChoiceKeys = new();
-
-        //public Node ParentSentenceNode;
-        //public List<Node> OldChildNodes = new();
-        //public List<Vector2> ChildConnectionPoint = new();
-
         private const float LabelFieldSpace = 70f;
         private const float TextFieldWidth = 100f;
 
@@ -53,13 +41,10 @@ namespace cherrydev
         private const float ChoiceTextFieldWidth = 130f;
 
         private const float DialogNodeWidth = 210f;
-        private const float DialogBaseNodeHeight = 330f;
-        //private const float DialogNodeHeight = 325f;
+        private const float DialogBaseNodeHeight = 340f;
 
-        //private const float ExternalNodeHeight = DialogNodeWidth + 80f;
         private const float ExternalNodeHeight = 20f;
 
-        //private float _currentDialogNodeHeight = DialogNodeHeight;
         private const float ChoiceNodeHeight = 20f;
 
         private const float StartNodeWidth = 120f;
@@ -97,12 +82,12 @@ namespace cherrydev
             SetDialogNodeSize();
         }
 
-        /*
+        
         public void CreateStartNode()
         {
             _nodeData.DialogText = StartNodeSentinel;
         }
-        */
+        
 
         /// <summary>
         /// Draw Dialog Node method
@@ -156,7 +141,6 @@ namespace cherrydev
                 DrawDialogNodeButtons();
             }
             
-
             GUILayout.EndArea();
         }
 
@@ -276,21 +260,6 @@ namespace cherrydev
             }
         }
 
-        /// <summary>
-        /// Determines the number of choices depending on choices list count
-        /// </summary>
-        /*
-        public void CalculateNumberOfChoices()
-        {
-            if (ChildNodes.Count == 0)
-            {
-                ChildNodes.Count = 1;
-                Choices = new List<string> { string.Empty };
-            }
-            else
-                ChildNodes.Count = ChildNodes.Count;
-        }
-        */
 
         /// <summary>
         /// Draw choice line

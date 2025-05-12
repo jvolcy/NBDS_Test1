@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -55,6 +56,11 @@ namespace cherrydev
         {
             NodeToDrawLineFrom = nodeToDrawLineFrom;
             LinePosition = linePosition;
+        }
+
+        public void InitializeNode()
+        {
+            throw new NotImplementedException();
         }
 #endif
     }
