@@ -15,6 +15,8 @@ namespace cherrydev
 
         private GUIStyle _nodeStyle;
         private GUIStyle _selectedNodeStyle;
+        private GUIStyle _selectedStartNodeStyle;
+        private GUIStyle _startLabelStyle;
 
         private readonly Color _headerColor = new(0.235f, 0.235f, 0.235f);
         private readonly Color _backgroundColor = new(0.165f, 0.165f, 0.165f);
@@ -94,10 +96,18 @@ namespace cherrydev
             _nodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
             _selectedNodeStyle = new GUIStyle();
-//            _selectedNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
+            //            _selectedNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
             _selectedNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
             _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
+
+
+            _selectedStartNodeStyle = new GUIStyle();
+            _selectedStartNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
+            //_selectedStartNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
+            _selectedStartNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
+            _selectedStartNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
+
 
             _labelStyle = new GUIStyle();
             _labelStyle.alignment = TextAnchor.MiddleLeft;
@@ -600,8 +610,18 @@ namespace cherrydev
             if (_currentNodeGraph.NodesList.Count == 0)
                 return;
 
-            foreach (Node node in _currentNodeGraph.NodesList)
-                node.Draw(!node.IsSelected ? _nodeStyle : _selectedNodeStyle, _labelStyle);
+            foreach (DialogNode dialogNode in _currentNodeGraph.NodesList)
+            {
+                if (dialogNode.IsStartNode())
+                {
+                    //dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _labelStyle);
+                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _labelStyle);
+                }
+                else
+                {
+                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedNodeStyle, _labelStyle);
+                }
+            }
 
             if (_isLeftMouseDragFromEmpty)
                 SelectNodesBySelectionRect(currentEvent.mousePosition);

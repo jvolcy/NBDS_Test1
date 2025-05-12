@@ -87,7 +87,7 @@ namespace cherrydev
         {
             _nodeData.DialogText = StartNodeSentinel;
         }
-        
+
 
         /// <summary>
         /// Draw Dialog Node method
@@ -107,18 +107,20 @@ namespace cherrydev
                 startLabelStyle.normal.textColor = Color.yellow;
                 startLabelStyle.normal.background = null;
 
-                //Rect.size = new Vector2(/*DialogNodeWidth*/ 120f, 60f);
                 GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField("START", startLabelStyle);
 
-                //Rect rect = EditorGUILayout.BeginHorizontal();
-                //ChildConnectionPoint.Add(new Vector2(rect.center.x + rect.xMax, rect.center.y));
-                //EditorGUILayout.EndHorizontal();
+                if (ChildNodes.Count > 0)
+                {
+                    ChildNodeStruct cns = ChildNodes[0];
+                    cns.ChildConnectionPoint = Rect.center;
+                    ChildNodes[0] = cns;
+                }
+
             }
             else
             {
                 float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? ChildNodes.Count * 20f : 0;
-                //Rect.size = new Vector2(DialogNodeWidth, _currentDialogNodeHeight + additionalHeight);
 
                 GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField(_nodeData.DialogText, labelStyle);
@@ -318,6 +320,8 @@ namespace cherrydev
         /// </summary>
         private void AddChoice(string ChoiceText = "Choice")
         {
+            if (IsStartNode()) return;
+
             ChildNodes.Add(new ChildNodeStruct(ChoiceText));
             Rect.height += ChoiceNodeHeight;
         }
@@ -330,6 +334,8 @@ namespace cherrydev
         /// </summary>
         private void AddChoice(DialogNode node)
         {
+            if (IsStartNode()) return;
+
             int availableNodeIndex = -1;
 
             //[1] Look for the first emply child node
@@ -362,24 +368,33 @@ namespace cherrydev
         /// <returns></returns>
         public override bool AddToChildConnectedNode(Node nodeToAdd)
         {
+            //the START node cannot be a child node
+            if (((DialogNode)nodeToAdd).IsStartNode()) return false;
+
+            //are we the START node?
+            if (IsStartNode())
+            {
+                ChildNodes.Clear();
+                //add the one and only child node!
+                var cns = new ChildNodeStruct("X");
+                cns.ChildNode = nodeToAdd;
+                cns.ChildConnectionPoint = Rect.center;
+                ChildNodes.Add(cns);
+                return true;
+            }
+
             AddChoice((DialogNode)nodeToAdd);
             return true;
         }
 
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="ChoiceText"></param>
-        public void AddChildNode(Node node, string ChoiceText = "Choice")
-        { }
-
-        /// <summary>
         /// Decrease number of choices and node height 
         /// </summary>
         private void DeleteLastChoice()
         {
+            //if (IsStartNode()) return;
+
             if (ChildNodes.Count == 0)
                 return;
 
@@ -416,7 +431,7 @@ namespace cherrydev
         /// Returns true if the current DialogNode is the start node
         /// </summary>
         /// <returns></returns>
-        private bool IsStartNode()
+        public bool IsStartNode()
         {
             return (_nodeData.DialogText == StartNodeSentinel);
         }

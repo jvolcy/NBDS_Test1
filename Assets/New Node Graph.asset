@@ -35,11 +35,11 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: 247
+    y: 84
     width: 120
     height: 60
-  IsDragging: 0
+  IsDragging: 1
   IsSelected: 0
   _isExternalFunc: 0
   _externalFunctionName: 
