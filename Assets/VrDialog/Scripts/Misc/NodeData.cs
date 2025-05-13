@@ -7,52 +7,52 @@ namespace cherrydev
     {
         [TextArea(3, 10)]
         public string DialogText;
-        public Sprite BackgroundImage;
-        public bool AutoDismissButton;
-        public float TextAreaWidthPct;
-        public float TextAreaHeightPct;
-        public float TextAreaYPos;
-        public float ButtonsAreaWidthPct;
-        public float ButtonAreaHeightPct;
-        public float ButtonAreaYPos;
+        public float TextPanelWidthPct;
+        //public float TextAreaHeightPct;
+        //public float TextAreaYPos;
+        //public bool ShowButtons;
         public Sprite ButtonImage;
+        public float ButtonsPanelWidthPct;
+        //public float ButtonAreaHeightPct;
+        public float PanelRatio;
+        public Sprite BackgroundImage;
 
         public NodeData(string dialogText)
         {
             DialogText = dialogText;
-            BackgroundImage = null;
-            AutoDismissButton = true;
-            TextAreaWidthPct = 0.8f;
-            TextAreaHeightPct = 0.7f;
-            TextAreaYPos = -0.1f;
-            ButtonsAreaWidthPct = 0.8f;
-            ButtonAreaHeightPct = 0.2f;
-            ButtonAreaYPos = -0.8f;
+            TextPanelWidthPct = 0.8f;
             ButtonImage = null;
+            //TextAreaHeightPct = 0.7f;
+            //TextAreaYPos = -0.1f;
+            //ShowButtons = true;
+            ButtonsPanelWidthPct = 0.8f;
+            //ButtonAreaHeightPct = 0.2f;
+            PanelRatio = 0.5f;
+            BackgroundImage = null;
         }
 
         public NodeData(string dialogText,
-                            Sprite backgroundImage,
-                            bool autoDismissButton,
-                            float textAreaWidthPct,
-                            float textAreaHeightPct,
-                            float textAreaYPos,
-                            float buttonsAreaWidthPct,
-                            float buttonAreaHeightPct,
-                            float buttonAreaYPos,
-                            Sprite buttonImage
+                            float textPanelWidthPct,
+                            Sprite buttonImage,
+                            float buttonsPanelWidthPct,
+                            //float textAreaHeightPct,
+                            //float textAreaYPos,
+                            //bool showButtons,
+                            //float buttonAreaHeightPct,
+                            float panelRatio,
+                            Sprite backgroundImage
                             )
         {
             DialogText = dialogText;
-            BackgroundImage = backgroundImage;
-            AutoDismissButton = autoDismissButton;
-            TextAreaWidthPct = textAreaWidthPct;
-            TextAreaHeightPct = textAreaHeightPct;
-            TextAreaYPos = textAreaYPos;
-            ButtonsAreaWidthPct = buttonsAreaWidthPct;
-            ButtonAreaHeightPct = buttonAreaHeightPct;
-            ButtonAreaYPos = buttonAreaYPos;
             ButtonImage = buttonImage;
+            TextPanelWidthPct = textPanelWidthPct;
+            //TextAreaHeightPct = textAreaHeightPct;
+            //TextAreaYPos = textAreaYPos;
+            //ShowButtons = showButtons;
+            ButtonsPanelWidthPct = buttonsPanelWidthPct;
+            //ButtonAreaHeightPct = buttonAreaHeightPct;
+            PanelRatio = panelRatio;
+            BackgroundImage = backgroundImage;
         }
     }
 }

@@ -16,31 +16,26 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 256
-    y: 21
+    x: 66
+    y: 64
     width: 210
-    height: 360
+    height: 280
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: Skillful Koala
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 466, y: 291}
+    ChildConnectionPoint: {x: 276, y: 253}
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 466, y: 311}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: 276, y: 273}
   _externalFunctionName: 
 --- !u!114 &-6120714395014319906
 MonoBehaviour:
@@ -58,31 +53,26 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 517
-    y: 484
+    x: 327
+    y: 526
     width: 210
-    height: 360
+    height: 280
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: Outgoing Kangaroo
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 727, y: 754}
+    ChildConnectionPoint: {x: 537, y: 715}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 727, y: 774}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: 537, y: 735}
   _externalFunctionName: 
 --- !u!114 &-3288720057894055028
 MonoBehaviour:
@@ -100,34 +90,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 738
-    y: 103
+    x: 548
+    y: 145
     width: 210
-    height: 380
+    height: 300
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: Philosophical Sidewinder
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 948, y: 373}
+    ChildConnectionPoint: {x: 758, y: 334}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 948, y: 393}
+    ChildConnectionPoint: {x: 758, y: 354}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 948, y: 413}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: 758, y: 374}
   _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
@@ -167,26 +152,21 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 54
-    y: 114
+    x: -140
+    y: 160
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: '!START!'
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0028 ]'
     ChildNode: {fileID: -8388965635032525230}
-    ChildConnectionPoint: {x: 114, y: 144}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: -80, y: 190}
   _externalFunctionName: 

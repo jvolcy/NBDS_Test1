@@ -16,31 +16,26 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 145
-    y: 298
+    x: -231
+    y: 329
     width: 210
-    height: 380
+    height: 290
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: Flexible thinker Lion
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 355, y: 568}
+    ChildConnectionPoint: {x: -21, y: 518}
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 355, y: 588}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: -21, y: 538}
   _externalFunctionName: 
 --- !u!114 &-3329921977266889580
 MonoBehaviour:
@@ -58,28 +53,54 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 212
-    y: 154
+    x: -172
+    y: 164
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: '!START!'
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 272, y: 184}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: -112, y: 194}
+  _externalFunctionName: 
+--- !u!114 &-999675725860706590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0037 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 677
+    y: 347
+    width: 210
+    height: 250
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Broad-minded Hen
+    TextPanelWidthPct: 0.8
+    ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundImage: {fileID: 0}
+  ChildNodes: []
   _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
@@ -98,6 +119,8 @@ MonoBehaviour:
   - {fileID: 3412699400575133726}
   - {fileID: -3329921977266889580}
   - {fileID: 9106453387029568313}
+  - {fileID: 3625415566764155479}
+  - {fileID: -999675725860706590}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -119,28 +142,54 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 473
-    y: 28
+    x: 97
+    y: 59
     width: 210
-    height: 360
+    height: 270
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: Boundless Starfish
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 683, y: 298}
-  _invokeExternalFunc: 0
+    ChildConnectionPoint: {x: 307, y: 248}
+  _externalFunctionName: 
+--- !u!114 &3625415566764155479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0034 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 513
+    y: 60
+    width: 210
+    height: 250
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Independent Crocodile
+    TextPanelWidthPct: 0.8
+    ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundImage: {fileID: 0}
+  ChildNodes: []
   _externalFunctionName: 
 --- !u!114 &9106453387029568313
 MonoBehaviour:
@@ -158,23 +207,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 784
-    y: 299
+    x: 361
+    y: 352
     width: 210
-    height: 340
+    height: 250
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _nodeData:
     DialogText: Level-headed Squid
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
+    TextPanelWidthPct: 0
     ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0
+    PanelRatio: 0
+    BackgroundImage: {fileID: 0}
   ChildNodes: []
-  _invokeExternalFunc: 0
   _externalFunctionName: 
