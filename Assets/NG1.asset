@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-503350476365490353
+--- !u!114 &-8122661852139518589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0015 ]'
+  m_Name: '[ Node 0019 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 647
-    y: 80.5
+    x: 643
+    y: 53
     width: 210
     height: 340
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: Frank Octopus
+    DialogText: Artistic Walrus of the seas
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -50,14 +50,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodesList:
   - {fileID: 7265242501439403181}
-  - {fileID: -503350476365490353}
-  - {fileID: 5064203748946745310}
+  - {fileID: 1847922761099980417}
+  - {fileID: -8122661852139518589}
+  - {fileID: 1953008284269222610}
+  - {fileID: 2385248913529891393}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 0
---- !u!114 &5064203748946745310
+--- !u!114 &1847922761099980417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,22 +69,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0016 ]'
+  m_Name: '[ Node 0018 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 271
-    y: 83
+    x: 311
+    y: 15
     width: 210
-    height: 360
+    height: 340
   IsDragging: 1
   IsSelected: 0
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: Loyal Raccoon
+    DialogText: Exuberant Caterpillar
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -94,8 +96,80 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: Choice 1
-    ChildNode: {fileID: -503350476365490353}
-    ChildConnectionPoint: {x: 481, y: 353}
+    ChildNode: {fileID: -8122661852139518589}
+    ChildConnectionPoint: {x: 521, y: 285}
+--- !u!114 &1953008284269222610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0021 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 92
+    y: 374
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 0
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: Artistic Panda
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []
+--- !u!114 &2385248913529891393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0025 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 457
+    y: 405
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 0
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: The quick brown fox jumps over the lazy dog.
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []
 --- !u!114 &7265242501439403181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +186,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 56
-    y: 52
+    x: 83
+    y: 87
     width: 120
     height: 60
   IsDragging: 1
@@ -133,5 +207,5 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: X
-    ChildNode: {fileID: 5064203748946745310}
-    ChildConnectionPoint: {x: 116, y: 82}
+    ChildNode: {fileID: 1847922761099980417}
+    ChildConnectionPoint: {x: 143, y: 117}

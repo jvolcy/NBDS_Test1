@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5532736016577849636
+--- !u!114 &-9216525216678097486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0012 ]'
+  m_Name: '[ Node 0023 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 428
-    y: 79.5
+    x: 608
+    y: 69
     width: 210
     height: 340
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: Thoughtful Whale
+    DialogText: Skillful Monkey of the day
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -46,18 +46,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: NG2
+  m_Name: NG3
   m_EditorClassIdentifier: 
   NodesList:
-  - {fileID: 2983826885249701450}
-  - {fileID: -5532736016577849636}
-  - {fileID: 9140895358481339486}
+  - {fileID: 3389423211021041760}
+  - {fileID: -9216525216678097486}
+  - {fileID: 8234777049269321603}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 0
---- !u!114 &2983826885249701450
+--- !u!114 &3389423211021041760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,8 +73,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 136
-    y: 39
+    x: 106
+    y: 69
     width: 120
     height: 60
   IsDragging: 1
@@ -94,9 +94,9 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: X
-    ChildNode: {fileID: -5532736016577849636}
-    ChildConnectionPoint: {x: 196, y: 69}
---- !u!114 &9140895358481339486
+    ChildNode: {fileID: 8234777049269321603}
+    ChildConnectionPoint: {x: 166, y: 99}
+--- !u!114 &8234777049269321603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,22 +106,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0014 ]'
+  m_Name: '[ Node 0024 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 82
-    y: 173.5
+    x: 273
+    y: 167
     width: 210
     height: 340
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: Persistent Snake
+    DialogText: Patient Rhinoceros
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -131,4 +131,7 @@ MonoBehaviour:
     ButtonAreaHeightPct: 0.2
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
-  ChildNodes: []
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: -9216525216678097486}
+    ChildConnectionPoint: {x: 483, y: 437}

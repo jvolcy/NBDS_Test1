@@ -113,7 +113,7 @@ namespace cherrydev
 
 
             _labelStyle = new GUIStyle();
-            _labelStyle.alignment = TextAnchor.MiddleCenter;
+            _labelStyle.alignment = TextAnchor.MiddleLeft;
             _labelStyle.fontSize = LabelFontSize;
             _labelStyle.normal.textColor = Color.white;
             _labelStyle.clipping = TextClipping.Clip;

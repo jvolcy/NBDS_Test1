@@ -115,10 +115,18 @@ namespace cherrydev
             }
             else
             {
-                float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? ChildNodes.Count * 20f : 0;
+                const int CLIP_LENGTH = 18;
+                string labelStr =" " + NodeID.ToString("D4") + " - ";
+                if (nodeData.DialogText.Length > CLIP_LENGTH)
+                {
+                    labelStr += nodeData.DialogText.Substring(0, CLIP_LENGTH) + "...";
+                }
+                else
+                {
+                    labelStr += nodeData.DialogText;
+                }
 
-                EditorGUILayout.LabelField(name, labelStyle);
-
+                EditorGUILayout.LabelField(labelStr, labelStyle);
                 DrawNodeData();
                 DrawExternalFunctionTextField();
 
