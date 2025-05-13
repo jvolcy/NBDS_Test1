@@ -5,6 +5,7 @@ namespace cherrydev
     [System.Serializable]
     public struct NodeData
     {
+        [TextArea(3, 10)]
         public string DialogText;
         public Sprite BackgroundImage;
         public bool AutoDismissButton;

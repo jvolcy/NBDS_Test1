@@ -1,24 +1,17 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-/*
-#if UNITY_LOCALIZATION
-using UnityEngine.Localization.Settings;
-#endif
-*/
+
 namespace cherrydev
 {
     //[CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Dialog Node", fileName = "New Dialog Node")]
     public class DialogNode : Node
     {
-        [Space(7)] [SerializeField] private bool _isExternalFunc;
-        [SerializeField] private string _externalFunctionName;
-
-        private string _externalButtonLabel;
-
+        //Node Data
         [SerializeField] private NodeData _nodeData;
         public NodeData nodeData => _nodeData;
-        
+
+        //Child Node Data Structure Definition
         [System.Serializable] public struct ChildNodeStruct {
             public string ChoiceText;
             public Node ChildNode;
@@ -31,9 +24,16 @@ namespace cherrydev
                 ChildConnectionPoint = Vector2.zero;
             }
         }
-        
-        [SerializeField] public List<ChildNodeStruct> ChildNodes;
-        
+
+        //Child Nodes
+        [HideInInspector] public List<ChildNodeStruct> ChildNodes;
+
+        //External Function
+        [Space(7)] [SerializeField] private bool _invokeExternalFunc;
+        [SerializeField] private string _externalFunctionName;
+        private string _externalButtonLabel;
+
+        //constants
         private const float LabelFieldSpace = 70f;
         private const float TextFieldWidth = 100f;
 
@@ -49,14 +49,6 @@ namespace cherrydev
 
         private const float StartNodeWidth = 120f;
         private const float StartNodeHeight = 60f;
-
-        public string GetChoiceText(int index)
-        {
-            if (index < 0 || index >= ChildNodes.Count)
-                return string.Empty;
-
-            return ChildNodes[index].ChoiceText;
-        }
 
         public const string StartNodeSentinel = "!START!";
 
@@ -82,12 +74,12 @@ namespace cherrydev
             SetDialogNodeSize();
         }
 
-        
+        /*
         public void CreateStartNode()
         {
             _nodeData.DialogText = StartNodeSentinel;
         }
-
+        */
 
         /// <summary>
         /// Draw Dialog Node method
@@ -132,7 +124,7 @@ namespace cherrydev
 
                 if (GUILayout.Button(_externalButtonLabel))
                 {
-                    _isExternalFunc = !_isExternalFunc;
+                    _invokeExternalFunc = !_invokeExternalFunc;
                     SetDialogNodeSize();
                 }
 
@@ -246,7 +238,7 @@ namespace cherrydev
         /// </summary>
         private void DrawExternalFunctionTextField()
         {
-            if (_isExternalFunc)
+            if (_invokeExternalFunc)
             {
                 _externalButtonLabel = "Remove external func";
 
@@ -429,7 +421,7 @@ namespace cherrydev
                 for (int i = 0; i < ChildNodes.Count - 1; i++)
                     Rect.height += ChoiceNodeHeight;
 
-                if (_isExternalFunc)
+                if (_invokeExternalFunc)
                     Rect.height += ExternalNodeHeight;
             }
         }

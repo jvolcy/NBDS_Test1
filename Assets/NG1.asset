@@ -16,16 +16,14 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 643
-    y: 53
+    x: 397
+    y: 20
     width: 210
     height: 340
   IsDragging: 1
   IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
   _nodeData:
-    DialogText: Artistic Walrus of the seas
+    DialogText: Artistic Walrus of the seas.
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -35,7 +33,12 @@ MonoBehaviour:
     ButtonAreaHeightPct: 0.2
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
-  ChildNodes: []
+  ChildNodes:
+  - ChoiceText: '[ Node 0025 ]'
+    ChildNode: {fileID: 2385248913529891393}
+    ChildConnectionPoint: {x: 607, y: 290}
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,6 +57,7 @@ MonoBehaviour:
   - {fileID: -8122661852139518589}
   - {fileID: 1953008284269222610}
   - {fileID: 2385248913529891393}
+  - {fileID: 8374214673721644031}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -75,14 +79,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 311
-    y: 15
+    x: 74
+    y: 14
     width: 210
-    height: 340
+    height: 380
   IsDragging: 1
   IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
   _nodeData:
     DialogText: Exuberant Caterpillar
     BackgroundImage: {fileID: 0}
@@ -95,9 +97,17 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: Choice 1
+  - ChoiceText: '[ Node 0019 ]'
     ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: 521, y: 285}
+    ChildConnectionPoint: {x: 284, y: 284}
+  - ChoiceText: '[ Node 0021 ]'
+    ChildNode: {fileID: 1953008284269222610}
+    ChildConnectionPoint: {x: 284, y: 304}
+  - ChoiceText: '[ Node 0025 ]'
+    ChildNode: {fileID: 2385248913529891393}
+    ChildConnectionPoint: {x: 284, y: 324}
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
 --- !u!114 &1953008284269222610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,14 +124,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 92
-    y: 374
+    x: -145
+    y: 373
     width: 210
     height: 340
   IsDragging: 1
   IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
   _nodeData:
     DialogText: Artistic Panda
     BackgroundImage: {fileID: 0}
@@ -134,6 +142,8 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes: []
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
 --- !u!114 &2385248913529891393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,14 +160,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 457
-    y: 405
+    x: 396
+    y: 428
     width: 210
     height: 340
   IsDragging: 1
   IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
   _nodeData:
     DialogText: The quick brown fox jumps over the lazy dog.
     BackgroundImage: {fileID: 0}
@@ -170,6 +178,8 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes: []
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
 --- !u!114 &7265242501439403181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,14 +196,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 83
-    y: 87
+    x: -154
+    y: 86
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
   _nodeData:
     DialogText: '!START!'
     BackgroundImage: {fileID: 0}
@@ -206,6 +214,44 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: X
+  - ChoiceText: '[ Node 0018 ]'
     ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: 143, y: 117}
+    ChildConnectionPoint: {x: -94, y: 116}
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
+--- !u!114 &8374214673721644031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0026 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 699
+    y: 69
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 1
+  _nodeData:
+    DialogText: Generous Sea Lion
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []
+  _invokeExternalFunc: 0
+  _externalFunctionName: 

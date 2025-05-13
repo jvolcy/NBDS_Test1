@@ -145,9 +145,9 @@ namespace cherrydev
         public void SetUpAnswerDialogPanel(int index, string answerText)
         {
             DialogNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
-            
+
             if (currentAnswerNode != null)
-                _dialogAnswerPanel.GetButtonTextByIndex(index).text = currentAnswerNode.GetChoiceText(index);
+                _dialogAnswerPanel.GetButtonTextByIndex(index).text = currentAnswerNode.ChildNodes[index].ChoiceText;
             else
                 _dialogAnswerPanel.GetButtonTextByIndex(index).text = answerText;
         }

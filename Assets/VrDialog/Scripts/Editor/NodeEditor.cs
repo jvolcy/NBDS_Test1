@@ -488,8 +488,21 @@ namespace cherrydev
                 for (int i = 0; i < parentNode.ChildNodes.Count; i++)
                 {
                     childNode = (DialogNode)parentNode.ChildNodes[i].ChildNode;
+
+                    //Add the child's name to the node's choice text field
+                    DialogNode.ChildNodeStruct cns = parentNode.ChildNodes[i];
                     if (childNode)
+                    {
                         DrawBezierConnector(parentNode, childNode, i);
+                        cns.ChoiceText = childNode.name;
+                    }
+                    else
+                    {
+                        //if no child is connected, set the field to an empty string
+                        cns.ChoiceText = "";
+                    }
+                    parentNode.ChildNodes[i] = cns;
+
                 }
             }
         }
@@ -1016,12 +1029,6 @@ namespace cherrydev
             InitializeNode((Vector2)mousePositionObject, dialogNode, PlaceholderText);
         }
 
-        /*
-        private void CreateStartNode(object mousePositionObject)
-        {
-            CreateStartNode((Vector2)mousePositionObject);
-        }
-        */
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
