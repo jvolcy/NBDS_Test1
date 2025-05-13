@@ -16,7 +16,6 @@ namespace cherrydev
         private GUIStyle _nodeStyle;
         private GUIStyle _selectedNodeStyle;
         private GUIStyle _selectedStartNodeStyle;
-        private GUIStyle _startLabelStyle;
 
         private readonly Color _headerColor = new(0.235f, 0.235f, 0.235f);
         private readonly Color _backgroundColor = new(0.165f, 0.165f, 0.165f);
@@ -28,6 +27,7 @@ namespace cherrydev
         private GUIStyle _searchFieldStyle;
 
         private GUIStyle _labelStyle;
+        private GUIStyle _startLabelStyle;
 
         private Rect _selectionRect;
         private Vector2 _mouseScrollClickPosition;
@@ -57,9 +57,12 @@ namespace cherrydev
         // Search functionality
         private string _searchText = "";
 
+        //Creative Random Node Names
+        readonly string[] Adjectives = { "Active", "Adaptable", "Adventurous", "Affectionate", "Alert", "Artistic", "Assertive", "Boundless", "Brave", "Broad-minded", "Calm", "Capable", "Careful", "Caring", "Cheerful", "Clever", "Comfortable", "Communicative", "Compassionate", "Conscientious", "Considerate", "Courageous", "Creative", "Curious", "Decisive", "Determined", "Diligent", "Dynamic", "Eager", "Energetic", "Entertaining", "Enthusiastic", "Exuberant", "Expressive", "Fabulous", "Fair-minded", "Fantastic", "Fearless", "Flexible thinker", "Frank", "Friendly", "Funny", "Generous", "Gentle", "Gregarious", "Happy", "Hard working", "Helpful", "Hilarious", "Honest", "Imaginative", "Independent", "Intellectual", "Intelligent", "Intuitive", "Inventive", "Joyous", "Kind", "Kind-hearted", "Knowledgable", "Level-headed", "Lively", "Loving", "Loyal", "Mature", "Modest", "Optimistic", "Outgoing", "Passionate", "Patient", "Persistent", "Philosophical", "Polite", "Practical", "Pro-active", "Productive", "Quick-witted", "Quiet", "Rational", "Receptive", "Reflective", "Reliable", "Resourceful", "Responsible", "Selective", "Self-confident", "Sensible", "Sensitive", "Skillful", "Straightforward", "Successful", "Thoughtful", "Trustworthy", "Understanding", "Versatile", "Vivacious", "Warm-hearted", "Willing", "Witty", "Wonderful" };
+        readonly string[] Animals = { "Aardvark", "Alligator", "Antelope", "Badger", "Bat", "Bear", "Bee", "Beetle", "Blue whale", "Bulldog", "Butterfly", "Camel", "Cat", "Caterpillar", "Cheetah", "Chicken", "Chimpanzee", "Clam", "Cow", "Coyote", "Crab", "Crocodile", "Cuttlefish", "Deer", "Dog", "Dolphin", "Donkey", "Duck", "Dugong", "Elephant", "Elk", "Fire Ant", "Fish", "Fox", "Frog", "Gazelle", "Giraffe", "Goat", "Goose", "Gorilla", "Guinea Pig", "Hare", "Hedgehog", "Hen", "Hippopotamus", "Horse", "Jackrabbit", "Jelly Fish", "Kangaroo", "Koala", "Leopard", "Lion", "Lizard", "Lobster", "Manatee", "Meerkat", "Millipede", "Mole", "Monkey", "Mosquito", "Nudibranch", "Octopus", "Otter", "Owl", "Oyster", "Panda", "Pelican", "Pig", "Porcupine", "Rabbit", "Raccoon", "Rat", "Reindeer", "Rhinoceros", "Scorpion", "Sea Lion", "Seahorse", "Seal", "Shark", "Sheep", "Shrimp", "Sidewinder", "Snake", "Spider", "Squid", "Squirrel", "Starfish", "Swordfish", "Tiger", "Toad", "Turkey", "Turtle", "Urchin", "Walrus", "Whale", "Wolf", "Wombat", "Woodpecker", "Yucca Moth", "Zebra" };
 
         /// <summary>
-        /// Function to create a constant color texture
+        /// Helper function to create a constant color texture
         /// </summary>
         /// <param name="col"></param>
         /// <returns></returns>
@@ -96,7 +99,6 @@ namespace cherrydev
             _nodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
             _selectedNodeStyle = new GUIStyle();
-            //            _selectedNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
             _selectedNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
             _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
@@ -104,7 +106,6 @@ namespace cherrydev
 
             _selectedStartNodeStyle = new GUIStyle();
             _selectedStartNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
-            //_selectedStartNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
             _selectedStartNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedStartNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
@@ -116,6 +117,13 @@ namespace cherrydev
             _labelStyle.clipping = TextClipping.Clip;
             _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
 
+
+            _startLabelStyle = new GUIStyle();
+            _startLabelStyle.alignment = TextAnchor.MiddleCenter;
+            _startLabelStyle.fontSize = LabelFontSize;
+            _startLabelStyle.normal.textColor = Color.yellow;
+            _startLabelStyle.clipping = TextClipping.Clip;
+            _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
         }
        
         /// <summary>
@@ -160,6 +168,10 @@ namespace cherrydev
             return false;
         }
 
+        /// <summary>
+        /// Function to create a static reference to the current node graph
+        /// </summary>
+        /// <param name="nodeGraph"></param>
         public static void SetCurrentNodeGraph(DialogNodeGraph nodeGraph) =>
             _currentNodeGraph = nodeGraph;
 
@@ -522,7 +534,7 @@ namespace cherrydev
             Handles.DrawSolidDisc(bezierPoints[bezierPoints.Length-1], Vector3.forward, 6f);
 
 
-            if (index >= 0)     //place a number at the center of the Bezier curve
+            if (!parentNode.IsStartNode())     //place a number at the center of the Bezier curve
             {
                 string indexText = (index + 1).ToString();
 
@@ -574,14 +586,13 @@ namespace cherrydev
             int verticalLineCount = Mathf.CeilToInt((position.width + gridSize) / gridSize);
             int horizontalLineCount = Mathf.CeilToInt((position.height + gridSize) / gridSize);
 
-            Color finalColor = new Color(color.r, color.g, color.b, gridOpacity);
+            Color finalColor = new(color.r, color.g, color.b, gridOpacity);
             Handles.color = finalColor;
 
             _graphOffset += _graphDrag * 0.5f;
-            Vector3 gridOffset = new Vector3(_graphOffset.x % gridSize, _graphOffset.y % gridSize, 0);
-
             Handles.BeginGUI();
 
+            Vector3 gridOffset = new(_graphOffset.x % gridSize, _graphOffset.y % gridSize, 0);
             for (int i = 0; i < verticalLineCount; i++)
             {
                 Vector3 p1 = new Vector3(gridSize * i, -gridSize, 0) + gridOffset;
@@ -614,8 +625,7 @@ namespace cherrydev
             {
                 if (dialogNode.IsStartNode())
                 {
-                    //dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _labelStyle);
-                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _labelStyle);
+                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _startLabelStyle);
                 }
                 else
                 {
@@ -983,7 +993,12 @@ namespace cherrydev
         private void CreateDialogNode(object mousePositionObject)
         {
             DialogNode dialogNode = CreateInstance<DialogNode>();
-            InitializeNode((Vector2)mousePositionObject, dialogNode, "Dialog Node");
+
+            System.Random random = new System.Random();
+
+            string CreativeName = Adjectives[random.Next(0, Adjectives.Length)] + " " + Animals[random.Next(0, Animals.Length)];
+            //InitializeNode((Vector2)mousePositionObject, dialogNode, "Dialog Node [" + _currentNodeGraph.NodesList.Count + "]");
+            InitializeNode((Vector2)mousePositionObject, dialogNode, CreativeName);
         }
 
         private void CreateStartNode(object mousePositionObject)
@@ -1007,6 +1022,8 @@ namespace cherrydev
 
             DialogNode dialogNode = CreateInstance<DialogNode>();
             InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel);
+            dialogNode.name = "Start Node";
+            //dialogNode.nodeData.DialogText = ;
         }
 
         /// <summary>
@@ -1042,7 +1059,7 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                if (node.IsSelected)
+                if (node.IsSelected && !((DialogNode)node).IsStartNode())
                     nodeDeletionQueue.Enqueue(node);
             }
 
@@ -1100,6 +1117,8 @@ namespace cherrydev
 
                 DialogNode dialogNode = (DialogNode)node;
                 dialogNode.ChildNodes.Clear();
+                //recalculate the size of the dialog node
+                dialogNode.SetDialogNodeSize();
             }
         }
 

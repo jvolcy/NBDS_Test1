@@ -97,18 +97,13 @@ namespace cherrydev
         public override void Draw(GUIStyle nodeStyle, GUIStyle labelStyle)
         {
             base.Draw(nodeStyle, labelStyle);
+            GUILayout.BeginArea(Rect, nodeStyle);
 
 
             if (IsStartNode())
             {
-                //modify the labelStyle to have yellow and centered text
-                GUIStyle startLabelStyle = new GUIStyle(labelStyle);
-                startLabelStyle.alignment = TextAnchor.MiddleCenter;
-                startLabelStyle.normal.textColor = Color.yellow;
-                startLabelStyle.normal.background = null;
 
-                GUILayout.BeginArea(Rect, nodeStyle);
-                EditorGUILayout.LabelField("START", startLabelStyle);
+                EditorGUILayout.LabelField("START", labelStyle);
 
                 if (ChildNodes.Count > 0)
                 {
@@ -122,7 +117,6 @@ namespace cherrydev
             {
                 float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? ChildNodes.Count * 20f : 0;
 
-                GUILayout.BeginArea(Rect, nodeStyle);
                 EditorGUILayout.LabelField(_nodeData.DialogText, labelStyle);
 
                 DrawNodeData();
@@ -318,10 +312,11 @@ namespace cherrydev
         /// Increase number of choices and node height.
         /// Creates an unconnected ChildNode reference.
         /// </summary>
-        private void AddChoice(string ChoiceText = "Choice")
+        private void AddChoice(string ChoiceText = "_AUTO_")
         {
             if (IsStartNode()) return;
 
+            ChoiceText = ChoiceText == "_AUTO_" ? "Choice " + (ChildNodes.Count + 1) : ChoiceText;
             ChildNodes.Add(new ChildNodeStruct(ChoiceText));
             Rect.height += ChoiceNodeHeight;
         }
@@ -335,6 +330,9 @@ namespace cherrydev
         private void AddChoice(DialogNode node)
         {
             if (IsStartNode()) return;
+
+            //do not loop back on ourself
+            if (node == this) return;
 
             int availableNodeIndex = -1;
 
@@ -357,7 +355,8 @@ namespace cherrydev
             //[3] connect the node
             ChildNodeStruct cns = ChildNodes[availableNodeIndex];
             cns.ChildNode = node;
-            cns.ChoiceText = node.nodeData.DialogText;
+            //cns.ChoiceText = node.nodeData.DialogText;
+            cns.ChoiceText = "Choice " + (availableNodeIndex+1);
             ChildNodes[availableNodeIndex] = cns;
         }
 
