@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8122661852139518589
+--- !u!114 &-7304851958420027226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,122 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0019 ]'
+  m_Name: '[ Node 0031 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 525
-    y: 43
-    width: 210
-    height: 360
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Artistic Walrus of the seas.
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  ChildNodes:
-  - ChoiceText: '[ Node 0025 ]'
-    ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 735, y: 313}
-  - ChoiceText: '[ Node 0030 ]'
-    ChildNode: {fileID: -3717759914573811758}
-    ChildConnectionPoint: {x: 735, y: 333}
-  _invokeExternalFunc: 0
-  _externalFunctionName: 
---- !u!114 &-3717759914573811758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0030 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 816
-    y: 126
-    width: 210
-    height: 340
-  IsDragging: 1
-  IsSelected: 1
-  _nodeData:
-    DialogText: Funny Chicken
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  ChildNodes: []
-  _invokeExternalFunc: 0
-  _externalFunctionName: 
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: NG1
-  m_EditorClassIdentifier: 
-  NodesList:
-  - {fileID: 7265242501439403181}
-  - {fileID: 1847922761099980417}
-  - {fileID: -8122661852139518589}
-  - {fileID: 1953008284269222610}
-  - {fileID: 2385248913529891393}
-  - {fileID: -3717759914573811758}
-  _localizationTableName: 
-  _characterNamesLocalizationName: 
-  NodeToDrawLineFrom: {fileID: 0}
-  LinePosition: {x: 0, y: 0}
-  IsLocalizationSetUp: 0
---- !u!114 &1847922761099980417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0018 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 202
-    y: 37
+    x: 145
+    y: 298
     width: 210
     height: 380
   IsDragging: 1
   IsSelected: 0
   _nodeData:
-    DialogText: Exuberant Caterpillar
+    DialogText: Flexible thinker Lion
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -136,90 +34,15 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: '[ Node 0019 ]'
-    ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: 412, y: 307}
-  - ChoiceText: '[ Node 0021 ]'
-    ChildNode: {fileID: 1953008284269222610}
-    ChildConnectionPoint: {x: 412, y: 327}
-  - ChoiceText: '[ Node 0025 ]'
-    ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 412, y: 347}
+  - ChoiceText: '[ Node 0032 ]'
+    ChildNode: {fileID: 3412699400575133726}
+    ChildConnectionPoint: {x: 355, y: 568}
+  - ChoiceText: '[ Node 0033 ]'
+    ChildNode: {fileID: 9106453387029568313}
+    ChildConnectionPoint: {x: 355, y: 588}
   _invokeExternalFunc: 0
   _externalFunctionName: 
---- !u!114 &1953008284269222610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0021 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -17
-    y: 396
-    width: 210
-    height: 340
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Artistic Panda
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  ChildNodes: []
-  _invokeExternalFunc: 0
-  _externalFunctionName: 
---- !u!114 &2385248913529891393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0025 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 524
-    y: 451
-    width: 210
-    height: 340
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: The quick brown fox jumps over the lazy dog.
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  ChildNodes: []
-  _invokeExternalFunc: 0
-  _externalFunctionName: 
---- !u!114 &7265242501439403181
+--- !u!114 &-3329921977266889580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,8 +58,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -26
-    y: 109
+    x: 212
+    y: 154
     width: 120
     height: 60
   IsDragging: 1
@@ -253,8 +76,105 @@ MonoBehaviour:
     ButtonAreaYPos: -0.8
     ButtonImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: '[ Node 0018 ]'
-    ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: 34, y: 139}
+  - ChoiceText: '[ Node 0032 ]'
+    ChildNode: {fileID: 3412699400575133726}
+    ChildConnectionPoint: {x: 272, y: 184}
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
+  m_Name: New Node Graph
+  m_EditorClassIdentifier: 
+  NodesList:
+  - {fileID: -7304851958420027226}
+  - {fileID: 3412699400575133726}
+  - {fileID: -3329921977266889580}
+  - {fileID: 9106453387029568313}
+  _localizationTableName: 
+  _characterNamesLocalizationName: 
+  NodeToDrawLineFrom: {fileID: 0}
+  LinePosition: {x: 0, y: 0}
+  IsLocalizationSetUp: 0
+--- !u!114 &3412699400575133726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0032 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 473
+    y: 28
+    width: 210
+    height: 360
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Boundless Starfish
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes:
+  - ChoiceText: '[ Node 0033 ]'
+    ChildNode: {fileID: 9106453387029568313}
+    ChildConnectionPoint: {x: 683, y: 298}
+  _invokeExternalFunc: 0
+  _externalFunctionName: 
+--- !u!114 &9106453387029568313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0033 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 784
+    y: 299
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 1
+  _nodeData:
+    DialogText: Level-headed Squid
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []
   _invokeExternalFunc: 0
   _externalFunctionName: 

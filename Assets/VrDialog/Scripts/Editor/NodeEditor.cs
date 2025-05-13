@@ -487,7 +487,7 @@ namespace cherrydev
 
                 for (int i = 0; i < parentNode.ChildNodes.Count; i++)
                 {
-                    childNode = (DialogNode)parentNode.ChildNodes[i].ChildNode;
+                    childNode = parentNode.ChildNodes[i].ChildNode as DialogNode;
 
                     //Add the child's name to the node's choice text field
                     DialogNode.ChildNodeStruct cns = parentNode.ChildNodes[i];
@@ -1005,7 +1005,7 @@ namespace cherrydev
             GenericMenu contextMenu = new GenericMenu();
 
             contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
-            //contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
+            contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
             contextMenu.AddSeparator("");
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
@@ -1029,6 +1029,14 @@ namespace cherrydev
             InitializeNode((Vector2)mousePositionObject, dialogNode, PlaceholderText);
         }
 
+        /// <summary>
+        /// Handler for "Create Start Node" menu call
+        /// </summary>
+        /// <param name="mousePositionObject"></param>
+        private void CreateStartNode(object mousePositionObject)
+        {
+            CreateStartNode((Vector2)mousePositionObject);
+        }
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset

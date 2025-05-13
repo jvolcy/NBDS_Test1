@@ -29,9 +29,9 @@ namespace cherrydev
         [HideInInspector] public List<ChildNodeStruct> ChildNodes;
 
         //External Function
-        [Space(7)] [SerializeField] private bool _invokeExternalFunc;
+        [Space(7)] //[SerializeField] private bool _invokeExternalFunc;
         [SerializeField] private string _externalFunctionName;
-        private string _externalButtonLabel;
+        //private string _externalButtonLabel;
 
         //constants
         private const float LabelFieldSpace = 70f;
@@ -43,7 +43,7 @@ namespace cherrydev
         private const float DialogNodeWidth = 210f;
         private const float DialogBaseNodeHeight = 340f;
 
-        private const float ExternalNodeHeight = 20f;
+        //private const float ExternalNodeHeight = 20f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -121,12 +121,12 @@ namespace cherrydev
                 EditorGUILayout.LabelField(labelStr, labelStyle);
                 DrawNodeData();
                 DrawExternalFunctionTextField();
-
+                /*
                 if (GUILayout.Button(_externalButtonLabel))
                 {
                     _invokeExternalFunc = !_invokeExternalFunc;
                     SetDialogNodeSize();
-                }
+                }*/
 
                 //now draw the choice buttons
                 for (int i = 0; i < ChildNodes.Count; i++)
@@ -233,14 +233,21 @@ namespace cherrydev
         }
 
         /// <summary>
+        /// Returning external function name
+        /// </summary>
+        /// <returns></returns>
+        public string GetExternalFunctionName() => _externalFunctionName;
+
+
+        /// <summary>
         /// Draw label and text fields for external function, 
         /// depends on IsExternalFunc boolean field
         /// </summary>
         private void DrawExternalFunctionTextField()
         {
-            if (_invokeExternalFunc)
-            {
-                _externalButtonLabel = "Remove external func";
+            //if (_invokeExternalFunc)
+            //{
+                //_externalButtonLabel = "Remove external func";
 
                 EditorGUILayout.BeginHorizontal();
                 //Rect.height = ExternalNodeHeight;
@@ -248,12 +255,12 @@ namespace cherrydev
                 _externalFunctionName = EditorGUILayout.TextField(_externalFunctionName,
                     GUILayout.Width(TextFieldWidth));
                 EditorGUILayout.EndHorizontal();
-            }
+            /*}
             else
             {
                 _externalButtonLabel = "Add external func";
                 //Rect.height = StandardHeight;
-            }
+            }*/
         }
 
 
@@ -421,8 +428,8 @@ namespace cherrydev
                 for (int i = 0; i < ChildNodes.Count - 1; i++)
                     Rect.height += ChoiceNodeHeight;
 
-                if (_invokeExternalFunc)
-                    Rect.height += ExternalNodeHeight;
+                //if (_invokeExternalFunc)
+                //    Rect.height += ExternalNodeHeight;
             }
         }
 
