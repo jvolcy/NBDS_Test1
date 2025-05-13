@@ -20,16 +20,16 @@ namespace cherrydev
             _dialogBehaviour.DialogTextCharWrote += _dialogSentencePanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped += _dialogSentencePanel.ShowFullDialogText;
 
-            _dialogBehaviour.SentenceNodeActivated += EnableDialogSentencePanel;
+            /*_dialogBehaviour.SentenceNodeActivated += EnableDialogSentencePanel;
             _dialogBehaviour.SentenceNodeActivated += DisableDialogAnswerPanel;
             _dialogBehaviour.SentenceNodeActivated += _dialogSentencePanel.ResetDialogText;
-            _dialogBehaviour.SentenceNodeActivatedWithParameter += _dialogSentencePanel.Setup;
+            _dialogBehaviour.SentenceNodeActivatedWithParameter += _dialogSentencePanel.Setup;*/
 
             _dialogBehaviour.AnswerNodeActivated += EnableDialogAnswerPanel;
             _dialogBehaviour.AnswerNodeActivated += DisableDialogSentencePanel;
 
             _dialogBehaviour.AnswerNodeActivatedWithParameter += _dialogAnswerPanel.EnableCertainAmountOfButtons;
-            _dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
+            //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
 
             _dialogBehaviour.AnswerNodeSetUp += SetUpAnswerDialogPanel;
 #if UNITY_LOCALIZATION
@@ -44,16 +44,17 @@ namespace cherrydev
             _dialogBehaviour.DialogTextCharWrote -= _dialogSentencePanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped -= _dialogSentencePanel.ShowFullDialogText;
 
-            _dialogBehaviour.SentenceNodeActivated -= EnableDialogSentencePanel;
+            /*_dialogBehaviour.SentenceNodeActivated -= EnableDialogSentencePanel;
             _dialogBehaviour.SentenceNodeActivated -= DisableDialogAnswerPanel;
             _dialogBehaviour.SentenceNodeActivated += _dialogSentencePanel.ResetDialogText;
             _dialogBehaviour.SentenceNodeActivatedWithParameter -= _dialogSentencePanel.Setup;
+            */
 
             _dialogBehaviour.AnswerNodeActivated -= EnableDialogAnswerPanel;
             _dialogBehaviour.AnswerNodeActivated -= DisableDialogSentencePanel;
 
             _dialogBehaviour.AnswerNodeActivatedWithParameter -= _dialogAnswerPanel.EnableCertainAmountOfButtons;
-            _dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
+            //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
 
             _dialogBehaviour.AnswerNodeSetUp -= SetUpAnswerDialogPanel;
 #if UNITY_LOCALIZATION
@@ -150,16 +151,17 @@ namespace cherrydev
             else
                 _dialogAnswerPanel.GetButtonTextByIndex(index).text = answerText;
         }
-
+        /*
         private void HandleLanguageChanged()
         {
             if (_dialogBehaviour.CurrentAnswerNode != null)
                 RefreshAnswerButtons();
         }
-        
+        */
         /// <summary>
         /// Refresh all answer buttons with updated localized text
         /// </summary>
+        /*
         private void RefreshAnswerButtons()
         {
             DialogNode currentAnswerNode = _dialogBehaviour.CurrentAnswerNode;
@@ -174,5 +176,6 @@ namespace cherrydev
                 }
             }
         }
+        */
     }
 }

@@ -8,7 +8,7 @@ namespace cherrydev
 {
     public class DialogBehaviour : MonoBehaviour
     {
-        [SerializeField] private Node StartNode;
+        //[SerializeField] private Node StartNode;
         [SerializeField] private float _dialogCharDelay;
         [SerializeField] private List<KeyCode> _nextSentenceKeyCodes;
         [SerializeField] private bool _isCanSkippingText = true;
@@ -20,14 +20,14 @@ namespace cherrydev
         //boolean used to force us to the next node.  This value is set to true by the UI sentence button.
         bool _GoToNextNode = false;   //JV
 
-        private DialogNodeGraph _currentNodeGraph;
+        //private DialogNodeGraph _currentNodeGraph;
         private Node _currentNode;
         
         public DialogNode CurrentAnswerNode { get; private set; }
 
         private bool _isDialogStarted;
         private bool _isCurrentSentenceSkipped;
-        private bool _isCurrentSentenceTyping;
+        //private bool _isCurrentSentenceTyping;
 
         public bool IsCanSkippingText
         {
@@ -37,12 +37,12 @@ namespace cherrydev
 
         public event Action SentenceStarted;
         public event Action SentenceEnded;
-        public event Action SentenceNodeActivated;
-        public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
+        //public event Action SentenceNodeActivated;
+        //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action AnswerNodeActivated;
         public event Action<int, DialogNode> AnswerButtonSetUp;
-        public event Action<int> MaxNumberOfChoiceButtonsCalculated;
+        //public event Action<int> MaxNumberOfChoiceButtonsCalculated;
         public event Action<int> AnswerNodeActivatedWithParameter;
         public event Action<int, string> AnswerNodeSetUp;
         public event Action DialogTextCharWrote;
@@ -100,10 +100,9 @@ namespace cherrydev
             }
 
             _onDialogStarted?.Invoke();
-            _currentNodeGraph = dialogNodeGraph;
+            //_currentNodeGraph = dialogNodeGraph;
 
-            DefineFirstNode(dialogNodeGraph);
-            //CalculateMaxNumberOfChoiceButtons();
+            FindFirstNode(dialogNodeGraph);
             HandleDialogGraphCurrentNode(_currentNode);
         }
 
@@ -191,18 +190,32 @@ namespace cherrydev
         }
 
         /// <summary>
-        /// Finds the first node that does not have a parent node but has a child one
+        /// Finds the start node
         /// </summary>
         /// <param name="dialogNodeGraph"></param>
-        private void DefineFirstNode(DialogNodeGraph dialogNodeGraph)
+        private void FindFirstNode(DialogNodeGraph dialogNodeGraph)
         {
-            if (dialogNodeGraph.NodesList.Count == 0)
+            _currentNode = null;
+
+            DialogNode dn;
+
+            //Debug.Log("DialogBehaviour:FindFirstNode(): " + dialogNodeGraph.NodesList.Count + "nodes.");
+            for (int i = 0; i < dialogNodeGraph.NodesList.Count; i++)
             {
-                Debug.LogWarning("The list of nodes in the DialogNodeGraph is empty");
-                return;
+                dn = (DialogNode)dialogNodeGraph.NodesList[i];
+
+                if (dn != null)
+                {
+                    if (dn.IsStartNode())
+                    {
+                        _currentNode = dn.ChildNodes[0].ChildNode;
+                        Debug.Log("Start node: " + ((DialogNode)_currentNode).nodeData.DialogText);
+                        return;
+                    }
+                }
             }
 
-            _currentNode = StartNode;
+            Debug.Log("WARNING: No START node found.");
 
         }
 
@@ -219,7 +232,6 @@ namespace cherrydev
         /// <returns></returns>
         private IEnumerator WriteDialogTextRoutine(string text)
         {
-            _isCurrentSentenceTyping = true;
             SentenceStarted?.Invoke();
             
             foreach (char textChar in text)
@@ -227,7 +239,6 @@ namespace cherrydev
                 if (_isCurrentSentenceSkipped)
                 {
                     DialogTextSkipped?.Invoke(text);
-                    _isCurrentSentenceTyping = false;
                     break;
                 }
 
@@ -236,7 +247,6 @@ namespace cherrydev
                 yield return new WaitForSeconds(_dialogCharDelay);
             }
 
-            _isCurrentSentenceTyping = false;
             SentenceEnded?.Invoke();
             
             yield return new WaitUntil(CheckNextSentenceKeyCodes);
