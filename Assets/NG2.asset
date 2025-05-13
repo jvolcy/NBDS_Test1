@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-503350476365490353
+--- !u!114 &-5532736016577849636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0015 ]'
+  m_Name: '[ Node 0012 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 647
-    y: 80.5
+    x: 428
+    y: 79.5
     width: 210
     height: 340
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _isExternalFunc: 0
   _externalFunctionName: 
   _nodeData:
-    DialogText: Frank Octopus
+    DialogText: Thoughtful Whale
     BackgroundImage: {fileID: 0}
     AutoDismissButton: 1
     TextAreaWidthPct: 0.8
@@ -46,57 +46,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: NG1
+  m_Name: NG2
   m_EditorClassIdentifier: 
   NodesList:
-  - {fileID: 7265242501439403181}
-  - {fileID: -503350476365490353}
-  - {fileID: 5064203748946745310}
+  - {fileID: 2983826885249701450}
+  - {fileID: -5532736016577849636}
+  - {fileID: 9140895358481339486}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
   IsLocalizationSetUp: 0
---- !u!114 &5064203748946745310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0016 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 271
-    y: 83
-    width: 210
-    height: 360
-  IsDragging: 1
-  IsSelected: 0
-  _isExternalFunc: 0
-  _externalFunctionName: 
-  _nodeData:
-    DialogText: Loyal Raccoon
-    BackgroundImage: {fileID: 0}
-    AutoDismissButton: 1
-    TextAreaWidthPct: 0.8
-    TextAreaHeightPct: 0.7
-    TextAreaYPos: -0.1
-    ButtonsAreaWidthPct: 0.8
-    ButtonAreaHeightPct: 0.2
-    ButtonAreaYPos: -0.8
-    ButtonImage: {fileID: 0}
-  ChildNodes:
-  - ChoiceText: Choice 1
-    ChildNode: {fileID: -503350476365490353}
-    ChildConnectionPoint: {x: 481, y: 353}
---- !u!114 &7265242501439403181
+--- !u!114 &2983826885249701450
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,8 +73,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 56
-    y: 52
+    x: 136
+    y: 39
     width: 120
     height: 60
   IsDragging: 1
@@ -133,5 +94,41 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
   ChildNodes:
   - ChoiceText: X
-    ChildNode: {fileID: 5064203748946745310}
-    ChildConnectionPoint: {x: 116, y: 82}
+    ChildNode: {fileID: -5532736016577849636}
+    ChildConnectionPoint: {x: 196, y: 69}
+--- !u!114 &9140895358481339486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0014 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 82
+    y: 173.5
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 1
+  _isExternalFunc: 0
+  _externalFunctionName: 
+  _nodeData:
+    DialogText: Persistent Snake
+    BackgroundImage: {fileID: 0}
+    AutoDismissButton: 1
+    TextAreaWidthPct: 0.8
+    TextAreaHeightPct: 0.7
+    TextAreaYPos: -0.1
+    ButtonsAreaWidthPct: 0.8
+    ButtonAreaHeightPct: 0.2
+    ButtonAreaYPos: -0.8
+    ButtonImage: {fileID: 0}
+  ChildNodes: []

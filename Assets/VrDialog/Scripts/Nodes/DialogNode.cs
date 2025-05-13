@@ -8,7 +8,7 @@ using UnityEngine.Localization.Settings;
 */
 namespace cherrydev
 {
-    [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Dialog Node", fileName = "New Dialog Node")]
+    //[CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Dialog Node", fileName = "New Dialog Node")]
     public class DialogNode : Node
     {
         [Space(7)] [SerializeField] private bool _isExternalFunc;
@@ -117,7 +117,7 @@ namespace cherrydev
             {
                 float additionalHeight = DialogNodeGraph.ShowLocalizationKeys ? ChildNodes.Count * 20f : 0;
 
-                EditorGUILayout.LabelField(_nodeData.DialogText, labelStyle);
+                EditorGUILayout.LabelField(name, labelStyle);
 
                 DrawNodeData();
                 DrawExternalFunctionTextField();

@@ -61,6 +61,8 @@ namespace cherrydev
         readonly string[] Adjectives = { "Active", "Adaptable", "Adventurous", "Affectionate", "Alert", "Artistic", "Assertive", "Boundless", "Brave", "Broad-minded", "Calm", "Capable", "Careful", "Caring", "Cheerful", "Clever", "Comfortable", "Communicative", "Compassionate", "Conscientious", "Considerate", "Courageous", "Creative", "Curious", "Decisive", "Determined", "Diligent", "Dynamic", "Eager", "Energetic", "Entertaining", "Enthusiastic", "Exuberant", "Expressive", "Fabulous", "Fair-minded", "Fantastic", "Fearless", "Flexible thinker", "Frank", "Friendly", "Funny", "Generous", "Gentle", "Gregarious", "Happy", "Hard working", "Helpful", "Hilarious", "Honest", "Imaginative", "Independent", "Intellectual", "Intelligent", "Intuitive", "Inventive", "Joyous", "Kind", "Kind-hearted", "Knowledgable", "Level-headed", "Lively", "Loving", "Loyal", "Mature", "Modest", "Optimistic", "Outgoing", "Passionate", "Patient", "Persistent", "Philosophical", "Polite", "Practical", "Pro-active", "Productive", "Quick-witted", "Quiet", "Rational", "Receptive", "Reflective", "Reliable", "Resourceful", "Responsible", "Selective", "Self-confident", "Sensible", "Sensitive", "Skillful", "Straightforward", "Successful", "Thoughtful", "Trustworthy", "Understanding", "Versatile", "Vivacious", "Warm-hearted", "Willing", "Witty", "Wonderful" };
         readonly string[] Animals = { "Aardvark", "Alligator", "Antelope", "Badger", "Bat", "Bear", "Bee", "Beetle", "Blue whale", "Bulldog", "Butterfly", "Camel", "Cat", "Caterpillar", "Cheetah", "Chicken", "Chimpanzee", "Clam", "Cow", "Coyote", "Crab", "Crocodile", "Cuttlefish", "Deer", "Dog", "Dolphin", "Donkey", "Duck", "Dugong", "Elephant", "Elk", "Fire Ant", "Fish", "Fox", "Frog", "Gazelle", "Giraffe", "Goat", "Goose", "Gorilla", "Guinea Pig", "Hare", "Hedgehog", "Hen", "Hippopotamus", "Horse", "Jackrabbit", "Jelly Fish", "Kangaroo", "Koala", "Leopard", "Lion", "Lizard", "Lobster", "Manatee", "Meerkat", "Millipede", "Mole", "Monkey", "Mosquito", "Nudibranch", "Octopus", "Otter", "Owl", "Oyster", "Panda", "Pelican", "Pig", "Porcupine", "Rabbit", "Raccoon", "Rat", "Reindeer", "Rhinoceros", "Scorpion", "Sea Lion", "Seahorse", "Seal", "Shark", "Sheep", "Shrimp", "Sidewinder", "Snake", "Spider", "Squid", "Squirrel", "Starfish", "Swordfish", "Tiger", "Toad", "Turkey", "Turtle", "Urchin", "Walrus", "Whale", "Wolf", "Wombat", "Woodpecker", "Yucca Moth", "Zebra" };
 
+        private static int HighestNodeID = 0;
+
         /// <summary>
         /// Helper function to create a constant color texture
         /// </summary>
@@ -111,7 +113,7 @@ namespace cherrydev
 
 
             _labelStyle = new GUIStyle();
-            _labelStyle.alignment = TextAnchor.MiddleLeft;
+            _labelStyle.alignment = TextAnchor.MiddleCenter;
             _labelStyle.fontSize = LabelFontSize;
             _labelStyle.normal.textColor = Color.white;
             _labelStyle.clipping = TextClipping.Clip;
@@ -161,11 +163,23 @@ namespace cherrydev
 
                 //Add a Start Node, if one does not already exist
                 _nodeEditor.CreateStartNode(Vector2.zero);
+
+                //Find the highest NodeID
+                _nodeEditor.FindHighestNodeID();
+
                 return true;
             }
 
             Debug.Log("Could not load " + EditorUtility.InstanceIDToObject(instanceID).name);
             return false;
+        }
+
+        void FindHighestNodeID()
+        {
+            foreach (Node node in _currentNodeGraph.NodesList)
+            {
+                if (node.NodeID > HighestNodeID) { HighestNodeID = node.NodeID; }
+            }
         }
 
         /// <summary>
@@ -993,18 +1007,21 @@ namespace cherrydev
         private void CreateDialogNode(object mousePositionObject)
         {
             DialogNode dialogNode = CreateInstance<DialogNode>();
-
+            HighestNodeID++;
+            dialogNode.SetNodeID(HighestNodeID);
             System.Random random = new System.Random();
 
-            string CreativeName = Adjectives[random.Next(0, Adjectives.Length)] + " " + Animals[random.Next(0, Animals.Length)];
+            string PlaceholderText = Adjectives[random.Next(0, Adjectives.Length)] + " " + Animals[random.Next(0, Animals.Length)];
             //InitializeNode((Vector2)mousePositionObject, dialogNode, "Dialog Node [" + _currentNodeGraph.NodesList.Count + "]");
-            InitializeNode((Vector2)mousePositionObject, dialogNode, CreativeName);
+            InitializeNode((Vector2)mousePositionObject, dialogNode, PlaceholderText);
         }
 
+        /*
         private void CreateStartNode(object mousePositionObject)
         {
             CreateStartNode((Vector2)mousePositionObject);
         }
+        */
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
@@ -1023,7 +1040,6 @@ namespace cherrydev
             DialogNode dialogNode = CreateInstance<DialogNode>();
             InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel);
             dialogNode.name = "Start Node";
-            //dialogNode.nodeData.DialogText = ;
         }
 
         /// <summary>
@@ -1080,11 +1096,12 @@ namespace cherrydev
         /// <param name="mousePositionObject"></param>
         /// <param name="dialogNode"></param>
         /// <param name="nodeName"></param>
-        private void InitializeNode(Vector2 Position, DialogNode dialogNode, string nodeName)
+        private void InitializeNode(Vector2 Position, DialogNode dialogNode, string placeholderText)
         {
             _currentNodeGraph.NodesList.Add(dialogNode);
 
-            dialogNode.Initialize(new Rect(Position, Vector2.zero), nodeName, _currentNodeGraph);
+            dialogNode.Initialize(new Rect(Position, Vector2.zero), placeholderText, _currentNodeGraph);
+            dialogNode.name = "[ Node " + dialogNode.NodeID.ToString("D4") + " ]";
 
             AssetDatabase.AddObjectToAsset(dialogNode, _currentNodeGraph);
             AssetDatabase.SaveAssets();
