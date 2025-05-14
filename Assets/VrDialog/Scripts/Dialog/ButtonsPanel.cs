@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace cherrydev
 {
-    public class AnswerPanel : MonoBehaviour
+    public class ButtonsPanel : MonoBehaviour
     {
         [SerializeField] private Button _answerButtonPrefab;
         [SerializeField] private GridLayoutGroup _parentGridLayoutGroup;

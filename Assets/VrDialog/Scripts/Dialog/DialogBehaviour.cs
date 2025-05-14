@@ -23,7 +23,7 @@ namespace cherrydev
         //private DialogNodeGraph _currentNodeGraph;
         private Node _currentNode;
         
-        public DialogNode CurrentAnswerNode { get; private set; }
+        public DialogNode CurrentDialogNode { get; private set; }
 
         private bool _isDialogStarted;
         private bool _isCurrentSentenceSkipped;
@@ -40,11 +40,11 @@ namespace cherrydev
         //public event Action SentenceNodeActivated;
         //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
-        public event Action AnswerNodeActivated;
-        public event Action<int, DialogNode> AnswerButtonSetUp;
+        public event Action DialogNodeActivated;
+        //public event Action<int, DialogNode> AnswerButtonSetUp;
         //public event Action<int> MaxNumberOfChoiceButtonsCalculated;
-        public event Action<int> AnswerNodeActivatedWithParameter;
-        public event Action<int, string> AnswerNodeSetUp;
+        public event Action<DialogNode> DialogNodeActivatedWithParameter;
+        public event Action<DialogNode> DialogNodeSetUp;
         public event Action DialogTextCharWrote;
         public event Action<string> DialogTextSkipped;
 
@@ -158,35 +158,39 @@ namespace cherrydev
         /// <param name="currentNode"></param>
         private void HandleDialogNode(Node currentNode)
         {
-            DialogNode answerNode = (DialogNode)currentNode;
-            CurrentAnswerNode = answerNode;
+            DialogNode dialogNode = (DialogNode)currentNode;
+            CurrentDialogNode = dialogNode;
         
-            int numberOfActiveButtons = 0;
+            //int numberOfConnectedChildNodes = 0;
 
-            AnswerNodeActivated?.Invoke();
+            DialogNodeActivated?.Invoke();
 
-            for (int i = 0; i < answerNode.ChildNodes.Count; i++)
+            /*
+            for (int i = 0; i < dialogNode.ChildNodes.Count; i++)
             {
-                if (answerNode.ChildNodes[i].ChildNode)
+                if (dialogNode.ChildNodes[i].ChildNode)
                 {
-                    AnswerNodeSetUp?.Invoke(i, answerNode.ChildNodes[i].ChoiceText);
-                    AnswerButtonSetUp?.Invoke(i, answerNode);
+                    DialogNodeSetUp?.Invoke(i, dialogNode.ChildNodes[i].ChoiceText);
+                    AnswerButtonSetUp?.Invoke(i, dialogNode);
 
-                    numberOfActiveButtons++;
+                    numberOfConnectedChildNodes++;
                 }
                 else
                     break;
             }
 
-            if (numberOfActiveButtons == 0)
+            //if there are no child nodes, we are at the end of the dialog chain
+            if (numberOfConnectedChildNodes == 0)
             {
                 _isDialogStarted = false;
 
                 _onDialogFinished?.Invoke();
                 return;
             }
+            */
+            DialogNodeSetUp?.Invoke(dialogNode);
 
-            AnswerNodeActivatedWithParameter?.Invoke(numberOfActiveButtons);
+            DialogNodeActivatedWithParameter?.Invoke(dialogNode);
         }
 
         /// <summary>
@@ -199,7 +203,7 @@ namespace cherrydev
 
             DialogNode dn;
 
-            //Debug.Log("DialogBehaviour:FindFirstNode(): " + dialogNodeGraph.NodesList.Count + "nodes.");
+            Debug.Log("DialogBehaviour:There are " + dialogNodeGraph.NodesList.Count + " nodes.");
             for (int i = 0; i < dialogNodeGraph.NodesList.Count; i++)
             {
                 dn = (DialogNode)dialogNodeGraph.NodesList[i];
@@ -209,7 +213,7 @@ namespace cherrydev
                     if (dn.IsStartNode())
                     {
                         _currentNode = dn.ChildNodes[0].ChildNode;
-                        Debug.Log("Start node: " + ((DialogNode)_currentNode).nodeData.DialogText);
+                        Debug.Log("Start node is " + ((DialogNode)_currentNode).name);
                         return;
                     }
                 }

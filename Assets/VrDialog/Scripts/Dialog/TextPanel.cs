@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace cherrydev
 {
-    public class SentencePanel : MonoBehaviour
+    public class TextPanel : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _dialogNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;

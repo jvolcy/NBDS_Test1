@@ -180,7 +180,7 @@ namespace cherrydev
 
             //draw Panel Ratio
             EditorGUILayout.BeginHorizontal();
-            tooltip = "XXX";
+            tooltip = "Ratio of the Text Panel Height to the Buttons Panel Height.  Range is 0 to 1.";
             EditorGUILayout.LabelField(new GUIContent($"Panel Ratio", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.PanelRatio = EditorGUILayout.FloatField(_nodeData.PanelRatio, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();

@@ -29,6 +29,8 @@ namespace cherrydev
         private GUIStyle _labelStyle;
         private GUIStyle _startLabelStyle;
 
+        private bool toolbarStylesInitialized = false;
+
         private Rect _selectionRect;
         private Vector2 _mouseScrollClickPosition;
 
@@ -93,7 +95,7 @@ namespace cherrydev
 
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
 
-            InitializeToolbarStyles();
+            //InitializeToolbarStyles();
 
             _nodeStyle = new GUIStyle();
             _nodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.Node) as Texture2D;
@@ -126,8 +128,11 @@ namespace cherrydev
             _startLabelStyle.normal.textColor = Color.yellow;
             _startLabelStyle.clipping = TextClipping.Clip;
             _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
+
+
         }
-       
+
+
         /// <summary>
         /// Saving all changes and unsubscribing from events
         /// </summary>
@@ -205,6 +210,15 @@ namespace cherrydev
         /// </summary>
         private void OnGUI()
         {
+            /* Referencing EditorStyles in Enable() by calling 
+             * InitializeToolbarStyles() leads to a Null reference error.
+             * There is no guaranteed that styles will be initialized when
+             * Enable() is called.  Rather, we delay and call the function
+             * here in OnGUI().  The toolbarStylesInitialized bool is used
+             * to avoid repeated initializations.
+            */
+            if (!toolbarStylesInitialized) { InitializeToolbarStyles(); }
+
             EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), _backgroundColor);
             DrawToolbar();
             GUI.BeginGroup(new Rect(0, ToolbarHeight, position.width, position.height - ToolbarHeight));
@@ -243,6 +257,7 @@ namespace cherrydev
         /// </summary>
         private void InitializeToolbarStyles()
         {
+            Debug.Log("InitializeToolbarStyles()...");
             _toolbarButtonStyle = new GUIStyle(EditorStyles.toolbarButton);
             _toolbarButtonStyle.normal.textColor = Color.white;
             _toolbarButtonStyle.fontSize = 11;
@@ -278,6 +293,8 @@ namespace cherrydev
             _searchFieldStyle.fixedHeight = ToolbarHeight - 4;
             _searchFieldStyle.margin = new RectOffset(2, 2, 2, 2);
             _searchFieldStyle.padding = new RectOffset(6, 6, 2, 2);
+
+            toolbarStylesInitialized = true;
         }
 
         /// <summary>
