@@ -53,16 +53,6 @@ namespace cherrydev
 
         private void Awake() => ExternalFunctionsHandler = new DialogExternalFunctionsHandler();
 
-        private void OnEnable()
-        {
-
-        }
-
-
-        private void OnDestroy()
-        {
-
-        }
         
         private void Update() => HandleSentenceSkipping();
 
@@ -196,7 +186,20 @@ namespace cherrydev
             */
             DialogNodeSetUp?.Invoke(dialogNode);
 
-            DialogNodeActivatedWithParameter?.Invoke(dialogNode);
+            //enable only connected buttons
+            //DialogNodeActivatedWithParameter?.Invoke(dialogNode);
+
+
+
+            string localizedText = dialogNode.nodeData.DialogText;
+
+           // SentenceNodeActivatedWithParameter?.Invoke(localizedCharName, localizedText,
+           //     sentenceNode.GetCharacterSprite(), sentenceNode.GetButtonText());
+
+            if (dialogNode.nodeData.ExternalFunctionName != "")
+                ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionName);
+
+            WriteDialogText(localizedText);
         }
 
         /// <summary>

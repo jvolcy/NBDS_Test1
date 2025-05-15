@@ -29,8 +29,8 @@ namespace cherrydev
         [HideInInspector] public List<ChildNodeStruct> ChildNodes;
 
         //External Function
-        [Space(7)] //[SerializeField] private bool _invokeExternalFunc;
-        [SerializeField] private string _externalFunctionName;
+        //[Space(7)] //[SerializeField] private bool _invokeExternalFunc;
+        //[SerializeField] private string _externalFunctionName;
         //private string _externalButtonLabel;
 
         //constants
@@ -42,8 +42,6 @@ namespace cherrydev
 
         private const float DialogNodeWidth = 210f;
         private const float DialogBaseNodeHeight = 245f;
-
-        //private const float ExternalNodeHeight = 20f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -114,13 +112,7 @@ namespace cherrydev
 
                 EditorGUILayout.LabelField(labelStr, labelStyle);
                 DrawNodeData();
-                DrawExternalFunctionTextField();
-                /*
-                if (GUILayout.Button(_externalButtonLabel))
-                {
-                    _invokeExternalFunc = !_invokeExternalFunc;
-                    SetDialogNodeSize();
-                }*/
+
 
                 //now draw the choice buttons
                 for (int i = 0; i < ChildNodes.Count; i++)
@@ -137,32 +129,24 @@ namespace cherrydev
         /// <summary>
         /// Draws the DialogNode
         /// </summary>
-        /*
-            DialogText = dialogText;
-            TextPanelWidthPct = 0.8f;
-            ButtonImage = null;
-            ButtonsPanelWidthPct = 0.8f;
-            PanelRatio = 0.5f;
-            BackgroundImage = null;
-        */
         void DrawNodeData()
         {
             string tooltip;
 
             //draw DialogText
             EditorGUILayout.BeginHorizontal();
-            tooltip = "XXX";
+            tooltip = _nodeData.DialogText;
             EditorGUILayout.LabelField(new GUIContent($"Dialog Txt", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.DialogText = EditorGUILayout.TextField(_nodeData.DialogText, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();           
 
             //draw TextAreaWidthPct
             EditorGUILayout.BeginHorizontal();
-            tooltip = "XXX";
+            tooltip = "The horizontal fraction of the screen the main text will take up.  Range is 0.0 to 1.0.";
             EditorGUILayout.LabelField(new GUIContent($"Txt Width%", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.TextPanelWidthPct = EditorGUILayout.FloatField(_nodeData.TextPanelWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
-
+            /*
             //draw button sprite
             EditorGUILayout.BeginHorizontal();
             tooltip = "XXX";
@@ -170,10 +154,10 @@ namespace cherrydev
             _nodeData.ButtonImage = (Sprite)EditorGUILayout.ObjectField(_nodeData.ButtonImage,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
-
+            */
             //draw ButtonsAreaWidth %
             EditorGUILayout.BeginHorizontal();
-            tooltip = "XXX";
+            tooltip = "The horizontal fraction of the screen the buttons will take up.  Range is 0.0 to 1.0.";
             EditorGUILayout.LabelField(new GUIContent($"Btn Width%", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonsPanelWidthPct = EditorGUILayout.FloatField(_nodeData.ButtonsPanelWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
@@ -185,12 +169,27 @@ namespace cherrydev
             _nodeData.PanelRatio = EditorGUILayout.FloatField(_nodeData.PanelRatio, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
+            //draw backgroud color
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "The background color of the dialog window.";
+            EditorGUILayout.LabelField(new GUIContent($"Back Color", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.BackgroundColor = (Color)EditorGUILayout.ColorField(_nodeData.BackgroundColor, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
             //draw backgroud sprite
             EditorGUILayout.BeginHorizontal();
-            tooltip = "XXX";
+            tooltip = "A sprite to be drawn as part of the window background.  Use the background color to change the opacity.";
             EditorGUILayout.LabelField(new GUIContent($"Back Img", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.BackgroundImage = (Sprite)EditorGUILayout.ObjectField(_nodeData.BackgroundImage,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //External Function
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "The name of an external function to be called when the node is displayed.";
+            EditorGUILayout.LabelField($"Ext Func", GUILayout.Width(LabelFieldSpace));
+            _nodeData.ExternalFunctionName = EditorGUILayout.TextField(nodeData.ExternalFunctionName,
+                GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }
 
@@ -198,21 +197,7 @@ namespace cherrydev
         /// Returning external function name
         /// </summary>
         /// <returns></returns>
-        public string GetExternalFunctionName() => _externalFunctionName;
-
-
-        /// <summary>
-        /// Draw label and text fields for external function, 
-        /// depends on IsExternalFunc boolean field
-        /// </summary>
-        private void DrawExternalFunctionTextField()
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Ext Func", GUILayout.Width(LabelFieldSpace));
-            _externalFunctionName = EditorGUILayout.TextField(_externalFunctionName,
-                GUILayout.Width(TextFieldWidth));
-            EditorGUILayout.EndHorizontal();
-        }
+        public string GetExternalFunctionName() => nodeData.ExternalFunctionName;
 
 
         /// <summary>

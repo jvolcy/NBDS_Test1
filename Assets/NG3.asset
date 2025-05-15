@@ -16,27 +16,27 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 287
-    y: -48
+    x: 249
+    y: 44
     width: 210
     height: 285
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   _nodeData:
     DialogText: Skillful Koala
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0.6320754, g: 0.42635277, b: 0.42635277, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 497, y: 141}
+    ChildConnectionPoint: {x: 459, y: 233}
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 497, y: 161}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 459, y: 253}
 --- !u!114 &-6120714395014319906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,8 +53,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 500
-    y: 248
+    x: 462
+    y: 340
     width: 210
     height: 285
   IsDragging: 1
@@ -62,18 +62,18 @@ MonoBehaviour:
   _nodeData:
     DialogText: Outgoing Kangaroo
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 710, y: 437}
+    ChildConnectionPoint: {x: 672, y: 529}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 710, y: 457}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 672, y: 549}
 --- !u!114 &-3288720057894055028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,8 +90,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 769
-    y: 33
+    x: 731
+    y: 125
     width: 210
     height: 305
   IsDragging: 1
@@ -99,21 +99,21 @@ MonoBehaviour:
   _nodeData:
     DialogText: Philosophical Sidewinder
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 979, y: 222}
+    ChildConnectionPoint: {x: 941, y: 314}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 979, y: 242}
+    ChildConnectionPoint: {x: 941, y: 334}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 979, y: 262}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 941, y: 354}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +152,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 81
-    y: 48
+    x: 43
+    y: 140
     width: 120
     height: 60
   IsDragging: 1
@@ -161,12 +161,12 @@ MonoBehaviour:
   _nodeData:
     DialogText: '!START!'
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0028 ]'
     ChildNode: {fileID: -8388965635032525230}
-    ChildConnectionPoint: {x: 141, y: 78}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 103, y: 170}

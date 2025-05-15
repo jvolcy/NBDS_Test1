@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 407
-    y: -25.5
+    x: 642
+    y: 72.5
     width: 210
     height: 285
   IsDragging: 1
@@ -25,18 +25,18 @@ MonoBehaviour:
   _nodeData:
     DialogText: Artistic Walrus of the seas.
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0.7830189, g: 0.7550196, b: 0.14404595, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0025 ]'
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 617, y: 163.5}
+    ChildConnectionPoint: {x: 852, y: 261.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -3314409622238939529}
-    ChildConnectionPoint: {x: 617, y: 183.5}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 852, y: 281.5}
 --- !u!114 &-3314409622238939529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,8 +53,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 728
-    y: -18.5
+    x: 963
+    y: 79.5
     width: 210
     height: 265
   IsDragging: 1
@@ -62,15 +62,15 @@ MonoBehaviour:
   _nodeData:
     DialogText: Polite Lobster
     TextPanelWidthPct: 0.8
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0.8
     PanelRatio: 0.5
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 4569098969431068165}
-    ChildConnectionPoint: {x: 938, y: 170.5}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 1173, y: 268.5}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +91,8 @@ MonoBehaviour:
   - {fileID: 2385248913529891393}
   - {fileID: 4569098969431068165}
   - {fileID: -3314409622238939529}
+  - {fileID: 8732908356180122005}
+  - {fileID: 6737954489379500427}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -112,8 +114,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 42
-    y: -35.5
+    x: 277
+    y: 62.5
     width: 210
     height: 305
   IsDragging: 1
@@ -121,21 +123,21 @@ MonoBehaviour:
   _nodeData:
     DialogText: Exuberant Caterpillar
     TextPanelWidthPct: 0.86
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0.78
     PanelRatio: 0.6
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0.3882353}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: This is one choice
     ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: 252, y: 153.5}
+    ChildConnectionPoint: {x: 487, y: 251.5}
   - ChoiceText: This is another
     ChildNode: {fileID: 1953008284269222610}
-    ChildConnectionPoint: {x: 252, y: 173.5}
+    ChildConnectionPoint: {x: 487, y: 271.5}
   - ChoiceText: Choice 3
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 252, y: 193.5}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 487, y: 291.5}
 --- !u!114 &1953008284269222610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +154,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 177
-    y: 358.5
+    x: 412
+    y: 456.5
     width: 210
     height: 245
   IsDragging: 1
@@ -161,12 +163,12 @@ MonoBehaviour:
   _nodeData:
     DialogText: Artistic Panda
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes: []
-  _externalFunctionName: 
 --- !u!114 &2385248913529891393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +185,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 537
-    y: 370.5
+    x: 772
+    y: 468.5
     width: 210
     height: 245
   IsDragging: 1
@@ -192,12 +194,12 @@ MonoBehaviour:
   _nodeData:
     DialogText: The quick brown fox jumps over the lazy dog.
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes: []
-  _externalFunctionName: 
 --- !u!114 &4569098969431068165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +216,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 983
-    y: 183.5
+    x: 1218
+    y: 281.5
     width: 210
     height: 265
   IsDragging: 1
@@ -223,15 +225,46 @@ MonoBehaviour:
   _nodeData:
     DialogText: Kind Yucca Moth
     TextPanelWidthPct: 0.8
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0.8
     PanelRatio: 0.5
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: -3314409622238939529}
-    ChildConnectionPoint: {x: 1193, y: 372.5}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 1428, y: 470.5}
+--- !u!114 &6737954489379500427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0004 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: -2
+    y: 612
+    width: 210
+    height: 245
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Fabulous Otter
+    TextPanelWidthPct: 0.8
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
+  ChildNodes: []
 --- !u!114 &7265242501439403181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,8 +281,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -148
-    y: 48.5
+    x: 87
+    y: 146.5
     width: 120
     height: 60
   IsDragging: 1
@@ -257,12 +290,43 @@ MonoBehaviour:
   _nodeData:
     DialogText: '!START!'
     TextPanelWidthPct: 0
-    ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0018 ]'
     ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: -88, y: 78.5}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 147, y: 176.5}
+--- !u!114 &8732908356180122005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0003 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: -13
+    y: 343
+    width: 210
+    height: 245
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Dynamic Giraffe
+    TextPanelWidthPct: 0.8
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
+  ChildNodes: []

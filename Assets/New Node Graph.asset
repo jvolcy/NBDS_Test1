@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 34
-    y: 279
+    x: -10
+    y: 308
     width: 210
     height: 285
   IsDragging: 1
@@ -28,15 +28,16 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 244, y: 468}
+    ChildConnectionPoint: {x: 200, y: 517}
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 244, y: 488}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 200, y: 537}
 --- !u!114 &-3329921977266889580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,8 +54,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 93
-    y: 114
+    x: 49
+    y: 143
     width: 120
     height: 60
   IsDragging: 1
@@ -65,12 +66,13 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 153, y: 144}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 109, y: 173}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +90,7 @@ MonoBehaviour:
   - {fileID: 3412699400575133726}
   - {fileID: -3329921977266889580}
   - {fileID: 9106453387029568313}
+  - {fileID: 5700371260731568415}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -109,8 +112,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 362
-    y: 9
+    x: 318
+    y: 38
     width: 210
     height: 265
   IsDragging: 1
@@ -121,12 +124,45 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes:
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 572, y: 198}
-  _externalFunctionName: 
+    ChildConnectionPoint: {x: 528, y: 247}
+--- !u!114 &5700371260731568415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0004 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 695
+    y: 27
+    width: 210
+    height: 245
+  IsDragging: 1
+  IsSelected: 1
+  _nodeData:
+    DialogText: Determined Snake
+    TextPanelWidthPct: 0.8
+    ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
+  ChildNodes: []
 --- !u!114 &9106453387029568313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +179,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 626
-    y: 302
+    x: 582
+    y: 331
     width: 210
     height: 245
   IsDragging: 1
@@ -155,6 +191,7 @@ MonoBehaviour:
     ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0
     PanelRatio: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    ExternalFunctionName: 
   ChildNodes: []
-  _externalFunctionName: 
