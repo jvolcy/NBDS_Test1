@@ -1,6 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7304851958420027226
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
+  m_Name: NG2
+  m_EditorClassIdentifier: 
+  NodesList:
+  - {fileID: 3669394871150458546}
+  - {fileID: 1692078139294144095}
+  - {fileID: 6554480690750532178}
+  - {fileID: 1851710649743837814}
+  - {fileID: 7901450371319666272}
+  _localizationTableName: 
+  _characterNamesLocalizationName: 
+  NodeToDrawLineFrom: {fileID: 0}
+  LinePosition: {x: 0, y: 0}
+  IsLocalizationSetUp: 0
+--- !u!114 &1692078139294144095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,34 +33,69 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0031 ]'
+  m_Name: '[ Node 0007 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 22
-    y: 114
+    x: -91
+    y: 39.5
     width: 210
     height: 285
   IsDragging: 1
+  IsSelected: 1
+  _nodeData:
+    DialogText: You are a Level-headed Fire Ant.  You must decide if you want to
+      take <b> the red pill </b> or <i> the blue pill </i>.
+    TextPanelWidthPct: 0.8
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
+    ExternalFunctionName: 
+  ChildNodes:
+  - ChoiceText: Take the red pill
+    ChildNode: {fileID: 6554480690750532178}
+    ChildConnectionPoint: {x: 119, y: 228.5}
+  - ChoiceText: Choice 2
+    ChildNode: {fileID: 1851710649743837814}
+    ChildConnectionPoint: {x: 119, y: 248.5}
+--- !u!114 &1851710649743837814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0009 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 244
+    y: 307.5
+    width: 210
+    height: 265
+  IsDragging: 1
   IsSelected: 0
   _nodeData:
-    DialogText: Flexible thinker Lion
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    DialogText: You have chosen the blue pill.
+    TextPanelWidthPct: 0.8
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 0, g: 0.4434402, b: 1, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     ExternalFunctionName: 
   ChildNodes:
-  - ChoiceText: '[ Node 0032 ]'
-    ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 232, y: 303}
-  - ChoiceText: '[ Node 0033 ]'
-    ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 232, y: 323}
---- !u!114 &-3329921977266889580
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: 7901450371319666272}
+    ChildConnectionPoint: {x: 454, y: 496.5}
+--- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,81 +111,25 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 81
-    y: -51
+    x: -278
+    y: 118
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
   _nodeData:
     DialogText: '!START!'
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    BackgroundImage: {fileID: 0}
-    ExternalFunctionName: 
-  ChildNodes:
-  - ChoiceText: '[ Node 0032 ]'
-    ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 141, y: -21}
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: New Node Graph
-  m_EditorClassIdentifier: 
-  NodesList:
-  - {fileID: -7304851958420027226}
-  - {fileID: 3412699400575133726}
-  - {fileID: -3329921977266889580}
-  - {fileID: 9106453387029568313}
-  - {fileID: 5700371260731568415}
-  - {fileID: 2122258034362188112}
-  - {fileID: 5509126108157792950}
-  _localizationTableName: 
-  _characterNamesLocalizationName: 
-  NodeToDrawLineFrom: {fileID: 0}
-  LinePosition: {x: 0, y: 0}
-  IsLocalizationSetUp: 0
---- !u!114 &2122258034362188112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0005 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 245
-    y: 461.5
-    width: 210
-    height: 245
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Caring Squirrel
     TextPanelWidthPct: 0.8
     ButtonsPanelWidthPct: 0.8
     PanelRatio: 0.5
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     ExternalFunctionName: 
-  ChildNodes: []
---- !u!114 &3412699400575133726
+  ChildNodes:
+  - ChoiceText: X
+    ChildNode: {fileID: 1692078139294144095}
+    ChildConnectionPoint: {x: -218, y: 148}
+--- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,31 +139,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0032 ]'
+  m_Name: '[ Node 0008 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 350
-    y: -156
+    x: 247
+    y: -2.5
     width: 210
     height: 265
   IsDragging: 1
   IsSelected: 0
   _nodeData:
-    DialogText: Boundless Starfish
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    DialogText: You have decided to take the red pill... a wise choice.
+    TextPanelWidthPct: 0.8
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundColor: {r: 1, g: 0, b: 0, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     ExternalFunctionName: 
   ChildNodes:
-  - ChoiceText: '[ Node 0033 ]'
-    ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 560, y: 33}
---- !u!114 &5509126108157792950
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: 7901450371319666272}
+    ChildConnectionPoint: {x: 457, y: 186.5}
+--- !u!114 &7901450371319666272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,86 +173,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0006 ]'
+  m_Name: '[ Node 0010 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 526
-    y: 452.5
+    x: 630
+    y: 202.5
     width: 210
     height: 245
-  IsDragging: 1
+  IsDragging: 0
   IsSelected: 0
   _nodeData:
-    DialogText: Artistic Bat
+    DialogText: Hilarious Frog
     TextPanelWidthPct: 0.8
     ButtonsPanelWidthPct: 0.8
     PanelRatio: 0.5
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    ExternalFunctionName: 
-  ChildNodes: []
---- !u!114 &5700371260731568415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0004 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 727
-    y: -167
-    width: 210
-    height: 245
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Determined Snake
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
-    BackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-    BackgroundImage: {fileID: 0}
-    ExternalFunctionName: 
-  ChildNodes: []
---- !u!114 &9106453387029568313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0033 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 614
-    y: 137
-    width: 210
-    height: 245
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Level-headed Squid
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     ExternalFunctionName: 
   ChildNodes: []

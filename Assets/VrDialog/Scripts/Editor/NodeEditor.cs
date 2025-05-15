@@ -83,19 +83,9 @@ namespace cherrydev
             return result;
         }
 
-
-        /// <summary>
-        /// Define nodes and label style parameters on enable
-        /// </summary>
-        private void OnEnable()
+        private void Awake()
         {
-            Debug.Log("NodeEditor:OnEnable()...");
-
-            _nodeEditor = this;
-
-            Selection.selectionChanged += ChangeEditorWindowOnSelection;
-
-            //InitializeToolbarStyles();
+            InitializeToolbarStyles();
 
             _nodeStyle = new GUIStyle();
             _nodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.Node) as Texture2D;
@@ -130,6 +120,20 @@ namespace cherrydev
             _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
 
 
+        }
+
+        /// <summary>
+        /// Define nodes and label style parameters on enable
+        /// </summary>
+        private void OnEnable()
+        {
+            Debug.Log("NodeEditor:OnEnable()...");
+
+            _nodeEditor = this;
+
+            Selection.selectionChanged += ChangeEditorWindowOnSelection;
+
+            
         }
 
 
@@ -218,7 +222,7 @@ namespace cherrydev
              * to avoid repeated initializations.
             */
             //if (!toolbarStylesInitialized) { InitializeToolbarStyles(); }
-            InitializeToolbarStyles();
+            //InitializeToolbarStyles();
 
             EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), _backgroundColor);
             DrawToolbar();
@@ -295,7 +299,8 @@ namespace cherrydev
             _searchFieldStyle.margin = new RectOffset(2, 2, 2, 2);
             _searchFieldStyle.padding = new RectOffset(6, 6, 2, 2);
 
-            toolbarStylesInitialized = true;
+            //toolbarStylesInitialized = true;
+
         }
 
         /// <summary>

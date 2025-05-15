@@ -12,7 +12,7 @@ namespace cherrydev
         [SerializeField] RectTransform buttonsPanel;
         //[SerializeField] private TextMeshProUGUI _dialogNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;
-        [SerializeField] private Sprite _dialogBackgroundImage;
+        //[SerializeField] private Sprite _dialogBackgroundImage;
         //[SerializeField] private TextMeshProUGUI _dialogButtonText;
 
 
@@ -39,28 +39,6 @@ namespace cherrydev
         /// </summary>
         public void IncreaseMaxVisibleCharacters() => _dialogText.maxVisibleCharacters++;
 
-        /// <summary>
-        /// Assigning dialog name text, character image sprite and dialog text
-        /// </summary>
-        /*
-        public void Setup(string characterName, string text, Sprite sprite, string buttonText)
-        {
-            _dialogNameText.text = characterName;
-            _dialogText.text = text;
-            _dialogButtonText.text = buttonText;
-
-            if (sprite == null)
-            {
-                _dialogBackgroundImage.color = new Color(_dialogBackgroundImage.color.r,
-                    _dialogBackgroundImage.color.g, _dialogBackgroundImage.color.b, 0);
-                return;
-            }
-
-            _dialogBackgroundImage.color = new Color(_dialogBackgroundImage.color.r,
-                _dialogBackgroundImage.color.g, _dialogBackgroundImage.color.b, 255);
-            _dialogBackgroundImage.sprite = sprite;
-        }
-        */
 
         //============================================================
 
@@ -78,14 +56,6 @@ namespace cherrydev
         /// setup the panel ratios
         /// </summary>
         /// <param name="dialogNode"></param>
-        /*
-         RectTransform textPanel;
-         RectTransform buttonsPanel;
-         TextMeshProUGUI _dialogText;
-         Image _dialogBackgroundImage;
-         Button _buttonPrefab;
-         GridLayoutGroup _buttonsGridLayoutGroup;
-        */
         public void SetupPanel(DialogNode dialogNode)
         {
             Debug.Log("SetupPanel()");
@@ -108,11 +78,11 @@ namespace cherrydev
             //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
             //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
+            //Set the background color
+            GetComponent<Image>().color = dialogNode.nodeData.BackgroundColor;
+
             //Set the background image
-            if (_dialogBackgroundImage != null)
-            {
-                GetComponent<Image>().sprite = _dialogBackgroundImage;
-            }
+            GetComponent<Image>().sprite = dialogNode.nodeData.BackgroundImage;
 
             //Setup the buttons
             SetUpButtons(dialogNode);
@@ -171,14 +141,6 @@ namespace cherrydev
         /// <returns></returns>
         public TextMeshProUGUI GetButtonTextByIndex(int index) => _buttonTexts[index];
 
-        /*
-        /// <summary>
-        /// Setting UnityAction to button onClick event by index 
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="action"></param>
-        public void AddButtonOnClickListener(int index, UnityAction action) => _buttons[index].onClick.AddListener(action);
-        */
 
         /// <summary>
         /// Removes all existing buttons, used before setup

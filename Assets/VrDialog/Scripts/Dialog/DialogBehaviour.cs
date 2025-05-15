@@ -157,49 +157,14 @@ namespace cherrydev
             DialogNode dialogNode = (DialogNode)currentNode;
             CurrentDialogNode = dialogNode;
         
-            //int numberOfConnectedChildNodes = 0;
-
             DialogNodeActivated?.Invoke();
-
-            /*
-            for (int i = 0; i < dialogNode.ChildNodes.Count; i++)
-            {
-                if (dialogNode.ChildNodes[i].ChildNode)
-                {
-                    DialogNodeSetUp?.Invoke(i, dialogNode.ChildNodes[i].ChoiceText);
-                    AnswerButtonSetUp?.Invoke(i, dialogNode);
-
-                    numberOfConnectedChildNodes++;
-                }
-                else
-                    break;
-            }
-
-            //if there are no child nodes, we are at the end of the dialog chain
-            if (numberOfConnectedChildNodes == 0)
-            {
-                _isDialogStarted = false;
-
-                _onDialogFinished?.Invoke();
-                return;
-            }
-            */
             DialogNodeSetUp?.Invoke(dialogNode);
-
-            //enable only connected buttons
-            //DialogNodeActivatedWithParameter?.Invoke(dialogNode);
-
-
-
-            string localizedText = dialogNode.nodeData.DialogText;
-
-           // SentenceNodeActivatedWithParameter?.Invoke(localizedCharName, localizedText,
-           //     sentenceNode.GetCharacterSprite(), sentenceNode.GetButtonText());
 
             if (dialogNode.nodeData.ExternalFunctionName != "")
                 ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionName);
 
-            WriteDialogText(localizedText);
+            string dialogText = dialogNode.nodeData.DialogText;
+            WriteDialogText(dialogText);
         }
 
         /// <summary>
