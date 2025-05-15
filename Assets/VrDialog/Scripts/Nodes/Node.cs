@@ -14,7 +14,7 @@ namespace cherrydev
         [HideInInspector] public bool IsSelected;
 
         private int _NodeID = -1;
-        public int NodeID => _NodeID;
+        public int NodeID {get { return _NodeID; } }
 
         //protected float StandardHeight;
 

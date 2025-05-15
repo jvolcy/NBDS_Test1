@@ -12,7 +12,7 @@ namespace cherrydev
         [SerializeField] RectTransform buttonsPanel;
         //[SerializeField] private TextMeshProUGUI _dialogNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;
-        [SerializeField] private Image _dialogBackgroundImage;
+        [SerializeField] private Sprite _dialogBackgroundImage;
         //[SerializeField] private TextMeshProUGUI _dialogButtonText;
 
 
@@ -93,20 +93,29 @@ namespace cherrydev
             Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
             Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
-            //Set text panel width and height
+            //Set text panel width and height (based on the panel ratio)
             float panelRatio = dialogNode.nodeData.PanelRatio;
             textPanel.sizeDelta = new Vector2(dialogNode.nodeData.TextPanelWidthPct - 1.0f, panelRatio - 1.0f);
             //Debug.Log(dialogNode.name + " size= " + textPanel.sizeDelta);
 
-            //JV: Scale the grid layout group
+            //Scale the button panel (depends on the panel ratio)
             float buttonPanelWidthPct = dialogNode.nodeData.ButtonsPanelWidthPct;
             int numButtons = dialogNode.ChildNodes.Count;
 
+            //Scale the button grid layout (depends on the panel ratio)
             buttonsPanel.sizeDelta = new Vector2(dialogNode.nodeData.ButtonsPanelWidthPct - 1.0f, dialogNode.nodeData.PanelRatio);
             _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct, (1f - panelRatio) / (numButtons + 0.5f));
-            //_buttonsGridLayoutGroup.cellSize = new Vector2(0, 1f / (numButtons + 1));
-            Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
-            Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
+            //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
+            //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
+
+            //Set the background image
+            if (_dialogBackgroundImage != null)
+            {
+                GetComponent<Image>().sprite = _dialogBackgroundImage;
+            }
+
+            //Setup the buttons
+            SetUpButtons(dialogNode);
 
         }
 
@@ -115,28 +124,32 @@ namespace cherrydev
         /// </summary>
         /// <returns>The number of buttons</returns>
         public int GetButtonCount() => _buttons.Count;
-        
+
+
         /// <summary>
         /// Instantiate the specified number of buttons.
         /// Stores the reference to each button in the _buttons list.
         /// Stores the TMP text for each button in the _buttonTexts list.
         /// </summary>
         /// <param name="numButtons"></param>
-        public void SetUpButtons(int numButtons)
+        void SetUpButtons(DialogNode dialogNode)
         {
             DeleteAllExistingButtons();
 
-
+            int numButtons = dialogNode.ChildNodes.Count;
 
             for (int i = 0; i < numButtons; i++)
             {
-                Button coiceButton = Instantiate(_buttonPrefab, _buttonsGridLayoutGroup.transform);
+                Button choiceButton = Instantiate(_buttonPrefab, _buttonsGridLayoutGroup.transform);
 
-                _buttons.Add(coiceButton);
-                _buttonTexts.Add(coiceButton.GetComponentInChildren<TextMeshProUGUI>());
+                var buttonTxt = choiceButton.GetComponentInChildren<TMP_Text>();
+                buttonTxt.text = dialogNode.ChildNodes[i].ChoiceText;
+
+                _buttons.Add(choiceButton);
+                _buttonTexts.Add(choiceButton.GetComponentInChildren<TextMeshProUGUI>());
+
             }
 
-            Debug.Log("SetupButtons() created " + numButtons + " buttons.");
         }
 
         /// <summary>
@@ -144,7 +157,12 @@ namespace cherrydev
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public Button GetButtonByIndex(int index) => _buttons[index];
+        public Button GetButtonByIndex(int index)
+        {
+            //Debug.Log("_buttons.Count = " + _buttons.Count);
+            //Debug.Log("index = " + index);
+            return _buttons[index];
+        }
 
         /// <summary>
         /// Returning button text bu index
@@ -153,42 +171,14 @@ namespace cherrydev
         /// <returns></returns>
         public TextMeshProUGUI GetButtonTextByIndex(int index) => _buttonTexts[index];
 
+        /*
         /// <summary>
         /// Setting UnityAction to button onClick event by index 
         /// </summary>
         /// <param name="index"></param>
         /// <param name="action"></param>
         public void AddButtonOnClickListener(int index, UnityAction action) => _buttons[index].onClick.AddListener(action);
-
-        // ReSharper disable Unity.PerformanceAnalysis
-        /// <summary>
-        /// Enable certain amount of buttons
-        /// </summary>
-        /// <param name="amount"></param>
-        /*
-        public void EnableCertainAmountOfButtons(int amount)
-        {
-            if (_buttons.Count == 0)
-            {
-                Debug.LogWarning("Please assign button list!");
-                return;
-            }
-
-            for (int i = 0; i < amount; i++)
-                _buttons[i].gameObject.SetActive(true);
-
-            //JV: Scale the grid layout group
-            _parentGridLayoutGroup.cellSize = new Vector2(0.8f, 1f / (amount + 1));
-        }
         */
-        /// <summary>
-        /// Disable all buttons
-        /// </summary>
-        public void DisableAllButtons()
-        {
-            foreach (Button button in _buttons)
-                button.gameObject.SetActive(false);
-        }
 
         /// <summary>
         /// Removes all existing buttons, used before setup
@@ -204,5 +194,7 @@ namespace cherrydev
                 _buttonTexts.Clear();
             }
         }
+
+
     }
 }

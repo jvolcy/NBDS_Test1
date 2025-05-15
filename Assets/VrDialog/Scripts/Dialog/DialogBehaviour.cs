@@ -21,7 +21,7 @@ namespace cherrydev
         bool _GoToNextNode = false;   //JV
 
         //private DialogNodeGraph _currentNodeGraph;
-        private Node _currentNode;
+        private Node _firstNode;
         
         public DialogNode CurrentDialogNode { get; private set; }
 
@@ -41,6 +41,7 @@ namespace cherrydev
         //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action DialogNodeActivated;
+        public event Action DialogNodeDeActivated;
         //public event Action<int, DialogNode> AnswerButtonSetUp;
         //public event Action<int> MaxNumberOfChoiceButtonsCalculated;
         public event Action<DialogNode> DialogNodeActivatedWithParameter;
@@ -103,7 +104,7 @@ namespace cherrydev
             //_currentNodeGraph = dialogNodeGraph;
 
             FindFirstNode(dialogNodeGraph);
-            HandleDialogGraphCurrentNode(_currentNode);
+            HandleDialogGraphCurrentNode(_firstNode);
         }
 
         public void GoToNextNode()
@@ -127,28 +128,33 @@ namespace cherrydev
         public void AddListenerToDialogFinishedEvent(UnityAction action) => 
             _onDialogFinished.AddListener(action);
 
+        /*
         /// <summary>
         /// Setting currentNode field to Node and call HandleDialogGraphCurrentNode method
         /// </summary>
         /// <param name="node"></param>
         public void SetCurrentNodeAndHandleDialogGraph(Node node)
         {
-            _currentNode = node;
-            HandleDialogGraphCurrentNode(this._currentNode);
+            Debug.Log("SetCurrentNodeAndHandleDialogGraph()");
+            HandleDialogGraphCurrentNode(node);
         }
+        */
 
         /// <summary>
         /// Processing dialog current node
         /// </summary>
         /// <param name="currentNode"></param>
-        private void HandleDialogGraphCurrentNode(Node currentNode)
+        public void HandleDialogGraphCurrentNode(Node currentNode)
         {
+            DialogNode dialogNode = currentNode as DialogNode;
+            Debug.Log("HandleDialogGraphCurrentNode() on node " + dialogNode.name);
+
             StopAllCoroutines();
 
             //if (currentNode.GetType() == typeof(SentenceNode))
             //    HandleSentenceNode(currentNode);
             //else if (currentNode.GetType() == typeof(DialogNode))
-                HandleDialogNode(currentNode);
+            HandleDialogNode(currentNode);
         }
 
 
@@ -199,7 +205,7 @@ namespace cherrydev
         /// <param name="dialogNodeGraph"></param>
         private void FindFirstNode(DialogNodeGraph dialogNodeGraph)
         {
-            _currentNode = null;
+            _firstNode = null;
 
             DialogNode dn;
 
@@ -212,8 +218,8 @@ namespace cherrydev
                 {
                     if (dn.IsStartNode())
                     {
-                        _currentNode = dn.ChildNodes[0].ChildNode;
-                        Debug.Log("Start node is " + ((DialogNode)_currentNode).name);
+                        _firstNode = dn.ChildNodes[0].ChildNode;
+                        Debug.Log("Start node is " + ((DialogNode)_firstNode).name);
                         return;
                     }
                 }

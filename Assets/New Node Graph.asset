@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -199
-    y: 296
+    x: 34
+    y: 279
     width: 210
     height: 285
   IsDragging: 1
@@ -32,10 +32,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: 11, y: 485}
+    ChildConnectionPoint: {x: 244, y: 468}
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 11, y: 505}
+    ChildConnectionPoint: {x: 244, y: 488}
   _externalFunctionName: 
 --- !u!114 &-3329921977266889580
 MonoBehaviour:
@@ -53,8 +53,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -140
-    y: 131
+    x: 93
+    y: 114
     width: 120
     height: 60
   IsDragging: 1
@@ -69,38 +69,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0032 ]'
     ChildNode: {fileID: 3412699400575133726}
-    ChildConnectionPoint: {x: -80, y: 161}
-  _externalFunctionName: 
---- !u!114 &-999675725860706590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0037 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 709
-    y: 314
-    width: 210
-    height: 245
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Broad-minded Hen
-    TextPanelWidthPct: 0.8
-    ButtonImage: {fileID: 0}
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
-    BackgroundImage: {fileID: 0}
-  ChildNodes: []
+    ChildConnectionPoint: {x: 153, y: 144}
   _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
@@ -119,8 +88,6 @@ MonoBehaviour:
   - {fileID: 3412699400575133726}
   - {fileID: -3329921977266889580}
   - {fileID: 9106453387029568313}
-  - {fileID: 3625415566764155479}
-  - {fileID: -999675725860706590}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -142,8 +109,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 129
-    y: 26
+    x: 362
+    y: 9
     width: 210
     height: 265
   IsDragging: 1
@@ -158,38 +125,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0033 ]'
     ChildNode: {fileID: 9106453387029568313}
-    ChildConnectionPoint: {x: 339, y: 215}
-  _externalFunctionName: 
---- !u!114 &3625415566764155479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0034 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 545
-    y: 27
-    width: 210
-    height: 245
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    DialogText: Independent Crocodile
-    TextPanelWidthPct: 0.8
-    ButtonImage: {fileID: 0}
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
-    BackgroundImage: {fileID: 0}
-  ChildNodes: []
+    ChildConnectionPoint: {x: 572, y: 198}
   _externalFunctionName: 
 --- !u!114 &9106453387029568313
 MonoBehaviour:
@@ -207,8 +143,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 393
-    y: 319
+    x: 626
+    y: 302
     width: 210
     height: 245
   IsDragging: 1

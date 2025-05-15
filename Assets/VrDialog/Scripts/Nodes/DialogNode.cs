@@ -223,26 +223,32 @@ namespace cherrydev
         private void DrawChoiceLine(int choiceNumber, string iconPathOrName)
         {
             GUIContent iconContent = EditorGUIUtility.IconContent(iconPathOrName);
-            Texture2D fallbackTexture = Resources.Load<Texture2D>("Dot");
+            //Texture2D fallbackTexture = Resources.Load<Texture2D>("Dot");
 
             //Debug.Log("DrawChoiceLine -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
+            ChildNodeStruct cns = ChildNodes[choiceNumber];
 
             Rect rect = EditorGUILayout.BeginHorizontal();
             //Debug.Log("->" + this.Rect.center.x +"  "+ rect.center.x + "  "+ this.Rect.center.y + "  " + rect.center.y);
             if (rect.center != Vector2.zero && ChildNodes.Count > choiceNumber)
             {
-                ChildNodeStruct cns = ChildNodes[choiceNumber];
                 cns.ChildConnectionPoint = new Vector2(this.Rect.center.x + rect.center.x, this.Rect.y + rect.center.y);
-                ChildNodes[choiceNumber] = cns;
 
                 //ChildConnectionPoint.Add(new Vector2(this.Rect.center.x + rect.center.x, this.Rect.center.y + rect.center.y));
                 //ChildConnectionPoint.Add(rect.center);
             }
             EditorGUILayout.LabelField($"{choiceNumber+1}. ", GUILayout.Width(ChoiceLabelFieldSpace));
 
-            EditorGUILayout.TextField(ChildNodes[choiceNumber].ChoiceText,
+           cns.ChoiceText = EditorGUILayout.TextField(cns.ChoiceText,
                 GUILayout.Width(ChoiceTextFieldWidth));
 
+            ChildNodes[choiceNumber] = cns;
+
+
+            //draw the red dot after the choice line.  (Is this needed?)
+            EditorGUILayout.LabelField(iconContent, GUILayout.Width(ChoiceLabelFieldSpace));
+
+            /*
             if (fallbackTexture == null)
             {
                 //Debug.Log("fallbackTexture == null");
@@ -252,6 +258,7 @@ namespace cherrydev
             {
                 GUILayout.Label(fallbackTexture, GUILayout.Width(ChoiceLabelFieldSpace), GUILayout.Height(ChoiceLabelFieldSpace));
             }
+            */
 
             EditorGUILayout.EndHorizontal();
         }
@@ -313,7 +320,7 @@ namespace cherrydev
             //[3] connect the node
             ChildNodeStruct cns = ChildNodes[availableNodeIndex];
             cns.ChildNode = node;
-            //cns.ChoiceText = node.nodeData.DialogText;
+            cns.ChoiceText = node.nodeData.DialogText;
             cns.ChoiceText = "Choice " + (availableNodeIndex+1);
             ChildNodes[availableNodeIndex] = cns;
         }

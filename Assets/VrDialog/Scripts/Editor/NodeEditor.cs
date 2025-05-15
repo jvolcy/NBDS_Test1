@@ -217,7 +217,8 @@ namespace cherrydev
              * here in OnGUI().  The toolbarStylesInitialized bool is used
              * to avoid repeated initializations.
             */
-            if (!toolbarStylesInitialized) { InitializeToolbarStyles(); }
+            //if (!toolbarStylesInitialized) { InitializeToolbarStyles(); }
+            InitializeToolbarStyles();
 
             EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), _backgroundColor);
             DrawToolbar();
@@ -257,7 +258,7 @@ namespace cherrydev
         /// </summary>
         private void InitializeToolbarStyles()
         {
-            Debug.Log("InitializeToolbarStyles()...");
+            //Debug.Log("InitializeToolbarStyles()...");
             _toolbarButtonStyle = new GUIStyle(EditorStyles.toolbarButton);
             _toolbarButtonStyle.normal.textColor = Color.white;
             _toolbarButtonStyle.fontSize = 11;
@@ -511,12 +512,12 @@ namespace cherrydev
                     if (childNode)
                     {
                         DrawBezierConnector(parentNode, childNode, i);
-                        cns.ChoiceText = childNode.name;
+                        //cns.ChoiceText = childNode.name;
                     }
                     else
                     {
                         //if no child is connected, set the field to an empty string
-                        cns.ChoiceText = "";
+                        //cns.ChoiceText = "";
                     }
                     parentNode.ChildNodes[i] = cns;
 

@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 124
-    y: 16
+    x: 287
+    y: -48
     width: 210
     height: 285
   IsDragging: 1
@@ -32,10 +32,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 334, y: 205}
+    ChildConnectionPoint: {x: 497, y: 141}
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 334, y: 225}
+    ChildConnectionPoint: {x: 497, y: 161}
   _externalFunctionName: 
 --- !u!114 &-6120714395014319906
 MonoBehaviour:
@@ -53,12 +53,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 337
-    y: 312
+    x: 500
+    y: 248
     width: 210
     height: 285
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _nodeData:
     DialogText: Outgoing Kangaroo
     TextPanelWidthPct: 0
@@ -69,10 +69,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 547, y: 501}
+    ChildConnectionPoint: {x: 710, y: 437}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 547, y: 521}
+    ChildConnectionPoint: {x: 710, y: 457}
   _externalFunctionName: 
 --- !u!114 &-3288720057894055028
 MonoBehaviour:
@@ -90,8 +90,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 606
-    y: 97
+    x: 769
+    y: 33
     width: 210
     height: 305
   IsDragging: 1
@@ -106,13 +106,13 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 816, y: 286}
+    ChildConnectionPoint: {x: 979, y: 222}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 816, y: 306}
+    ChildConnectionPoint: {x: 979, y: 242}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 816, y: 326}
+    ChildConnectionPoint: {x: 979, y: 262}
   _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
@@ -152,8 +152,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -82
-    y: 112
+    x: 81
+    y: 48
     width: 120
     height: 60
   IsDragging: 1
@@ -168,5 +168,5 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0028 ]'
     ChildNode: {fileID: -8388965635032525230}
-    ChildConnectionPoint: {x: -22, y: 142}
+    ChildConnectionPoint: {x: 141, y: 78}
   _externalFunctionName: 

@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace cherrydev
 {
@@ -27,7 +29,7 @@ namespace cherrydev
             _dialogBehaviour.SentenceNodeActivatedWithParameter += _dialogSentencePanel.Setup;*/
 
             _dialogBehaviour.DialogNodeActivated += EnableDialogPanel;
-            _dialogBehaviour.DialogNodeActivated += DisableDialogPanel;
+            _dialogBehaviour.DialogNodeDeActivated += DisableDialogPanel;
 
             //_dialogBehaviour.DialogNodeActivatedWithParameter += _dialogPanel.EnableCertainAmountOfButtons;
             //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
@@ -52,7 +54,7 @@ namespace cherrydev
             */
 
             _dialogBehaviour.DialogNodeActivated -= EnableDialogPanel;
-            _dialogBehaviour.DialogNodeActivated -= DisableDialogPanel;
+            _dialogBehaviour.DialogNodeDeActivated -= DisableDialogPanel;
 
             //_dialogBehaviour.DialogNodeActivatedWithParameter -= _dialogPanel.EnableCertainAmountOfButtons;
             //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
@@ -100,18 +102,135 @@ namespace cherrydev
 
             gameObject.SetActive(isActive);
         }
-        
+
+        /*
         /// <summary>
         /// Removing all listeners and Setting up answer button onClick event
         /// </summary>
         /// <param name="index"></param>
-        /// <param name="answerNode"></param>
-        public void SetUpAnswerButtonsClickEvent(int index, DialogNode answerNode)
+        /// <param name="dialogNode"></param>
+        void xSetUpButtonsClickEvent(DialogNode dialogNode)
         {
-            _dialogPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
-            _dialogPanel.AddButtonOnClickListener(index, 
-                () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(answerNode.ChildNodes[index].ChildNode));
+            //***WARNING*** This might fail if the child node is not connected.
+
+            Debug.Log("SetUpButtonsClickEvent()...");
+            /x*
+            for (int index = 0; index < dialogNode.ChildNodes.Count; index++)
+            {
+                _dialogPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
+                //                _dialogPanel.AddButtonOnClickListener(index,
+                //                    () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(dialogNode.ChildNodes[index].ChildNode));
+                _dialogPanel.AddButtonOnClickListener(index, ButtonClicked);
+
+                void xButtonClicked(int x)
+                {
+                    Debug.Log("ButtonClicked().  Index is " + index);
+                    _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(dialogNode.ChildNodes[index].ChildNode);
+                }
+
+
+                
+
+
+                //() => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(dialogNode.ChildNodes[index].ChildNode));
+            }
+            *x/
+
+            void someFunc(int i, Button button)
+            {
+                button.onClick.AddListener(delegate { ButtonClicked(i); });
+            }
+
+            for (int index = 0; index < dialogNode.ChildNodes.Count; index++)
+            {
+
+                var button = _dialogPanel.GetButtonByIndex(index);
+                button.onClick.RemoveAllListeners();
+                Debug.Log("Setting OnClick event for button " + index);
+                someFunc(index, button);
+                //button.onClick.AddListener(delegate { ButtonClicked(index); });
+
+            }
+
+            void ButtonClicked(int index)
+            {
+                Debug.Log("Button " + index + " clicked.");
+
+            }
+
         }
+        */
+
+
+
+
+
+        /*void SetUpButtonsClickEvent(int index, DialogNode dialogNode)
+        {
+            Debug.Log("SetUpButtonsClickEvent()...");
+
+            _dialogPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
+            _dialogPanel.AddButtonOnClickListener(index,
+                () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(dialogNode.ChildNodes[index].ChildNode));
+        }*/
+
+
+
+        /// <summary>
+        /// Removing all listeners and Setting up answer button onClick event
+        /// </summary>
+        /// <param name="dialogNode"></param>
+        public void SetUpButtonsClickEvent(DialogNode dialogNode)
+        {
+            //***WARNING*** This might fail if the child node is not connected.
+
+            Debug.Log("SetUpButtonsClickEvent()...");
+            /*
+            for (int index = 0; index < dialogNode.ChildNodes.Count; index++)
+            {
+                _dialogPanel.GetButtonByIndex(index).onClick.RemoveAllListeners();
+                //                _dialogPanel.AddButtonOnClickListener(index,
+                //                    () => _dialogBehaviour.SetCurrentNodeAndHandleDialogGraph(dialogNode.ChildNodes[index].ChildNode));
+
+            }
+            */
+
+            //local function to add a listerner.  When implemneted as a lambda function
+            //the index value does not behave properly.  For now, keep _addListener
+            //as a separate local function.
+            void _addListener(Node i, Button button)
+            {
+                //create a delegate so that we can pass a value from the OnClick
+                //event to our handler.
+                button.onClick.AddListener(delegate { _dialogBehaviour.HandleDialogGraphCurrentNode(i); });
+            }
+
+            //each button will call the same function, passing to it and integer
+            //equal to its index in the _buttons List (which should be the
+            //same as the index from the ChildNodes list.
+            for (int index = 0; index < dialogNode.ChildNodes.Count; index++)
+            {
+                var button = _dialogPanel.GetButtonByIndex(index);
+                button.onClick.RemoveAllListeners();
+
+                _addListener(dialogNode.ChildNodes[index].ChildNode, button);
+            }
+
+
+
+        }
+        /*
+        /// <summary>
+        /// Handler for our button OnClick event.  The index parameter is the
+        /// button's index in the ChildNodes list.
+        /// </summary>
+        /// <param name="index"></param>
+        void ButtonClickedHandler(int index)
+        {
+            Debug.Log("Button " + index + " clicked.");
+            _dialogBehaviour.HandleDialogGraphCurrentNode()
+        }
+        */
 
         /// <summary>
         /// Setting up answer dialog panel
@@ -120,16 +239,11 @@ namespace cherrydev
         /// <param name="answerText"></param>
         public void SetUpDialogPanel(DialogNode dialogNode)
         {
-            //setup the text panel (width, height, etc.)
-            //setup the button panel (width, height, etc.)
-            //setup the background image
-            //setup the panel ratios
-
+            //setup the text panel and buttons dimensions, background image, etc.
             _dialogPanel.SetupPanel(dialogNode);
 
-            //setup the buttons
-            _dialogPanel.SetUpButtons(dialogNode.ChildNodes.Count);
-
+            //setup button events
+            SetUpButtonsClickEvent(dialogNode);
         }
 
         /*

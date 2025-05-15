@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 580
-    y: 49
+    x: 407
+    y: -25.5
     width: 210
-    height: 265
+    height: 285
   IsDragging: 1
   IsSelected: 0
   _nodeData:
@@ -32,9 +32,12 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0025 ]'
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 790, y: 238}
+    ChildConnectionPoint: {x: 617, y: 163.5}
+  - ChoiceText: Choice 2
+    ChildNode: {fileID: -3314409622238939529}
+    ChildConnectionPoint: {x: 617, y: 183.5}
   _externalFunctionName: 
---- !u!114 &-3717759914573811758
+--- !u!114 &-3314409622238939529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,26 +47,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0030 ]'
+  m_Name: '[ Node 0002 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 871
-    y: 132
+    x: 728
+    y: -18.5
     width: 210
-    height: 245
+    height: 265
   IsDragging: 1
   IsSelected: 0
   _nodeData:
-    DialogText: Funny Chicken
-    TextPanelWidthPct: 0
+    DialogText: Polite Lobster
+    TextPanelWidthPct: 0.8
     ButtonImage: {fileID: 0}
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
     BackgroundImage: {fileID: 0}
-  ChildNodes: []
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: 4569098969431068165}
+    ChildConnectionPoint: {x: 938, y: 170.5}
   _externalFunctionName: 
 --- !u!114 &11400000
 MonoBehaviour:
@@ -83,7 +89,8 @@ MonoBehaviour:
   - {fileID: -8122661852139518589}
   - {fileID: 1953008284269222610}
   - {fileID: 2385248913529891393}
-  - {fileID: -3717759914573811758}
+  - {fileID: 4569098969431068165}
+  - {fileID: -3314409622238939529}
   _localizationTableName: 
   _characterNamesLocalizationName: 
   NodeToDrawLineFrom: {fileID: 0}
@@ -105,29 +112,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 315
-    y: 43
+    x: 42
+    y: -35.5
     width: 210
     height: 305
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _nodeData:
     DialogText: Exuberant Caterpillar
     TextPanelWidthPct: 0.86
     ButtonImage: {fileID: 0}
     ButtonsPanelWidthPct: 0.78
-    PanelRatio: 0.7
+    PanelRatio: 0.6
     BackgroundImage: {fileID: 0}
   ChildNodes:
-  - ChoiceText: '[ Node 0019 ]'
+  - ChoiceText: This is one choice
     ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: 525, y: 232}
-  - ChoiceText: '[ Node 0021 ]'
+    ChildConnectionPoint: {x: 252, y: 153.5}
+  - ChoiceText: This is another
     ChildNode: {fileID: 1953008284269222610}
-    ChildConnectionPoint: {x: 525, y: 252}
-  - ChoiceText: '[ Node 0025 ]'
+    ChildConnectionPoint: {x: 252, y: 173.5}
+  - ChoiceText: Choice 3
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 525, y: 272}
+    ChildConnectionPoint: {x: 252, y: 193.5}
   _externalFunctionName: 
 --- !u!114 &1953008284269222610
 MonoBehaviour:
@@ -145,8 +152,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 369
-    y: 415
+    x: 177
+    y: 358.5
     width: 210
     height: 245
   IsDragging: 1
@@ -176,8 +183,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 729
-    y: 426
+    x: 537
+    y: 370.5
     width: 210
     height: 245
   IsDragging: 1
@@ -190,6 +197,40 @@ MonoBehaviour:
     PanelRatio: 0
     BackgroundImage: {fileID: 0}
   ChildNodes: []
+  _externalFunctionName: 
+--- !u!114 &4569098969431068165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0001 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 983
+    y: 183.5
+    width: 210
+    height: 265
+  IsDragging: 1
+  IsSelected: 0
+  _nodeData:
+    DialogText: Kind Yucca Moth
+    TextPanelWidthPct: 0.8
+    ButtonImage: {fileID: 0}
+    ButtonsPanelWidthPct: 0.8
+    PanelRatio: 0.5
+    BackgroundImage: {fileID: 0}
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: -3314409622238939529}
+    ChildConnectionPoint: {x: 1193, y: 372.5}
   _externalFunctionName: 
 --- !u!114 &7265242501439403181
 MonoBehaviour:
@@ -207,8 +248,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 44
-    y: 104
+    x: -148
+    y: 48.5
     width: 120
     height: 60
   IsDragging: 1
@@ -223,5 +264,5 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0018 ]'
     ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: 104, y: 134}
+    ChildConnectionPoint: {x: -88, y: 78.5}
   _externalFunctionName: 
