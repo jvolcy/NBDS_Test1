@@ -26,7 +26,7 @@ namespace cherrydev
         /// Gets the table name from the node graph asset name
         /// </summary>
         /// <returns>The table name for this node's graph</returns>
-        protected string GetTableNameFromNodeGraph() => NodeGraph.LocalizationTableName;
+        //protected string GetTableNameFromNodeGraph() => NodeGraph.LocalizationTableName;
         public void SetNodeID(int id) { _NodeID = id; }
         
 #if UNITY_EDITOR

@@ -29,8 +29,6 @@ namespace cherrydev
         private GUIStyle _labelStyle;
         private GUIStyle _startLabelStyle;
 
-        private bool toolbarStylesInitialized = false;
-
         private Rect _selectionRect;
         private Vector2 _mouseScrollClickPosition;
 
@@ -85,41 +83,7 @@ namespace cherrydev
 
         private void Awake()
         {
-            InitializeToolbarStyles();
-
-            _nodeStyle = new GUIStyle();
-            _nodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.Node) as Texture2D;
-            _nodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
-            _nodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
-
-            _selectedNodeStyle = new GUIStyle();
-            _selectedNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
-            _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
-            _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
-
-
-            _selectedStartNodeStyle = new GUIStyle();
-            _selectedStartNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
-            _selectedStartNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
-            _selectedStartNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
-
-
-            _labelStyle = new GUIStyle();
-            _labelStyle.alignment = TextAnchor.MiddleLeft;
-            _labelStyle.fontSize = LabelFontSize;
-            _labelStyle.normal.textColor = Color.white;
-            _labelStyle.clipping = TextClipping.Clip;
-            _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
-
-
-            _startLabelStyle = new GUIStyle();
-            _startLabelStyle.alignment = TextAnchor.MiddleCenter;
-            _startLabelStyle.fontSize = LabelFontSize;
-            _startLabelStyle.normal.textColor = Color.yellow;
-            _startLabelStyle.clipping = TextClipping.Clip;
-            _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
-
-
+            InitializeStyles();
         }
 
         /// <summary>
@@ -127,12 +91,10 @@ namespace cherrydev
         /// </summary>
         private void OnEnable()
         {
-            Debug.Log("NodeEditor:OnEnable()...");
+            //Debug.Log("NodeEditor:OnEnable()...");
 
             _nodeEditor = this;
-
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
-
             
         }
 
@@ -142,7 +104,7 @@ namespace cherrydev
         /// </summary>
         private void OnDisable()
         {
-            Debug.Log("NodeEditor:OnDisable()...");
+            //Debug.Log("NodeEditor:OnDisable()...");
 
             CleanUpUnusedAssets();
             Selection.selectionChanged -= ChangeEditorWindowOnSelection;
@@ -161,9 +123,9 @@ namespace cherrydev
         {
             Debug.Log("NodeEditor:OnDoubleClickAsset()...Loading " + EditorUtility.InstanceIDToObject(instanceID).name);
 
+
             //load the DialogNodeGraph scriptable object
             _currentNodeGraph = EditorUtility.InstanceIDToObject(instanceID) as DialogNodeGraph;
-
 
             if (_currentNodeGraph != null)
             {
@@ -260,7 +222,7 @@ namespace cherrydev
         /// <summary>
         /// Initializes toolbar styles
         /// </summary>
-        private void InitializeToolbarStyles()
+        private void InitializeStyles()
         {
             //Debug.Log("InitializeToolbarStyles()...");
             _toolbarButtonStyle = new GUIStyle(EditorStyles.toolbarButton);
@@ -299,7 +261,40 @@ namespace cherrydev
             _searchFieldStyle.margin = new RectOffset(2, 2, 2, 2);
             _searchFieldStyle.padding = new RectOffset(6, 6, 2, 2);
 
-            //toolbarStylesInitialized = true;
+            //-------------------------
+
+            _nodeStyle = new GUIStyle();
+            _nodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.Node) as Texture2D;
+            _nodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
+            _nodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
+
+            _selectedNodeStyle = new GUIStyle();
+            _selectedNodeStyle.normal.background = MakeTex(new Color32(0x18, 0x3c, 0x79, 0xff));
+            _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
+            _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
+
+
+            _selectedStartNodeStyle = new GUIStyle();
+            _selectedStartNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
+            _selectedStartNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
+            _selectedStartNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
+
+
+            _labelStyle = new GUIStyle();
+            _labelStyle.alignment = TextAnchor.MiddleLeft;
+            _labelStyle.fontSize = LabelFontSize;
+            _labelStyle.normal.textColor = Color.white;
+            _labelStyle.clipping = TextClipping.Clip;
+            _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
+
+
+            _startLabelStyle = new GUIStyle();
+            _startLabelStyle.alignment = TextAnchor.MiddleCenter;
+            _startLabelStyle.fontSize = LabelFontSize;
+            _startLabelStyle.normal.textColor = Color.yellow;
+            _startLabelStyle.clipping = TextClipping.Clip;
+            _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
+
 
         }
 
@@ -370,7 +365,7 @@ namespace cherrydev
 
             if (GUILayout.Button("Find My Nodes", _toolbarButtonStyle, GUILayout.Width(100)))
                 CenterWindowOnNodes();
-
+            /*
             if (GUILayout.Button("Edit Table Keys",
                     _showLocalizationKeys ? _activeToolbarButtonStyle : _toolbarButtonStyle, GUILayout.Width(100)))
             {
@@ -378,7 +373,7 @@ namespace cherrydev
                 DialogNodeGraph.ShowLocalizationKeys = _showLocalizationKeys;
                 GUI.changed = true;
             }
-
+            */
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }

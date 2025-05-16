@@ -19,5 +19,21 @@ namespace cherrydev
                 NodeEditor.OnDoubleClickAsset(nodeGraph.GetInstanceID(), -1);
             }
         }
+        /*
+        private void OnEnable()
+        {
+            Debug.Log("DialogNodeGraphEditor():OnEnable()");
+        }
+
+        private void Awake()
+        {
+            Debug.Log("DialogNodeGraphEditor():Awake()");
+        }
+
+        private void OnValidate()
+        {
+            Debug.Log("DialogNodeGraphEditor():OnValidate()");
+        }
+        */
     }
 }

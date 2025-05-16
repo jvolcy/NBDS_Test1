@@ -41,10 +41,10 @@ namespace cherrydev
         //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
         public event Action DialogNodeActivated;
-        public event Action DialogNodeDeActivated;
+//        public event Action DialogNodeDeActivated;
         //public event Action<int, DialogNode> AnswerButtonSetUp;
         //public event Action<int> MaxNumberOfChoiceButtonsCalculated;
-        public event Action<DialogNode> DialogNodeActivatedWithParameter;
+ //       public event Action<DialogNode> DialogNodeActivatedWithParameter;
         public event Action<DialogNode> DialogNodeSetUp;
         public event Action DialogTextCharWrote;
         public event Action<string> DialogTextSkipped;
@@ -160,8 +160,8 @@ namespace cherrydev
             DialogNodeActivated?.Invoke();
             DialogNodeSetUp?.Invoke(dialogNode);
 
-            if (dialogNode.nodeData.ExternalFunctionName != "")
-                ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionName);
+            if (dialogNode.nodeData.ExternalFunctionToken != "")
+                ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionToken);
 
             string dialogText = dialogNode.nodeData.DialogText;
             WriteDialogText(dialogText);

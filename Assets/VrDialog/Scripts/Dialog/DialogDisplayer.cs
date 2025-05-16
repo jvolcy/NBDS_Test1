@@ -29,7 +29,7 @@ namespace cherrydev
             _dialogBehaviour.SentenceNodeActivatedWithParameter += _dialogSentencePanel.Setup;*/
 
             _dialogBehaviour.DialogNodeActivated += EnableDialogPanel;
-            _dialogBehaviour.DialogNodeDeActivated += DisableDialogPanel;
+            //_dialogBehaviour.DialogNodeDeActivated += DisableDialogPanel;
 
             //_dialogBehaviour.DialogNodeActivatedWithParameter += _dialogPanel.EnableCertainAmountOfButtons;
             //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
@@ -54,7 +54,7 @@ namespace cherrydev
             */
 
             _dialogBehaviour.DialogNodeActivated -= EnableDialogPanel;
-            _dialogBehaviour.DialogNodeDeActivated -= DisableDialogPanel;
+            //_dialogBehaviour.DialogNodeDeActivated -= DisableDialogPanel;
 
             //_dialogBehaviour.DialogNodeActivatedWithParameter -= _dialogPanel.EnableCertainAmountOfButtons;
             //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;

@@ -10,11 +10,7 @@ namespace cherrydev
     {
         [SerializeField] RectTransform textPanel;
         [SerializeField] RectTransform buttonsPanel;
-        //[SerializeField] private TextMeshProUGUI _dialogNameText;
         [SerializeField] private TextMeshProUGUI _dialogText;
-        //[SerializeField] private Sprite _dialogBackgroundImage;
-        //[SerializeField] private TextMeshProUGUI _dialogButtonText;
-
 
         /// <summary>
         /// Setting dialogText max visible characters to zero
@@ -63,26 +59,33 @@ namespace cherrydev
             Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
             Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
-            //Set text panel width and height (based on the panel ratio)
-            float panelRatio = dialogNode.nodeData.PanelRatio;
-            textPanel.sizeDelta = new Vector2(dialogNode.nodeData.TextPanelWidthPct - 1.0f, panelRatio - 1.0f);
-            //Debug.Log(dialogNode.name + " size= " + textPanel.sizeDelta);
+            if (!dialogNode.nodeData.UseCurrentVals)
+            {
+                //Set text panel width and height (based on the panel ratio)
+                float panelRatio = dialogNode.nodeData.PanelRatio;
+                textPanel.sizeDelta = new Vector2(dialogNode.nodeData.TextPanelWidthPct - 1.0f, panelRatio - 1.0f);
+                //Debug.Log(dialogNode.name + " size= " + textPanel.sizeDelta);
 
-            //Scale the button panel (depends on the panel ratio)
-            float buttonPanelWidthPct = dialogNode.nodeData.ButtonsPanelWidthPct;
-            int numButtons = dialogNode.ChildNodes.Count;
+                //Scale the button panel (depends on the panel ratio)
+                float buttonPanelWidthPct = dialogNode.nodeData.ButtonsPanelWidthPct;
+                int numButtons = dialogNode.ChildNodes.Count;
 
-            //Scale the button grid layout (depends on the panel ratio)
-            buttonsPanel.sizeDelta = new Vector2(dialogNode.nodeData.ButtonsPanelWidthPct - 1.0f, dialogNode.nodeData.PanelRatio);
-            _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct, (1f - panelRatio) / (numButtons + 0.5f));
-            //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
-            //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
+                //Scale the button grid layout (depends on the panel ratio)
+                buttonsPanel.sizeDelta = new Vector2(dialogNode.nodeData.ButtonsPanelWidthPct - 1.0f, dialogNode.nodeData.PanelRatio);
+                _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct, (1f - panelRatio) / (numButtons + 0.5f));
+                //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
+                //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
-            //Set the background color
-            GetComponent<Image>().color = dialogNode.nodeData.BackgroundColor;
+                //Set the background color
+                GetComponent<Image>().color = dialogNode.nodeData.BackgroundColor;
 
-            //Set the background image
-            GetComponent<Image>().sprite = dialogNode.nodeData.BackgroundImage;
+                //Set the background image
+                GetComponent<Image>().sprite = dialogNode.nodeData.BackgroundImage;
+            }
+
+            //Setup the Dialog's main text
+            ResetDialogText();
+            _dialogText.text = dialogNode.nodeData.DialogText;
 
             //Setup the buttons
             SetUpButtons(dialogNode);

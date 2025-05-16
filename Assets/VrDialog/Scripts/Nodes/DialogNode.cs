@@ -41,7 +41,11 @@ namespace cherrydev
         private const float ChoiceTextFieldWidth = 130f;
 
         private const float DialogNodeWidth = 210f;
-        private const float DialogBaseNodeHeight = 245f;
+
+        //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
+        private const float DialogBaseNodeHeight = 165f;
+
+        private const float DialogNodeDataHeight = 100f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -69,7 +73,7 @@ namespace cherrydev
             //initialize the node data
             _nodeData = new NodeData(nodeName);
 
-            SetDialogNodeSize();
+            //SetDialogNodeSize();
         }
 
 
@@ -80,6 +84,8 @@ namespace cherrydev
         /// < param name="labelStyle"></param>
         public override void Draw(GUIStyle nodeStyle, GUIStyle labelStyle)
         {
+            SetDialogNodeSize();
+
             base.Draw(nodeStyle, labelStyle);
             GUILayout.BeginArea(Rect, nodeStyle);
 
@@ -112,7 +118,7 @@ namespace cherrydev
 
                 EditorGUILayout.LabelField(labelStr, labelStyle);
                 DrawNodeData();
-
+                DrawExternalFunctionTextField();
 
                 //now draw the choice buttons
                 for (int i = 0; i < ChildNodes.Count; i++)
@@ -138,8 +144,18 @@ namespace cherrydev
             tooltip = _nodeData.DialogText;
             EditorGUILayout.LabelField(new GUIContent($"Dialog Txt", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.DialogText = EditorGUILayout.TextField(_nodeData.DialogText, GUILayout.Width(TextFieldWidth));
-            EditorGUILayout.EndHorizontal();           
+            EditorGUILayout.EndHorizontal();
 
+            //draw dismiss btn checkbox
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "If checked, the values from the previous node will be used.";
+            const int ExtraSpace = 5;
+            EditorGUILayout.LabelField(new GUIContent($"Use Prv Vals ", tooltip), GUILayout.Width(LabelFieldSpace + ExtraSpace));
+            _nodeData.UseCurrentVals = EditorGUILayout.Toggle(_nodeData.UseCurrentVals, GUILayout.Width(TextFieldWidth - ExtraSpace));
+            EditorGUILayout.EndHorizontal();
+
+            if (_nodeData.UseCurrentVals) return;
+            
             //draw TextAreaWidthPct
             EditorGUILayout.BeginHorizontal();
             tooltip = "The horizontal fraction of the screen the main text will take up.  Range is 0.0 to 1.0.";
@@ -184,20 +200,28 @@ namespace cherrydev
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
-            //External Function
+        }
+
+        /// <summary>
+        /// Draw label and text fields for external function, 
+        /// depends on IsExternalFunc boolean field
+        /// </summary>
+        private void DrawExternalFunctionTextField()
+        {
             EditorGUILayout.BeginHorizontal();
-            tooltip = "The name of an external function to be called when the node is displayed.";
-            EditorGUILayout.LabelField($"Ext Func", GUILayout.Width(LabelFieldSpace));
-            _nodeData.ExternalFunctionName = EditorGUILayout.TextField(nodeData.ExternalFunctionName,
+            string tooltip = "A string token to be passed to callback functions.  Set to whatever value you wish.";
+            EditorGUILayout.LabelField(new GUIContent($"Token", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.ExternalFunctionToken = EditorGUILayout.TextField(nodeData.ExternalFunctionToken,
                 GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }
+
 
         /// <summary>
         /// Returning external function name
         /// </summary>
         /// <returns></returns>
-        public string GetExternalFunctionName() => nodeData.ExternalFunctionName;
+        public string GetExternalFunctionName() => nodeData.ExternalFunctionToken;
 
 
         /// <summary>
@@ -367,6 +391,7 @@ namespace cherrydev
             {
                 Rect.width = DialogNodeWidth;
                 Rect.height = DialogBaseNodeHeight;
+                Rect.height += _nodeData.UseCurrentVals ? 0 : DialogNodeDataHeight;
                 Rect.height += ChoiceNodeHeight * ChildNodes.Count;
             }
         }

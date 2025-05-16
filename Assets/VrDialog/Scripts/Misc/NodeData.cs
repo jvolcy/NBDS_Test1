@@ -7,60 +7,60 @@ namespace cherrydev
     {
         [TextArea(3, 10)]
         public string DialogText;
+        public bool UseCurrentVals;
         public float TextPanelWidthPct;
         //public float TextAreaHeightPct;
         //public float TextAreaYPos;
-        //public bool ShowButtons;
         //public Sprite ButtonImage;
         public float ButtonsPanelWidthPct;
         //public float ButtonAreaHeightPct;
         public float PanelRatio;
         public Color BackgroundColor;
         public Sprite BackgroundImage;
-        public string ExternalFunctionName;
+        public string ExternalFunctionToken;
 
         public NodeData(string dialogText)
         {
             DialogText = dialogText;
+            UseCurrentVals = false;
             TextPanelWidthPct = 0.8f;
             //ButtonImage = null;
             //TextAreaHeightPct = 0.7f;
             //TextAreaYPos = -0.1f;
-            //ShowButtons = true;
             ButtonsPanelWidthPct = 0.8f;
             //ButtonAreaHeightPct = 0.2f;
             PanelRatio = 0.5f;
             BackgroundColor = new Color32(29, 29, 29, 150);
             BackgroundImage = null;
-            ExternalFunctionName = "";
+            ExternalFunctionToken = "";
         }
 
         public NodeData(string dialogText,
+                            bool useCurrentVals,
                             float textPanelWidthPct,
                             Sprite buttonImage,
                             float buttonsPanelWidthPct,
                             //float textAreaHeightPct,
                             //float textAreaYPos,
-                            //bool showButtons,
                             //float buttonAreaHeightPct,
                             float panelRatio,
                             Color backgroundColor,
                             Sprite backgroundImage,
-                            string externalFunctionName
+                            string externalFunctionToken
                             )
         {
             DialogText = dialogText;
+            UseCurrentVals = useCurrentVals;
             //ButtonImage = buttonImage;
             TextPanelWidthPct = textPanelWidthPct;
             //TextAreaHeightPct = textAreaHeightPct;
             //TextAreaYPos = textAreaYPos;
-            //ShowButtons = showButtons;
             ButtonsPanelWidthPct = buttonsPanelWidthPct;
             //ButtonAreaHeightPct = buttonAreaHeightPct;
             PanelRatio = panelRatio;
             BackgroundColor = backgroundColor;
             BackgroundImage = backgroundImage;
-            ExternalFunctionName = externalFunctionName;
+            ExternalFunctionToken = externalFunctionToken;
         }
 
     }

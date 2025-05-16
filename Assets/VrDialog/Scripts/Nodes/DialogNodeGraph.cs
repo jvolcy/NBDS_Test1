@@ -16,30 +16,30 @@ namespace cherrydev
     {
         public List<Node> NodesList = new();
 
-        [Space(7f)]
-        [SerializeField] private string _localizationTableName;
-        [SerializeField] private string _characterNamesLocalizationName;
+        //[Space(7f)]
+        //[SerializeField] private string _localizationTableName;
+        //[SerializeField] private string _characterNamesLocalizationName;
         
         [HideInInspector] public Node NodeToDrawLineFrom;
         [HideInInspector] public Vector2 LinePosition = Vector2.zero;
         
-        public string LocalizationTableName => _localizationTableName;
-        public string CharacterNamesLocalizationName => _characterNamesLocalizationName;
+        //public string LocalizationTableName => _localizationTableName;
+        //public string CharacterNamesLocalizationName => _characterNamesLocalizationName;
 
-        [HideInInspector]
-        public bool IsLocalizationSetUp;
+        //[HideInInspector]
+        //public bool IsLocalizationSetUp;
         
 #if UNITY_EDITOR
         
-        public static bool ShowLocalizationKeys;
-
+        // public static bool ShowLocalizationKeys;
+        /*
         public void AddLocalizationTable(string name)
         {
             IsLocalizationSetUp = true;
             _localizationTableName = name;
             EditorUtility.SetDirty(this);
         }
-
+        */
         // TODO: Save character names to separate localization table. Since dialogues will most likely use many identical names. And it would be convenient to have a separate table just for names. 
         // public void AddCharacterNamesTable(string name)
         // {
