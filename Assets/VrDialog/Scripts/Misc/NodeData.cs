@@ -5,63 +5,63 @@ namespace cherrydev
     [System.Serializable]
     public struct NodeData
     {
+        public Sprite AvatarImage;
+        public string AvatarName;
         [TextArea(3, 10)]
         public string DialogText;
+
         public bool UseCurrentVals;
-        public float TextPanelWidthPct;
-        //public float TextAreaHeightPct;
-        //public float TextAreaYPos;
-        //public Sprite ButtonImage;
-        public float ButtonsPanelWidthPct;
-        //public float ButtonAreaHeightPct;
-        public float PanelRatio;
+
+        public float PanelHorzSizePct;
+        public float PanelVertSizePct;
         public Color BackgroundColor;
         public Sprite BackgroundImage;
+        public float AvatarImgToTxtRatio;
+        public float AvatarToButtonPanelRatio;
+        public float ButtonsWidthPct;
+
         public string ExternalFunctionToken;
 
-        public NodeData(string dialogText)
+        public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
+            AvatarImage = avatarImage;
+            AvatarName = avatarName;
             DialogText = dialogText;
+
             UseCurrentVals = false;
-            TextPanelWidthPct = 0.8f;
-            //ButtonImage = null;
-            //TextAreaHeightPct = 0.7f;
-            //TextAreaYPos = -0.1f;
-            ButtonsPanelWidthPct = 0.8f;
-            //ButtonAreaHeightPct = 0.2f;
-            PanelRatio = 0.5f;
+
+            PanelHorzSizePct = 1;
+            PanelVertSizePct = 1;
             BackgroundColor = new Color32(29, 29, 29, 150);
             BackgroundImage = null;
+            AvatarImgToTxtRatio = 0.3f;
+            AvatarToButtonPanelRatio = 0.5f;
+            ButtonsWidthPct = 0.8f;
+
             ExternalFunctionToken = "";
         }
-
+        /*
         public NodeData(string dialogText,
                             bool useCurrentVals,
                             float textPanelWidthPct,
                             Sprite buttonImage,
                             float buttonsPanelWidthPct,
-                            //float textAreaHeightPct,
-                            //float textAreaYPos,
-                            //float buttonAreaHeightPct,
                             float panelRatio,
                             Color backgroundColor,
                             Sprite backgroundImage,
                             string externalFunctionToken
                             )
         {
+            AvatarImage = avatarImage;
             DialogText = dialogText;
             UseCurrentVals = useCurrentVals;
-            //ButtonImage = buttonImage;
-            TextPanelWidthPct = textPanelWidthPct;
-            //TextAreaHeightPct = textAreaHeightPct;
-            //TextAreaYPos = textAreaYPos;
-            ButtonsPanelWidthPct = buttonsPanelWidthPct;
-            //ButtonAreaHeightPct = buttonAreaHeightPct;
-            PanelRatio = panelRatio;
+            AvatarImgToTxtRatio = textPanelWidthPct;
+            ButtonsWidthPct = buttonsPanelWidthPct;
+            AvatarToButtonPanelRatio = panelRatio;
             BackgroundColor = backgroundColor;
             BackgroundImage = backgroundImage;
             ExternalFunctionToken = externalFunctionToken;
         }
-
+        */
     }
 }

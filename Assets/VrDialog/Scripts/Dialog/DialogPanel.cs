@@ -12,6 +12,9 @@ namespace cherrydev
         [SerializeField] RectTransform buttonsPanel;
         [SerializeField] private TextMeshProUGUI _dialogText;
 
+        [SerializeField] RectTransform AvatarImage;
+        [SerializeField] TextMeshProUGUI AvatarName;
+
         /// <summary>
         /// Setting dialogText max visible characters to zero
         /// </summary>
@@ -59,20 +62,46 @@ namespace cherrydev
             Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
             Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
+            /*
+
+
+
+PanelHorzSizePct;
+public float PanelVertSizePct
+public Color BackgroundColor;
+public Sprite BackgroundImage;
+public float AvatarImgToTxtRatio;
+public float AvatarToButtonPanelRatio;
+public float ButtonsWidthPct;
+ */
             if (!dialogNode.nodeData.UseCurrentVals)
             {
-                //Set text panel width and height (based on the panel ratio)
-                float panelRatio = dialogNode.nodeData.PanelRatio;
-                textPanel.sizeDelta = new Vector2(dialogNode.nodeData.TextPanelWidthPct - 1.0f, panelRatio - 1.0f);
+                //Set dialog panel width and height (based on the panel ratio)
+                float panelHorzSizePct = dialogNode.nodeData.PanelHorzSizePct;
+                float panelVertSizePct = dialogNode.nodeData.PanelVertSizePct;
+                GetComponent<RectTransform>().sizeDelta = new Vector2(panelHorzSizePct - 1.0f, panelVertSizePct - 1.0f);
+
+                //Set text panel width and height (based on the avatar image ratio and panel ratio)
+                float avatarToButtonPanelRatio = dialogNode.nodeData.AvatarToButtonPanelRatio;
+                float txtPanelVertSize = (avatarToButtonPanelRatio - 1.0f) * panelVertSizePct;
+                textPanel.sizeDelta = new Vector2(/*panelHorzSizePct - 1.0f*/0f, txtPanelVertSize);
                 //Debug.Log(dialogNode.name + " size= " + textPanel.sizeDelta);
 
+                //avatar image and dialog text (side by side and horizontally connected through AvatarImgToTxtRatio)
+                //both have the same height: txtPanelVertSize
+                //AvatarImage.GetComponent<RectTransform>().sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio, -txtPanelVertSize);
+                var rect = AvatarImage.GetComponent<RectTransform>();
+                rect.sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio * panelHorzSizePct, 0);
+
+                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2((1f-dialogNode.nodeData.AvatarImgToTxtRatio) * panelHorzSizePct, 0);
+
                 //Scale the button panel (depends on the panel ratio)
-                float buttonPanelWidthPct = dialogNode.nodeData.ButtonsPanelWidthPct;
+                float buttonPanelWidthPct = dialogNode.nodeData.ButtonsWidthPct;
                 int numButtons = dialogNode.ChildNodes.Count;
 
                 //Scale the button grid layout (depends on the panel ratio)
-                buttonsPanel.sizeDelta = new Vector2(dialogNode.nodeData.ButtonsPanelWidthPct - 1.0f, dialogNode.nodeData.PanelRatio);
-                _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct, (1f - panelRatio) / (numButtons + 0.5f));
+                buttonsPanel.sizeDelta = new Vector2( 0/*(dialogNode.nodeData.ButtonsWidthPct - 1.0f)*/, dialogNode.nodeData.AvatarToButtonPanelRatio * panelVertSizePct);
+                _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct * panelHorzSizePct, (1f - avatarToButtonPanelRatio) * panelVertSizePct / (numButtons + 0.5f));
                 //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
                 //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
@@ -82,6 +111,10 @@ namespace cherrydev
                 //Set the background image
                 GetComponent<Image>().sprite = dialogNode.nodeData.BackgroundImage;
             }
+
+            //Setup the avatar image and name
+            //AvatarImage.GetComponent<Image>().sprite = dialogNode.nodeData.AvatarImage;
+            AvatarName.text = dialogNode.nodeData.AvatarName;
 
             //Setup the Dialog's main text
             ResetDialogText();

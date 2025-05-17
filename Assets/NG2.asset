@@ -36,29 +36,33 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -70
-    y: -2.5
+    x: 144
+    y: 105.5
     width: 210
-    height: 305
+    height: 380
   IsDragging: 1
   IsSelected: 0
   _nodeData:
+    AvatarImage: {fileID: 0}
+    AvatarName: 
     DialogText: You are a Level-headed Fire Ant.  You must decide if you want to
       take <b> the red pill </b> or <i> the blue pill </i>.
     UseCurrentVals: 0
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
+    PanelHorzSizePct: 0.75
+    PanelVertSizePct: 0.75
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
+    AvatarImgToTxtRatio: 0.3333
+    AvatarToButtonPanelRatio: 0.6
+    ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: 140, y: 206.5}
+    ChildConnectionPoint: {x: 354, y: 394.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: 140, y: 226.5}
+    ChildConnectionPoint: {x: 354, y: 414.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,25 +79,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 205
-    y: 279.5
+    x: 416
+    y: 412.5
     width: 210
-    height: 285
+    height: 360
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   _nodeData:
+    AvatarImage: {fileID: 0}
+    AvatarName: 
     DialogText: You have chosen the blue pill.
     UseCurrentVals: 0
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0.4434402, b: 1, a: 0.5882353}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 415, y: 488.5}
+    ChildConnectionPoint: {x: 626, y: 701.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,25 +118,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -257
-    y: 76
+    x: -64
+    y: 189
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
   _nodeData:
+    AvatarImage: {fileID: 0}
+    AvatarName: 
     DialogText: '!START!'
     UseCurrentVals: 0
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -197, y: 106}
+    ChildConnectionPoint: {x: -4, y: 219}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,25 +157,35 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 362
-    y: -42.5
+    x: 531
+    y: 37.5
     width: 210
-    height: 285
+    height: 400
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   _nodeData:
+    AvatarImage: {fileID: 0}
+    AvatarName: 
     DialogText: You have decided to take the red pill... a wise choice.
     UseCurrentVals: 0
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
+    PanelHorzSizePct: 1.5
+    PanelVertSizePct: 0.75
     BackgroundColor: {r: 1, g: 0, b: 0, a: 0.5882353}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.15
+    AvatarToButtonPanelRatio: 0.4
+    ButtonsWidthPct: 0.6
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 572, y: 166.5}
+    ChildConnectionPoint: {x: 741, y: 326.5}
+  - ChoiceText: Choice 2
+    ChildNode: {fileID: 0}
+    ChildConnectionPoint: {x: 741, y: 346.5}
+  - ChoiceText: Choice 3
+    ChildNode: {fileID: 0}
+    ChildConnectionPoint: {x: 741, y: 366.5}
 --- !u!114 &7901450371319666272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,19 +202,23 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 651
-    y: 160.5
+    x: 844
+    y: 273.5
     width: 210
-    height: 265
+    height: 340
   IsDragging: 0
   IsSelected: 0
   _nodeData:
+    AvatarImage: {fileID: 0}
+    AvatarName: 
     DialogText: Hilarious Frog
     UseCurrentVals: 0
-    TextPanelWidthPct: 0.8
-    ButtonsPanelWidthPct: 0.8
-    PanelRatio: 0.5
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes: []
