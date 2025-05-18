@@ -6,7 +6,7 @@ namespace cherrydev
     public struct NodeData
     {
         public Sprite AvatarImage;
-        public string AvatarName;
+        //public string AvatarName;
         [TextArea(3, 10)]
         public string DialogText;
 
@@ -16,8 +16,11 @@ namespace cherrydev
         public float PanelVertSizePct;
         public Color BackgroundColor;
         public Sprite BackgroundImage;
+        [Range(0f, 1f)]
         public float AvatarImgToTxtRatio;
+        [Range(0f, 1f)]
         public float AvatarToButtonPanelRatio;
+        [Range(0f, 1f)]
         public float ButtonsWidthPct;
 
         public string ExternalFunctionToken;
@@ -25,7 +28,7 @@ namespace cherrydev
         public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
             AvatarImage = avatarImage;
-            AvatarName = avatarName;
+            //AvatarName = avatarName;
             DialogText = dialogText;
 
             UseCurrentVals = false;
@@ -40,28 +43,6 @@ namespace cherrydev
 
             ExternalFunctionToken = "";
         }
-        /*
-        public NodeData(string dialogText,
-                            bool useCurrentVals,
-                            float textPanelWidthPct,
-                            Sprite buttonImage,
-                            float buttonsPanelWidthPct,
-                            float panelRatio,
-                            Color backgroundColor,
-                            Sprite backgroundImage,
-                            string externalFunctionToken
-                            )
-        {
-            AvatarImage = avatarImage;
-            DialogText = dialogText;
-            UseCurrentVals = useCurrentVals;
-            AvatarImgToTxtRatio = textPanelWidthPct;
-            ButtonsWidthPct = buttonsPanelWidthPct;
-            AvatarToButtonPanelRatio = panelRatio;
-            BackgroundColor = backgroundColor;
-            BackgroundImage = backgroundImage;
-            ExternalFunctionToken = externalFunctionToken;
-        }
-        */
+
     }
 }

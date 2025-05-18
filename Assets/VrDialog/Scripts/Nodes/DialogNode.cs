@@ -43,7 +43,7 @@ namespace cherrydev
         private const float DialogNodeWidth = 210f;
 
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
-        private const float DialogBaseNodeHeight = 200f;
+        private const float DialogBaseNodeHeight = 180f;
 
         private const float DialogNodeDataHeight = 140f;
 
@@ -143,17 +143,19 @@ namespace cherrydev
             //draw avatar sprite
             EditorGUILayout.BeginHorizontal();
             tooltip = "The avatar sprite.";
-            EditorGUILayout.LabelField(new GUIContent($"Avtr Img", tooltip), GUILayout.Width(LabelFieldSpace));
+            EditorGUILayout.LabelField(new GUIContent($"Avatar", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.AvatarImage = (Sprite)EditorGUILayout.ObjectField(_nodeData.AvatarImage,
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw avatar name
+            /*
             EditorGUILayout.BeginHorizontal();
             tooltip = "The avatar name.";
             EditorGUILayout.LabelField(new GUIContent($"Avtr Name", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.AvatarName = EditorGUILayout.TextField(_nodeData.AvatarName, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
+            */
 
             //draw DialogText
             EditorGUILayout.BeginHorizontal();
@@ -210,14 +212,14 @@ namespace cherrydev
 
             //draw Avatar to Button Panel Ratio
             EditorGUILayout.BeginHorizontal();
-            tooltip = "The vertical fraction of the screen the main text will take up.  The balance of the vertical space will be allocated to the buttons panel.  Range is 0.0 to 1.0.";
+            tooltip = "The vertical fraction of the dialog panel the main text will take up.  The balance of the vertical space will be allocated to the buttons panel.  Range is 0.0 to 1.0.";
             EditorGUILayout.LabelField(new GUIContent($"Panel Ratio", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.AvatarToButtonPanelRatio = EditorGUILayout.FloatField(_nodeData.AvatarToButtonPanelRatio, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw ButtonsAreaWidth %
             EditorGUILayout.BeginHorizontal();
-            tooltip = "Button Wdith as % of screen width.  In VR, this is as a % of the base size of 1m.  Range is 0.0 to 1.0.";
+            tooltip = "Button Wdith as % of panel width.  In VR, this is as a % of the base size of 1m.  Range is 0.0 to 1.0.";
             EditorGUILayout.LabelField(new GUIContent($"Btn Width%", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonsWidthPct = EditorGUILayout.FloatField(_nodeData.ButtonsWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
@@ -231,7 +233,7 @@ namespace cherrydev
         private void DrawExternalFunctionTextField()
         {
             EditorGUILayout.BeginHorizontal();
-            string tooltip = "A string token to be passed to callback functions.  Set to whatever value you wish.";
+            string tooltip = "A string token to be passed to callback functions.  This helps you identify which node invoked the callback.  Set to whatever value you wish.";
             EditorGUILayout.LabelField(new GUIContent($"Token", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ExternalFunctionToken = EditorGUILayout.TextField(nodeData.ExternalFunctionToken,
                 GUILayout.Width(TextFieldWidth));

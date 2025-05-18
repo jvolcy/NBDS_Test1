@@ -89,11 +89,10 @@ public float ButtonsWidthPct;
 
                 //avatar image and dialog text (side by side and horizontally connected through AvatarImgToTxtRatio)
                 //both have the same height: txtPanelVertSize
-                //AvatarImage.GetComponent<RectTransform>().sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio, -txtPanelVertSize);
                 var rect = AvatarImage.GetComponent<RectTransform>();
                 rect.sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio * panelHorzSizePct, 0);
+                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2((1f - dialogNode.nodeData.AvatarImgToTxtRatio) * panelHorzSizePct, 0);
 
-                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2((1f-dialogNode.nodeData.AvatarImgToTxtRatio) * panelHorzSizePct, 0);
 
                 //Scale the button panel (depends on the panel ratio)
                 float buttonPanelWidthPct = dialogNode.nodeData.ButtonsWidthPct;
@@ -113,8 +112,8 @@ public float ButtonsWidthPct;
             }
 
             //Setup the avatar image and name
-            //AvatarImage.GetComponent<Image>().sprite = dialogNode.nodeData.AvatarImage;
-            AvatarName.text = dialogNode.nodeData.AvatarName;
+            AvatarImage.GetComponent<Image>().sprite = dialogNode.nodeData.AvatarImage;
+            //AvatarName.text = dialogNode.nodeData.AvatarName;
 
             //Setup the Dialog's main text
             ResetDialogText();

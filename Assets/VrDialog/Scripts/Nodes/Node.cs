@@ -13,8 +13,7 @@ namespace cherrydev
         [HideInInspector] public bool IsDragging;
         [HideInInspector] public bool IsSelected;
 
-        private int _NodeID = -1;
-        public int NodeID {get { return _NodeID; } }
+        [HideInInspector] public int NodeID = -1;
 
         //protected float StandardHeight;
 
@@ -27,7 +26,6 @@ namespace cherrydev
         /// </summary>
         /// <returns>The table name for this node's graph</returns>
         //protected string GetTableNameFromNodeGraph() => NodeGraph.LocalizationTableName;
-        public void SetNodeID(int id) { _NodeID = id; }
         
 #if UNITY_EDITOR
 

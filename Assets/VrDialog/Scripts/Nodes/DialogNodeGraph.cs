@@ -22,15 +22,17 @@ namespace cherrydev
         
         [HideInInspector] public Node NodeToDrawLineFrom;
         [HideInInspector] public Vector2 LinePosition = Vector2.zero;
-        
+
+        //a serial number we will use to sequentially number each node created
+        [HideInInspector] public int nodeSerialNumber = 0;
+
         //public string LocalizationTableName => _localizationTableName;
         //public string CharacterNamesLocalizationName => _characterNamesLocalizationName;
 
         //[HideInInspector]
         //public bool IsLocalizationSetUp;
-        
+
 #if UNITY_EDITOR
-        
         // public static bool ShowLocalizationKeys;
         /*
         public void AddLocalizationTable(string name)

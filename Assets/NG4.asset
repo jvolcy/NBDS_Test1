@@ -1,27 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: NG2
-  m_EditorClassIdentifier: 
-  NodesList:
-  - {fileID: 3669394871150458546}
-  - {fileID: 1692078139294144095}
-  - {fileID: 6554480690750532178}
-  - {fileID: 1851710649743837814}
-  - {fileID: 7901450371319666272}
-  - {fileID: 7783125899639713690}
-  NodeToDrawLineFrom: {fileID: 0}
-  LinePosition: {x: 0, y: 0}
---- !u!114 &1692078139294144095
+--- !u!114 &-7905827439761401784
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31,183 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0007 ]'
+  m_Name: '[ Node 0005 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -67
-    y: -177.5
-    width: 210
-    height: 360
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
-    DialogText: You are a Level-headed Fire Ant.  You must decide if you want to
-      take <b> the red pill </b> or <i> the blue pill </i>.
-    UseCurrentVals: 0
-    PanelHorzSizePct: 0.75
-    PanelVertSizePct: 0.75
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
-    AvatarImgToTxtRatio: 0.3333
-    AvatarToButtonPanelRatio: 0.6
-    ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: Take the red pill
-    ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: 143, y: 91.5}
-  - ChoiceText: Choice 2
-    ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: 143, y: 111.5}
---- !u!114 &1851710649743837814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0009 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 229
-    y: 165.5
-    width: 210
-    height: 340
-  IsDragging: 1
-  IsSelected: 1
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: You have chosen the blue pill.
-    UseCurrentVals: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 0.25
-    BackgroundColor: {r: 0, g: 0.4434402, b: 1, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0
-    AvatarToButtonPanelRatio: 0.5
-    ButtonsWidthPct: 0.75
-    ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: Choice 1
-    ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 439, y: 434.5}
---- !u!114 &3669394871150458546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: Start Node
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -275
-    y: -94
-    width: 120
-    height: 60
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: '!START!'
-    UseCurrentVals: 0
-    PanelHorzSizePct: 0
-    PanelVertSizePct: 0
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0
-    AvatarToButtonPanelRatio: 0
-    ButtonsWidthPct: 0
-    ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: X
-    ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -215, y: -64}
---- !u!114 &6554480690750532178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0008 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 316
-    y: -253.5
-    width: 210
-    height: 380
-  IsDragging: 1
-  IsSelected: 0
-  _nodeData:
-    AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
-    DialogText: You have decided to take the red pill... a wise choice.
-    UseCurrentVals: 0
-    PanelHorzSizePct: 0.5
-    PanelVertSizePct: 1
-    BackgroundColor: {r: 1, g: 0, b: 0, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.15
-    AvatarToButtonPanelRatio: 0.4
-    ButtonsWidthPct: 0.6
-    ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: Choice 1
-    ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 526, y: 15.5}
-  - ChoiceText: Choice 2
-    ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 526, y: 35.5}
-  - ChoiceText: Choice 3
-    ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 526, y: 55.5}
---- !u!114 &7783125899639713690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0003 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 615
-    y: -145
+    x: -33
+    y: 311
     width: 210
     height: 320
-  IsDragging: 0
+  IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
-    DialogText: Kind-hearted Chicken
+    DialogText: Responsible Koala
     UseCurrentVals: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
@@ -218,7 +36,7 @@ MonoBehaviour:
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
   ChildNodes: []
---- !u!114 &7901450371319666272
+--- !u!114 &-6916695398924061378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,22 +52,229 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
+    x: 690
+    y: -28
+    width: 210
+    height: 320
+  IsDragging: 1
+  IsSelected: 0
+  NodeID: 10
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Self-confident Whale
+    UseCurrentVals: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+  ChildNodes: []
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
+  m_Name: NG4
+  m_EditorClassIdentifier: 
+  NodesList:
+  - {fileID: 5617620800059427379}
+  - {fileID: 3243030761396637110}
+  - {fileID: -7905827439761401784}
+  - {fileID: 467486694462595377}
+  - {fileID: -6916695398924061378}
+  - {fileID: 7433882496129424318}
+  - {fileID: 7022685095692240166}
+  NodeToDrawLineFrom: {fileID: 0}
+  LinePosition: {x: 0, y: 0}
+  nodeSerialNumber: 12
+--- !u!114 &467486694462595377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0009 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 338
+    y: -25
+    width: 210
+    height: 340
+  IsDragging: 1
+  IsSelected: 0
+  NodeID: 9
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Rational Fire Ant
+    UseCurrentVals: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: -6916695398924061378}
+    ChildConnectionPoint: {x: 548, y: 244}
+--- !u!114 &3243030761396637110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0001 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 59
+    y: -26.5
+    width: 210
+    height: 320
+  IsDragging: 1
+  IsSelected: 0
+  NodeID: -1
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Mature Goose
+    UseCurrentVals: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+  ChildNodes: []
+--- !u!114 &5617620800059427379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: Start Node
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: -67
+    y: -81
+    width: 120
+    height: 60
+  IsDragging: 0
+  IsSelected: 0
+  NodeID: -1
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: '!START!'
+    UseCurrentVals: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+  ChildNodes: []
+--- !u!114 &7022685095692240166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0012 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 298
+    y: 335
+    width: 210
+    height: 320
+  IsDragging: 1
+  IsSelected: 1
+  NodeID: 12
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Helpful Starfish
+    UseCurrentVals: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+  ChildNodes: []
+--- !u!114 &7433882496129424318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0011 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
     x: 633
-    y: -9.5
+    y: 321
     width: 210
     height: 320
   IsDragging: 0
   IsSelected: 0
+  NodeID: 11
   _nodeData:
     AvatarImage: {fileID: 0}
-    DialogText: Hilarious Frog
+    DialogText: Determined Crab
     UseCurrentVals: 0
-    PanelHorzSizePct: 0
-    PanelVertSizePct: 0
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0
-    AvatarToButtonPanelRatio: 0
-    ButtonsWidthPct: 0
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
   ChildNodes: []
