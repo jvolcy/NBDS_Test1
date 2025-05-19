@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7905827439761401784
+--- !u!114 &-7639930429869270652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,58 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0005 ]'
+  m_Name: '[ Node 0014 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -33
-    y: 311
+    x: 786
+    y: 439
     width: 210
     height: 320
-  IsDragging: 1
+  IsDragging: 0
   IsSelected: 0
-  NodeID: -1
+  NodeID: 14
   _nodeData:
     AvatarImage: {fileID: 0}
-    DialogText: Responsible Koala
-    UseCurrentVals: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
-    ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
-  ChildNodes: []
---- !u!114 &-6916695398924061378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0010 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 690
-    y: -28
-    width: 210
-    height: 320
-  IsDragging: 1
-  IsSelected: 0
-  NodeID: 10
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: Self-confident Whale
+    DialogText: Intuitive Snake
     UseCurrentVals: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
@@ -87,15 +51,12 @@ MonoBehaviour:
   NodesList:
   - {fileID: 5617620800059427379}
   - {fileID: 3243030761396637110}
-  - {fileID: -7905827439761401784}
-  - {fileID: 467486694462595377}
-  - {fileID: -6916695398924061378}
-  - {fileID: 7433882496129424318}
-  - {fileID: 7022685095692240166}
+  - {fileID: 2037191826421303347}
+  - {fileID: -7639930429869270652}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
-  nodeSerialNumber: 12
---- !u!114 &467486694462595377
+  nodeSerialNumber: 24
+--- !u!114 &2037191826421303347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,35 +66,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0009 ]'
+  m_Name: '[ Node 0013 ]'
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 338
-    y: -25
+    x: 311
+    y: 60
     width: 210
-    height: 340
+    height: 360
   IsDragging: 1
-  IsSelected: 0
-  NodeID: 9
+  IsSelected: 1
+  NodeID: 13
   _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: Rational Fire Ant
+    AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
+    DialogText: Passionate Manatee
     UseCurrentVals: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
+    BackgroundColor: {r: 0.8679245, g: 0.8489769, b: 0.46262014, a: 0.5882353}
+    BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
     AvatarImgToTxtRatio: 0.3
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: Choice 1
-    ChildNode: {fileID: -6916695398924061378}
-    ChildConnectionPoint: {x: 548, y: 244}
+    ChildNode: {fileID: 3243030761396637110}
+    ChildConnectionPoint: {x: 521, y: 329}
+  - ChoiceText: Choice 2
+    ChildNode: {fileID: -7639930429869270652}
+    ChildConnectionPoint: {x: 521, y: 349}
 --- !u!114 &3243030761396637110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,16 +114,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 59
-    y: -26.5
+    x: 763
+    y: 94.5
     width: 210
-    height: 320
+    height: 340
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
-    DialogText: Mature Goose
+    DialogText: "<color=#ee0000><size=+.05><b>WARNING</b></size></color> \nThe following
+      contains contains graphic content of a sexual and/or violent nature that may
+      be harmful or traumatizing to some audiences. Discretion is advised.  "
     UseCurrentVals: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
@@ -169,7 +135,10 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
-  ChildNodes: []
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: -7639930429869270652}
+    ChildConnectionPoint: {x: 973, y: 363.5}
 --- !u!114 &5617620800059427379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,11 +155,11 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -67
-    y: -81
+    x: 107
+    y: 146
     width: 120
     height: 60
-  IsDragging: 0
+  IsDragging: 1
   IsSelected: 0
   NodeID: -1
   _nodeData:
@@ -205,76 +174,7 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
-  ChildNodes: []
---- !u!114 &7022685095692240166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0012 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 298
-    y: 335
-    width: 210
-    height: 320
-  IsDragging: 1
-  IsSelected: 1
-  NodeID: 12
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: Helpful Starfish
-    UseCurrentVals: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
-    ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
-  ChildNodes: []
---- !u!114 &7433882496129424318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0011 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 633
-    y: 321
-    width: 210
-    height: 320
-  IsDragging: 0
-  IsSelected: 0
-  NodeID: 11
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: Determined Crab
-    UseCurrentVals: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
-    ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
-  ChildNodes: []
+  ChildNodes:
+  - ChoiceText: X
+    ChildNode: {fileID: 2037191826421303347}
+    ChildConnectionPoint: {x: 167, y: 176}

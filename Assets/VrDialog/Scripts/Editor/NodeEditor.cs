@@ -57,7 +57,7 @@ namespace cherrydev
         // Search functionality
         private string _searchText = "";
 
-        //Creative Random Node Names
+        //Creative, random Dailog Text words
         readonly string[] Adjectives = { "Active", "Adaptable", "Adventurous", "Affectionate", "Alert", "Artistic", "Assertive", "Boundless", "Brave", "Broad-minded", "Calm", "Capable", "Careful", "Caring", "Cheerful", "Clever", "Comfortable", "Communicative", "Compassionate", "Conscientious", "Considerate", "Courageous", "Creative", "Curious", "Decisive", "Determined", "Diligent", "Dynamic", "Eager", "Energetic", "Entertaining", "Enthusiastic", "Exuberant", "Expressive", "Fabulous", "Fair-minded", "Fantastic", "Fearless", "Flexible thinker", "Frank", "Friendly", "Funny", "Generous", "Gentle", "Gregarious", "Happy", "Hard working", "Helpful", "Hilarious", "Honest", "Imaginative", "Independent", "Intellectual", "Intelligent", "Intuitive", "Inventive", "Joyous", "Kind", "Kind-hearted", "Knowledgable", "Level-headed", "Lively", "Loving", "Loyal", "Mature", "Modest", "Optimistic", "Outgoing", "Passionate", "Patient", "Persistent", "Philosophical", "Polite", "Practical", "Pro-active", "Productive", "Quick-witted", "Quiet", "Rational", "Receptive", "Reflective", "Reliable", "Resourceful", "Responsible", "Selective", "Self-confident", "Sensible", "Sensitive", "Skillful", "Straightforward", "Successful", "Thoughtful", "Trustworthy", "Understanding", "Versatile", "Vivacious", "Warm-hearted", "Willing", "Witty", "Wonderful" };
         readonly string[] Animals = { "Aardvark", "Alligator", "Antelope", "Badger", "Bat", "Bear", "Bee", "Beetle", "Blue whale", "Bulldog", "Butterfly", "Camel", "Cat", "Caterpillar", "Cheetah", "Chicken", "Chimpanzee", "Clam", "Cow", "Coyote", "Crab", "Crocodile", "Cuttlefish", "Deer", "Dog", "Dolphin", "Donkey", "Duck", "Dugong", "Elephant", "Elk", "Fire Ant", "Fish", "Fox", "Frog", "Gazelle", "Giraffe", "Goat", "Goose", "Gorilla", "Guinea Pig", "Hare", "Hedgehog", "Hen", "Hippopotamus", "Horse", "Jackrabbit", "Jelly Fish", "Kangaroo", "Koala", "Leopard", "Lion", "Lizard", "Lobster", "Manatee", "Meerkat", "Millipede", "Mole", "Monkey", "Mosquito", "Nudibranch", "Octopus", "Otter", "Owl", "Oyster", "Panda", "Pelican", "Pig", "Porcupine", "Rabbit", "Raccoon", "Rat", "Reindeer", "Rhinoceros", "Scorpion", "Sea Lion", "Seahorse", "Seal", "Shark", "Sheep", "Shrimp", "Sidewinder", "Snake", "Spider", "Squid", "Squirrel", "Starfish", "Swordfish", "Tiger", "Toad", "Turkey", "Turtle", "Urchin", "Walrus", "Whale", "Wolf", "Wombat", "Woodpecker", "Yucca Moth", "Zebra" };
 
@@ -80,7 +80,7 @@ namespace cherrydev
             return result;
         }
 
-        private void Awake()
+        private void CreateGUI()
         {
             InitializeStyles();
         }
@@ -261,12 +261,10 @@ namespace cherrydev
             _selectedNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
 
-
             _selectedStartNodeStyle = new GUIStyle();
             _selectedStartNodeStyle.normal.background = EditorGUIUtility.Load(StringConstants.SelectedNode) as Texture2D;
             _selectedStartNodeStyle.padding = new RectOffset(NodePadding, NodePadding, NodePadding, NodePadding);
             _selectedStartNodeStyle.border = new RectOffset(NodeBorder, NodeBorder, NodeBorder, NodeBorder);
-
 
             _labelStyle = new GUIStyle();
             _labelStyle.alignment = TextAnchor.MiddleLeft;
@@ -275,14 +273,12 @@ namespace cherrydev
             _labelStyle.clipping = TextClipping.Clip;
             _labelStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
 
-
             _startLabelStyle = new GUIStyle();
             _startLabelStyle.alignment = TextAnchor.MiddleCenter;
             _startLabelStyle.fontSize = LabelFontSize;
             _startLabelStyle.normal.textColor = Color.yellow;
             _startLabelStyle.clipping = TextClipping.Clip;
             _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
-
 
         }
 
@@ -1034,7 +1030,6 @@ namespace cherrydev
             System.Random random = new System.Random();
 
             string PlaceholderText = Adjectives[random.Next(0, Adjectives.Length)] + " " + Animals[random.Next(0, Animals.Length)];
-            //InitializeNode((Vector2)mousePositionObject, dialogNode, "Dialog Node [" + _currentNodeGraph.NodesList.Count + "]");
             InitializeNode((Vector2)mousePositionObject, dialogNode, PlaceholderText);
         }
 

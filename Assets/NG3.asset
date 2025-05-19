@@ -16,28 +16,32 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -6
-    y: -6
+    x: 215
+    y: 35
     width: 210
-    height: 305
+    height: 360
   IsDragging: 1
   IsSelected: 1
+  NodeID: -1
   _nodeData:
+    AvatarImage: {fileID: 0}
     DialogText: Skillful Koala
     UseCurrentVals: 0
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0.6320754, g: 0.42635277, b: 0.42635277, a: 0}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 204, y: 203}
+    ChildConnectionPoint: {x: 425, y: 304}
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 204, y: 223}
+    ChildConnectionPoint: {x: 425, y: 324}
 --- !u!114 &-6120714395014319906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,28 +58,32 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 207
-    y: 290
+    x: 428
+    y: 331
     width: 210
-    height: 305
+    height: 360
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
+    AvatarImage: {fileID: 0}
     DialogText: Outgoing Kangaroo
     UseCurrentVals: 0
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 417, y: 499}
+    ChildConnectionPoint: {x: 638, y: 600}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 417, y: 519}
+    ChildConnectionPoint: {x: 638, y: 620}
 --- !u!114 &-3288720057894055028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,31 +100,35 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 476
-    y: 75
+    x: 697
+    y: 116
     width: 210
-    height: 325
+    height: 380
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
+    AvatarImage: {fileID: 0}
     DialogText: Philosophical Sidewinder
     UseCurrentVals: 0
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 686, y: 284}
+    ChildConnectionPoint: {x: 907, y: 385}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 686, y: 304}
+    ChildConnectionPoint: {x: 907, y: 405}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 686, y: 324}
+    ChildConnectionPoint: {x: 907, y: 425}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +148,7 @@ MonoBehaviour:
   - {fileID: -8388965635032525230}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
+  nodeSerialNumber: 0
 --- !u!114 &3389423211021041760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,22 +165,26 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -212
-    y: 90
+    x: 9
+    y: 131
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
+    AvatarImage: {fileID: 0}
     DialogText: '!START!'
     UseCurrentVals: 0
-    TextPanelWidthPct: 0
-    ButtonsPanelWidthPct: 0
-    PanelRatio: 0
+    PanelHorzSizePct: 0
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0
+    AvatarToButtonPanelRatio: 0
+    ButtonsWidthPct: 0
     ExternalFunctionToken: 
   ChildNodes:
   - ChoiceText: '[ Node 0028 ]'
     ChildNode: {fileID: -8388965635032525230}
-    ChildConnectionPoint: {x: -152, y: 120}
+    ChildConnectionPoint: {x: 69, y: 161}

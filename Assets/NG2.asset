@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 7783125899639713690}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
+  nodeSerialNumber: 0
 --- !u!114 &1692078139294144095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,12 +38,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -67
-    y: -177.5
+    x: 28
+    y: -114.5
     width: 210
     height: 360
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: You are a Level-headed Fire Ant.  You must decide if you want to
@@ -59,10 +61,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: 143, y: 91.5}
+    ChildConnectionPoint: {x: 238, y: 154.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: 143, y: 111.5}
+    ChildConnectionPoint: {x: 238, y: 174.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,12 +81,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 229
-    y: 165.5
+    x: 324
+    y: 228.5
     width: 210
     height: 340
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: You have chosen the blue pill.
@@ -100,7 +103,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 439, y: 434.5}
+    ChildConnectionPoint: {x: 534, y: 497.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,12 +120,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -275
-    y: -94
+    x: -180
+    y: -31
     width: 120
     height: 60
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: '!START!'
@@ -138,7 +142,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -215, y: -64}
+    ChildConnectionPoint: {x: -120, y: -1}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,12 +159,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 316
-    y: -253.5
+    x: 411
+    y: -190.5
     width: 210
     height: 380
   IsDragging: 1
   IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: You have decided to take the red pill... a wise choice.
@@ -176,13 +181,13 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 7901450371319666272}
-    ChildConnectionPoint: {x: 526, y: 15.5}
+    ChildConnectionPoint: {x: 621, y: 78.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 526, y: 35.5}
+    ChildConnectionPoint: {x: 621, y: 98.5}
   - ChoiceText: Choice 3
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 526, y: 55.5}
+    ChildConnectionPoint: {x: 621, y: 118.5}
 --- !u!114 &7783125899639713690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,12 +204,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 615
-    y: -145
+    x: 710
+    y: -82
     width: 210
     height: 320
   IsDragging: 0
   IsSelected: 0
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: Kind-hearted Chicken
@@ -234,12 +240,13 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 633
-    y: -9.5
+    x: 721
+    y: 284.5
     width: 210
     height: 320
-  IsDragging: 0
-  IsSelected: 0
+  IsDragging: 1
+  IsSelected: 1
+  NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: Hilarious Frog

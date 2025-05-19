@@ -92,16 +92,19 @@ namespace cherrydev
 
             if (IsStartNode())
             {
-
                 EditorGUILayout.LabelField("START", labelStyle);
 
                 if (ChildNodes.Count > 0)
                 {
+                    //set the first node's connection point to our center (we are the START node).
                     ChildNodeStruct cns = ChildNodes[0];
                     cns.ChildConnectionPoint = Rect.center;
                     ChildNodes[0] = cns;
-                }
 
+                    //disable the first node's "Use Prev Vals" function (there are no prev vals)
+                    DialogNode childDialogNode = ChildNodes[0].ChildNode as DialogNode;
+                    childDialogNode._nodeData.UseCurrentVals = false;
+                }
             }
             else
             {
@@ -205,7 +208,7 @@ namespace cherrydev
 
             //draw AvatarImgToTxtRatio
             EditorGUILayout.BeginHorizontal();
-            tooltip = "The horizontal fraction of the dialog panel the avatar image will take up.  The balance of the horizontal space will be allocated to the dialog text.";
+            tooltip = "The horizontal fraction of the dialog panel the avatar image will take up.  The balance of the horizontal space will be allocated to the dialog text.  Set this value to 0 if you are not using an avatar image.";
             EditorGUILayout.LabelField(new GUIContent($"Avtr Ratio", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.AvatarImgToTxtRatio = EditorGUILayout.FloatField(_nodeData.AvatarImgToTxtRatio, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();

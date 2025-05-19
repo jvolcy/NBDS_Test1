@@ -35,8 +35,8 @@ namespace cherrydev
             set => _isCanSkippingText = value;
         }
 
-        public event Action SentenceStarted;
-        public event Action SentenceEnded;
+        public event Action DialogTextTypeOutStarted;
+        public event Action DialogTextTypeOutCompleted;
         //public event Action SentenceNodeActivated;
         //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
 //        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
@@ -156,7 +156,8 @@ namespace cherrydev
         {
             DialogNode dialogNode = (DialogNode)currentNode;
             CurrentDialogNode = dialogNode;
-        
+
+            /*** START ***/
             DialogNodeActivated?.Invoke();
             DialogNodeSetUp?.Invoke(dialogNode);
 
@@ -210,7 +211,7 @@ namespace cherrydev
         /// <returns></returns>
         private IEnumerator WriteDialogTextRoutine(string text)
         {
-            SentenceStarted?.Invoke();
+            DialogTextTypeOutStarted?.Invoke();
             
             foreach (char textChar in text)
             {
@@ -225,9 +226,11 @@ namespace cherrydev
                 yield return new WaitForSeconds(_dialogCharDelay);
             }
 
-            SentenceEnded?.Invoke();
+            DialogTextTypeOutCompleted?.Invoke();
             
             yield return new WaitUntil(CheckNextSentenceKeyCodes);
+
+            /*** END ***/
 
         }
 

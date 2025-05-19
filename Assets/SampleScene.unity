@@ -876,7 +876,7 @@ PrefabInstance:
     - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: dialogNodeGraph
       value: 
-      objectReference: {fileID: 11400000, guid: fcefd959ac6394086870336ecb94c051, type: 2}
+      objectReference: {fileID: 11400000, guid: 185bcb66372994a6292ff78da647740e, type: 2}
     - target: {fileID: 2026558748786877527, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Name
       value: VrDialog
@@ -920,6 +920,10 @@ PrefabInstance:
     - target: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5375415668924785069, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Enabled
