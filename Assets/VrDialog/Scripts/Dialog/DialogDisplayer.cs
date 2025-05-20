@@ -16,62 +16,38 @@ namespace cherrydev
 
         private void OnEnable()
         {
-            _dialogBehaviour.AddListenerToDialogFinishedEvent(DisableDialogPanel);
-
-            //_dialogBehaviour.AnswerButtonSetUp += SetUpAnswerButtonsClickEvent;
-
-            _dialogBehaviour.DialogTextCharWrote += _dialogPanel.IncreaseMaxVisibleCharacters;
+            //_dialogBehaviour.AddListenerToDialogFinishedEvent(DisableDialogPanel);
+            _dialogBehaviour.DialogTextCharWritten += _dialogPanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped += _dialogPanel.ShowFullDialogText;
 
-            /*_dialogBehaviour.SentenceNodeActivated += EnableDialogSentencePanel;
-            _dialogBehaviour.SentenceNodeActivated += DisableDialogAnswerPanel;
-            _dialogBehaviour.SentenceNodeActivated += _dialogSentencePanel.ResetDialogText;
-            _dialogBehaviour.SentenceNodeActivatedWithParameter += _dialogSentencePanel.Setup;*/
-
-            _dialogBehaviour.DialogNodeActivated += EnableDialogPanel;
-            //_dialogBehaviour.DialogNodeDeActivated += DisableDialogPanel;
-
-            //_dialogBehaviour.DialogNodeActivatedWithParameter += _dialogPanel.EnableCertainAmountOfButtons;
-            //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated += _dialogAnswerPanel.SetUpButtons;
+            _dialogBehaviour.DialogNodeOpen += DialogPanelOpen;
+            _dialogBehaviour.DialogNodeClose += DialogPanelClose;
 
             _dialogBehaviour.DialogNodeSetUp += SetUpDialogPanel;
-#if UNITY_LOCALIZATION
-            _dialogBehaviour.LanguageChanged += HandleLanguageChanged;
-#endif
+
         }
 
         private void OnDisable()
         {
             //_dialogBehaviour.AnswerButtonSetUp -= SetUpAnswerButtonsClickEvent;
 
-            _dialogBehaviour.DialogTextCharWrote -= _dialogPanel.IncreaseMaxVisibleCharacters;
+            _dialogBehaviour.DialogTextCharWritten -= _dialogPanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped -= _dialogPanel.ShowFullDialogText;
 
-            /*_dialogBehaviour.SentenceNodeActivated -= EnableDialogSentencePanel;
-            _dialogBehaviour.SentenceNodeActivated -= DisableDialogAnswerPanel;
-            _dialogBehaviour.SentenceNodeActivated += _dialogSentencePanel.ResetDialogText;
-            _dialogBehaviour.SentenceNodeActivatedWithParameter -= _dialogSentencePanel.Setup;
-            */
-
-            _dialogBehaviour.DialogNodeActivated -= EnableDialogPanel;
-            //_dialogBehaviour.DialogNodeDeActivated -= DisableDialogPanel;
-
-            //_dialogBehaviour.DialogNodeActivatedWithParameter -= _dialogPanel.EnableCertainAmountOfButtons;
-            //_dialogBehaviour.MaxNumberOfChoiceButtonsCalculated -= _dialogAnswerPanel.SetUpButtons;
+            _dialogBehaviour.DialogNodeOpen -= DialogPanelOpen;
+            _dialogBehaviour.DialogNodeClose -= DialogPanelClose;
 
             _dialogBehaviour.DialogNodeSetUp -= SetUpDialogPanel;
-#if UNITY_LOCALIZATION
-            _dialogBehaviour.LanguageChanged -= HandleLanguageChanged;
-#endif
+
         }
 
         /// <summary>
         /// Disable dialog answer and sentence panel
         /// </summary>
-        public void DisableDialogPanel()
+        public void DialogPanelClose(string token)
         {
+            Debug.Log("DialogDisplayer:DialogPanelClose()...");
             _dialogPanel.GetComponent<Animator>().SetBool("Show", false);
-
             //DisableDialogPanel();
             //DisableDialogSentencePanel();
         }
@@ -79,28 +55,11 @@ namespace cherrydev
         /// <summary>
         /// Enable dialog answer panel
         /// </summary>
-        public void EnableDialogPanel()
+        public void DialogPanelOpen(string token)
         {
             _dialogPanel.GetComponent<Animator>().SetBool("Show", true);
             //ActiveGameObject(_dialogAnswerPanel.gameObject, true);
             //_dialogButtonsPanel.DisableAllButtons();
-        }
-
-
-        /// <summary>
-        /// Enable or disable game object depends on isActive bool flag
-        /// </summary>
-        /// <param name="gameObject"></param>
-        /// <param name="isActive"></param>
-        public void ActiveGameObject(GameObject gameObject, bool isActive)
-        {
-            if (gameObject == null)
-            {
-                Debug.LogWarning("Game object is null");
-                return;
-            }
-
-            gameObject.SetActive(isActive);
         }
 
 

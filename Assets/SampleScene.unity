@@ -876,7 +876,91 @@ PrefabInstance:
     - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: dialogNodeGraph
       value: 
-      objectReference: {fileID: 11400000, guid: 185bcb66372994a6292ff78da647740e, type: 2}
+      objectReference: {fileID: 11400000, guid: fcefd959ac6394086870336ecb94c051, type: 2}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1896025584}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1896025584}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DialogNodeOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DialogNodeClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1896025584}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogNodeBasedSystem.Demo.Scripts.TestVrDialog, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DialogTextTypeOutCompleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogNodeBasedSystem.Demo.Scripts.TestVrDialog, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogNodeBasedSystem.Demo.Scripts.TestVrDialog, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogNodeClose.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 26896587485913676, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: DialogTextTypeOutCompleted.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2026558748786877527, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_Name
       value: VrDialog

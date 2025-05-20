@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using cherrydev;
+using System;
+using UnityEngine.Events;
 
 public class VrDialog : MonoBehaviour
 {
@@ -23,6 +25,14 @@ public class VrDialog : MonoBehaviour
     [SerializeField] DialogNodeGraph dialogNodeGraph;
     private DialogBehaviour _dialogBehaviour;
 
+    //[Space(10)]
+    //public delegate void DialogTextTypeOutCompletedPrototype(string token);
+    
+    //public DialogTextTypeOutCompletedPrototype DialogTextTypeOutCompleted;
+    public UnityEvent <string> DialogTextTypeOutCompleted;
+    public UnityEvent<string> DialogNodeOpen;
+    public UnityEvent<string> DialogNodeClose;
+
     // Awake is called before Start()
     void Awake()
     {
@@ -31,17 +41,16 @@ public class VrDialog : MonoBehaviour
         //object here in Awake, before it is needed by any other object's
         //Start() method.
         _dialogBehaviour = GetComponent<DialogBehaviour>();
+
+        _dialogBehaviour.DialogTextTypeOutCompleted += (val) => DialogTextTypeOutCompleted?.Invoke(val);
+        _dialogBehaviour.DialogNodeOpen += (val) => DialogNodeOpen?.Invoke(val);
+        _dialogBehaviour.DialogNodeClose += (val) => DialogNodeClose?.Invoke(val);
     }
+
 
     public void Play()
     {
         _dialogBehaviour.StartDialog(dialogNodeGraph);
     }
-
-    public void BindExternalFunction(string functionName, System.Action function)
-    {
-        _dialogBehaviour.BindExternalFunction(functionName, function);
-    }
-
 
 }

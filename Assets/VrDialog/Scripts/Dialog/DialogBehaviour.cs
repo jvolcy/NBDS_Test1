@@ -13,45 +13,30 @@ namespace cherrydev
         [SerializeField] private List<KeyCode> _nextSentenceKeyCodes;
         [SerializeField] private bool _isCanSkippingText = true;
 
-        [Space(10)]
-        [SerializeField] private UnityEvent _onDialogStarted;
-        [SerializeField] private UnityEvent _onDialogFinished;
+        //[Space(10)]
+        private UnityEvent _onDialogStarted;
+        //[SerializeField] private UnityEvent _onDialogFinished;
 
         //boolean used to force us to the next node.  This value is set to true by the UI sentence button.
         bool _GoToNextNode = false;   //JV
 
-        //private DialogNodeGraph _currentNodeGraph;
         private Node _firstNode;
         
         public DialogNode CurrentDialogNode { get; private set; }
 
         private bool _isDialogStarted;
         private bool _isCurrentSentenceSkipped;
-        //private bool _isCurrentSentenceTyping;
 
-        public bool IsCanSkippingText
-        {
-            get => _isCanSkippingText;
-            set => _isCanSkippingText = value;
-        }
-
-        public event Action DialogTextTypeOutStarted;
-        public event Action DialogTextTypeOutCompleted;
-        //public event Action SentenceNodeActivated;
-        //public event Action<string, string, Sprite, string> SentenceNodeActivatedWithParameter;
-//        public event Action<string, string, Sprite> SentenceNodeActivatedWithParameter;
-        public event Action DialogNodeActivated;
-//        public event Action DialogNodeDeActivated;
-        //public event Action<int, DialogNode> AnswerButtonSetUp;
-        //public event Action<int> MaxNumberOfChoiceButtonsCalculated;
- //       public event Action<DialogNode> DialogNodeActivatedWithParameter;
+        public event Action <string>DialogTextTypeOutCompleted;
+        public event Action <string>DialogNodeOpen;
+        public event Action <string>DialogNodeClose;
         public event Action<DialogNode> DialogNodeSetUp;
-        public event Action DialogTextCharWrote;
+        public event Action DialogTextCharWritten;
         public event Action<string> DialogTextSkipped;
 
-        public DialogExternalFunctionsHandler ExternalFunctionsHandler { get; private set; }
+        //public DialogExternalFunctionsHandler ExternalFunctionsHandler { get; private set; }
 
-        private void Awake() => ExternalFunctionsHandler = new DialogExternalFunctionsHandler();
+        //private void Awake() => ExternalFunctionsHandler = new DialogExternalFunctionsHandler();
 
         
         private void Update() => HandleSentenceSkipping();
@@ -68,12 +53,6 @@ namespace cherrydev
         /// <param name="keyCodes"></param>
         public void SetNextSentenceKeyCodes(List<KeyCode> keyCodes) => _nextSentenceKeyCodes = keyCodes;
 
-        /*
-        public void Play(DialogNodeGraph dialogNodeGraph)
-        {
-            StartDialog(dialogNodeGraph);
-        }
-        */
 
         /// <summary>
         /// Start a dialog
@@ -108,26 +87,18 @@ namespace cherrydev
         /// </summary>
         /// <param name="funcName"></param>
         /// <param name="function"></param>
+        /*
         public void BindExternalFunction(string funcName, Action function) => 
             ExternalFunctionsHandler.BindExternalFunction(funcName, function);
+        */
 
         /// <summary>
         /// Adding listener to OnDialogFinished UnityEvent
         /// </summary>
         /// <param name="action"></param>
+        /*
         public void AddListenerToDialogFinishedEvent(UnityAction action) => 
             _onDialogFinished.AddListener(action);
-
-        /*
-        /// <summary>
-        /// Setting currentNode field to Node and call HandleDialogGraphCurrentNode method
-        /// </summary>
-        /// <param name="node"></param>
-        public void SetCurrentNodeAndHandleDialogGraph(Node node)
-        {
-            Debug.Log("SetCurrentNodeAndHandleDialogGraph()");
-            HandleDialogGraphCurrentNode(node);
-        }
         */
 
         /// <summary>
@@ -157,13 +128,15 @@ namespace cherrydev
             DialogNode dialogNode = (DialogNode)currentNode;
             CurrentDialogNode = dialogNode;
 
-            /*** START ***/
-            DialogNodeActivated?.Invoke();
             DialogNodeSetUp?.Invoke(dialogNode);
 
+            /*** START ***/
+            DialogNodeOpen?.Invoke(dialogNode.nodeData.ExternalFunctionToken);
+
+            /*
             if (dialogNode.nodeData.ExternalFunctionToken != "")
                 ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionToken);
-
+            */
             string dialogText = dialogNode.nodeData.DialogText;
             WriteDialogText(dialogText);
         }
@@ -211,7 +184,6 @@ namespace cherrydev
         /// <returns></returns>
         private IEnumerator WriteDialogTextRoutine(string text)
         {
-            DialogTextTypeOutStarted?.Invoke();
             
             foreach (char textChar in text)
             {
@@ -221,16 +193,14 @@ namespace cherrydev
                     break;
                 }
 
-                DialogTextCharWrote?.Invoke();
+                DialogTextCharWritten?.Invoke();
 
                 yield return new WaitForSeconds(_dialogCharDelay);
             }
 
-            DialogTextTypeOutCompleted?.Invoke();
+            DialogTextTypeOutCompleted?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
             
             yield return new WaitUntil(CheckNextSentenceKeyCodes);
-
-            /*** END ***/
 
         }
 
@@ -255,13 +225,19 @@ namespace cherrydev
             if (_GoToNextNode)
             {
                 _GoToNextNode = false;
+                Debug.Log("Xxxxxxxxxxxxxxxx");
+                DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
                 return true;
             }
 
             for (int i = 0; i < _nextSentenceKeyCodes.Count; i++)
-            { 
+            {
                 if (Input.GetKeyDown(_nextSentenceKeyCodes[i]))
+                {
+                    Debug.Log("yyyyyyyyyyyyyyyyyy");
+                    DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
                     return true;
+                }
             }
 
             return false;
