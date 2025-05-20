@@ -57,23 +57,12 @@ namespace cherrydev
         /// <param name="dialogNode"></param>
         public void SetupPanel(DialogNode dialogNode)
         {
-            Debug.Log("SetupPanel()");
+            //Debug.Log("SetupPanel()");
 
-            Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
-            Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
-
-            /*
+            //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
+            //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
 
 
-
-PanelHorzSizePct;
-public float PanelVertSizePct
-public Color BackgroundColor;
-public Sprite BackgroundImage;
-public float AvatarImgToTxtRatio;
-public float AvatarToButtonPanelRatio;
-public float ButtonsWidthPct;
- */
             if (!dialogNode.nodeData.UseCurrentVals)
             {
                 //Set dialog panel width and height (based on the panel ratio)

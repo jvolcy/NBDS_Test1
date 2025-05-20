@@ -8,25 +8,32 @@ namespace cherrydev
 {
     public class DialogBehaviour : MonoBehaviour
     {
-        //[SerializeField] private Node StartNode;
-        [SerializeField] private float _dialogCharDelay;
         [SerializeField] private List<KeyCode> _nextSentenceKeyCodes;
-        [SerializeField] private bool _isCanSkippingText = true;
 
-        //[Space(10)]
-        private UnityEvent _onDialogStarted;
-        //[SerializeField] private UnityEvent _onDialogFinished;
+        //There are 3 ways to trigger loaddig the next node.
+        //1) programmatically, by calling the GotoNextNode() function.
+        //pass the index of the child node to load.
+        //2) click one of the dialog buttons on the curently displayed node.
+        // This also calls the GotoNextNode() function, passing the index of
+        // the button that was clicked.
+        //3) pressing select keys on the keyboard.  With this option, the
+        //first child node will be loaded.  You cannot specify which child.
+        //The following booleans are used to trigger transitions to the child node.
+        public bool ProgramTrigNodeTransition = false;      //program or button click
+        public bool KeyboardTrigNodeTransition = false;     //keyboard 
 
-        //boolean used to force us to the next node.  This value is set to true by the UI sentence button.
-        bool _GoToNextNode = false;   //JV
+        //The child node to load next.  Use in conjunction with the trigger
+        //booleans above.
+        int _ChildNodeToLoadIndex = 0;
 
+        //the first node to load.  This is the child of the START node.
         private Node _firstNode;
-        
+
+        //are referene to the dialog node currently displayed
         public DialogNode CurrentDialogNode { get; private set; }
 
-        private bool _isDialogStarted;
-        private bool _isCurrentSentenceSkipped;
-
+        public event Action DialogStarted;
+        public event Action DialogFinished;
         public event Action <string>DialogTextTypeOutCompleted;
         public event Action <string>DialogNodeOpen;
         public event Action <string>DialogNodeClose;
@@ -34,25 +41,23 @@ namespace cherrydev
         public event Action DialogTextCharWritten;
         public event Action<string> DialogTextSkipped;
 
-        //public DialogExternalFunctionsHandler ExternalFunctionsHandler { get; private set; }
-
-        //private void Awake() => ExternalFunctionsHandler = new DialogExternalFunctionsHandler();
-
-        
-        private void Update() => HandleSentenceSkipping();
 
         /// <summary>
-        /// Setting dialogCharDelay float parameter
+        /// 
         /// </summary>
-        /// <param name="value"></param>
-        public void SetCharDelay(float value) => _dialogCharDelay = value;
-
-        /// <summary>
-        /// Setting nextSentenceKeyCodes
-        /// </summary>
-        /// <param name="keyCodes"></param>
-        public void SetNextSentenceKeyCodes(List<KeyCode> keyCodes) => _nextSentenceKeyCodes = keyCodes;
-
+        private void Update()
+        {
+            //Check if there is a keyboard request to transition to the next node.
+            //In that case, always transition to the first child node.
+            for (int i = 0; i < _nextSentenceKeyCodes.Count; i++)
+            {
+                if (Input.GetKeyDown(_nextSentenceKeyCodes[i]))
+                {
+                    _ChildNodeToLoadIndex = 0;       //load first child node
+                    KeyboardTrigNodeTransition = true;
+                }
+            }
+        }
 
         /// <summary>
         /// Start a dialog
@@ -60,46 +65,29 @@ namespace cherrydev
         /// <param name="dialogNodeGraph"></param>
         public void StartDialog(DialogNodeGraph dialogNodeGraph)
         {
-            _isDialogStarted = true;
-            //_GoToNextNode = false;
-
             if (dialogNodeGraph.NodesList == null)
             {
                 Debug.LogWarning("Dialog Graph's node list is empty");
                 return;
             }
 
-            _onDialogStarted?.Invoke();
-            //_currentNodeGraph = dialogNodeGraph;
+            DialogStarted?.Invoke();
 
             FindFirstNode(dialogNodeGraph);
+
+            //if the START node is disconnected, exit immediately
+            if (!_firstNode) return;
+
             HandleDialogGraphCurrentNode(_firstNode);
         }
 
-        public void GoToNextNode()
+        public void GoToNextNode(int childNodeIndex)
         {
-            _GoToNextNode = true;
+            _ChildNodeToLoadIndex = childNodeIndex;
+            ProgramTrigNodeTransition = true;
         }
 
-        /// <summary>
-        /// This method is designed for ease of use. Calls a method 
-        /// BindExternalFunction of the class DialogExternalFunctionsHandler
-        /// </summary>
-        /// <param name="funcName"></param>
-        /// <param name="function"></param>
-        /*
-        public void BindExternalFunction(string funcName, Action function) => 
-            ExternalFunctionsHandler.BindExternalFunction(funcName, function);
-        */
 
-        /// <summary>
-        /// Adding listener to OnDialogFinished UnityEvent
-        /// </summary>
-        /// <param name="action"></param>
-        /*
-        public void AddListenerToDialogFinishedEvent(UnityAction action) => 
-            _onDialogFinished.AddListener(action);
-        */
 
         /// <summary>
         /// Processing dialog current node
@@ -108,13 +96,13 @@ namespace cherrydev
         public void HandleDialogGraphCurrentNode(Node currentNode)
         {
             DialogNode dialogNode = currentNode as DialogNode;
-            Debug.Log("HandleDialogGraphCurrentNode() on node " + dialogNode.name);
+            //Debug.Log("HandleDialogGraphCurrentNode() on node " + dialogNode.name);
 
             StopAllCoroutines();
 
-            //if (currentNode.GetType() == typeof(SentenceNode))
-            //    HandleSentenceNode(currentNode);
-            //else if (currentNode.GetType() == typeof(DialogNode))
+            /*** START ***/
+            DialogNodeOpen?.Invoke(dialogNode.nodeData.ExternalFunctionToken);
+
             HandleDialogNode(currentNode);
         }
 
@@ -130,13 +118,6 @@ namespace cherrydev
 
             DialogNodeSetUp?.Invoke(dialogNode);
 
-            /*** START ***/
-            DialogNodeOpen?.Invoke(dialogNode.nodeData.ExternalFunctionToken);
-
-            /*
-            if (dialogNode.nodeData.ExternalFunctionToken != "")
-                ExternalFunctionsHandler.CallExternalFunction(dialogNode.nodeData.ExternalFunctionToken);
-            */
             string dialogText = dialogNode.nodeData.DialogText;
             WriteDialogText(dialogText);
         }
@@ -151,7 +132,7 @@ namespace cherrydev
 
             DialogNode dn;
 
-            Debug.Log("DialogBehaviour:There are " + dialogNodeGraph.NodesList.Count + " nodes.");
+            //Debug.Log("DialogBehaviour:There are " + dialogNodeGraph.NodesList.Count + " nodes.");
             for (int i = 0; i < dialogNodeGraph.NodesList.Count; i++)
             {
                 dn = (DialogNode)dialogNodeGraph.NodesList[i];
@@ -160,14 +141,15 @@ namespace cherrydev
                 {
                     if (dn.IsStartNode())
                     {
+                        //set _firstNode to the START node's first (and only) child
                         _firstNode = dn.ChildNodes[0].ChildNode;
-                        Debug.Log("Start node is " + ((DialogNode)_firstNode).name);
+                        //Debug.Log("Start node is " + ((DialogNode)_firstNode).name);
                         return;
                     }
                 }
             }
 
-            Debug.Log("WARNING: No START node found.");
+            Debug.LogWarning("WARNING: No START node found.");
 
         }
 
@@ -184,63 +166,92 @@ namespace cherrydev
         /// <returns></returns>
         private IEnumerator WriteDialogTextRoutine(string text)
         {
-            
-            foreach (char textChar in text)
+            if (CurrentDialogNode.nodeData.TypeDelay == 0)
             {
-                if (_isCurrentSentenceSkipped)
+                //do not type out the dialog text: just display it
+                DialogTextSkipped?.Invoke(text);
+            }
+            else
+            {
+                //here, we will type out the dialot text character by character
+                foreach (char textChar in text)
                 {
-                    DialogTextSkipped?.Invoke(text);
-                    break;
+                    DialogTextCharWritten?.Invoke();
+
+                    //delay between characters
+                    yield return new WaitForSeconds(CurrentDialogNode.nodeData.TypeDelay);
+
+                    //if we have a request to transition, exit the typing loop.
+                    if (ProgramTrigNodeTransition || KeyboardTrigNodeTransition) break;
                 }
-
-                DialogTextCharWritten?.Invoke();
-
-                yield return new WaitForSeconds(_dialogCharDelay);
             }
 
+            //invoke the TypeOutCompleted event
             DialogTextTypeOutCompleted?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
             
-            yield return new WaitUntil(CheckNextSentenceKeyCodes);
+            yield return new WaitUntil(CheckTransitionToNextNode);
 
         }
 
-        /// <summary>
-        /// Handles text skipping mechanics
-        /// </summary>
-        private void HandleSentenceSkipping()
-        {
-            if (!_isDialogStarted || !_isCanSkippingText)
-                return;
-            
-            if (CheckNextSentenceKeyCodes() && !_isCurrentSentenceSkipped)
-                _isCurrentSentenceSkipped = true;
-        }
 
         /// <summary>
+        /// There are 3 ways we can advance to the next node.
+        ///     1) One of the option buttons on the current node has been clicked, so
+        ///     we need to load the appropriate child node.
+        ///     2) The keyboard was used to signal that we need to load the next node.
+        ///     3) We received a programmatic GotoNextNode() call.  Some code is
+        ///     requesting that we load a specific child node.
+        ///     
         /// Checking whether at least one key from the nextSentenceKeyCodes was pressed
+        /// or one of the choice buttons was pushed or we got a command to advance to
+        /// the next node.
         /// </summary>
         /// <returns></returns>
-        private bool CheckNextSentenceKeyCodes()
+        private bool CheckTransitionToNextNode()
         {
-            if (_GoToNextNode)
+            //Either a choice button was clicked or the GotoNextNode() function
+            //was called or the keyboard trigger key was hit
+            if (ProgramTrigNodeTransition || KeyboardTrigNodeTransition)
             {
-                _GoToNextNode = false;
-                Debug.Log("Xxxxxxxxxxxxxxxx");
-                DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
+                ProgramTrigNodeTransition = false;
+                KeyboardTrigNodeTransition = false;
+
+                PrepareNextPanel();
                 return true;
             }
 
-            for (int i = 0; i < _nextSentenceKeyCodes.Count; i++)
+            return false;
+        }
+
+
+        /// <summary>
+        /// Prepares the next panel to load
+        /// </summary>
+        /// <param name="childIndex"></param>
+        void PrepareNextPanel()
+        {
+            //signal that the current node is closing
+            DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
+
+            Node childNodeToLoad = null;
+
+            //get the target node to load if the index is in range
+            if (_ChildNodeToLoadIndex < CurrentDialogNode.ChildNodes.Count)
             {
-                if (Input.GetKeyDown(_nextSentenceKeyCodes[i]))
-                {
-                    Debug.Log("yyyyyyyyyyyyyyyyyy");
-                    DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
-                    return true;
-                }
+                childNodeToLoad = CurrentDialogNode.ChildNodes[_ChildNodeToLoadIndex].ChildNode;
             }
 
-            return false;
+            if(childNodeToLoad)
+            { 
+                //Debug.Log("DialogBehaviour:LoadNextPanel() ... loading child " + _ChildNodeToLoadIndex);
+                HandleDialogGraphCurrentNode(childNodeToLoad);  //load next node
+                return;
+            }
+
+            //Here, either the requested child index was out of range or not
+            //connected. Either way, terminate the dialog.
+            DialogFinished?.Invoke();
+
         }
     }
 }

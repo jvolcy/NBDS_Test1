@@ -45,7 +45,7 @@ namespace cherrydev
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
         private const float DialogBaseNodeHeight = 180f;
 
-        private const float DialogNodeDataHeight = 140f;
+        private const float DialogNodeDataHeight = 160f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -151,15 +151,6 @@ namespace cherrydev
                 typeof(Sprite), false, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
-            //draw avatar name
-            /*
-            EditorGUILayout.BeginHorizontal();
-            tooltip = "The avatar name.";
-            EditorGUILayout.LabelField(new GUIContent($"Avtr Name", tooltip), GUILayout.Width(LabelFieldSpace));
-            _nodeData.AvatarName = EditorGUILayout.TextField(_nodeData.AvatarName, GUILayout.Width(TextFieldWidth));
-            EditorGUILayout.EndHorizontal();
-            */
-
             //draw DialogText
             EditorGUILayout.BeginHorizontal();
             tooltip = _nodeData.DialogText;
@@ -171,11 +162,18 @@ namespace cherrydev
             EditorGUILayout.BeginHorizontal();
             tooltip = "If checked, the values from the previous node will be used.";
             const int ExtraSpace = 5;
-            EditorGUILayout.LabelField(new GUIContent($"Use Prv Vals ", tooltip), GUILayout.Width(LabelFieldSpace + ExtraSpace));
+            EditorGUILayout.LabelField(new GUIContent($"Use Prv Vals", tooltip), GUILayout.Width(LabelFieldSpace + ExtraSpace));
             _nodeData.UseCurrentVals = EditorGUILayout.Toggle(_nodeData.UseCurrentVals, GUILayout.Width(TextFieldWidth - ExtraSpace));
             EditorGUILayout.EndHorizontal();
 
             if (_nodeData.UseCurrentVals) return;
+
+            //Typewriter rate
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "Dialog text is typed out to the screen with a typewritter effect.  Use thie parameter to set the seconds delay between typed characters.  Set to zero to eliminate the typewriter effect";
+            EditorGUILayout.LabelField(new GUIContent($"Type Delay", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.TypeDelay = EditorGUILayout.FloatField(_nodeData.TypeDelay, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
 
             //draw Panel Horz Size Pct %
             EditorGUILayout.BeginHorizontal();

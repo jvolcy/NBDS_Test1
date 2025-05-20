@@ -12,6 +12,7 @@ namespace cherrydev
 
         public bool UseCurrentVals;
 
+        public float TypeDelay;
         public float PanelHorzSizePct;
         public float PanelVertSizePct;
         public Color BackgroundColor;
@@ -32,7 +33,7 @@ namespace cherrydev
             DialogText = dialogText;
 
             UseCurrentVals = false;
-
+            TypeDelay = 0.05f;
             PanelHorzSizePct = 1;
             PanelVertSizePct = 1;
             BackgroundColor = new Color32(29, 29, 29, 150);

@@ -10,56 +10,41 @@ namespace cherrydev
         [SerializeField] private DialogBehaviour _dialogBehaviour;
 
         [Header("NODE PANELS")]
-        //[SerializeField] private TextPanel _dialogTextPanel;
-        //[SerializeField] private ButtonsPanel _dialogButtonsPanel;
         [SerializeField] private DialogPanel _dialogPanel;
 
         private void OnEnable()
         {
-            //_dialogBehaviour.AddListenerToDialogFinishedEvent(DisableDialogPanel);
             _dialogBehaviour.DialogTextCharWritten += _dialogPanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped += _dialogPanel.ShowFullDialogText;
-
-            _dialogBehaviour.DialogNodeOpen += DialogPanelOpen;
-            _dialogBehaviour.DialogNodeClose += DialogPanelClose;
-
+            _dialogBehaviour.DialogStarted += DialogStarted;
+            _dialogBehaviour.DialogFinished += DialogFinished;
             _dialogBehaviour.DialogNodeSetUp += SetUpDialogPanel;
-
         }
 
         private void OnDisable()
         {
-            //_dialogBehaviour.AnswerButtonSetUp -= SetUpAnswerButtonsClickEvent;
-
             _dialogBehaviour.DialogTextCharWritten -= _dialogPanel.IncreaseMaxVisibleCharacters;
             _dialogBehaviour.DialogTextSkipped -= _dialogPanel.ShowFullDialogText;
-
-            _dialogBehaviour.DialogNodeOpen -= DialogPanelOpen;
-            _dialogBehaviour.DialogNodeClose -= DialogPanelClose;
-
+            _dialogBehaviour.DialogStarted -= DialogStarted;
+            _dialogBehaviour.DialogFinished -= DialogFinished;
             _dialogBehaviour.DialogNodeSetUp -= SetUpDialogPanel;
-
         }
 
         /// <summary>
-        /// Disable dialog answer and sentence panel
+        /// Display the dialog panel
         /// </summary>
-        public void DialogPanelClose(string token)
+        public void DialogStarted()
         {
-            Debug.Log("DialogDisplayer:DialogPanelClose()...");
-            _dialogPanel.GetComponent<Animator>().SetBool("Show", false);
-            //DisableDialogPanel();
-            //DisableDialogSentencePanel();
-        }
-
-        /// <summary>
-        /// Enable dialog answer panel
-        /// </summary>
-        public void DialogPanelOpen(string token)
-        {
+            //Debug.Log("DialogDisplayer:DialogPanelClose()...");
             _dialogPanel.GetComponent<Animator>().SetBool("Show", true);
-            //ActiveGameObject(_dialogAnswerPanel.gameObject, true);
-            //_dialogButtonsPanel.DisableAllButtons();
+        }
+
+        /// <summary>
+        /// Hide the dialog panel
+        /// </summary>
+        public void DialogFinished()
+        {
+            _dialogPanel.GetComponent<Animator>().SetBool("Show", false);
         }
 
 
@@ -69,18 +54,17 @@ namespace cherrydev
         /// <param name="dialogNode"></param>
         public void SetUpButtonsClickEvent(DialogNode dialogNode)
         {
-            //***WARNING*** This might fail if the child node is not connected.
-
-            Debug.Log("SetUpButtonsClickEvent()...");
+            //Debug.Log("SetUpButtonsClickEvent()...");
 
             //local function to add a listerner.  When implemneted as a lambda function
             //the index value does not behave properly.  For now, keep _addListener
             //as a separate local function.
-            void _addListener(Node i, Button button)
+
+            void _addListener(Button button, int childIndex)
             {
                 //create a delegate so that we can pass a value from the OnClick
                 //event to our handler.
-                button.onClick.AddListener(delegate { _dialogBehaviour.HandleDialogGraphCurrentNode(i); });
+                button.onClick.AddListener(delegate { _dialogBehaviour.GoToNextNode(childIndex); });
             }
 
             //each button will call the same function, passing to it and integer
@@ -91,7 +75,7 @@ namespace cherrydev
                 var button = _dialogPanel.GetButtonByIndex(index);
                 button.onClick.RemoveAllListeners();
 
-                _addListener(dialogNode.ChildNodes[index].ChildNode, button);
+                _addListener(button, index);
             }
         }
 

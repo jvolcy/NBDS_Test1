@@ -1058,7 +1058,10 @@ namespace cherrydev
 
             DialogNode dialogNode = CreateInstance<DialogNode>();
             InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel);
+
+            //overwrite the default node name
             dialogNode.name = "Start Node";
+            //dialogNode.nodeData.ExternalFunctionToken = DialogNode.StartNodeSentinel;
         }
 
         /// <summary>
