@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 215
-    y: 35
+    x: 158
+    y: 48
     width: 210
-    height: 360
+    height: 380
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -27,6 +27,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: Skillful Koala
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 0
     PanelVertSizePct: 0
     BackgroundColor: {r: 0.6320754, g: 0.42635277, b: 0.42635277, a: 0}
@@ -38,10 +39,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 425, y: 304}
+    ChildConnectionPoint: {x: 368, y: 337}
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 425, y: 324}
+    ChildConnectionPoint: {x: 368, y: 357}
 --- !u!114 &-6120714395014319906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,17 +59,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 429
-    y: 492
+    x: 372
+    y: 505
     width: 210
-    height: 360
+    height: 380
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: Outgoing Kangaroo
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 0
     PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
@@ -80,10 +82,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0027 ]'
     ChildNode: {fileID: -3288720057894055028}
-    ChildConnectionPoint: {x: 639, y: 761}
+    ChildConnectionPoint: {x: 582, y: 794}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 639, y: 781}
+    ChildConnectionPoint: {x: 582, y: 814}
 --- !u!114 &-3288720057894055028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,17 +102,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 697
-    y: 116
+    x: 675
+    y: 107
     width: 210
-    height: 380
+    height: 240
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: Philosophical Sidewinder
-    UseCurrentVals: 0
+    UseCurrentVals: 1
+    TypeDelay: 0
     PanelHorzSizePct: 0
     PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
@@ -122,13 +125,13 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0026 ]'
     ChildNode: {fileID: -6120714395014319906}
-    ChildConnectionPoint: {x: 907, y: 385}
+    ChildConnectionPoint: {x: 885, y: 236}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 907, y: 405}
+    ChildConnectionPoint: {x: 885, y: 256}
   - ChoiceText: 
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 907, y: 425}
+    ChildConnectionPoint: {x: 885, y: 276}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,8 +168,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 9
-    y: 131
+    x: -48
+    y: 144
     width: 120
     height: 60
   IsDragging: 1
@@ -176,6 +179,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: '!START!'
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 0
     PanelVertSizePct: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
@@ -187,4 +191,4 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: '[ Node 0028 ]'
     ChildNode: {fileID: -8388965635032525230}
-    ChildConnectionPoint: {x: 69, y: 161}
+    ChildConnectionPoint: {x: 12, y: 174}
