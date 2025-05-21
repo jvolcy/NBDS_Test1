@@ -1057,11 +1057,9 @@ namespace cherrydev
                 }
 
             DialogNode dialogNode = CreateInstance<DialogNode>();
-            InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel);
+            //initialize the node, overwritting the default node name
+            InitializeNode(Position, dialogNode, DialogNode.StartNodeSentinel, "Start Node");
 
-            //overwrite the default node name
-            dialogNode.name = "Start Node";
-            //dialogNode.nodeData.ExternalFunctionToken = DialogNode.StartNodeSentinel;
         }
 
         /// <summary>
@@ -1118,12 +1116,17 @@ namespace cherrydev
         /// <param name="mousePositionObject"></param>
         /// <param name="dialogNode"></param>
         /// <param name="nodeName"></param>
-        private void InitializeNode(Vector2 Position, DialogNode dialogNode, string placeholderText)
+        private void InitializeNode(Vector2 Position, DialogNode dialogNode, string placeholderText, string name="")
         {
             _currentNodeGraph.NodesList.Add(dialogNode);
 
             dialogNode.Initialize(new Rect(Position, Vector2.zero), placeholderText, _currentNodeGraph);
-            dialogNode.name = "[ Node " + dialogNode.NodeID.ToString("D4") + " ]";
+
+            //if no name is provided, create a default name. eg: [ Node 0001 ]
+            if (name == "")
+            { dialogNode.name = "[ Node " + dialogNode.NodeID.ToString("D4") + " ]"; }
+            else
+            { dialogNode.name = name; }
 
             AssetDatabase.AddObjectToAsset(dialogNode, _currentNodeGraph);
             AssetDatabase.SaveAssets();

@@ -965,6 +965,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VrDialog
       objectReference: {fileID: 0}
+    - target: {fileID: 4557947447953587172, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1003,6 +1007,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4616664165616117380, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_fontSize
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4795355495581421234, guid: 7973b28e41d7a421c84eb56567cc7a0c, type: 3}

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using cherrydev;
-using System;
 using UnityEngine.Events;
 
 public class VrDialog : MonoBehaviour
@@ -25,10 +24,6 @@ public class VrDialog : MonoBehaviour
     [SerializeField] DialogNodeGraph dialogNodeGraph;
     private DialogBehaviour _dialogBehaviour;
 
-    //[Space(10)]
-    //public delegate void DialogTextTypeOutCompletedPrototype(string token);
-    
-    //public DialogTextTypeOutCompletedPrototype DialogTextTypeOutCompleted;
     public UnityEvent <string> DialogTextTypeOutCompleted;
     public UnityEvent<string> DialogNodeOpen;
     public UnityEvent<string> DialogNodeClose;
@@ -47,9 +42,16 @@ public class VrDialog : MonoBehaviour
         _dialogBehaviour.DialogNodeClose += (val) => DialogNodeClose?.Invoke(val);
     }
 
-
-    public void Play()
+    /// <summary>
+    /// 
+    /// </summary>
+    public void Play(DialogNodeGraph dng = null)
     {
+        if (dng)
+        {
+            dialogNodeGraph = dng;
+        }
+
         _dialogBehaviour.StartDialog(dialogNodeGraph);
     }
 

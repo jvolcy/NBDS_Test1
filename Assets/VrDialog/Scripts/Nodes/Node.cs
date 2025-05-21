@@ -15,18 +15,6 @@ namespace cherrydev
 
         [HideInInspector] public int NodeID = -1;
 
-        //protected float StandardHeight;
-
-        //public Node ParentNode;
-        //public int ParentCount = 0;  //# of parents
-        //public Node ChildNode;
-
-        /// <summary>
-        /// Gets the table name from the node graph asset name
-        /// </summary>
-        /// <returns>The table name for this node's graph</returns>
-        //protected string GetTableNameFromNodeGraph() => NodeGraph.LocalizationTableName;
-        
 #if UNITY_EDITOR
 
         /// <summary>
@@ -38,7 +26,6 @@ namespace cherrydev
         public virtual void Initialize(Rect rect, string nodeName, DialogNodeGraph nodeGraph)
         {
             name = nodeName;
-            //StandardHeight = rect.height;
             Rect = rect; 
             NodeGraph = nodeGraph;
         }
@@ -50,8 +37,11 @@ namespace cherrydev
         /// <param name="labelStyle"></param>
         public virtual void Draw(GUIStyle nodeStyle, GUIStyle labelStyle) { }
 
-        //public virtual bool AddToParentConnectedNode(Node nodeToAdd) => true;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nodeToAdd"></param>
+        /// <returns></returns>
         public virtual bool AddToChildConnectedNode(Node nodeToAdd) => true;
 
         /// <summary>

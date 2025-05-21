@@ -6,7 +6,6 @@ namespace cherrydev
     public struct NodeData
     {
         public Sprite AvatarImage;
-        //public string AvatarName;
         [TextArea(3, 10)]
         public string DialogText;
 
@@ -29,10 +28,10 @@ namespace cherrydev
         public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
             AvatarImage = avatarImage;
-            //AvatarName = avatarName;
             DialogText = dialogText;
 
             UseCurrentVals = false;
+
             TypeDelay = 0.05f;
             PanelHorzSizePct = 1;
             PanelVertSizePct = 1;

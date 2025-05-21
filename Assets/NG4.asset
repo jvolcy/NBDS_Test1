@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 555
-    y: 392
+    x: 581
+    y: 434
     width: 210
-    height: 320
+    height: 340
   IsDragging: 0
   IsSelected: 0
   NodeID: 14
@@ -27,6 +27,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: Intuitive Snake
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
@@ -72,10 +73,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 80
-    y: 13
+    x: 106
+    y: 55
     width: 210
-    height: 360
+    height: 380
   IsDragging: 1
   IsSelected: 0
   NodeID: 13
@@ -83,6 +84,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: Passionate Manatee
     UseCurrentVals: 0
+    TypeDelay: 0.05
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
     BackgroundColor: {r: 0.8679245, g: 0.8489769, b: 0.46262014, a: 0.5882353}
@@ -94,10 +96,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 3243030761396637110}
-    ChildConnectionPoint: {x: 290, y: 282}
+    ChildConnectionPoint: {x: 316, y: 344}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 290, y: 302}
+    ChildConnectionPoint: {x: 316, y: 364}
 --- !u!114 &3243030761396637110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,12 +116,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 532
-    y: 47.5
+    x: 558
+    y: 89.5
     width: 210
-    height: 340
+    height: 360
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -127,6 +129,7 @@ MonoBehaviour:
       contains contains graphic content of a sexual and/or violent nature that may
       be harmful or traumatizing to some audiences. Discretion is advised.  "
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
@@ -138,7 +141,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 742, y: 316.5}
+    ChildConnectionPoint: {x: 768, y: 378.5}
 --- !u!114 &5617620800059427379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,8 +158,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -124
-    y: 99
+    x: -98
+    y: 141
     width: 120
     height: 60
   IsDragging: 1
@@ -166,6 +169,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: '!START!'
     UseCurrentVals: 0
+    TypeDelay: 0
     PanelHorzSizePct: 1
     PanelVertSizePct: 1
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
@@ -177,4 +181,4 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 2037191826421303347}
-    ChildConnectionPoint: {x: -64, y: 129}
+    ChildConnectionPoint: {x: -38, y: 171}

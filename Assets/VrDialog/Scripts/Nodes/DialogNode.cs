@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace cherrydev
 {
-    //[CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Dialog Node", fileName = "New Dialog Node")]
     public class DialogNode : Node
     {
         //Node Data
@@ -27,11 +26,6 @@ namespace cherrydev
 
         //Child Nodes
         [HideInInspector] public List<ChildNodeStruct> ChildNodes;
-
-        //External Function
-        //[Space(7)] //[SerializeField] private bool _invokeExternalFunc;
-        //[SerializeField] private string _externalFunctionName;
-        //private string _externalButtonLabel;
 
         //constants
         private const float LabelFieldSpace = 70f;
@@ -89,7 +83,6 @@ namespace cherrydev
             base.Draw(nodeStyle, labelStyle);
             GUILayout.BeginArea(Rect, nodeStyle);
 
-
             if (IsStartNode())
             {
                 EditorGUILayout.LabelField("START", labelStyle);
@@ -140,7 +133,6 @@ namespace cherrydev
         /// </summary>
         void DrawNodeData()
         {
-
             string tooltip;
 
             //draw avatar sprite
@@ -224,7 +216,6 @@ namespace cherrydev
             EditorGUILayout.LabelField(new GUIContent($"Btn Width%", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonsWidthPct = EditorGUILayout.FloatField(_nodeData.ButtonsWidthPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
-
         }
 
         /// <summary>
@@ -241,13 +232,11 @@ namespace cherrydev
             EditorGUILayout.EndHorizontal();
         }
 
-
         /// <summary>
         /// Returning external function name
         /// </summary>
         /// <returns></returns>
         public string GetExternalFunctionName() => nodeData.ExternalFunctionToken;
-
 
         /// <summary>
         /// Draw choice line
@@ -257,7 +246,6 @@ namespace cherrydev
         private void DrawChoiceLine(int choiceNumber, string iconPathOrName)
         {
             GUIContent iconContent = EditorGUIUtility.IconContent(iconPathOrName);
-            //Texture2D fallbackTexture = Resources.Load<Texture2D>("Dot");
 
             //Debug.Log("DrawChoiceLine -> ChildNode.Count, ChildConnectionPoint.Count = " + ChildNodes.Count + ", " + ChildConnectionPoint.Count);
             ChildNodeStruct cns = ChildNodes[choiceNumber];
@@ -267,9 +255,6 @@ namespace cherrydev
             if (rect.center != Vector2.zero && ChildNodes.Count > choiceNumber)
             {
                 cns.ChildConnectionPoint = new Vector2(this.Rect.center.x + rect.center.x, this.Rect.y + rect.center.y);
-
-                //ChildConnectionPoint.Add(new Vector2(this.Rect.center.x + rect.center.x, this.Rect.center.y + rect.center.y));
-                //ChildConnectionPoint.Add(rect.center);
             }
             EditorGUILayout.LabelField($"{choiceNumber+1}. ", GUILayout.Width(ChoiceLabelFieldSpace));
 
@@ -278,25 +263,15 @@ namespace cherrydev
 
             ChildNodes[choiceNumber] = cns;
 
-
             //draw the red dot after the choice line.  (Is this needed?)
             EditorGUILayout.LabelField(iconContent, GUILayout.Width(ChoiceLabelFieldSpace));
-
-            /*
-            if (fallbackTexture == null)
-            {
-                //Debug.Log("fallbackTexture == null");
-                EditorGUILayout.LabelField(iconContent, GUILayout.Width(ChoiceLabelFieldSpace));
-            }
-            else
-            {
-                GUILayout.Label(fallbackTexture, GUILayout.Width(ChoiceLabelFieldSpace), GUILayout.Height(ChoiceLabelFieldSpace));
-            }
-            */
 
             EditorGUILayout.EndHorizontal();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void DrawDialogNodeButtons()
         {
             if (GUILayout.Button("Add choice"))
@@ -305,7 +280,6 @@ namespace cherrydev
             if (GUILayout.Button("Remove choice"))
                 DeleteLastChoice();
         }
-
 
         /// <summary>
         /// Increase number of choices and node height.

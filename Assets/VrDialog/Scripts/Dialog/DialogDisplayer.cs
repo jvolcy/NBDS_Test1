@@ -47,7 +47,6 @@ namespace cherrydev
             _dialogPanel.GetComponent<Animator>().SetBool("Show", false);
         }
 
-
         /// <summary>
         /// Removing all listeners and Setting up answer button onClick event
         /// </summary>
@@ -78,7 +77,6 @@ namespace cherrydev
                 _addListener(button, index);
             }
         }
-
 
         /// <summary>
         /// Setting up answer dialog panel
