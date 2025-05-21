@@ -11,6 +11,7 @@ namespace cherrydev
 
         public bool UseCurrentVals;
 
+        public float FontSize;
         public float TypeDelay;
         public float PanelHorzSizePct;
         public float PanelVertSizePct;
@@ -24,6 +25,7 @@ namespace cherrydev
         public float ButtonsWidthPct;
 
         public string ExternalFunctionToken;
+        public bool pinned;
 
         public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
@@ -32,6 +34,7 @@ namespace cherrydev
 
             UseCurrentVals = false;
 
+            FontSize = 10f;
             TypeDelay = 0.05f;
             PanelHorzSizePct = 1;
             PanelVertSizePct = 1;
@@ -42,6 +45,7 @@ namespace cherrydev
             ButtonsWidthPct = 0.8f;
 
             ExternalFunctionToken = "";
+            pinned = true;
         }
 
     }

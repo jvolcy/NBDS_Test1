@@ -28,6 +28,7 @@ namespace cherrydev
 
         private GUIStyle _labelStyle;
         private GUIStyle _startLabelStyle;
+        private GUIStyle _pinButtonStyle;
 
         private Rect _selectionRect;
         private Vector2 _mouseScrollClickPosition;
@@ -51,7 +52,6 @@ namespace cherrydev
         private const float GridSmallLineSpacing = 25;
 
         private bool _isLeftMouseDragFromEmpty;
-        private bool _showLocalizationKeys;
         private bool _isMiddleMouseClickedOnNode;
 
         // Search functionality
@@ -280,6 +280,12 @@ namespace cherrydev
             _startLabelStyle.clipping = TextClipping.Clip;
             _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
 
+            _pinButtonStyle = new GUIStyle();
+            //_pinButtonStyle.alignment = TextAnchor.MiddleLeft;
+            //_pinButtonStyle.fontSize = LabelFontSize;
+            _pinButtonStyle.normal.textColor = Color.white;
+            //_pinButtonStyle.clipping = TextClipping.Clip;
+            //_pinButtonStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
         }
 
         /// <summary>
@@ -654,11 +660,11 @@ namespace cherrydev
             {
                 if (dialogNode.IsStartNode())
                 {
-                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _startLabelStyle);
+                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedStartNodeStyle, _startLabelStyle, currentEvent.mousePosition);
                 }
                 else
                 {
-                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedNodeStyle, _labelStyle);
+                    dialogNode.Draw(!dialogNode.IsSelected ? _nodeStyle : _selectedNodeStyle, _labelStyle, currentEvent.mousePosition);
                 }
             }
 
@@ -992,7 +998,9 @@ namespace cherrydev
             foreach (Node node in _currentNodeGraph.NodesList)
             {
                 if (node.Rect.Contains(mousePosition))
+                {
                     return node;
+                }
             }
 
             return null;
