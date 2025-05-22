@@ -25,7 +25,7 @@ namespace cherrydev
         public float ButtonsWidthPct;
 
         public string ExternalFunctionToken;
-        public bool rolledUp;
+        public bool Collapsed;
 
         public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
@@ -45,7 +45,7 @@ namespace cherrydev
             ButtonsWidthPct = 0.8f;
 
             ExternalFunctionToken = "";
-            rolledUp = false;
+            Collapsed = false;
         }
 
         //create a copy constructor
@@ -67,7 +67,7 @@ namespace cherrydev
             ButtonsWidthPct = src.ButtonsWidthPct;
 
             ExternalFunctionToken = src.ExternalFunctionToken;
-            rolledUp = src.rolledUp;
+            Collapsed = src.Collapsed;
         }
 
     }

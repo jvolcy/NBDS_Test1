@@ -28,7 +28,6 @@ namespace cherrydev
 
         private GUIStyle _labelStyle;
         private GUIStyle _startLabelStyle;
-        //private GUIStyle _pinButtonStyle;
 
         private Rect _selectionRect;
         private Vector2 _mouseScrollClickPosition;
@@ -53,6 +52,8 @@ namespace cherrydev
 
         private bool _isLeftMouseDragFromEmpty;
         private bool _isMiddleMouseClickedOnNode;
+
+        bool stylesInitialized = false;
 
         // Search functionality
         private string _searchText = "";
@@ -80,11 +81,6 @@ namespace cherrydev
             return result;
         }
 
-        private void CreateGUI()
-        {
-            InitializeStyles();
-        }
-
         /// <summary>
         /// Define nodes and label style parameters on enable
         /// </summary>
@@ -94,7 +90,7 @@ namespace cherrydev
 
             _nodeEditor = this;
             Selection.selectionChanged += ChangeEditorWindowOnSelection;
-            
+            stylesInitialized = false;
         }
 
 
@@ -171,8 +167,6 @@ namespace cherrydev
              * here in OnGUI().  The toolbarStylesInitialized bool is used
              * to avoid repeated initializations.
             */
-            //if (!toolbarStylesInitialized) { InitializeToolbarStyles(); }
-            //InitializeToolbarStyles();
 
             EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), _backgroundColor);
             DrawToolbar();
@@ -280,12 +274,7 @@ namespace cherrydev
             _startLabelStyle.clipping = TextClipping.Clip;
             _startLabelStyle.normal.background = MakeTex(new Color32(0x0, 0xa, 0xe, 0x0));
 
-            //_pinButtonStyle = new GUIStyle();
-            //_pinButtonStyle.alignment = TextAnchor.MiddleLeft;
-            //_pinButtonStyle.fontSize = LabelFontSize;
-            //_pinButtonStyle.normal.textColor = Color.white;
-            //_pinButtonStyle.clipping = TextClipping.Clip;
-            //_pinButtonStyle.normal.background = MakeTex(new Color32(0x10, 0x7a, 0xfe, 0xff));
+            stylesInitialized = true;
         }
 
         /// <summary>
@@ -317,6 +306,8 @@ namespace cherrydev
         private void DrawToolbar()
         {
             //Debug.Log("NodeEditor:DrawToolbar()...");
+
+            if (!stylesInitialized) { InitializeStyles(); }
 
             EditorGUI.DrawRect(new Rect(0, 0, position.width, ToolbarHeight), _headerColor);
             GUILayout.BeginArea(new Rect(0, 0, position.width, ToolbarHeight));
@@ -655,6 +646,8 @@ namespace cherrydev
         {
             if (_currentNodeGraph.NodesList.Count == 0)
                 return;
+
+            if (!stylesInitialized) { InitializeStyles(); }
 
             foreach (DialogNode dialogNode in _currentNodeGraph.NodesList)
             {

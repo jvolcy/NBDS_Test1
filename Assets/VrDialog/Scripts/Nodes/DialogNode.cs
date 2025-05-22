@@ -48,9 +48,9 @@ namespace cherrydev
 
         public const string StartNodeSentinel = "!START!";
 
-        private const float rollupButtonHeight = 20f;
+        private const float collapseButtonHeight = 20f;
 
-        GUIStyle _rollupButtonStyle;
+        GUIStyle _collapseButtonStyle;
 
 #if UNITY_EDITOR
 
@@ -162,8 +162,8 @@ namespace cherrydev
             _nodeData.UseCurrentVals = EditorGUILayout.Toggle(_nodeData.UseCurrentVals, GUILayout.Width(TextFieldWidth - ExtraSpace));
             EditorGUILayout.EndHorizontal();
 
-            if (_nodeData.UseCurrentVals) return;
-            if (_nodeData.rolledUp) return;
+            //if we are using previous values or the user has collapsed the node, skip drawing the node data fields
+            if (_nodeData.UseCurrentVals || _nodeData.Collapsed) return;
 
             //Font Size
             EditorGUILayout.BeginHorizontal();
@@ -286,10 +286,10 @@ namespace cherrydev
         /// </summary>
         private void DrawDialogNodeButtons()
         {
-            if (_rollupButtonStyle == null)
+            if (_collapseButtonStyle == null)
             {
-                _rollupButtonStyle = new GUIStyle();
-                _rollupButtonStyle.alignment = TextAnchor.MiddleCenter;
+                _collapseButtonStyle = new GUIStyle();
+                _collapseButtonStyle.alignment = TextAnchor.MiddleCenter;
             }
 
             if (GUILayout.Button("Add choice"))
@@ -298,13 +298,15 @@ namespace cherrydev
             if (GUILayout.Button("Remove choice"))
                 DeleteLastChoice();
 
+            //if the useCurrentVals flag is set, don't even bother drawing the collapse button
             if (_nodeData.UseCurrentVals) return;
 
-            Texture LogoTex = Resources.Load(_nodeData.rolledUp ? "double-down-arrow-512" : "double-up-arrow-512") as Texture;
-
-            if (GUILayout.Button(LogoTex, _rollupButtonStyle, GUILayout.Height(rollupButtonHeight)))
+            //draw the collapse button; firts, decide if we need the up or down button icon.
+            Texture LogoTex = Resources.Load(_nodeData.Collapsed ? "double-down-arrow" : "double-up-arrow") as Texture;
+            if (GUILayout.Button(LogoTex, _collapseButtonStyle, GUILayout.Height(collapseButtonHeight)))
             {
-                _nodeData.rolledUp = !_nodeData.rolledUp;
+                //toggle our collapsed state
+                _nodeData.Collapsed = !_nodeData.Collapsed;
             }
 
         }
@@ -418,7 +420,7 @@ namespace cherrydev
             {
                 Rect.width = DialogNodeWidth;
                 Rect.height = DialogBaseNodeHeight;
-                Rect.height += _nodeData.UseCurrentVals || _nodeData.rolledUp ? 0 : DialogNodeDataHeight;
+                Rect.height += _nodeData.UseCurrentVals || _nodeData.Collapsed ? 0 : DialogNodeDataHeight;
                 Rect.height += ChoiceNodeHeight * ChildNodes.Count;
             }
         }

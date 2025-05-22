@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 423
-    y: 24.5
+    x: 318
+    y: 21.5
     width: 210
     height: 230
   IsDragging: 1
@@ -37,14 +37,14 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 1
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: '[ Node 0025 ]'
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 633, y: 153.5}
+    ChildConnectionPoint: {x: 528, y: 150.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -3314409622238939529}
-    ChildConnectionPoint: {x: 633, y: 173.5}
+    ChildConnectionPoint: {x: 528, y: 170.5}
 --- !u!114 &-3314409622238939529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +61,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 790
-    y: 21.5
+    x: 685
+    y: 18.5
     width: 210
-    height: 210
+    height: 390
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -82,11 +82,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 1
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 4569098969431068165}
-    ChildConnectionPoint: {x: 1000, y: 150.5}
+    ChildConnectionPoint: {x: 895, y: 327.5}
 --- !u!114 &-1523267047351050079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 1021
-    y: 595
+    x: 916
+    y: 592
     width: 210
     height: 370
   IsDragging: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
-    rolledUp: 0
+    Collapsed: 0
   ChildNodes: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -166,10 +166,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 105
-    y: 5.5
+    x: 0
+    y: 2.5
     width: 210
-    height: 250
+    height: 430
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -187,17 +187,17 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 1
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: This is one choice
     ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: 315, y: 134.5}
+    ChildConnectionPoint: {x: 210, y: 311.5}
   - ChoiceText: This is another
     ChildNode: {fileID: 1953008284269222610}
-    ChildConnectionPoint: {x: 315, y: 154.5}
+    ChildConnectionPoint: {x: 210, y: 331.5}
   - ChoiceText: Choice 3
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 315, y: 174.5}
+    ChildConnectionPoint: {x: 210, y: 351.5}
 --- !u!114 &1953008284269222610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +214,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 338
-    y: 471.5
+    x: 233
+    y: 468.5
     width: 210
     height: 210
   IsDragging: 1
@@ -235,11 +235,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 0
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: 548, y: 600.5}
+    ChildConnectionPoint: {x: 443, y: 597.5}
 --- !u!114 &2385248913529891393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +256,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 726
-    y: 406.5
+    x: 621
+    y: 403.5
     width: 210
     height: 390
   IsDragging: 1
@@ -277,11 +277,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 0
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 936, y: 715.5}
+    ChildConnectionPoint: {x: 831, y: 712.5}
 --- !u!114 &4569098969431068165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,8 +298,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 1137
-    y: 217.5
+    x: 1032
+    y: 214.5
     width: 210
     height: 370
   IsDragging: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 0
+    Collapsed: 0
   ChildNodes: []
 --- !u!114 &7265242501439403181
 MonoBehaviour:
@@ -337,8 +337,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -86
-    y: 88.5
+    x: -191
+    y: 85.5
     width: 120
     height: 60
   IsDragging: 1
@@ -358,8 +358,8 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    rolledUp: 0
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: '[ Node 0018 ]'
     ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: -26, y: 118.5}
+    ChildConnectionPoint: {x: -131, y: 115.5}
