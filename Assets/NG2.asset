@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 968
-    y: 387.5
+    x: 913
+    y: 330.5
     width: 210
-    height: 180
+    height: 190
   IsDragging: 1
   IsSelected: 0
   NodeID: 1
@@ -37,9 +37,47 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: fin
-    pinned: 0
+    rolledUp: 0
   ChildNodes: []
-  hover: 0
+--- !u!114 &-6373525603815317789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0012 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 1162
+    y: 83
+    width: 210
+    height: 370
+  IsDragging: 1
+  IsSelected: 0
+  NodeID: 12
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Straightforward Camel
+    UseCurrentVals: 0
+    FontSize: 10
+    TypeDelay: 0.05
+    PanelHorzSizePct: 1
+    PanelVertSizePct: 1
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    AvatarImgToTxtRatio: 0.3
+    AvatarToButtonPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ExternalFunctionToken: 
+    rolledUp: 0
+  ChildNodes: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,9 +97,10 @@ MonoBehaviour:
   - {fileID: 1851710649743837814}
   - {fileID: -7933516220452013650}
   - {fileID: 1288849547675473946}
+  - {fileID: -6373525603815317789}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
-  nodeSerialNumber: 11
+  nodeSerialNumber: 12
 --- !u!114 &1288849547675473946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,30 +117,29 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 933
-    y: 16
+    x: 887
+    y: -1
     width: 210
-    height: 180
+    height: 190
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: 11
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: Fearless Donkey
-    UseCurrentVals: 0
+    UseCurrentVals: 1
     FontSize: 10
     TypeDelay: 0.05
     PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    PanelVertSizePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     AvatarImgToTxtRatio: 0.3
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
-    pinned: 0
+    ExternalFunctionToken: 10h
+    rolledUp: 0
   ChildNodes: []
-  hover: 0
 --- !u!114 &1692078139294144095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,10 +156,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 80
-    y: 93.5
+    x: 35
+    y: 76.5
     width: 210
-    height: 220
+    height: 410
   IsDragging: 1
   IsSelected: 0
   NodeID: 7
@@ -131,7 +169,7 @@ MonoBehaviour:
       if you want to take <b> <color=red>the red pill</color></b> or <i><color=#55bbff>the
       blue pill</color></i>.
     UseCurrentVals: 0
-    FontSize: 0
+    FontSize: 0.04
     TypeDelay: 0.05
     PanelHorzSizePct: 0.75
     PanelVertSizePct: 0.75
@@ -140,16 +178,15 @@ MonoBehaviour:
     AvatarImgToTxtRatio: 0.3333
     AvatarToButtonPanelRatio: 0.6
     ButtonsWidthPct: 0.8
-    ExternalFunctionToken: Begin
-    pinned: 0
+    ExternalFunctionToken: begin
+    rolledUp: 0
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: 290, y: 222.5}
+    ChildConnectionPoint: {x: 245, y: 385.5}
   - ChoiceText: Take the blue pill
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: 290, y: 242.5}
-  hover: 0
+    ChildConnectionPoint: {x: 245, y: 405.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,10 +203,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 421
-    y: 377.5
+    x: 322
+    y: 351.5
     width: 210
-    height: 200
+    height: 390
   IsDragging: 1
   IsSelected: 0
   NodeID: 9
@@ -177,7 +214,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: You have chosen the blue pill.
     UseCurrentVals: 0
-    FontSize: 0
+    FontSize: 0.04
     TypeDelay: 0.05
     PanelHorzSizePct: 1
     PanelVertSizePct: 0.25
@@ -187,12 +224,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.75
     ExternalFunctionToken: blue_pill
-    pinned: 0
+    rolledUp: 0
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 631, y: 506.5}
-  hover: 0
+    ChildConnectionPoint: {x: 532, y: 660.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +245,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -92
-    y: 203
+    x: -138
+    y: 186
     width: 120
     height: 60
   IsDragging: 1
@@ -230,12 +266,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0
     ButtonsWidthPct: 0
     ExternalFunctionToken: 
-    pinned: 0
+    rolledUp: 0
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -32, y: 233}
-  hover: 0
+    ChildConnectionPoint: {x: -78, y: 216}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,18 +287,18 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 641
-    y: 48.5
+    x: 562
+    y: 5.5
     width: 210
-    height: 200
+    height: 410
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   NodeID: 8
   _nodeData:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: You have decided to take the red pill... a wise choice.
     UseCurrentVals: 0
-    FontSize: 0
+    FontSize: 0.04
     TypeDelay: 0.05
     PanelHorzSizePct: 0.5
     PanelVertSizePct: 1
@@ -273,9 +308,11 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.4
     ButtonsWidthPct: 0.6
     ExternalFunctionToken: red_pill
-    pinned: 0
+    rolledUp: 0
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 851, y: 177.5}
-  hover: 0
+    ChildConnectionPoint: {x: 772, y: 314.5}
+  - ChoiceText: Do it again!
+    ChildNode: {fileID: 1692078139294144095}
+    ChildConnectionPoint: {x: 772, y: 334.5}

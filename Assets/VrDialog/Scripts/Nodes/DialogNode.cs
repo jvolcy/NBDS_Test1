@@ -34,12 +34,10 @@ namespace cherrydev
         private const float ChoiceLabelFieldSpace = 20f;
         private const float ChoiceTextFieldWidth = 130f;
 
-        private const float HeaderWidth = 175f;
-
         private const float DialogNodeWidth = 210f;
 
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
-        private const float DialogBaseNodeHeight = 180f;
+        private const float DialogBaseNodeHeight = 190f;
 
         private const float DialogNodeDataHeight = 180f;
 
@@ -50,11 +48,9 @@ namespace cherrydev
 
         public const string StartNodeSentinel = "!START!";
 
-        private const float pinButtonSize = 20f;
+        private const float rollupButtonHeight = 20f;
 
-        GUIStyle _pinButtonStyle;
-        public bool hover = false;
-        private float nodeDataHeight;
+        GUIStyle _rollupButtonStyle;
 
 #if UNITY_EDITOR
 
@@ -75,8 +71,6 @@ namespace cherrydev
             //initialize the node data
             _nodeData = new NodeData(nodeName);
 
-            //SetDialogNodeSize();
-            _pinButtonStyle = new GUIStyle();
         }
 
 
@@ -85,16 +79,11 @@ namespace cherrydev
         /// </summary>
         /// <param name = "nodeStyle" ></param>
         /// < param name="labelStyle"></param>
-        public override void Draw(GUIStyle nodeStyle, GUIStyle labelStyle, Vector2 mousePosition)
+        public override void Draw(GUIStyle nodeStyle, GUIStyle labelStyle)
         {
-
-            bool mouseOver = Rect.Contains(mousePosition);
-
-            nodeDataHeight = !mouseOver && !_nodeData.pinned ? 0 : DialogNodeDataHeight;
-
             SetDialogNodeSize();
 
-            base.Draw(nodeStyle, labelStyle, mousePosition);
+            base.Draw(nodeStyle, labelStyle);
             GUILayout.BeginArea(Rect, nodeStyle);
 
             if (IsStartNode())
@@ -115,7 +104,7 @@ namespace cherrydev
             }
             else
             {
-                const int CLIP_LENGTH = 14;
+                const int CLIP_LENGTH = 18;
                 string labelStr =" " + NodeID.ToString("D4") + " - ";
                 if (nodeData.DialogText.Length > CLIP_LENGTH)
                 {
@@ -125,35 +114,10 @@ namespace cherrydev
                 {
                     labelStr += nodeData.DialogText;
                 }
+                
+                EditorGUILayout.LabelField(labelStr, labelStyle);
 
-
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(labelStr, labelStyle, GUILayout.MaxWidth(HeaderWidth));
-
-                //GUILayout.Button("A", GUILayout.MaxHeight(18f));
-
-                if (_pinButtonStyle == null) { _pinButtonStyle = new GUIStyle(); }
-
-                Texture2D LogoTex;
-                if (_nodeData.pinned)
-                    LogoTex = Resources.Load("pin") as Texture2D;
-                else
-                    LogoTex = Resources.Load("unpin") as Texture2D;
-
-
-                if (GUI.Button(new Rect(HeaderWidth, pinButtonSize, pinButtonSize, pinButtonSize), LogoTex, _pinButtonStyle))
-                {
-                    //Debug.Log("Click!");
-                    // content
-                    //pinned = !pinned;
-                    _nodeData.pinned = !_nodeData.pinned;
-                }
-
-
-                EditorGUILayout.EndHorizontal();
-
-
-                DrawNodeData(mouseOver);
+                DrawNodeData();
                 DrawExternalFunctionTextField();
 
                 //now draw the choice buttons
@@ -171,7 +135,7 @@ namespace cherrydev
         /// <summary>
         /// Draws the DialogNode
         /// </summary>
-        void DrawNodeData(bool mouseOver)
+        void DrawNodeData()
         {
             string tooltip;
 
@@ -199,7 +163,7 @@ namespace cherrydev
             EditorGUILayout.EndHorizontal();
 
             if (_nodeData.UseCurrentVals) return;
-            if (!_nodeData.pinned && !mouseOver) return;
+            if (_nodeData.rolledUp) return;
 
             //Font Size
             EditorGUILayout.BeginHorizontal();
@@ -322,11 +286,27 @@ namespace cherrydev
         /// </summary>
         private void DrawDialogNodeButtons()
         {
+            if (_rollupButtonStyle == null)
+            {
+                _rollupButtonStyle = new GUIStyle();
+                _rollupButtonStyle.alignment = TextAnchor.MiddleCenter;
+            }
+
             if (GUILayout.Button("Add choice"))
                 AddChoice();
 
             if (GUILayout.Button("Remove choice"))
                 DeleteLastChoice();
+
+            if (_nodeData.UseCurrentVals) return;
+
+            Texture LogoTex = Resources.Load(_nodeData.rolledUp ? "double-down-arrow-512" : "double-up-arrow-512") as Texture;
+
+            if (GUILayout.Button(LogoTex, _rollupButtonStyle, GUILayout.Height(rollupButtonHeight)))
+            {
+                _nodeData.rolledUp = !_nodeData.rolledUp;
+            }
+
         }
 
         /// <summary>
@@ -438,7 +418,7 @@ namespace cherrydev
             {
                 Rect.width = DialogNodeWidth;
                 Rect.height = DialogBaseNodeHeight;
-                Rect.height += _nodeData.UseCurrentVals ? 0 : nodeDataHeight;
+                Rect.height += _nodeData.UseCurrentVals || _nodeData.rolledUp ? 0 : DialogNodeDataHeight;
                 Rect.height += ChoiceNodeHeight * ChildNodes.Count;
             }
         }

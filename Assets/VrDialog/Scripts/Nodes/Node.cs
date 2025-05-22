@@ -35,7 +35,7 @@ namespace cherrydev
         /// </summary>
         /// <param name="nodeStyle"></param>
         /// <param name="labelStyle"></param>
-        public virtual void Draw(GUIStyle nodeStyle, GUIStyle labelStyle, Vector2 mousePosition) { }
+        public virtual void Draw(GUIStyle nodeStyle, GUIStyle labelStyle) { }
 
         /// <summary>
         /// 

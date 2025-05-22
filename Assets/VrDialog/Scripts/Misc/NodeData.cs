@@ -25,7 +25,7 @@ namespace cherrydev
         public float ButtonsWidthPct;
 
         public string ExternalFunctionToken;
-        public bool pinned;
+        public bool rolledUp;
 
         public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
         {
@@ -45,7 +45,29 @@ namespace cherrydev
             ButtonsWidthPct = 0.8f;
 
             ExternalFunctionToken = "";
-            pinned = true;
+            rolledUp = false;
+        }
+
+        //create a copy constructor
+        public NodeData(NodeData src)
+        {
+            AvatarImage = src.AvatarImage;
+            DialogText = src.DialogText;
+
+            UseCurrentVals = src.UseCurrentVals;
+
+            FontSize = src.FontSize;
+            TypeDelay = src.TypeDelay;
+            PanelHorzSizePct = src.PanelHorzSizePct;
+            PanelVertSizePct = src.PanelVertSizePct;
+            BackgroundColor = src.BackgroundColor;
+            BackgroundImage = src.BackgroundImage;
+            AvatarImgToTxtRatio = src.AvatarImgToTxtRatio;
+            AvatarToButtonPanelRatio = src.AvatarToButtonPanelRatio;
+            ButtonsWidthPct = src.ButtonsWidthPct;
+
+            ExternalFunctionToken = src.ExternalFunctionToken;
+            rolledUp = src.rolledUp;
         }
 
     }
