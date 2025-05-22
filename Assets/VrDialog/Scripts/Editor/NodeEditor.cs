@@ -58,6 +58,8 @@ namespace cherrydev
         // Search functionality
         private string _searchText = "";
 
+        private Node newestNode;    //reference to the most recently created node.
+
         //Creative, random Dailog Text words
         readonly string[] Adjectives = { "Active", "Adaptable", "Adventurous", "Affectionate", "Alert", "Artistic", "Assertive", "Boundless", "Brave", "Broad-minded", "Calm", "Capable", "Careful", "Caring", "Cheerful", "Clever", "Comfortable", "Communicative", "Compassionate", "Conscientious", "Considerate", "Courageous", "Creative", "Curious", "Decisive", "Determined", "Diligent", "Dynamic", "Eager", "Energetic", "Entertaining", "Enthusiastic", "Exuberant", "Expressive", "Fabulous", "Fair-minded", "Fantastic", "Fearless", "Flexible thinker", "Frank", "Friendly", "Funny", "Generous", "Gentle", "Gregarious", "Happy", "Hard working", "Helpful", "Hilarious", "Honest", "Imaginative", "Independent", "Intellectual", "Intelligent", "Intuitive", "Inventive", "Joyous", "Kind", "Kind-hearted", "Knowledgable", "Level-headed", "Lively", "Loving", "Loyal", "Mature", "Modest", "Optimistic", "Outgoing", "Passionate", "Patient", "Persistent", "Philosophical", "Polite", "Practical", "Pro-active", "Productive", "Quick-witted", "Quiet", "Rational", "Receptive", "Reflective", "Reliable", "Resourceful", "Responsible", "Selective", "Self-confident", "Sensible", "Sensitive", "Skillful", "Straightforward", "Successful", "Thoughtful", "Trustworthy", "Understanding", "Versatile", "Vivacious", "Warm-hearted", "Willing", "Witty", "Wonderful" };
         readonly string[] Animals = { "Aardvark", "Alligator", "Antelope", "Badger", "Bat", "Bear", "Bee", "Beetle", "Blue whale", "Bulldog", "Butterfly", "Camel", "Cat", "Caterpillar", "Cheetah", "Chicken", "Chimpanzee", "Clam", "Cow", "Coyote", "Crab", "Crocodile", "Cuttlefish", "Deer", "Dog", "Dolphin", "Donkey", "Duck", "Dugong", "Elephant", "Elk", "Fire Ant", "Fish", "Fox", "Frog", "Gazelle", "Giraffe", "Goat", "Goose", "Gorilla", "Guinea Pig", "Hare", "Hedgehog", "Hen", "Hippopotamus", "Horse", "Jackrabbit", "Jelly Fish", "Kangaroo", "Koala", "Leopard", "Lion", "Lizard", "Lobster", "Manatee", "Meerkat", "Millipede", "Mole", "Monkey", "Mosquito", "Nudibranch", "Octopus", "Otter", "Owl", "Oyster", "Panda", "Pelican", "Pig", "Porcupine", "Rabbit", "Raccoon", "Rat", "Reindeer", "Rhinoceros", "Scorpion", "Sea Lion", "Seahorse", "Seal", "Shark", "Sheep", "Shrimp", "Sidewinder", "Snake", "Spider", "Squid", "Squirrel", "Starfish", "Swordfish", "Tiger", "Toad", "Turkey", "Turtle", "Urchin", "Walrus", "Whale", "Wolf", "Wombat", "Woodpecker", "Yucca Moth", "Zebra" };
@@ -323,38 +325,13 @@ namespace cherrydev
 
                 GUILayout.Space(10f);
 
-                string newSearchText = EditorGUILayout.TextField(_searchText, _searchFieldStyle, GUILayout.Width(200));
-
-                if (newSearchText != _searchText)
-                {
-                    _searchText = newSearchText;
-                    if (!string.IsNullOrEmpty(_searchText))
-                        SearchAndSelectNode(_searchText);
-                }
+                _searchText = EditorGUILayout.TextField( _searchText, _searchFieldStyle, GUILayout.Width(200));
 
                 if (GUILayout.Button("Search", _toolbarButtonStyle, GUILayout.Width(60)))
                     SearchAndSelectNode(_searchText);
 
-                if (!string.IsNullOrEmpty(_searchText))
-                {
-                    if (GUILayout.Button("×", _toolbarButtonStyle, GUILayout.Width(20)))
-                        _searchText = "";
-                }
             }
 
-            GUILayout.FlexibleSpace();
-
-            if (GUILayout.Button("Find My Nodes", _toolbarButtonStyle, GUILayout.Width(100)))
-                CenterWindowOnNodes();
-            /*
-            if (GUILayout.Button("Edit Table Keys",
-                    _showLocalizationKeys ? _activeToolbarButtonStyle : _toolbarButtonStyle, GUILayout.Width(100)))
-            {
-                _showLocalizationKeys = !_showLocalizationKeys;
-                DialogNodeGraph.ShowLocalizationKeys = _showLocalizationKeys;
-                GUI.changed = true;
-            }
-            */
             GUILayout.EndHorizontal();
             GUILayout.EndArea();
         }
@@ -374,27 +351,18 @@ namespace cherrydev
             {
 
                     DialogNode dialogNode = (DialogNode)node;
-                    bool found = false;
 
-
-                    foreach (DialogNode.ChildNodeStruct cns in dialogNode.ChildNodes)
-                    {
-                        if (!string.IsNullOrEmpty(cns.ChoiceText) && cns.ChoiceText.ToLower().Contains(searchText))
-                        {
-                            found = true;
-                            break;
-                        }
-                    }
-
-                    if (found)
+                    if (!string.IsNullOrEmpty(dialogNode.nodeData.DialogText) && dialogNode.nodeData.DialogText.ToLower().Contains(searchText))
                     {
                         CenterAndSelectNode(node);
                         return;
                     }
+
             }
 
+
             // If we got here, no node was found
-            Debug.Log($"No node containing '{searchText}' was found.");
+            Debug.Log($"No dialog text containing '{searchText}' was found.");
         }
 
         /// <summary>
@@ -407,27 +375,23 @@ namespace cherrydev
 
             foreach (Node node in _currentNodeGraph.NodesList)
             {
-                string prefix;
                 string nodeText;
 
                 DialogNode dialogNode = (DialogNode)node;
 
-                prefix = "A";
-                /*
-                if (dialogNode.name != null && dialogNode.ChildNodes.Count > 0 &&
-                    !string.IsNullOrEmpty(dialogNode.ChildNodes[0].ChoiceText))
-                    nodeText = dialogNode.ChildNodes[0].ChoiceText;
-                else
-                    nodeText = "Empty";
-                */
-
-                if (dialogNode.name.Length > 20)
-                    nodeText = dialogNode.name.Substring(0, 20) + "...";
-                else
+                if (dialogNode.IsStartNode())
+                {
                     nodeText = dialogNode.name;
+                }
+                else
+                {
+                    nodeText = dialogNode.name + " - " + dialogNode.nodeData.DialogText;
+                }
 
-                string menuItemName = $"{prefix}: {nodeText}";
-                nodesMenu.AddItem(new GUIContent(menuItemName), false, () => CenterAndSelectNode(node));
+                if (nodeText.Length > 40)
+                    nodeText = nodeText.Substring(0, 40) + "...";
+
+                nodesMenu.AddItem(new GUIContent(nodeText), false, () => CenterAndSelectNode(node));
             }
 
             Rect dropDownRect = new Rect(buttonRect.x, buttonRect.y + buttonRect.height, 150, 0);
@@ -1010,6 +974,7 @@ namespace cherrydev
             contextMenu.AddItem(new GUIContent("Create Dialog Node"), false, CreateDialogNode, mousePosition);
             contextMenu.AddItem(new GUIContent("Create Start Node"), false, CreateStartNode, mousePosition);
             contextMenu.AddSeparator("");
+            contextMenu.AddItem(new GUIContent("Duplicate Selected"), false, DuplicateNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Remove Selected Node's Child Connectors"), false, RemoveAllConnections, mousePosition);
@@ -1042,6 +1007,36 @@ namespace cherrydev
         {
             CreateStartNode((Vector2)mousePositionObject);
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mousePositionObject"></param>
+        private void DuplicateNodes(object mousePositionObject)
+        {
+            //we want to draw the duplicated lists at an offset relative to
+            //its original.
+            Vector2 offset = new Vector2(50, 50);
+
+            //avoid infinite recursion (the nodeslist grows when we add to
+            //it: using a foreach loop here risks parsing through an ever
+            //growing list.  Instead, limit the loop the current entries of
+            //the list only.)
+            int currentNodeListCount = _currentNodeGraph.NodesList.Count;
+
+            for (int i = 0; i<currentNodeListCount; i++)
+            {
+                DialogNode node = _currentNodeGraph.NodesList[i] as DialogNode;
+
+                if (node.IsSelected)
+                {
+                    CreateDialogNode(node.Rect.position + offset);
+                    ((DialogNode)newestNode).CopyNodeData(node);
+                }
+            }
+        }
+
 
         /// <summary>
         /// Create Dialog Node at mouse position and add it to Node Graph asset
@@ -1120,6 +1115,7 @@ namespace cherrydev
         private void InitializeNode(Vector2 Position, DialogNode dialogNode, string placeholderText, string name="")
         {
             _currentNodeGraph.NodesList.Add(dialogNode);
+            newestNode = dialogNode;    //flag this as the most recently created node
 
             dialogNode.Initialize(new Rect(Position, Vector2.zero), placeholderText, _currentNodeGraph);
 

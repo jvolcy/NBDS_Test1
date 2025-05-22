@@ -433,6 +433,15 @@ namespace cherrydev
         {
             return (_nodeData.DialogText == StartNodeSentinel);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        public void CopyNodeData(DialogNode source)
+        {
+            _nodeData = new NodeData(source.nodeData);
+        }
 #endif
     }
 }
