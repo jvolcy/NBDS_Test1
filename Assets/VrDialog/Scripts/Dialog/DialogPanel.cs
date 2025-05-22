@@ -13,7 +13,6 @@ namespace cherrydev
         [SerializeField] private TextMeshProUGUI _dialogText;
 
         [SerializeField] RectTransform AvatarImage;
-        [SerializeField] TextMeshProUGUI AvatarName;
 
         /// <summary>
         /// Setting dialogText max visible characters to zero
@@ -81,6 +80,7 @@ namespace cherrydev
                 var rect = AvatarImage.GetComponent<RectTransform>();
                 rect.sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio * panelHorzSizePct, 0);
                 _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2((1f - dialogNode.nodeData.AvatarImgToTxtRatio) * panelHorzSizePct, 0);
+                _dialogText.fontSize = dialogNode.nodeData.FontSize;
 
 
                 //Scale the button panel (depends on the panel ratio)
@@ -102,7 +102,6 @@ namespace cherrydev
 
             //Setup the avatar image and name
             AvatarImage.GetComponent<Image>().sprite = dialogNode.nodeData.AvatarImage;
-            //AvatarName.text = dialogNode.nodeData.AvatarName;
 
             //Setup the Dialog's main text
             ResetDialogText();

@@ -78,12 +78,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 971
-    y: 112
-    width: 0
-    height: 0
-  IsDragging: 0
-  IsSelected: 0
+    x: 933
+    y: 16
+    width: 210
+    height: 180
+  IsDragging: 1
+  IsSelected: 1
   NodeID: 11
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
     AvatarToButtonPanelRatio: 0.5
     ButtonsWidthPct: 0.8
     ExternalFunctionToken: 
-    pinned: 1
+    pinned: 0
   ChildNodes: []
   hover: 0
 --- !u!114 &1692078139294144095
@@ -123,7 +123,7 @@ MonoBehaviour:
     width: 210
     height: 220
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: 7
   _nodeData:
     AvatarImage: {fileID: 21300000, guid: 7c489c5fb6e6d4ed982780dad190da47, type: 3}
