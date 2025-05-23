@@ -118,7 +118,7 @@ namespace cherrydev
         [OnOpenAsset(0)]
         public static bool OnDoubleClickAsset(int instanceID, int line)
         {
-            Debug.Log("NodeEditor:OnDoubleClickAsset()...Loading " + EditorUtility.InstanceIDToObject(instanceID).name);
+            //Debug.Log("NodeEditor:OnDoubleClickAsset()...Loading " + EditorUtility.InstanceIDToObject(instanceID).name);
 
 
             //load the DialogNodeGraph scriptable object
@@ -1048,7 +1048,7 @@ namespace cherrydev
             foreach (Node node in _currentNodeGraph.NodesList)
                 if (((DialogNode)node).nodeData.DialogText == DialogNode.StartNodeSentinel)
                 {
-                    Debug.Log("Start node already exists.");
+                    //Debug.Log("Start node already exists.");
                     return;
                 }
 

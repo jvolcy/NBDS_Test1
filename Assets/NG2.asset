@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 508
-    y: 429.5
+    x: 939.5
+    y: 341.5
     width: 210
     height: 230
   IsDragging: 1
@@ -41,10 +41,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Do it again!
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: 718, y: 558.5}
+    ChildConnectionPoint: {x: 1149.5, y: 470.5}
   - ChoiceText: Bye
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 718, y: 578.5}
+    ChildConnectionPoint: {x: 1149.5, y: 490.5}
 --- !u!114 &-6373525603815317789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,8 +61,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 873
-    y: 162
+    x: 1304.5
+    y: 74
     width: 210
     height: 370
   IsDragging: 1
@@ -123,8 +123,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 447
-    y: 92
+    x: 878.5
+    y: 4
     width: 210
     height: 190
   IsDragging: 1
@@ -162,8 +162,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -405
-    y: 169.5
+    x: 26.5
+    y: 81.5
     width: 210
     height: 410
   IsDragging: 1
@@ -189,10 +189,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: -195, y: 478.5}
+    ChildConnectionPoint: {x: 236.5, y: 390.5}
   - ChoiceText: Take the blue pill
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: -195, y: 498.5}
+    ChildConnectionPoint: {x: 236.5, y: 410.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +209,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -118
-    y: 444.5
+    x: 313.5
+    y: 356.5
     width: 210
     height: 390
   IsDragging: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 92, y: 753.5}
+    ChildConnectionPoint: {x: 523.5, y: 665.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,8 +251,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -578
-    y: 279
+    x: -146.5
+    y: 191
     width: 120
     height: 60
   IsDragging: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -518, y: 309}
+    ChildConnectionPoint: {x: -86.5, y: 221}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +293,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 122
-    y: 98.5
+    x: 553.5
+    y: 10.5
     width: 210
     height: 390
   IsDragging: 1
@@ -318,4 +318,4 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 332, y: 407.5}
+    ChildConnectionPoint: {x: 763.5, y: 319.5}
