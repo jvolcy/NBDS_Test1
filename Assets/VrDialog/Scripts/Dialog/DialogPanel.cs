@@ -49,53 +49,58 @@ namespace cherrydev
         /// </summary>
         public void IncreaseMaxVisibleCharacters() => _dialogText.maxVisibleCharacters++;
 
+        RectTransform MainPanelRectTransform;    //reference to the MainPanel's RectTransform
+        Rect CanvasRect;    //the dimensions of the canvas
 
-        Rect PanelRect = Rect.zero;     //copy of the current dialog's size info
-        RectTransform rectTransform;    //reference to our RectTransform
-        Rect baseRect;
-
-        //shadow copies of the NodeData and NumButtons used to render the current
+        //create shadow copies of the NodeData and NumButtons used to render the current
         //dialog panel.  We use these values to refresh the panel when the screen
         //size changes.  We also use these when the next node has its UseCurrentVals
-        //flat set.
+        //flag set.
         NodeData? _currentNodeData = null;
         int _currentNumButtons;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void Start()
-        {
-            baseRect = GetComponent<RectTransform>().rect;
-            rectTransform = MainPanel.GetComponent<RectTransform>();
-        }
-
-        /// <summary>
-        /// Monitor the size of the dialog panel for changes.  If it changes,
-        /// update the display
-        /// </summary>
-        private void Update()
-        {/*
-            if (_currentNodeData != null)
-            {
-                if (PanelRect.width != rectTransform.rect.width || PanelRect.height != rectTransform.rect.height)
-                {
-                    Debug.Log("height1=" + PanelRect.height +  " heiht2=" + rectTransform.rect.height);
-                    Debug.Log("width1=" + PanelRect.width + " width2=" + rectTransform.rect.width);
-                    SetupDialogGeometry((NodeData)_currentNodeData, _currentNumButtons);
-                }
-            }
-            */
-        }
-
-        //============================================================
-
+        //store the current width and height of the screen and compare to the
+        //width and height on the next call to Update().  If they differ, the
+        //screen has been resized and we must redraw the dialog.  This is a
+        //homemade "OnWindowResized" substitute.
+        int ScreenWidth;
+        int ScreenHeight;
 
         [SerializeField] private Button _buttonPrefab;
         [SerializeField] private GridLayoutGroup _buttonsGridLayoutGroup;
 
         private readonly List<Button> _buttons = new();
         private readonly List<TextMeshProUGUI> _buttonTexts = new();
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Start()
+        {
+            CanvasRect = GetComponent<RectTransform>().rect;
+            MainPanelRectTransform = MainPanel.GetComponent<RectTransform>();
+            ScreenHeight = Screen.height;
+            ScreenWidth = Screen.width;
+        }
+
+
+        /// <summary>
+        /// Monitor the size of the dialog panel for changes.  If it changes,
+        /// update the display
+        /// </summary>
+        private void Update()
+        {
+            if (ScreenHeight != Screen.height || ScreenWidth != Screen.width)
+            {
+                ScreenHeight = Screen.height;
+                ScreenWidth = Screen.width;
+
+                //reset the CanvasRect since the screen has changed size.
+                CanvasRect = GetComponent<RectTransform>().rect;
+                SetupDialogGeometry((NodeData)_currentNodeData, _currentNumButtons);
+            }
+        }
 
         /// <summary>
         /// setup the text panel (width, height, etc.)
@@ -107,7 +112,7 @@ namespace cherrydev
         public void SetupPanel(DialogNode dialogNode)
         {
 
-            //Debug.Log("SetupPanel()");
+            Debug.Log("SetupPanel()");
 
             //Setup the panel geometry
             SetupDialogGeometry(dialogNode.nodeData, dialogNode.ChildNodes.Count);
@@ -133,13 +138,9 @@ namespace cherrydev
 
             if (!nodeData.UseCurrentVals)
             {
-                //get the dimensions of the dialog panel
-                PanelRect = GetComponent<RectTransform>().rect;
-                //Debug.Log("PanelRect = " + PanelRect);
-
                 //Set dialog panel width and height (based on the panel ratio)
-                rectTransform.sizeDelta = new Vector2(baseRect.width * (nodeData.HScalePct - 1), baseRect.height * (nodeData.VScalePct - 1));
-                Rect rect = rectTransform.rect;
+                MainPanelRectTransform.sizeDelta = new Vector2(CanvasRect.width * (nodeData.HScalePct - 1), CanvasRect.height * (nodeData.VScalePct - 1));
+                Rect rect = MainPanelRectTransform.rect;
 
                 //Set the avatar, text and button sub-panel sizes, based on the horz and vert panel ratios
                 AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * nodeData.VertPanelRatio);

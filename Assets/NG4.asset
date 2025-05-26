@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 581
-    y: 434
+    x: 295.25
+    y: 478.5
     width: 210
-    height: 340
+    height: 390
   IsDragging: 0
   IsSelected: 0
   NodeID: 14
@@ -27,15 +27,18 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: Intuitive Snake
     UseCurrentVals: 0
+    FontSize: 0
     TypeDelay: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 0
+    VScalePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0
+    VertPanelRatio: 0
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 0
     ExternalFunctionToken: 
+    Collapsed: 0
   ChildNodes: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -73,10 +76,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 106
-    y: 55
+    x: -179.75
+    y: 99.5
     width: 210
-    height: 380
+    height: 430
   IsDragging: 1
   IsSelected: 0
   NodeID: 13
@@ -84,22 +87,25 @@ MonoBehaviour:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: Passionate Manatee
     UseCurrentVals: 0
+    FontSize: 0
     TypeDelay: 0.05
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 0
+    VScalePct: 0
     BackgroundColor: {r: 0.8679245, g: 0.8489769, b: 0.46262014, a: 0.5882353}
     BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0
+    VertPanelRatio: 0
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 0
     ExternalFunctionToken: 
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 3243030761396637110}
-    ChildConnectionPoint: {x: 316, y: 344}
+    ChildConnectionPoint: {x: 30.25, y: 428.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 316, y: 364}
+    ChildConnectionPoint: {x: 30.25, y: 448.5}
 --- !u!114 &3243030761396637110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,12 +122,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 558
-    y: 89.5
+    x: 272.25
+    y: 134
     width: 210
-    height: 360
+    height: 410
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -129,19 +135,22 @@ MonoBehaviour:
       contains contains graphic content of a sexual and/or violent nature that may
       be harmful or traumatizing to some audiences. Discretion is advised.  "
     UseCurrentVals: 0
+    FontSize: 0
     TypeDelay: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 0
+    VScalePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0
+    VertPanelRatio: 0
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 0
     ExternalFunctionToken: 
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 768, y: 378.5}
+    ChildConnectionPoint: {x: 482.25, y: 463}
 --- !u!114 &5617620800059427379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,8 +167,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -98
-    y: 141
+    x: -383.75
+    y: 185.5
     width: 120
     height: 60
   IsDragging: 1
@@ -169,16 +178,19 @@ MonoBehaviour:
     AvatarImage: {fileID: 0}
     DialogText: '!START!'
     UseCurrentVals: 0
+    FontSize: 0
     TypeDelay: 0
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 0
+    VScalePct: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0
+    VertPanelRatio: 0
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 0
     ExternalFunctionToken: 
+    Collapsed: 0
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 2037191826421303347}
-    ChildConnectionPoint: {x: -38, y: 171}
+    ChildConnectionPoint: {x: -323.75, y: 215.5}

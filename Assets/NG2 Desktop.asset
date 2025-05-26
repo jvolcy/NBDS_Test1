@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 709.5
-    y: 432.5
+    x: 1146.5
+    y: 29.5
     width: 210
     height: 230
   IsDragging: 1
@@ -42,55 +42,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Do it again!
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: 919.5, y: 561.5}
+    ChildConnectionPoint: {x: 1356.5, y: 158.5}
   - ChoiceText: Bye
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 919.5, y: 581.5}
---- !u!114 &-7864929775536818679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0013 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: -217.5
-    y: 725.5
-    width: 210
-    height: 210
-  IsDragging: 1
-  IsSelected: 0
-  NodeID: 13
-  _nodeData:
-    AvatarImage: {fileID: 21300000, guid: 7c489c5fb6e6d4ed982780dad190da47, type: 3}
-    DialogText: You are a time-traveling, adventure-seeking explorer.  You must decide
-      if you want to take <b> <color=red>the red pill</color></b> or <i><color=#55bbff>the
-      blue pill</color></i>.
-    UseCurrentVals: 0
-    FontSize: 0.04
-    TypeDelay: 0.05
-    HScalePct: 0
-    VScalePct: 0
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
-    HorzPanelRatio: 0
-    VertPanelRatio: 0
-    ButtonsWidthPct: 0.8
-    ButtonFontSize: 0
-    ExternalFunctionToken: begin
-    Collapsed: 1
-  ChildNodes:
-  - ChoiceText: Choice 1
-    ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -7.5, y: 854.5}
+    ChildConnectionPoint: {x: 1356.5, y: 178.5}
 --- !u!114 &-6373525603815317789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +62,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 1072.5
-    y: 165
+    x: 1509.5
+    y: -238
     width: 210
     height: 390
   IsDragging: 1
@@ -151,10 +106,10 @@ MonoBehaviour:
   - {fileID: -7933516220452013650}
   - {fileID: 1288849547675473946}
   - {fileID: -6373525603815317789}
-  - {fileID: -7864929775536818679}
+  - {fileID: 3716856943821675047}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
-  nodeSerialNumber: 13
+  nodeSerialNumber: 14
 --- !u!114 &1288849547675473946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,8 +126,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 647.5
-    y: 193
+    x: 1084.5
+    y: -210
     width: 210
     height: 190
   IsDragging: 1
@@ -211,8 +166,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -246.5
-    y: 176.5
+    x: 183.5
+    y: -217.5
     width: 210
     height: 450
   IsDragging: 1
@@ -239,13 +194,13 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: -36.5, y: 505.5}
+    ChildConnectionPoint: {x: 393.5, y: 111.5}
   - ChoiceText: Take the blue pill
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: -36.5, y: 525.5}
+    ChildConnectionPoint: {x: 393.5, y: 131.5}
   - ChoiceText: Choice 3
-    ChildNode: {fileID: -7864929775536818679}
-    ChildConnectionPoint: {x: -36.5, y: 545.5}
+    ChildNode: {fileID: 3716856943821675047}
+    ChildConnectionPoint: {x: 393.5, y: 151.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +217,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 113.5
-    y: 445.5
+    x: 550.5
+    y: 42.5
     width: 210
     height: 410
   IsDragging: 1
@@ -288,7 +243,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 323.5, y: 774.5}
+    ChildConnectionPoint: {x: 760.5, y: 371.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +260,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -378.5
-    y: 282
+    x: 58.5
+    y: -121
     width: 120
     height: 60
   IsDragging: 1
@@ -331,7 +286,52 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -318.5, y: 312}
+    ChildConnectionPoint: {x: 118.5, y: -91}
+--- !u!114 &3716856943821675047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0014 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 187.5
+    y: 324.5
+    width: 210
+    height: 410
+  IsDragging: 1
+  IsSelected: 1
+  NodeID: 14
+  _nodeData:
+    AvatarImage: {fileID: 21300000, guid: 7dbec25a864f74d628678e2db35ae817, type: 3}
+    DialogText: '<color=#ee0000><size=+10><b>WARNING</b></size></color>  The following
+      contains wickedly entertaining gameplay.  Extreme risk of addition is likely. 
+      Player discretion is advised.  '
+    UseCurrentVals: 0
+    FontSize: 30
+    TypeDelay: 0.05
+    HScalePct: 0.75
+    VScalePct: 0.75
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
+    HorzPanelRatio: 0.3
+    VertPanelRatio: 0.6
+    ButtonsWidthPct: 0.8
+    ButtonFontSize: 40
+    ExternalFunctionToken: begin
+    Collapsed: 0
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: 1692078139294144095}
+    ChildConnectionPoint: {x: 397.5, y: 653.5}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +348,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 322.5
-    y: 101.5
+    x: 759.5
+    y: -301.5
     width: 210
     height: 410
   IsDragging: 1
@@ -374,4 +374,4 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 532.5, y: 430.5}
+    ChildConnectionPoint: {x: 969.5, y: 27.5}
