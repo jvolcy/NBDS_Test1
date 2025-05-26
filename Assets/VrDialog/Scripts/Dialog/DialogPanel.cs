@@ -8,11 +8,23 @@ namespace cherrydev
 {
     public class DialogPanel : MonoBehaviour
     {
-        [SerializeField] RectTransform textPanel;
-        [SerializeField] RectTransform buttonsPanel;
+        public RectTransform MainPanel;
+        public RectTransform DialogSubPanel;
+        //public TMP_Text DialogText;
+        public RectTransform ButtonsSubPanel;
+        //public TMP_Text ButtonsText;
+        public RectTransform AvatarSubPanel;
+        //public TMP_Text AvatarText;
+        public RectTransform TextSubPanel;
+        //public TMP_Text TextText;
+
+
+
+        //[SerializeField] RectTransform textPanel;
+        //[SerializeField] RectTransform buttonsPanel;
         [SerializeField] private TextMeshProUGUI _dialogText;
 
-        [SerializeField] RectTransform AvatarImage;
+        //[SerializeField] RectTransform AvatarImage;
 
         /// <summary>
         /// Setting dialogText max visible characters to zero
@@ -38,6 +50,44 @@ namespace cherrydev
         public void IncreaseMaxVisibleCharacters() => _dialogText.maxVisibleCharacters++;
 
 
+        Rect PanelRect = Rect.zero;     //copy of the current dialog's size info
+        RectTransform rectTransform;    //reference to our RectTransform
+        Rect baseRect;
+
+        //shadow copies of the NodeData and NumButtons used to render the current
+        //dialog panel.  We use these values to refresh the panel when the screen
+        //size changes.  We also use these when the next node has its UseCurrentVals
+        //flat set.
+        NodeData? _currentNodeData = null;
+        int _currentNumButtons;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Start()
+        {
+            baseRect = GetComponent<RectTransform>().rect;
+            rectTransform = MainPanel.GetComponent<RectTransform>();
+        }
+
+        /// <summary>
+        /// Monitor the size of the dialog panel for changes.  If it changes,
+        /// update the display
+        /// </summary>
+        private void Update()
+        {/*
+            if (_currentNodeData != null)
+            {
+                if (PanelRect.width != rectTransform.rect.width || PanelRect.height != rectTransform.rect.height)
+                {
+                    Debug.Log("height1=" + PanelRect.height +  " heiht2=" + rectTransform.rect.height);
+                    Debug.Log("width1=" + PanelRect.width + " width2=" + rectTransform.rect.width);
+                    SetupDialogGeometry((NodeData)_currentNodeData, _currentNumButtons);
+                }
+            }
+            */
+        }
+
         //============================================================
 
 
@@ -56,52 +106,14 @@ namespace cherrydev
         /// <param name="dialogNode"></param>
         public void SetupPanel(DialogNode dialogNode)
         {
+
             //Debug.Log("SetupPanel()");
 
-            //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
-            //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
+            //Setup the panel geometry
+            SetupDialogGeometry(dialogNode.nodeData, dialogNode.ChildNodes.Count);
 
-
-            if (!dialogNode.nodeData.UseCurrentVals)
-            {
-                //Set dialog panel width and height (based on the panel ratio)
-                float panelHorzSizePct = dialogNode.nodeData.PanelHorzSizePct;
-                float panelVertSizePct = dialogNode.nodeData.PanelVertSizePct;
-                GetComponent<RectTransform>().sizeDelta = new Vector2(panelHorzSizePct - 1.0f, panelVertSizePct - 1.0f);
-
-                //Set text panel width and height (based on the avatar image ratio and panel ratio)
-                float avatarToButtonPanelRatio = dialogNode.nodeData.AvatarToButtonPanelRatio;
-                float txtPanelVertSize = (avatarToButtonPanelRatio - 1.0f) * panelVertSizePct;
-                textPanel.sizeDelta = new Vector2(/*panelHorzSizePct - 1.0f*/0f, txtPanelVertSize);
-                //Debug.Log(dialogNode.name + " size= " + textPanel.sizeDelta);
-
-                //avatar image and dialog text (side by side and horizontally connected through AvatarImgToTxtRatio)
-                //both have the same height: txtPanelVertSize
-                var rect = AvatarImage.GetComponent<RectTransform>();
-                rect.sizeDelta = new Vector2(dialogNode.nodeData.AvatarImgToTxtRatio * panelHorzSizePct, 0);
-                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2((1f - dialogNode.nodeData.AvatarImgToTxtRatio) * panelHorzSizePct, 0);
-                _dialogText.fontSize = dialogNode.nodeData.FontSize;
-
-
-                //Scale the button panel (depends on the panel ratio)
-                float buttonPanelWidthPct = dialogNode.nodeData.ButtonsWidthPct;
-                int numButtons = dialogNode.ChildNodes.Count;
-
-                //Scale the button grid layout (depends on the panel ratio)
-                buttonsPanel.sizeDelta = new Vector2( 0/*(dialogNode.nodeData.ButtonsWidthPct - 1.0f)*/, dialogNode.nodeData.AvatarToButtonPanelRatio * panelVertSizePct);
-                _buttonsGridLayoutGroup.cellSize = new Vector2(buttonPanelWidthPct * panelHorzSizePct, (1f - avatarToButtonPanelRatio) * panelVertSizePct / (numButtons + 0.5f));
-                //Debug.Log(buttonsPanel.name + " size= " + buttonsPanel.sizeDelta);
-                //Debug.Log(buttonsPanel.name + " position= " + buttonsPanel.position);
-
-                //Set the background color
-                GetComponent<Image>().color = dialogNode.nodeData.BackgroundColor;
-
-                //Set the background image
-                GetComponent<Image>().sprite = dialogNode.nodeData.BackgroundImage;
-            }
-
-            //Setup the avatar image and name
-            AvatarImage.GetComponent<Image>().sprite = dialogNode.nodeData.AvatarImage;
+            //Setup the avatar image
+            AvatarSubPanel.GetComponentInChildren<Image>().sprite = dialogNode.nodeData.AvatarImage;
 
             //Setup the Dialog's main text
             ResetDialogText();
@@ -111,6 +123,52 @@ namespace cherrydev
             SetUpButtons(dialogNode);
 
         }
+
+        /// <summary>
+        /// Function to setup/refresh the geometric layout of the dialog
+        /// </summary>
+        /// <param name="nodeData"></param>
+        void SetupDialogGeometry(NodeData nodeData, int NumButtons)
+        {
+
+            if (!nodeData.UseCurrentVals)
+            {
+                //get the dimensions of the dialog panel
+                PanelRect = GetComponent<RectTransform>().rect;
+                //Debug.Log("PanelRect = " + PanelRect);
+
+                //Set dialog panel width and height (based on the panel ratio)
+                rectTransform.sizeDelta = new Vector2(baseRect.width * (nodeData.HScalePct - 1), baseRect.height * (nodeData.VScalePct - 1));
+                Rect rect = rectTransform.rect;
+
+                //Set the avatar, text and button sub-panel sizes, based on the horz and vert panel ratios
+                AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * nodeData.VertPanelRatio);
+                TextSubPanel.sizeDelta = new Vector2(-rect.width * nodeData.HorzPanelRatio, -rect.height * nodeData.VertPanelRatio);
+                ButtonsSubPanel.sizeDelta = new Vector2(0, -rect.height * (1 - nodeData.VertPanelRatio));
+
+                //set the dialot text font size
+                _dialogText.fontSize = nodeData.FontSize;
+
+                //Set the background color
+                Image img = MainPanel.GetComponent<Image>();
+                img.color = nodeData.BackgroundColor;
+
+                //Set the background image
+                img.sprite = nodeData.BackgroundImage;
+
+                //keep a local copy of the nodeData.  We need this copy in case
+                //we have to refresh the dialog panel.  Also, if the next node has its
+                //"UseCurrentVals" boolean set, this is the data we will need to
+                //refresh the dialog.
+                _currentNumButtons = NumButtons;
+                _currentNodeData = nodeData;        //should be the last thing we do in this function
+            }
+
+            //Scale the button grid layout (depends on the panel ratio)
+            _buttonsGridLayoutGroup.cellSize = new Vector2(ButtonsSubPanel.rect.width * nodeData.ButtonsWidthPct, ButtonsSubPanel.rect.height / (NumButtons + 1));
+
+        }
+
 
         /// <summary>
         /// Returns the total number of buttons
@@ -137,6 +195,7 @@ namespace cherrydev
 
                 var buttonTxt = choiceButton.GetComponentInChildren<TMP_Text>();
                 buttonTxt.text = dialogNode.ChildNodes[i].ChoiceText;
+                buttonTxt.fontSize = ((NodeData)_currentNodeData).ButtonFontSize;
 
                 _buttons.Add(choiceButton);
                 _buttonTexts.Add(choiceButton.GetComponentInChildren<TextMeshProUGUI>());

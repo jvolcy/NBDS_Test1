@@ -16,12 +16,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 408.5
-    y: 129.5
+    x: 709.5
+    y: 432.5
     width: 210
     height: 230
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: 1
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -42,10 +42,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Do it again!
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: 618.5, y: 258.5}
+    ChildConnectionPoint: {x: 919.5, y: 561.5}
   - ChoiceText: Bye
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 618.5, y: 278.5}
+    ChildConnectionPoint: {x: 919.5, y: 581.5}
 --- !u!114 &-7864929775536818679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -518.5
-    y: 422.5
+    x: -217.5
+    y: 725.5
     width: 210
     height: 210
   IsDragging: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -308.5, y: 551.5}
+    ChildConnectionPoint: {x: -7.5, y: 854.5}
 --- !u!114 &-6373525603815317789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 771.5
-    y: -138
+    x: 1072.5
+    y: 165
     width: 210
     height: 390
   IsDragging: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: NG2
+  m_Name: NG2 Desktop
   m_EditorClassIdentifier: 
   NodesList:
   - {fileID: 3669394871150458546}
@@ -171,8 +171,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 346.5
-    y: -110
+    x: 647.5
+    y: 193
     width: 210
     height: 190
   IsDragging: 1
@@ -211,8 +211,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -506.5
-    y: -130.5
+    x: -246.5
+    y: 176.5
     width: 210
     height: 450
   IsDragging: 1
@@ -224,7 +224,7 @@ MonoBehaviour:
       if you want to take <b> <color=red>the red pill</color></b> or <i><color=#55bbff>the
       blue pill</color></i>.
     UseCurrentVals: 0
-    FontSize: 0.04
+    FontSize: 40
     TypeDelay: 0.05
     HScalePct: 1
     VScalePct: 1
@@ -233,19 +233,19 @@ MonoBehaviour:
     HorzPanelRatio: 0.3
     VertPanelRatio: 0.6
     ButtonsWidthPct: 0.8
-    ButtonFontSize: 0.04
+    ButtonFontSize: 40
     ExternalFunctionToken: begin
     Collapsed: 0
   ChildNodes:
   - ChoiceText: Take the red pill
     ChildNode: {fileID: 6554480690750532178}
-    ChildConnectionPoint: {x: -296.5, y: 198.5}
+    ChildConnectionPoint: {x: -36.5, y: 505.5}
   - ChoiceText: Take the blue pill
     ChildNode: {fileID: 1851710649743837814}
-    ChildConnectionPoint: {x: -296.5, y: 218.5}
+    ChildConnectionPoint: {x: -36.5, y: 525.5}
   - ChoiceText: Choice 3
     ChildNode: {fileID: -7864929775536818679}
-    ChildConnectionPoint: {x: -296.5, y: 238.5}
+    ChildConnectionPoint: {x: -36.5, y: 545.5}
 --- !u!114 &1851710649743837814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +262,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -189.5
-    y: 142.5
+    x: 113.5
+    y: 445.5
     width: 210
     height: 410
   IsDragging: 1
@@ -273,7 +273,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 21300000, guid: 7c489c5fb6e6d4ed982780dad190da47, type: 3}
     DialogText: You have chosen the blue pill.
     UseCurrentVals: 0
-    FontSize: 0.04
+    FontSize: 40
     TypeDelay: 0.05
     HScalePct: 1.25
     VScalePct: 0.25
@@ -282,13 +282,13 @@ MonoBehaviour:
     HorzPanelRatio: 0.33333
     VertPanelRatio: 0.5
     ButtonsWidthPct: 0.75
-    ButtonFontSize: 0.05
+    ButtonFontSize: 40
     ExternalFunctionToken: blue_pill
     Collapsed: 0
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 20.5, y: 471.5}
+    ChildConnectionPoint: {x: 323.5, y: 774.5}
 --- !u!114 &3669394871150458546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +305,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -679.5
-    y: -21
+    x: -378.5
+    y: 282
     width: 120
     height: 60
   IsDragging: 1
@@ -331,7 +331,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 1692078139294144095}
-    ChildConnectionPoint: {x: -619.5, y: 9}
+    ChildConnectionPoint: {x: -318.5, y: 312}
 --- !u!114 &6554480690750532178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +348,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 20.5
-    y: -201.5
+    x: 322.5
+    y: 101.5
     width: 210
     height: 410
   IsDragging: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
     AvatarImage: {fileID: 21300000, guid: 2c37c73de1fbb422bb87d71502ba0760, type: 3}
     DialogText: You have decided to take the red pill... a wise choice.
     UseCurrentVals: 0
-    FontSize: 0.04
+    FontSize: 40
     TypeDelay: 0.05
     HScalePct: 0.5
     VScalePct: 1.25
@@ -368,10 +368,10 @@ MonoBehaviour:
     HorzPanelRatio: 0.3
     VertPanelRatio: 0.6
     ButtonsWidthPct: 0.6
-    ButtonFontSize: 0.04
+    ButtonFontSize: 40
     ExternalFunctionToken: red_pill
     Collapsed: 0
   ChildNodes:
   - ChoiceText: OK
     ChildNode: {fileID: -7933516220452013650}
-    ChildConnectionPoint: {x: 230.5, y: 127.5}
+    ChildConnectionPoint: {x: 532.5, y: 430.5}

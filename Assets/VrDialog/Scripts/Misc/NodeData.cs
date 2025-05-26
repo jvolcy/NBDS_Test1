@@ -13,21 +13,22 @@ namespace cherrydev
 
         public float FontSize;
         public float TypeDelay;
-        public float PanelHorzSizePct;
-        public float PanelVertSizePct;
+        public float HScalePct;
+        public float VScalePct;
         public Color BackgroundColor;
         public Sprite BackgroundImage;
         [Range(0f, 1f)]
-        public float AvatarImgToTxtRatio;
+        public float HorzPanelRatio;
         [Range(0f, 1f)]
-        public float AvatarToButtonPanelRatio;
+        public float VertPanelRatio;
         [Range(0f, 1f)]
         public float ButtonsWidthPct;
+        public float ButtonFontSize;
 
         public string ExternalFunctionToken;
         public bool Collapsed;
 
-        public NodeData(string dialogText, string avatarName = "", Sprite avatarImage = null)
+        public NodeData(string dialogText, Sprite avatarImage = null)
         {
             AvatarImage = avatarImage;
             DialogText = dialogText;
@@ -36,13 +37,14 @@ namespace cherrydev
 
             FontSize = 10f;
             TypeDelay = 0.05f;
-            PanelHorzSizePct = 1;
-            PanelVertSizePct = 1;
+            HScalePct = 1;
+            VScalePct = 1;
             BackgroundColor = new Color32(29, 29, 29, 150);
             BackgroundImage = null;
-            AvatarImgToTxtRatio = 0.3f;
-            AvatarToButtonPanelRatio = 0.5f;
+            HorzPanelRatio = 0.3f;
+            VertPanelRatio = 0.5f;
             ButtonsWidthPct = 0.8f;
+            ButtonFontSize = 10f;
 
             ExternalFunctionToken = "";
             Collapsed = false;
@@ -58,13 +60,14 @@ namespace cherrydev
 
             FontSize = src.FontSize;
             TypeDelay = src.TypeDelay;
-            PanelHorzSizePct = src.PanelHorzSizePct;
-            PanelVertSizePct = src.PanelVertSizePct;
+            HScalePct = src.HScalePct;
+            VScalePct = src.VScalePct;
             BackgroundColor = src.BackgroundColor;
             BackgroundImage = src.BackgroundImage;
-            AvatarImgToTxtRatio = src.AvatarImgToTxtRatio;
-            AvatarToButtonPanelRatio = src.AvatarToButtonPanelRatio;
+            HorzPanelRatio = src.HorzPanelRatio;
+            VertPanelRatio = src.VertPanelRatio;
             ButtonsWidthPct = src.ButtonsWidthPct;
+            ButtonFontSize = src.ButtonFontSize;
 
             ExternalFunctionToken = src.ExternalFunctionToken;
             Collapsed = src.Collapsed;

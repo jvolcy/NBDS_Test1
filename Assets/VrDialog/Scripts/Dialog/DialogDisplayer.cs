@@ -30,13 +30,31 @@ namespace cherrydev
             _dialogBehaviour.DialogNodeSetUp -= SetUpDialogPanel;
         }
 
+        int ScreenWidth;
+        int ScreenHeight;
+
+        private void Start()
+        {
+            ScreenHeight = Screen.height;
+            ScreenWidth = Screen.width;
+        }
+        private void Update()
+        {
+            if (ScreenHeight != Screen.height || ScreenWidth != Screen.width)
+            {
+                ScreenHeight = Screen.height;
+                ScreenWidth = Screen.width;
+                _dialogPanel.SetupPanel(_dialogBehaviour.CurrentDialogNode);
+            }
+        }
+
         /// <summary>
         /// Display the dialog panel
         /// </summary>
         public void DialogStarted()
         {
             //Debug.Log("DialogDisplayer:DialogPanelClose()...");
-            _dialogPanel.GetComponent<Animator>().SetBool("Show", true);
+            _dialogPanel.MainPanel.GetComponent<Animator>().SetBool("Show", true);
         }
 
         /// <summary>
@@ -44,7 +62,7 @@ namespace cherrydev
         /// </summary>
         public void DialogFinished()
         {
-            _dialogPanel.GetComponent<Animator>().SetBool("Show", false);
+            _dialogPanel.MainPanel.GetComponent<Animator>().SetBool("Show", false);
         }
 
         /// <summary>

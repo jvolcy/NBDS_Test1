@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 29155090150750354}
   - component: {fileID: 4726933923105255632}
   m_Layer: 5
-  m_Name: VRAnswerButton
+  m_Name: AnswerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 200
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &4726933923105255632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_fontSizeBase: 0.05
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_fontSizeMin: 0.05
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
