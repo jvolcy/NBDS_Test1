@@ -10,9 +10,16 @@ namespace DialogNodeBasedSystem.Demo.Scripts
         [Tooltip("The node graph to execute.")]
         [SerializeField] DialogNodeGraph dialogNodeGraph;
 
-        bool play = true;
+        public AudioClip ClipA;
+        public AudioClip ClipB;
+        public AudioClip ClipC;
+
+        AudioSource audioSource;
+
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
+
             //subscribe to the NodeOpen Action (optional)
             xDialog.DialogNodeOpen.AddListener(DialogNodeOpen);
 
@@ -28,20 +35,27 @@ namespace DialogNodeBasedSystem.Demo.Scripts
             xDialog.Play(dialogNodeGraph);
         }
 
-        private void Update()
-        {
-            if (play)
-            {
-                play = false;
-                //xDialog.Play(dialogNodeGraph);
-
-            }
-        }
 
         //demo the NodeOpen callback
         public void DialogNodeOpen(string token)
         {
-            Debug.Log("Dialog Node Opened:" + token);
+            switch (token)
+            {
+                case "Clip_A":
+                    audioSource.clip = ClipA;
+                    audioSource.Play();
+                    break;
+
+                case "Clip_B":
+                    audioSource.clip = ClipB;
+                    audioSource.Play();
+                    break;
+
+                case "Clip_C":
+                    audioSource.clip = ClipC;
+                    audioSource.Play();
+                    break;
+            }
         }
 
         /*

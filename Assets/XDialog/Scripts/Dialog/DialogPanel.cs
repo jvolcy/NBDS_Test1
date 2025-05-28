@@ -130,7 +130,7 @@ namespace cherrydev
                 ButtonsSubPanel.sizeDelta = new Vector2(0, -rect.height * nodeData.VertPanelRatio);
 
                 //text padding
-                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2(-rect.width * 0.1f, -rect.height * 0.1f);
+                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2(-rect.width * nodeData.TextPaddingPct, -rect.height * nodeData.TextPaddingPct);
 
                 //set the dialot text font size
                 _dialogText.fontSize = nodeData.FontSize;

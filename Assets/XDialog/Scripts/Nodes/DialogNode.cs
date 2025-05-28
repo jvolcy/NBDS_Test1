@@ -39,7 +39,7 @@ namespace cherrydev
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
         private const float DialogBaseNodeHeight = 190f;
 
-        private const float DialogNodeDataHeight = 200f;
+        private const float DialogNodeDataHeight = 220f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -170,6 +170,13 @@ namespace cherrydev
             tooltip = "The dialog text font size.  For VR apps (World Space Dialog), start with a value of 0.05 and adjust from there.";
             EditorGUILayout.LabelField(new GUIContent($"Font Size", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.FontSize = EditorGUILayout.FloatField(_nodeData.FontSize, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //Text Padding
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "Text padding as a % of the text window size.";
+            EditorGUILayout.LabelField(new GUIContent($"Txt Pad %", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.TextPaddingPct = EditorGUILayout.FloatField(_nodeData.TextPaddingPct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //Typewriter rate

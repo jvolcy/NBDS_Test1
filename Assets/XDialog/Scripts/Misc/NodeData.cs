@@ -12,6 +12,8 @@ namespace cherrydev
         public bool UseCurrentVals;
 
         public float FontSize;
+        [Range(0f, 1f)]
+        public float TextPaddingPct;
         public float TypeDelay;
         public float HScalePct;
         public float VScalePct;
@@ -36,6 +38,7 @@ namespace cherrydev
             UseCurrentVals = false;
 
             FontSize = 10f;
+            TextPaddingPct = .05f;
             TypeDelay = 0.05f;
             HScalePct = 1;
             VScalePct = 1;
@@ -59,6 +62,7 @@ namespace cherrydev
             UseCurrentVals = src.UseCurrentVals;
 
             FontSize = src.FontSize;
+            TextPaddingPct = src.TextPaddingPct;
             TypeDelay = src.TypeDelay;
             HScalePct = src.HScalePct;
             VScalePct = src.VScalePct;
