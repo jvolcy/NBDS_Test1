@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace cherrydev
@@ -39,7 +38,6 @@ namespace cherrydev
         /// </summary>
         public void IncreaseMaxVisibleCharacters() => _dialogText.maxVisibleCharacters++;
 
-        RectTransform MainPanelRectTransform;    //reference to the MainPanel's RectTransform
         Rect CanvasRect;    //the dimensions of the canvas
 
         //create shadow copies of the NodeData and NumButtons used to render the current
@@ -62,18 +60,15 @@ namespace cherrydev
         private readonly List<Button> _buttons = new();
         private readonly List<TextMeshProUGUI> _buttonTexts = new();
 
-
         /// <summary>
         /// 
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             CanvasRect = GetComponent<RectTransform>().rect;
-            MainPanelRectTransform = MainPanel.GetComponent<RectTransform>();
-            ScreenHeight = Screen.height;
-            ScreenWidth = Screen.width;
+            ScreenHeight = 0;   //force a resize in Update()
+            ScreenWidth = 0;    //force a resize in Update()
         }
-
 
         /// <summary>
         /// Monitor the size of the dialog panel for changes.  If it changes,
@@ -101,7 +96,6 @@ namespace cherrydev
         /// <param name="dialogNode"></param>
         public void SetupPanel(DialogNode dialogNode)
         {
-
             //Debug.Log("SetupPanel()");
 
             //Setup the panel geometry
@@ -116,7 +110,6 @@ namespace cherrydev
 
             //Setup the buttons
             SetUpButtons(dialogNode);
-
         }
 
         /// <summary>
@@ -125,17 +118,19 @@ namespace cherrydev
         /// <param name="nodeData"></param>
         void SetupDialogGeometry(NodeData nodeData, int NumButtons)
         {
-
             if (!nodeData.UseCurrentVals)
             {
                 //Set dialog panel width and height (based on the panel ratio)
-                MainPanelRectTransform.sizeDelta = new Vector2(CanvasRect.width * (nodeData.HScalePct - 1), CanvasRect.height * (nodeData.VScalePct - 1));
-                Rect rect = MainPanelRectTransform.rect;
+                MainPanel.sizeDelta = new Vector2(CanvasRect.width * (nodeData.HScalePct - 1), CanvasRect.height * (nodeData.VScalePct - 1));
+                Rect rect = MainPanel.rect;
 
                 //Set the avatar, text and button sub-panel sizes, based on the horz and vert panel ratios
-                AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * nodeData.VertPanelRatio);
-                TextSubPanel.sizeDelta = new Vector2(-rect.width * nodeData.HorzPanelRatio, -rect.height * nodeData.VertPanelRatio);
-                ButtonsSubPanel.sizeDelta = new Vector2(0, -rect.height * (1 - nodeData.VertPanelRatio));
+                AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * (1 - nodeData.VertPanelRatio));
+                TextSubPanel.sizeDelta = new Vector2(-rect.width * nodeData.HorzPanelRatio, -rect.height * (1 - nodeData.VertPanelRatio));
+                ButtonsSubPanel.sizeDelta = new Vector2(0, -rect.height * nodeData.VertPanelRatio);
+
+                //text padding
+                _dialogText.GetComponent<RectTransform>().sizeDelta = new Vector2(-rect.width * 0.1f, -rect.height * 0.1f);
 
                 //set the dialot text font size
                 _dialogText.fontSize = nodeData.FontSize;
@@ -157,16 +152,13 @@ namespace cherrydev
 
             //Scale the button grid layout (depends on the panel ratio)
             _buttonsGridLayoutGroup.cellSize = new Vector2(ButtonsSubPanel.rect.width * nodeData.ButtonsWidthPct, ButtonsSubPanel.rect.height / (NumButtons + 1));
-
         }
-
 
         /// <summary>
         /// Returns the total number of buttons
         /// </summary>
         /// <returns>The number of buttons</returns>
         public int GetButtonCount() => _buttons.Count;
-
 
         /// <summary>
         /// Instantiate the specified number of buttons.
@@ -190,9 +182,7 @@ namespace cherrydev
 
                 _buttons.Add(choiceButton);
                 _buttonTexts.Add(choiceButton.GetComponentInChildren<TextMeshProUGUI>());
-
             }
-
         }
 
         /// <summary>
@@ -214,7 +204,6 @@ namespace cherrydev
         /// <returns></returns>
         public TextMeshProUGUI GetButtonTextByIndex(int index) => _buttonTexts[index];
 
-
         /// <summary>
         /// Removes all existing buttons, used before setup
         /// </summary>
@@ -229,7 +218,6 @@ namespace cherrydev
                 _buttonTexts.Clear();
             }
         }
-
 
     }
 }

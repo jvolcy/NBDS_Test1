@@ -47,6 +47,7 @@ namespace cherrydev
         /// </summary>
         private void Update()
         {
+            if (!CurrentDialogNode) return;
             //Check if there is a keyboard request to transition to the next node.
             //In that case, always transition to the child node that corresponds to the
             //position of the ky in the _nextSentenceKeyCodes list.
@@ -147,7 +148,7 @@ namespace cherrydev
                     {
                         //set _firstNode to the START node's first (and only) child
                         _firstNode = dn.ChildNodes[0].ChildNode;
-                        //Debug.Log("Start node is " + ((DialogNode)_firstNode).name);
+                        Debug.Log("Start node is " + ((DialogNode)_firstNode).name);
                         return;
                     }
                 }
