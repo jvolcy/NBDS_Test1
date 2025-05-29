@@ -362,6 +362,9 @@ namespace cherrydev
                     break;
                 }
             }
+
+            ChildNodeStruct cns = ChildNodes[availableNodeIndex];
+
             //[2] Add a node if one is not there
             if (availableNodeIndex == -1)    //did not find a node--> add one
             {
@@ -370,7 +373,6 @@ namespace cherrydev
             }
 
             //[3] connect the node
-            ChildNodeStruct cns = ChildNodes[availableNodeIndex];
             cns.ChildNode = node;
             cns.ChoiceText = node.nodeData.DialogText;
             cns.ChoiceText = "Choice " + (availableNodeIndex+1);
