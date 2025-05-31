@@ -26,6 +26,8 @@ namespace cherrydev
         [Range(0f, 1f)]
         public float ButtonsWidthPct;
         public float ButtonFontSize;
+        public float Timeout;
+        public int ChildNodeOnTimeout;
 
         public string ExternalFunctionToken;
         public bool Collapsed;
@@ -48,6 +50,8 @@ namespace cherrydev
             VertPanelRatio = 0.5f;
             ButtonsWidthPct = 0.8f;
             ButtonFontSize = 10f;
+            Timeout = 0f;
+            ChildNodeOnTimeout = 0;
 
             ExternalFunctionToken = "";
             Collapsed = false;
@@ -72,6 +76,8 @@ namespace cherrydev
             VertPanelRatio = src.VertPanelRatio;
             ButtonsWidthPct = src.ButtonsWidthPct;
             ButtonFontSize = src.ButtonFontSize;
+            Timeout = src.Timeout;
+            ChildNodeOnTimeout = src.ChildNodeOnTimeout;
 
             ExternalFunctionToken = src.ExternalFunctionToken;
             Collapsed = src.Collapsed;

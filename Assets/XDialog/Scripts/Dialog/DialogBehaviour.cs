@@ -10,16 +10,21 @@ namespace cherrydev
     {
         [SerializeField] private List<KeyCode> _nextSentenceKeyCodes;
 
-        //There are 3 ways to trigger loaddig the next node.
+        //There are 4 ways to trigger loaddig the next node.
         //1) programmatically, by calling the GotoNextNode() function.
         //pass the index of the child node to load.
         //2) click one of the dialog buttons on the curently displayed node.
         // This also calls the GotoNextNode() function, passing the index of
         // the button that was clicked.
         //3) pressing select keys on the keyboard.  With this option, the
-        //first child node will be loaded.  You cannot specify which child.
+        //child node with the corresponding index of the _nextSentenceKeyCodes
+        //will be loaded.  You should ensure that you have at least as many key
+        //codes in the KeyCode list as you have child nodes defined.
+        //4) A node timeout occurs.  In this case, the child node index
+        //specified in NodeData.ChildNodeOnTimeout will be loaded.  This calls
+        //the GotoNextNode() function, passing the index of the target child.
         //The following booleans are used to trigger transitions to the child node.
-        public bool ProgramTrigNodeTransition = false;      //program or button click
+        public bool ProgramTrigNodeTransition = false;      //program, button click or timeout.
         public bool KeyboardTrigNodeTransition = false;     //keyboard 
 
         //The child node to load next.  Use in conjunction with the trigger
@@ -50,11 +55,11 @@ namespace cherrydev
             if (!CurrentDialogNode) return;
             //Check if there is a keyboard request to transition to the next node.
             //In that case, always transition to the child node that corresponds to the
-            //position of the ky in the _nextSentenceKeyCodes list.
+            //position of the key in the _nextSentenceKeyCodes list.
             for (int i = 0; i < _nextSentenceKeyCodes.Count; i++)
             {
                 //avoid a childnode index error... we have more defined transition keys than we have child nodes.
-                if (i >= CurrentDialogNode.ChildNodes.Count) return;
+                if (i > 0 && i >= CurrentDialogNode.ChildNodes.Count) return;
 
                 if (Input.GetKeyDown(_nextSentenceKeyCodes[i]))
                 {
@@ -86,6 +91,10 @@ namespace cherrydev
             HandleDialogGraphCurrentNode(_firstNode);
         }
 
+        /// <summary>
+        /// Load the specified child node
+        /// </summary>
+        /// <param name="childNodeIndex"></param>
         public void GoToNextNode(int childNodeIndex)
         {
             _ChildNodeToLoadIndex = childNodeIndex;
@@ -124,8 +133,23 @@ namespace cherrydev
             DialogNodeSetUp?.Invoke(dialogNode);
 
             string dialogText = dialogNode.nodeData.DialogText;
-            WriteDialogText(dialogText);
+            //WriteDialogText(dialogText);
+            StartCoroutine(WriteDialogTextRoutine(dialogText));
+
+            StartCoroutine(WaitForNodeTimeout(dialogNode));
         }
+
+
+        private IEnumerator WaitForNodeTimeout(DialogNode dialogNode)
+        {
+            //if Timeout is 0, disable the timeout trigger
+            if (dialogNode.nodeData.Timeout != 0)
+            {
+                yield return new WaitForSeconds(dialogNode.nodeData.Timeout);
+                GoToNextNode(dialogNode.nodeData.ChildNodeOnTimeout);
+            }
+        }
+
 
         /// <summary>
         /// Finds the start node
@@ -158,11 +182,16 @@ namespace cherrydev
 
         }
 
+        /*
         /// <summary>
         /// Writing dialog text
         /// </summary>
         /// <param name="text"></param>
-        private void WriteDialogText(string text) => StartCoroutine(WriteDialogTextRoutine(text));
+        private void WriteDialogText(string text)
+        {
+            StartCoroutine(WriteDialogTextRoutine(text));
+        }
+        */
 
         /// <summary>
         /// Writing dialog text coroutine
@@ -193,19 +222,22 @@ namespace cherrydev
 
             //invoke the TypeOutCompleted event
             DialogTextTypeOutCompleted?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
-            
+
+            //Debug.Log("WriteDialogTextRoutine()... wait for transition...");
+
             yield return new WaitUntil(CheckTransitionToNextNode);
 
         }
 
 
         /// <summary>
-        /// There are 3 ways we can advance to the next node.
+        /// There are 4 ways we can advance to the next node.
         ///     1) One of the option buttons on the current node has been clicked, so
         ///     we need to load the appropriate child node.
         ///     2) The keyboard was used to signal that we need to load the next node.
         ///     3) We received a programmatic GotoNextNode() call.  Some code is
         ///     requesting that we load a specific child node.
+        ///     4) The node has timedout.
         ///     
         /// Checking whether at least one key from the nextSentenceKeyCodes was pressed
         /// or one of the choice buttons was pushed or we got a command to advance to
@@ -218,8 +250,12 @@ namespace cherrydev
             //was called or the keyboard trigger key was hit
             if (ProgramTrigNodeTransition || KeyboardTrigNodeTransition)
             {
+                StopAllCoroutines();
+
                 ProgramTrigNodeTransition = false;
                 KeyboardTrigNodeTransition = false;
+
+                //Debug.Log("CheckTransitionToNextNode() exiting...");
 
                 PrepareNextPanel();
                 return true;
@@ -235,6 +271,8 @@ namespace cherrydev
         /// <param name="childIndex"></param>
         void PrepareNextPanel()
         {
+            //Debug.Log("DialogBehaviour:LoadNextPanel() ...");
+
             //signal that the current node is closing
             DialogNodeClose?.Invoke(CurrentDialogNode.nodeData.ExternalFunctionToken);
 
@@ -243,15 +281,18 @@ namespace cherrydev
             //get the target node to load if the index is in range
             if (_ChildNodeToLoadIndex < CurrentDialogNode.ChildNodes.Count)
             {
+                //Debug.Log("PrepareNextPanel(): _ChildNodeToLoadIndex=" + _ChildNodeToLoadIndex +"  #child nodes=" + CurrentDialogNode.ChildNodes.Count);
                 childNodeToLoad = CurrentDialogNode.ChildNodes[_ChildNodeToLoadIndex].ChildNode;
             }
 
-            if(childNodeToLoad)
+            if(childNodeToLoad != null)
             { 
                 //Debug.Log("DialogBehaviour:LoadNextPanel() ... loading child " + _ChildNodeToLoadIndex);
                 HandleDialogGraphCurrentNode(childNodeToLoad);  //load next node
                 return;
             }
+
+            //Debug.Log("DialogBehaviour:LoadNextPanel() ... terminate.");
 
             //Here, either the requested child index was out of range or not
             //connected. Either way, terminate the dialog.

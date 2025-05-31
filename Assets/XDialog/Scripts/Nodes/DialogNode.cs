@@ -39,7 +39,7 @@ namespace cherrydev
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
         private const float DialogBaseNodeHeight = 190f;
 
-        private const float DialogNodeDataHeight = 220f;
+        private const float DialogNodeDataHeight = 260f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -241,6 +241,20 @@ namespace cherrydev
             tooltip = "The button text font size.  For VR apps (World Space Dialog), start with a value of 0.05 and adjust from there.";
             EditorGUILayout.LabelField(new GUIContent($"Btn Font Sz", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ButtonFontSize = EditorGUILayout.FloatField(_nodeData.ButtonFontSize, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //Timeout
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "Number of seconds before the node auto-exits.  Zero to disable.";
+            EditorGUILayout.LabelField(new GUIContent($"Timeout", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.Timeout = EditorGUILayout.FloatField(_nodeData.Timeout, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //ChildNodeOnTimeout - The child node that will execute if we timeout
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "The choice that will be automatically selected if we timeout.";
+            EditorGUILayout.LabelField(new GUIContent($"Tmout Choice", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.ChildNodeOnTimeout = EditorGUILayout.IntField(_nodeData.ChildNodeOnTimeout, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }
 

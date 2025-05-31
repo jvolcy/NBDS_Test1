@@ -893,6 +893,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
+      propertyPath: _nextSentenceKeyCodes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
+      propertyPath: _nextSentenceKeyCodes.Array.data[1]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
+      propertyPath: _nextSentenceKeyCodes.Array.data[2]
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
+      propertyPath: _nextSentenceKeyCodes.Array.data[3]
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 7138797313256041361, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
       propertyPath: m_Name
       value: XDialog_ScreenOverlay
