@@ -977,7 +977,7 @@ namespace cherrydev
             contextMenu.AddItem(new GUIContent("Duplicate Selected"), false, DuplicateNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
-            contextMenu.AddItem(new GUIContent("Remove Selected Node's Child Connectors"), false, RemoveAllConnections, mousePosition);
+            contextMenu.AddItem(new GUIContent("Disconnect Selected Node's Children"), false, DisconnectAllChildren, mousePosition);
             contextMenu.ShowAsContext();
         }
 
@@ -1143,11 +1143,12 @@ namespace cherrydev
             }
         }
 
+
         /// <summary>
-        /// Clears all connections in the selected nodes
+        /// Disconnects all connections in the selected nodes
         /// </summary>
         /// <param name="userData"></param>
-        private void RemoveAllConnections(object userData)
+        private void DisconnectAllChildren(object userData)
         {
             foreach (Node node in _currentNodeGraph.NodesList)
             {
@@ -1155,52 +1156,15 @@ namespace cherrydev
                     continue;
 
                 DialogNode dialogNode = (DialogNode)node;
-                dialogNode.ChildNodes.Clear();
-                //recalculate the size of the dialog node
-                dialogNode.SetDialogNodeSize();
+
+                for (int i=0; i< dialogNode.ChildNodes.Count; i++)
+                {
+                    DialogNode.ChildNodeStruct cns = dialogNode.ChildNodes[i];
+                    cns.ChildNode = null;
+                    dialogNode.ChildNodes[i] = cns;
+                }
             }
         }
 
-        /// <summary>
-        /// Center the node editor window on all nodes
-        /// </summary>
-        private void CenterWindowOnNodes()
-        {
-            Vector2 nodesCenter = CalculateNodesCenter();
-            Vector2 canvasCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-
-            Vector2 offset = canvasCenter - nodesCenter;
-
-            foreach (var node in _currentNodeGraph.NodesList)
-                node.DragNode(offset);
-
-            GUI.changed = true;
-        }
-
-        /// <summary>
-        /// Calculate the center of all nodes
-        /// </summary>
-        /// <returns>The center position of all nodes</returns>
-        private Vector2 CalculateNodesCenter()
-        {
-            if (_currentNodeGraph.NodesList == null || _currentNodeGraph.NodesList.Count == 0)
-                return Vector2.zero;
-
-            float minX = float.MaxValue;
-            float maxX = float.MinValue;
-            float minY = float.MaxValue;
-            float maxY = float.MinValue;
-
-            foreach (var node in _currentNodeGraph.NodesList)
-            {
-                Rect nodeRect = node.Rect;
-                minX = Mathf.Min(minX, nodeRect.xMin);
-                maxX = Mathf.Max(maxX, nodeRect.xMax);
-                minY = Mathf.Min(minY, nodeRect.yMin);
-                maxY = Mathf.Max(maxY, nodeRect.yMax);
-            }
-
-            return new Vector2((minX + maxX) / 2, (minY + maxY) / 2);
-        }
     }
 }
