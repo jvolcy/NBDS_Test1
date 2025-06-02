@@ -345,7 +345,7 @@ namespace cherrydev
 
             //draw the collapse button; firts, decide if we need the up or down button icon.
             Texture LogoTex = Resources.Load(_nodeData.Collapsed ? "double-down-arrow" : "double-up-arrow") as Texture;
-            if (GUILayout.Button(LogoTex, _collapseButtonStyle, GUILayout.Height(collapseButtonHeight)))
+            if (GUILayout.Button(LogoTex, _collapseButtonStyle, GUILayout.Height(collapseButtonHeight), GUILayout.Width(20)))
             {
                 //toggle our collapsed state
                 _nodeData.Collapsed = !_nodeData.Collapsed;
@@ -381,6 +381,7 @@ namespace cherrydev
 
             int availableNodeIndex = -1;
 
+
             //[1] Look for the first emply child node
             for (int i = 0; i < ChildNodes.Count; i++)
             {
@@ -391,19 +392,23 @@ namespace cherrydev
                 }
             }
 
-            ChildNodeStruct cns = ChildNodes[availableNodeIndex];
-
+            ChildNodeStruct cns;
             //[2] Add a node if one is not there
             if (availableNodeIndex == -1)    //did not find a node--> add one
             {
                 AddChoice("X");
                 availableNodeIndex = ChildNodes.Count - 1;
+                cns = ChildNodes[availableNodeIndex];
+                //cns.ChoiceText = "Choice " + (availableNodeIndex + 1);
+                cns.ChoiceText = node.nodeData.DialogText;
+            }
+            else   //found an available node --> use it
+            {
+                cns = ChildNodes[availableNodeIndex];
             }
 
             //[3] connect the node
             cns.ChildNode = node;
-            cns.ChoiceText = node.nodeData.DialogText;
-            cns.ChoiceText = "Choice " + (availableNodeIndex+1);
             ChildNodes[availableNodeIndex] = cns;
         }
 
