@@ -17,6 +17,8 @@ namespace cherrydev
         public float TypeDelay;
         public float HScalePct;
         public float VScalePct;
+        public float NormHPos;
+        public float NormVPos;
         public Color BackgroundColor;
         public Sprite BackgroundImage;
         [Range(0f, 1f)]
@@ -44,13 +46,15 @@ namespace cherrydev
             TypeDelay = 0.05f;
             HScalePct = 1;
             VScalePct = 1;
+            NormHPos = 0.5f;
+            NormVPos = 0.5f;
             BackgroundColor = new Color32(29, 29, 29, 150);
             BackgroundImage = null;
             HorzPanelRatio = 0.3f;
             VertPanelRatio = 0.5f;
             ButtonsWidthPct = 0.8f;
             ButtonFontSize = 10f;
-            Timeout = 0f;
+            Timeout = -1f;
             ChildNodeOnTimeout = 0;
 
             ExternalFunctionToken = "";
@@ -70,6 +74,8 @@ namespace cherrydev
             TypeDelay = src.TypeDelay;
             HScalePct = src.HScalePct;
             VScalePct = src.VScalePct;
+            NormHPos = src.NormHPos;
+            NormVPos = src.NormVPos;
             BackgroundColor = src.BackgroundColor;
             BackgroundImage = src.BackgroundImage;
             HorzPanelRatio = src.HorzPanelRatio;

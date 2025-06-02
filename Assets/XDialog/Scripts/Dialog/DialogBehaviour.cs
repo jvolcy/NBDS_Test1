@@ -142,8 +142,8 @@ namespace cherrydev
 
         private IEnumerator WaitForNodeTimeout(DialogNode dialogNode)
         {
-            //if Timeout is 0, disable the timeout trigger
-            if (dialogNode.nodeData.Timeout != 0)
+            //if Timeout is 0 or negative, disable the timeout trigger
+            if (dialogNode.nodeData.Timeout > 0)
             {
                 yield return new WaitForSeconds(dialogNode.nodeData.Timeout);
                 GoToNextNode(dialogNode.nodeData.ChildNodeOnTimeout);

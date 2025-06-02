@@ -124,6 +124,12 @@ namespace cherrydev
                 MainPanel.sizeDelta = new Vector2(CanvasRect.width * (nodeData.HScalePct - 1), CanvasRect.height * (nodeData.VScalePct - 1));
                 Rect rect = MainPanel.rect;
 
+                //Debug.Log("Screen size = " + Screen.width + "," + Screen.height);
+                //Debug.Log("position = " + MainPanel.position);
+
+                //Set the dialog position
+                MainPanel.position = new Vector2(Screen.width * nodeData.NormHPos, Screen.height * nodeData.NormVPos);
+
                 //Set the avatar, text and button sub-panel sizes, based on the horz and vert panel ratios
                 AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * (1 - nodeData.VertPanelRatio));
                 TextSubPanel.sizeDelta = new Vector2(-rect.width * nodeData.HorzPanelRatio, -rect.height * (1 - nodeData.VertPanelRatio));

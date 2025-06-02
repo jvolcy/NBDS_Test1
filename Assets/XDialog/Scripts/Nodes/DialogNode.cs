@@ -39,7 +39,7 @@ namespace cherrydev
         //DialogBaseNodeHeight = height of Dialog Text + Ext Function + buttons + vertical padding
         private const float DialogBaseNodeHeight = 190f;
 
-        private const float DialogNodeDataHeight = 260f;
+        private const float DialogNodeDataHeight = 300f;
 
         private const float ChoiceNodeHeight = 20f;
 
@@ -188,7 +188,7 @@ namespace cherrydev
 
             //draw Panel Horz Scale Pct %
             EditorGUILayout.BeginHorizontal();
-            tooltip = "Horizontal size of the dialog panel as % of screen height (range 0.0 to 1.0).  In VR, this is a % of the base size of 1m (range 0.0 to infinity)";
+            tooltip = "Horizontal size of the dialog panel as % of screen width (range 0.0 to 1.0).  In VR, this is a % of the base size of 1m (range 0.0 to infinity)";
             EditorGUILayout.LabelField(new GUIContent($"HScale %", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.HScalePct = EditorGUILayout.FloatField(_nodeData.HScalePct, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
@@ -198,6 +198,20 @@ namespace cherrydev
             tooltip = "Vertical size of the dialog panel as % of screen height (range 0.0 to 1.0).  In VR, this is a % of the base size of 1m (range is 0.0 to infinity)";
             EditorGUILayout.LabelField(new GUIContent($"VScale %", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.VScalePct = EditorGUILayout.FloatField(_nodeData.VScalePct, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //draw Panel Normalized HPos
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "Normalized Horizontal position of the dialog (range 0.0 to 1.0).  Default value of 0.5 is the horizontal center of the screen.  In VR, this is a % of the base size of 1m (-infinity to +infinity)";
+            EditorGUILayout.LabelField(new GUIContent($"HPos", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.NormHPos = EditorGUILayout.FloatField(_nodeData.NormHPos, GUILayout.Width(TextFieldWidth));
+            EditorGUILayout.EndHorizontal();
+
+            //draw Panel Normalized VPos
+            EditorGUILayout.BeginHorizontal();
+            tooltip = "Normalized Vertical position of the dialog (range 0.0 to 1.0).  Default value of 0.5 is the vertical center of the screen.  In VR, this is a % of the base size of 1m (-infinity to +infinity)";
+            EditorGUILayout.LabelField(new GUIContent($"VPos", tooltip), GUILayout.Width(LabelFieldSpace));
+            _nodeData.NormVPos = EditorGUILayout.FloatField(_nodeData.NormVPos, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw backgroud color
@@ -245,7 +259,7 @@ namespace cherrydev
 
             //Timeout
             EditorGUILayout.BeginHorizontal();
-            tooltip = "Number of seconds before the node auto-exits.  Zero to disable.";
+            tooltip = "Number of seconds before the node auto-exits.  0 or negative to disable.";
             EditorGUILayout.LabelField(new GUIContent($"Timeout", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.Timeout = EditorGUILayout.FloatField(_nodeData.Timeout, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();

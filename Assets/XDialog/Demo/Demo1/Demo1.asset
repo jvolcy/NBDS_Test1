@@ -16,8 +16,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -245
-    y: 62
+    x: -1385
+    y: -20
     width: 120
     height: 60
   IsDragging: 1
@@ -32,6 +32,8 @@ MonoBehaviour:
     TypeDelay: 0.05
     HScalePct: 1
     VScalePct: 1
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0.3
@@ -45,7 +47,55 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 4453529654120810089}
-    ChildConnectionPoint: {x: -185, y: 92}
+    ChildConnectionPoint: {x: -1325, y: 10}
+--- !u!114 &-5913634852060047841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0008 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 124
+    y: 4.5
+    width: 210
+    height: 510
+  IsDragging: 1
+  IsSelected: 0
+  NodeID: 8
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Warm-hearted Owl
+    UseCurrentVals: 0
+    FontSize: 10
+    TextPaddingPct: 0.05
+    TypeDelay: 0.05
+    HScalePct: 1
+    VScalePct: 1
+    NormHPos: 0.5
+    NormVPos: 0.5
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    HorzPanelRatio: 0.3
+    VertPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ButtonFontSize: 10
+    Timeout: -1
+    ChildNodeOnTimeout: 0
+    ExternalFunctionToken: 
+    Collapsed: 0
+  ChildNodes:
+  - ChoiceText: Choice 1
+    ChildNode: {fileID: 0}
+    ChildConnectionPoint: {x: 334, y: 433.5}
 --- !u!114 &-5712068764915574299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +112,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 207
-    y: 42.5
+    x: -863
+    y: -48.5
     width: 210
-    height: 470
+    height: 210
   IsDragging: 1
   IsSelected: 0
   NodeID: 4
@@ -79,6 +129,8 @@ MonoBehaviour:
     TypeDelay: 0.09
     HScalePct: 0.5
     VScalePct: 0.25
+    NormHPos: 0.4
+    NormVPos: 0.6
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.49019608}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0.3
@@ -88,11 +140,11 @@ MonoBehaviour:
     Timeout: 12
     ChildNodeOnTimeout: 0
     ExternalFunctionToken: Clip_A
-    Collapsed: 0
+    Collapsed: 1
   ChildNodes:
   - ChoiceText: 
     ChildNode: {fileID: 4359570797166189209}
-    ChildConnectionPoint: {x: 417, y: 431.5}
+    ChildConnectionPoint: {x: -653, y: 80.5}
 --- !u!114 &-4094838906503846629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,12 +161,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 785
-    y: 42.5
+    x: -287
+    y: -73.5
     width: 210
-    height: 450
+    height: 490
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   NodeID: 6
   _nodeData:
     AvatarImage: {fileID: 21300000, guid: ee92680ec782d49a1bfa34b2fd9f1aec, type: 3}
@@ -126,6 +178,8 @@ MonoBehaviour:
     TypeDelay: 0.05
     HScalePct: 0.5
     VScalePct: 0.25
+    NormHPos: 0.4
+    NormVPos: 0.6
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.49019608}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0.3
@@ -135,6 +189,51 @@ MonoBehaviour:
     Timeout: 6
     ChildNodeOnTimeout: 0
     ExternalFunctionToken: Clip_C
+    Collapsed: 0
+  ChildNodes: []
+--- !u!114 &-31086541256481759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Name: '[ Node 0009 ]'
+  m_EditorClassIdentifier: 
+  ConnectedNodesList: []
+  NodeGraph: {fileID: 11400000}
+  Rect:
+    serializedVersion: 2
+    x: 462
+    y: 232.5
+    width: 0
+    height: 0
+  IsDragging: 0
+  IsSelected: 0
+  NodeID: 9
+  _nodeData:
+    AvatarImage: {fileID: 0}
+    DialogText: Receptive Badger
+    UseCurrentVals: 0
+    FontSize: 10
+    TextPaddingPct: 0.05
+    TypeDelay: 0.05
+    HScalePct: 1
+    VScalePct: 1
+    NormHPos: 0.5
+    NormVPos: 0.5
+    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
+    BackgroundImage: {fileID: 0}
+    HorzPanelRatio: 0.3
+    VertPanelRatio: 0.5
+    ButtonsWidthPct: 0.8
+    ButtonFontSize: 10
+    Timeout: -1
+    ChildNodeOnTimeout: 0
+    ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes: []
 --- !u!114 &11400000
@@ -155,9 +254,11 @@ MonoBehaviour:
   - {fileID: -5712068764915574299}
   - {fileID: 4359570797166189209}
   - {fileID: -4094838906503846629}
+  - {fileID: -5913634852060047841}
+  - {fileID: -31086541256481759}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
-  nodeSerialNumber: 6
+  nodeSerialNumber: 9
 --- !u!114 &4359570797166189209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +275,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 474
-    y: 38.5
+    x: -596
+    y: -51.5
     width: 210
-    height: 470
+    height: 210
   IsDragging: 1
   IsSelected: 0
   NodeID: 5
@@ -191,6 +292,8 @@ MonoBehaviour:
     TypeDelay: 0.05
     HScalePct: 0.5
     VScalePct: 0.25
+    NormHPos: 0.6
+    NormVPos: 0.4
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.49019608}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0.3
@@ -200,11 +303,11 @@ MonoBehaviour:
     Timeout: 7
     ChildNodeOnTimeout: 0
     ExternalFunctionToken: Clip_B
-    Collapsed: 0
+    Collapsed: 1
   ChildNodes:
   - ChoiceText: 
     ChildNode: {fileID: -4094838906503846629}
-    ChildConnectionPoint: {x: 684, y: 427.5}
+    ChildConnectionPoint: {x: -386, y: 77.5}
 --- !u!114 &4453529654120810089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,10 +324,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -167
-    y: 22.5
+    x: -1237
+    y: -68.5
     width: 210
-    height: 470
+    height: 210
   IsDragging: 1
   IsSelected: 0
   NodeID: 1
@@ -242,17 +345,19 @@ MonoBehaviour:
     TypeDelay: 0
     HScalePct: 0.5
     VScalePct: 0.5
+    NormHPos: 0.5
+    NormVPos: 0.5
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0.75
     ButtonsWidthPct: 0.5
     ButtonFontSize: 12
-    Timeout: 5
+    Timeout: 0
     ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
-    Collapsed: 0
+    Collapsed: 1
   ChildNodes:
   - ChoiceText: Enter
     ChildNode: {fileID: -5712068764915574299}
-    ChildConnectionPoint: {x: 43, y: 411.5}
+    ChildConnectionPoint: {x: -1027, y: 60.5}
