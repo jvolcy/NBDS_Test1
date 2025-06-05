@@ -46,8 +46,8 @@ namespace cherrydev
             TypeDelay = 0.05f;
             HScalePct = 1;
             VScalePct = 1;
-            NormHPos = 0.5f;
-            NormVPos = 0.5f;
+            NormHPos = 0f;
+            NormVPos = 0f;
             BackgroundColor = new Color32(29, 29, 29, 150);
             BackgroundImage = null;
             HorzPanelRatio = 0.3f;

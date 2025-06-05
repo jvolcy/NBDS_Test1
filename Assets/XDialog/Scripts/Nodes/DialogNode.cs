@@ -202,14 +202,14 @@ namespace cherrydev
 
             //draw Panel Normalized HPos
             EditorGUILayout.BeginHorizontal();
-            tooltip = "Normalized Horizontal position of the dialog (range 0.0 to 1.0).  Default value of 0.5 is the horizontal center of the screen.  In VR, this is a % of the base size of 1m (-infinity to +infinity)";
+            tooltip = "Normalized Horizontal position of the dialog (range -1.0 to 1.0).  Default value of 0 is the horizontal center of the screen.  In VR, this is a % of the base size of 1m (range is -infinity to +infinity)";
             EditorGUILayout.LabelField(new GUIContent($"HPos", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.NormHPos = EditorGUILayout.FloatField(_nodeData.NormHPos, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
 
             //draw Panel Normalized VPos
             EditorGUILayout.BeginHorizontal();
-            tooltip = "Normalized Vertical position of the dialog (range 0.0 to 1.0).  Default value of 0.5 is the vertical center of the screen.  In VR, this is a % of the base size of 1m (-infinity to +infinity)";
+            tooltip = "Normalized Vertical position of the dialog (range -1.0 to 1.0).  Default value of 0 is the vertical center of the screen.  In VR, this is a % of the base size of 1m (range is -infinity to +infinity)";
             EditorGUILayout.LabelField(new GUIContent($"VPos", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.NormVPos = EditorGUILayout.FloatField(_nodeData.NormVPos, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
@@ -267,7 +267,7 @@ namespace cherrydev
             //ChildNodeOnTimeout - The child node that will execute if we timeout
             EditorGUILayout.BeginHorizontal();
             tooltip = "The choice that will be automatically selected if we timeout.";
-            EditorGUILayout.LabelField(new GUIContent($"Tmout Choice", tooltip), GUILayout.Width(LabelFieldSpace));
+            EditorGUILayout.LabelField(new GUIContent($"T.O. Choice", tooltip), GUILayout.Width(LabelFieldSpace));
             _nodeData.ChildNodeOnTimeout = EditorGUILayout.IntField(_nodeData.ChildNodeOnTimeout, GUILayout.Width(TextFieldWidth));
             EditorGUILayout.EndHorizontal();
         }

@@ -977,7 +977,7 @@ namespace cherrydev
             contextMenu.AddItem(new GUIContent("Duplicate Selected"), false, DuplicateNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Select All Nodes"), false, SelectAllNodes, mousePosition);
             contextMenu.AddItem(new GUIContent("Delete Selected Node"), false, RemoveSelectedNodes, mousePosition);
-            contextMenu.AddItem(new GUIContent("Disconnect Selected Node's Children"), false, DisconnectAllChildren, mousePosition);
+            contextMenu.AddItem(new GUIContent("Disconnect Selected's Children"), false, DisconnectAllChildren, mousePosition);
             contextMenu.ShowAsContext();
         }
 

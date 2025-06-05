@@ -125,10 +125,12 @@ namespace cherrydev
                 Rect rect = MainPanel.rect;
 
                 //Debug.Log("Screen size = " + Screen.width + "," + Screen.height);
-                //Debug.Log("position = " + MainPanel.position);
+                //Debug.Log("CanvasRect size = " + CanvasRect.width + "," + CanvasRect.height);
+                //Debug.Log("position = " + MainPanel.localPosition);
 
-                //Set the dialog position
-                MainPanel.position = new Vector2(Screen.width * nodeData.NormHPos, Screen.height * nodeData.NormVPos);
+                //Set the dialog position, preserving the current Z position (this is the distance from the camera in VR)
+                //MainPanel.position = new Vector3(Screen.width * nodeData.NormHPos, Screen.height * nodeData.NormVPos, MainPanel.position.z);
+                MainPanel.localPosition = new Vector3(CanvasRect.width * nodeData.NormHPos, CanvasRect.height * nodeData.NormVPos, MainPanel.localPosition.z);
 
                 //Set the avatar, text and button sub-panel sizes, based on the horz and vert panel ratios
                 AvatarSubPanel.sizeDelta = new Vector2(-rect.width * (1 - nodeData.HorzPanelRatio), -rect.height * (1 - nodeData.VertPanelRatio));

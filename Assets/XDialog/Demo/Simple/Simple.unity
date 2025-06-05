@@ -669,9 +669,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1896025583}
   - component: {fileID: 1896025584}
-  - component: {fileID: 1896025585}
   m_Layer: 0
-  m_Name: Demo1
+  m_Name: TestXDialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,110 +700,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1896025581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b02f13cb64fa40bb94e5b1bec113d79, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a50af2ea4f667a4d8b79e83c3ce0d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xDialog: {fileID: 8260254286102337401}
-  dialogNodeGraph: {fileID: 11400000, guid: 9a3154d8ac0904ee8b6fc74cc3f725a6, type: 2}
-  ClipA: {fileID: 8300000, guid: cbc65921f4d4a484da163b09bb2fc313, type: 3}
-  ClipB: {fileID: 8300000, guid: 81578efef82ca4389b5176b1217dc056, type: 3}
-  ClipC: {fileID: 8300000, guid: 6b8c42ce6148b47efbbdcbc6403c861a, type: 3}
---- !u!82 &1896025585
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1896025581}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  dialogNodeGraph: {fileID: 11400000, guid: c27413edb72254e76b1dde73283c876a, type: 2}
 --- !u!1001 &8260254286102337400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -893,25 +793,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
-      propertyPath: _nextSentenceKeyCodes.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
-      propertyPath: _nextSentenceKeyCodes.Array.data[1]
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
-      propertyPath: _nextSentenceKeyCodes.Array.data[2]
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 4287814356186381075, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
-      propertyPath: _nextSentenceKeyCodes.Array.data[3]
-      value: 52
-      objectReference: {fileID: 0}
     - target: {fileID: 7138797313256041361, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
       propertyPath: m_Name
-      value: XDialog_ScreenOverlay
+      value: XDialog_Desktop
       objectReference: {fileID: 0}
     - target: {fileID: 7138797313256041361, guid: b7a5e0147a2ba46c3a1f5c95c5769305, type: 3}
       propertyPath: m_IsActive
