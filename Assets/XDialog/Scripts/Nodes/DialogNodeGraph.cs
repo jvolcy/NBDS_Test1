@@ -9,7 +9,7 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 #endif
 
-namespace cherrydev
+namespace spelmanXR
 {
     [CreateAssetMenu(menuName = "Scriptable Objects/Nodes/Node Graph", fileName = "New Node Graph")]
     public class DialogNodeGraph : ScriptableObject

@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace cherrydev
+namespace spelmanXR
 {
     public class DialogPanel : MonoBehaviour
     {

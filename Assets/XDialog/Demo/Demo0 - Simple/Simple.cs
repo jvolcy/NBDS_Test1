@@ -3,7 +3,7 @@ using spelmanXR;
 
 namespace DialogNodeBasedSystem.Demo.Scripts
 {
-    public class Demo1 : MonoBehaviour
+    public class Simple : MonoBehaviour
     {
         [SerializeField] XDialog xDialog;
 

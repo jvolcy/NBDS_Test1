@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace cherrydev
+namespace spelmanXR
 {
     [CustomEditor(typeof(DialogNodeGraph))]
     public class DialogNodeGraphEditor : Editor

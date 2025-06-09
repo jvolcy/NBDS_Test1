@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace cherrydev
+namespace spelmanXR
 {
     [System.Serializable]
     public struct NodeData

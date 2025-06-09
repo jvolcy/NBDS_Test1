@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace cherrydev
+namespace spelmanXR
 {
     public class DialogNode : Node
     {

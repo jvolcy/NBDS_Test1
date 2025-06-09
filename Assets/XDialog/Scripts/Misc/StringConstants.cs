@@ -1,4 +1,4 @@
-namespace cherrydev
+namespace spelmanXR
 {
     public static class StringConstants
     {

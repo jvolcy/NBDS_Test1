@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace cherrydev
+namespace spelmanXR
 {
     public class NodeEditor : EditorWindow
     {

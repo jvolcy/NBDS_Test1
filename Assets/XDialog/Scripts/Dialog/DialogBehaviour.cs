@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace cherrydev
+namespace spelmanXR
 {
     public class DialogBehaviour : MonoBehaviour
     {
