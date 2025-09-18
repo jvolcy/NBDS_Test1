@@ -16,11 +16,11 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 918.25
-    y: 319.5
+    x: 890.25
+    y: 443.5
     width: 210
     height: 490
-  IsDragging: 0
+  IsDragging: 1
   IsSelected: 0
   NodeID: 14
   _nodeData:
@@ -81,8 +81,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 443.25
-    y: -59.5
+    x: 183.25
+    y: 24.5
     width: 210
     height: 530
   IsDragging: 1
@@ -112,10 +112,10 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 3243030761396637110}
-    ChildConnectionPoint: {x: 653.25, y: 369.5}
+    ChildConnectionPoint: {x: 393.25, y: 453.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 653.25, y: 389.5}
+    ChildConnectionPoint: {x: 393.25, y: 473.5}
 --- !u!114 &3243030761396637110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,12 +132,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 895.25
-    y: -25
+    x: 631.25
+    y: 30
     width: 210
     height: 510
   IsDragging: 1
-  IsSelected: 0
+  IsSelected: 1
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: -7639930429869270652}
-    ChildConnectionPoint: {x: 1105.25, y: 404}
+    ChildConnectionPoint: {x: 841.25, y: 459}
 --- !u!114 &5617620800059427379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,12 +182,12 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 239.25
-    y: 26.5
+    x: -20.75
+    y: 110.5
     width: 120
     height: 60
   IsDragging: 1
-  IsSelected: 1
+  IsSelected: 0
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
@@ -213,4 +213,4 @@ MonoBehaviour:
   ChildNodes:
   - ChoiceText: X
     ChildNode: {fileID: 2037191826421303347}
-    ChildConnectionPoint: {x: 299.25, y: 56.5}
+    ChildConnectionPoint: {x: 39.25, y: 140.5}

@@ -16,10 +16,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 608.5
-    y: 568.5
+    x: 645.5
+    y: 263.5
     width: 210
-    height: 390
+    height: 490
   IsDragging: 1
   IsSelected: 0
   NodeID: 12
@@ -28,15 +28,20 @@ MonoBehaviour:
     DialogText: Selective Deer
     UseCurrentVals: 0
     FontSize: 1
+    TextPaddingPct: 0
     TypeDelay: 0.05
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.65221274, g: 0.6603774, b: 0.34576362, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0.8
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: ddd
     Collapsed: 0
   ChildNodes: []
@@ -56,8 +61,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -319.5
-    y: -43
+    x: -282.5
+    y: -348
     width: 210
     height: 230
   IsDragging: 1
@@ -68,24 +73,29 @@ MonoBehaviour:
     DialogText: Artistic Walrus of the seas.
     UseCurrentVals: 1
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.7830189, g: 0.7550196, b: 0.14404595, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: '[ Node 0025 ]'
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: -109.5, y: 86}
+    ChildConnectionPoint: {x: -72.5, y: -219}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -3314409622238939529}
-    ChildConnectionPoint: {x: -109.5, y: 106}
+    ChildConnectionPoint: {x: -72.5, y: -199}
 --- !u!114 &-6422258529538513878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,10 +112,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 696.5
-    y: 175.5
+    x: 733.5
+    y: -129.5
     width: 210
-    height: 430
+    height: 530
   IsDragging: 0
   IsSelected: 0
   NodeID: 11
@@ -114,24 +124,29 @@ MonoBehaviour:
     DialogText: Gentle Jackrabbit
     UseCurrentVals: 0
     FontSize: 10
+    TextPaddingPct: 0
     TypeDelay: 0.05
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.735849, g: 0.4130473, b: 0.4130473, a: 0.5882353}
     BackgroundImage: {fileID: 21300000, guid: bdc41022310d84d519be2474c5e06246, type: 3}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0.8
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: sdfs
     Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: -8976262745477375696}
-    ChildConnectionPoint: {x: 906.5, y: 504.5}
+    ChildConnectionPoint: {x: 943.5, y: 299.5}
   - ChoiceText: Choice 2
     ChildNode: {fileID: -5944345224801148629}
-    ChildConnectionPoint: {x: 906.5, y: 524.5}
+    ChildConnectionPoint: {x: 943.5, y: 319.5}
 --- !u!114 &-5944345224801148629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,10 +163,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 1063.5
-    y: 572.5
+    x: 1100.5
+    y: 267.5
     width: 210
-    height: 390
+    height: 490
   IsDragging: 0
   IsSelected: 0
   NodeID: 17
@@ -160,15 +175,20 @@ MonoBehaviour:
     DialogText: Enthusiastic Fox
     UseCurrentVals: 0
     FontSize: 10
+    TextPaddingPct: 0
     TypeDelay: 0.05
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0.8
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes: []
@@ -188,10 +208,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 109.5
-    y: -44
+    x: 146.5
+    y: -349
     width: 210
-    height: 410
+    height: 510
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -200,21 +220,26 @@ MonoBehaviour:
     DialogText: Polite Lobster
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 4569098969431068165}
-    ChildConnectionPoint: {x: 319.5, y: 285}
+    ChildConnectionPoint: {x: 356.5, y: 80}
 --- !u!114 &-1523267047351050079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +256,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 353.5
-    y: 574.5
+    x: 390.5
+    y: 269.5
     width: 210
-    height: 390
+    height: 490
   IsDragging: 1
   IsSelected: 0
   NodeID: 3
@@ -243,15 +268,20 @@ MonoBehaviour:
     DialogText: xx
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0.8
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes: []
@@ -299,10 +329,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -575.5
-    y: -60
+    x: -538.5
+    y: -365
     width: 210
-    height: 450
+    height: 550
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -311,27 +341,32 @@ MonoBehaviour:
     DialogText: Exuberant Caterpillar
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.3882353}
     BackgroundImage: {fileID: 21300000, guid: 8cf595f96f9cc46b1a151e9d2b7f1919, type: 3}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: This is one choice
     ChildNode: {fileID: -8122661852139518589}
-    ChildConnectionPoint: {x: -365.5, y: 269}
+    ChildConnectionPoint: {x: -328.5, y: 64}
   - ChoiceText: This is another
     ChildNode: {fileID: 1953008284269222610}
-    ChildConnectionPoint: {x: -365.5, y: 289}
+    ChildConnectionPoint: {x: -328.5, y: 84}
   - ChoiceText: Choice 3
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: -365.5, y: 309}
+    ChildConnectionPoint: {x: -328.5, y: 104}
 --- !u!114 &1953008284269222610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,8 +383,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -341.5
-    y: 406
+    x: -304.5
+    y: 101
     width: 210
     height: 210
   IsDragging: 1
@@ -360,21 +395,26 @@ MonoBehaviour:
     DialogText: Artistic Panda
     UseCurrentVals: 1
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 2385248913529891393}
-    ChildConnectionPoint: {x: -131.5, y: 535}
+    ChildConnectionPoint: {x: -94.5, y: 230}
 --- !u!114 &2385248913529891393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,10 +431,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 45.5
-    y: 341
+    x: 82.5
+    y: 36
     width: 210
-    height: 410
+    height: 510
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -403,21 +443,26 @@ MonoBehaviour:
     DialogText: The quick brown fox jumps over the lazy dog.
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: Choice 1
     ChildNode: {fileID: 0}
-    ChildConnectionPoint: {x: 255.5, y: 670}
+    ChildConnectionPoint: {x: 292.5, y: 465}
 --- !u!114 &3590572055307635665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,10 +479,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 976.5
-    y: 182.5
+    x: 1013.5
+    y: -122.5
     width: 210
-    height: 390
+    height: 490
   IsDragging: 1
   IsSelected: 0
   NodeID: 18
@@ -446,15 +491,20 @@ MonoBehaviour:
     DialogText: Gentle Jackrabbit
     UseCurrentVals: 0
     FontSize: 10
+    TextPaddingPct: 0
     TypeDelay: 0.05
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.735849, g: 0.4130473, b: 0.4130473, a: 0.5882353}
     BackgroundImage: {fileID: 21300000, guid: bdc41022310d84d519be2474c5e06246, type: 3}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0.8
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: sdfs
     Collapsed: 0
   ChildNodes: []
@@ -474,10 +524,10 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 396.5
-    y: 126
+    x: 433.5
+    y: -179
     width: 210
-    height: 390
+    height: 490
   IsDragging: 1
   IsSelected: 0
   NodeID: -1
@@ -486,15 +536,20 @@ MonoBehaviour:
     DialogText: Kind Yucca Moth
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes: []
@@ -514,8 +569,8 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -766.5
-    y: 23
+    x: -729.5
+    y: -282
     width: 120
     height: 60
   IsDragging: 1
@@ -526,18 +581,23 @@ MonoBehaviour:
     DialogText: '!START!'
     UseCurrentVals: 0
     FontSize: 0
+    TextPaddingPct: 0
     TypeDelay: 0
     HScalePct: 0
     VScalePct: 0
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     BackgroundImage: {fileID: 0}
     HorzPanelRatio: 0
     VertPanelRatio: 0
     ButtonsWidthPct: 0
     ButtonFontSize: 0
+    Timeout: 0
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
     Collapsed: 0
   ChildNodes:
   - ChoiceText: '[ Node 0018 ]'
     ChildNode: {fileID: 1847922761099980417}
-    ChildConnectionPoint: {x: -706.5, y: 53}
+    ChildConnectionPoint: {x: -669.5, y: -252}
