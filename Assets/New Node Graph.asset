@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3542333462542105903
+--- !u!114 &-1303389506637069424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,74 +9,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
+  m_Script: {fileID: 11500000, guid: b5f1ea7730cd64fee8184372be072bd6, type: 3}
   m_Name: Start Node
   m_EditorClassIdentifier: 
   ConnectedNodesList: []
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: -11
-    y: 0
+    x: 184
+    y: 94
     width: 120
     height: 60
-  IsDragging: 0
+  IsDragging: 1
   IsSelected: 0
   NodeID: -1
   _nodeData:
     AvatarImage: {fileID: 0}
     DialogText: '!START!'
     UseCurrentVals: 0
+    FontSize: 10
+    TextPaddingPct: 0.05
     TypeDelay: 0.05
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 1
+    VScalePct: 1
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0.3
+    VertPanelRatio: 0.5
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 10
+    Timeout: -1
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: X
-    ChildNode: {fileID: 7923303573147215025}
-    ChildConnectionPoint: {x: 49, y: 30}
---- !u!114 &-927918246408110162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19fe12514c6914cca9ee6fddfa001614, type: 3}
-  m_Name: '[ Node 0002 ]'
-  m_EditorClassIdentifier: 
-  ConnectedNodesList: []
-  NodeGraph: {fileID: 11400000}
-  Rect:
-    serializedVersion: 2
-    x: 517
-    y: 166
-    width: 210
-    height: 340
-  IsDragging: 1
-  IsSelected: 0
-  NodeID: 2
-  _nodeData:
-    AvatarImage: {fileID: 0}
-    DialogText: Boundless Butterfly
-    UseCurrentVals: 0
-    TypeDelay: 0.05
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
-    BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
-    BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
-    ButtonsWidthPct: 0.8
-    ExternalFunctionToken: 
+    Collapsed: 0
   ChildNodes: []
+  x: 555
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,13 +59,12 @@ MonoBehaviour:
   m_Name: New Node Graph
   m_EditorClassIdentifier: 
   NodesList:
-  - {fileID: -3542333462542105903}
-  - {fileID: 7923303573147215025}
-  - {fileID: -927918246408110162}
+  - {fileID: -1303389506637069424}
+  - {fileID: 7575863057748821433}
   NodeToDrawLineFrom: {fileID: 0}
   LinePosition: {x: 0, y: 0}
-  nodeSerialNumber: 2
---- !u!114 &7923303573147215025
+  nodeSerialNumber: 1
+--- !u!114 &7575863057748821433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,27 +80,32 @@ MonoBehaviour:
   NodeGraph: {fileID: 11400000}
   Rect:
     serializedVersion: 2
-    x: 191
-    y: 66
+    x: 425
+    y: 127.5
     width: 210
-    height: 360
+    height: 490
   IsDragging: 1
   IsSelected: 1
   NodeID: 1
   _nodeData:
     AvatarImage: {fileID: 0}
-    DialogText: Careful Duck
+    DialogText: Caring Gorilla
     UseCurrentVals: 0
+    FontSize: 10
+    TextPaddingPct: 0.05
     TypeDelay: 0.05
-    PanelHorzSizePct: 1
-    PanelVertSizePct: 1
+    HScalePct: 1
+    VScalePct: 1
+    NormHPos: 0
+    NormVPos: 0
     BackgroundColor: {r: 0.11372549, g: 0.11372549, b: 0.11372549, a: 0.5882353}
     BackgroundImage: {fileID: 0}
-    AvatarImgToTxtRatio: 0.3
-    AvatarToButtonPanelRatio: 0.5
+    HorzPanelRatio: 0.3
+    VertPanelRatio: 0.5
     ButtonsWidthPct: 0.8
+    ButtonFontSize: 10
+    Timeout: -1
+    ChildNodeOnTimeout: 0
     ExternalFunctionToken: 
-  ChildNodes:
-  - ChoiceText: Choice 1
-    ChildNode: {fileID: -927918246408110162}
-    ChildConnectionPoint: {x: 401, y: 355}
+    Collapsed: 0
+  ChildNodes: []

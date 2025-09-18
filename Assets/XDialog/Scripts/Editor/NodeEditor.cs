@@ -203,6 +203,11 @@ namespace spelmanXR
             }
         }
 
+        private void OnInspectorUpdate()
+        {
+            return;
+        }
+
         /// <summary>
         /// Initializes toolbar styles
         /// </summary>
